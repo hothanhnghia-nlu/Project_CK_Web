@@ -24,8 +24,9 @@ Cổng Kết Nối	2x USB 3.2 Gen 1 ports
 Trọng lượng	1,87kg
 Pin	4 Cell, 54 Wh
 Hệ điều hành	Windows 11 bản quyền
-','29990000', '24990000')
-INSERT INTO product VALUES ('002','VP012','Dell Inspiron 16 5625','Dell','./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg',
+','29990000', '24990000');
+
+INSERT INTO product VALUES('002','VP012','Dell Inspiron 16 5625','Dell','./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg',
 'CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread
 RAM	8GB DDR4, 3200MHz
 Ổ cứng	512GB M.2 PCIe NVMe 
@@ -41,7 +42,7 @@ Cổng	2 USB 3.2 Gen 1 ports
 Trọng lượng	1.87kg
 Pin	4 Cell, 54 Wh
 Hệ điều hành	Windows 11 bản quyền
-','22890000', '19890000')
+','22890000', '19890000');
 INSERT INTO product VALUES ('003','VP012','Dell Inspiron 7415','Dell','./img/product/vanphong/Dell%20Inspiron%207415.jpg',
 'CPU	AMD Ryzen 5 5500U
 RAM	 8GB (1x8GB) Up to 3200MHz DDR4
@@ -53,7 +54,7 @@ Kết nối	2 USB 3.2 Gen 1 ports 1 USB 3.2 Gen 1 (Type-C™) port 1 headset (he
 Trọng lượng	1.56 kg
 Pin	 4-Cell 54WHr
 Hệ điều hành	Window 10 bản quyền
-','21890000', '')
+','21890000', '');
 INSERT INTO product VALUES ('004','VP012',' Dell Inspiron 13 5320','Dell','./img/product/vanphong/Dell%20Inspiron%2013%205320.jpg',
 'CPU	Intel® Core™ i5-1240P (12 MB cache, 12 cores, up to 4.40 GHz)
 RAM	16 GB, 2 x 8 GB, LPDDR5, 4800 MHz
@@ -61,16 +62,10 @@ RAM	16 GB, 2 x 8 GB, LPDDR5, 4800 MHz
 VGA	Intel® Iris® Xe Graphics
 Màn hình	13.3-inch, QHD+ 2560 x 1600, 60 Hz, anti-glare, non-touch, sRGB 100% (typical), 300 nits (typical), wide-viewing angle, ComfortView Plus
 Mux Switch	Không
-Cổng kết nối	2 Type-C
-	1 HDMI
-	1 Jack 3.5 mm
-	1 Thunderbolt
-	
 Trọng lượng	1,25 kg
 Pin	54WHrs
 Hệ điều hành	Windows 11 bản quyền
-','26890000', '')
--- chua them img
+','26890000', '');
 INSERT INTO product VALUES ('005','VP012','Dell Inspiron 15 5510','Dell','./img/product/vanphong/Dell%20Inspiron%2015%205510.jpg',
 'CPU	Intel® Core™ i5-11300H Processor 
 RAM	8GB DDR4 3200MHz
@@ -82,7 +77,7 @@ Cổng Kết Nối	1 x USB 3.2 Gen 1 Type-C™ port with DisplayPort and PowerDe
 Trọng lượng	1.63kg
 Pin	4-Cell Battery, 54WHr (Integrated)
 Hệ điều hành	Windows 10 bản quyền
-','20990000', '')
+','20990000', '');
 INSERT INTO product VALUES ('006','VP012','Dell Inspiron 15 7501','Dell','./img/product/vanphong/Dell%20Inspiron%2015%207501.jpg',
 'CPU	 Intel® Core™ i5-10300H Processor 
 RAM	8GB DDR4 3200MHz
@@ -94,7 +89,7 @@ Cổng Kết Nối	1 x USB 3.2 Gen 1 Type-C™ port with DisplayPort and PowerDe
 Trọng lượng	1.8kg
 Pin	3-Cell Battery, 56WHr (Integrated)
 Hệ điều hành	Windows 10 bản quyền
-','22490000', '')
+','22490000', '');
 INSERT INTO product VALUES ('007','VP012','Dell Vostro 5410','Dell','./img/product/vanphong/Dell%20Vostro%205410.jpg',
 'CPU	 Intel® Core™ i5-11320H Processor (8MB Cache, up to 4.4GHz)
 RAM	8GB, 2x4GB, DDR4, 3200MHz
@@ -104,7 +99,7 @@ Màn hình	14.0Inch FHD (1920 x 1080) Anti-Glare LED Backlight Non-Touch Narrow 
 Trọng lượng	1.44kg
 Pin	4 Cell 54Wh
 Hệ điều hành	Windows 10 bản quyền
-','21890000', '')
+','21890000', '');
 INSERT INTO product VALUES ('008','VP012','Dell Vostro 16 5620','Dell','./img/product/vanphong/Dell%20Vostro%2015%205510.jpg',
 'CPU	Intel® Core™ i5-1240P (12 MB cache, 12 cores, 16 threads, up to 4.40 GHz Turbo)
 RAM	8 GB, DDR4, 3200 MHz
@@ -120,7 +115,7 @@ Cổng Kết Nối	2x USB 3.2 Gen 1 ports
 Trọng lượng	1,91kg
 Pin	4 Cell, 54 Wh
 Hệ điều hành	Windows 11 bản quyền
-','24890000', '')
+','24890000', '');
 INSERT INTO product VALUES ('009','VP012','Dell Vostro 13 5310','Dell','./img/product/vanphong/Dell%20Vostro%2013%205310.jpg',
 'CPU	Intel Core i5 11300H (up to 4.5Ghz, 8MB cache
 RAM	8GB LPDDR4x 4267Mhz onboard
@@ -130,7 +125,7 @@ Màn hình	13.3 inch 2.5K, anti-glare, non-touch, wide-viewing angle
 Trọng lượng	1.25 kg
 Pin	4cell - 54Wh
 Hệ điều hành	Window 11 bản quyền
-','22890000', '')
+','22890000', '');
 INSERT INTO product VALUES ('010','VP012','Dell Vostro 15 5510','Dell','./img/product/vanphong/Dell%20Vostro%2015%205510.jpg',
 'CPU	 Intel® Core™ i5-11320H Processor 
 RAM	8GB DDR4 3200MHz
@@ -142,7 +137,7 @@ Cổng Kết Nối	1 x USB 3.2 Gen 1 Type-C™ port with DisplayPort and PowerDe
 Trọng lượng	1.63kg
 Pin	4-Cell Battery, 54WHr (Integrated)
 Hệ điều hành	Windows 10 bản quyền
-','21990000', '')
+','21990000', '');
 INSERT INTO product VALUES ('011','VP012','Lenovo IdeaPad 5 Pro','Lenovo','./img/product/vanphong/Lenovo%20IdeaPad%205%20Pro%20.jpg',
 'CPU	AMD Ryzen 5 5500U
 RAM	 8GB (1x8GB) Up to 3200MHz DDR4
@@ -160,7 +155,7 @@ Webcam	720p + IR + ToF
 Trọng lượng	1.9 kg
 Pin	 4 Cell, 75Whs
 Hệ điều hành	Windows 11 bản quyền
-','22990000', '')
+','22990000', '');
 INSERT INTO product VALUES ('012','VP012','Acer Swift 3','Acer','./img/product/vanphong/Acer%20Swift%203.jpg',
 'CPU	AMD Ryzen 7 - 5700U
 RAM	8GB DDR4
@@ -170,7 +165,7 @@ Màn hình	14 inch FHD IPS
 Trọng lượng	1.19kg
 Pin	 3 Cells
 Hệ điều hành	Windows 10 Home
-','19990000', '')
+','19990000', '');
 INSERT INTO product VALUES ('013','VP012','Asus Zenbook 14 Q409 ZA','Asus','./img/product/vanphong/Asus%20Zenbook%2014%20Q409%20ZA.jpg',
 'CPU	Intel® Core i5-1240P (upto 4.4GHz, 12 lõi | 16 luồng, 12MB Cache)
 RAM	8GB LPDDR5 bus 5200MHz
@@ -182,7 +177,7 @@ Cổng Kết Nối	2 x USB-C with Thunderbolt 4, 1 x USB-A , 1 x microSD, 1 x HD
 Trọng lượng	1.39kg
 Pin	4 Cell, 75 WHrs
 Hệ điều hành	Windows 11 bản quyền
-','23990000', '')
+','23990000', '');
 INSERT INTO product VALUES ('014','VP012','Acer Aspire 1 A115-32','Acer','./img/product/vanphong/Acer%20Aspire%201%20A115-32.jpg',
 'CPU	Intel Celeron - N4500
 RAM	4GB DDR4
@@ -192,7 +187,7 @@ Màn hình	15.6", 1920 x 1080 Pixel, 60 Hz, Acer ComfyView Anti-glare LED-backli
 Trọng lượng	1.9 kg
 Pin	48Wh
 Hệ điều hành	Windows 11 bản quyền
-','10990000', '')
+','10990000', '');
 INSERT INTO product VALUES ('015','VP012','Asus Vivobook X515JA','Asus','./img/product/vanphong/Asus%20Vivobook%20X515JA.jpg',
 'CPU	Intel® Core™ i3-1005G1 (1.20GHz up to 3.40GHz, 4MB)
 RAM	8GB DDR4 
@@ -203,7 +198,7 @@ Camera	720P HD
 Trọng lượng	1.8 kg
 Pin	37Wh
 Hệ điều hành	Windows 10 bản quyền
-','12890000', '9890000')
+','12890000', '9890000');
 INSERT INTO product VALUES ('016','VP012','Lenovo ThinkPad E14','Lenovo','./img/product/vanphong/Lenovo%20ThinkPad%20E14.jpg',
 'CPU	Core™ i3-10110U
 RAM	8GB DDR4
@@ -215,7 +210,7 @@ Cổng kết nối	USB 2.0, USB 3.1 Gen 1, USB-C 3.1 Gen 1, HDMI, Ethernet (RJ-4
 Trọng lượng	1.69kg
 Pin	3-cell 45WHrs
 Hệ điều hành	Window 10 bản quyền
-','15900000', '')
+','15900000', '');
 INSERT INTO product VALUES ('017','VP012','Asus Zenbook 14 Q408UG','Asus','./img/product/vanphong/Asus%20Zenbook%2014%20Q408UG.jpg',
 'CPU	AMD Ryzen 5 - 5500U
 RAM	8GB LPDDR4x bus 4266MHz
@@ -229,7 +224,7 @@ Cổng Kết Nối	2 x USB-C 3.2 Gen 2,
 Trọng lượng	1.15kg
 Pin	63Wh
 Hệ điều hành	Windows 10 Home
-','19890000', '')
+','19890000', '');
 INSERT INTO product VALUES ('018','VP012',' HP ENVY x360 13-bd0063dx','HP','./img/product/vanphong/HP%20ENVY%20x360%2013-bd0063dx.jpg',
 'CPU	Core i5-1135G7
 RAM	8 GB DDR4 bus3200
@@ -237,15 +232,10 @@ RAM	8 GB DDR4 bus3200
 Card VGA	Integrated Intel Iris Xe Graphics
 Màn hình	13.3 FHD IPS Touch Screen
 Webcam	HD cam
-Kết nối	1 Thunderbolt™ 4 with USB4™ Type-C® 40Gbps
-	1 SuperSpeed USB Type-C® 5Gbps
-	1 SuperSpeed USB Type-A 5Gbps
-	1 AC smart pin
-	1 headphone/microphone combo
 Trọng lượng	1.32 kg
 Pin	3-cell, 51Wh
 Hệ điều hành	Windows 10 bản quyền
-','20890000', '')
+','20890000', '');
 INSERT INTO product VALUES ('019','VP012','Samsung Galaxy Book Flex Alpha 2','Samsung','./img/product/vanphong/Samsung%20Galaxy%20Book%20Flex%20Alpha%202.jpg',
 'CPU	Intel Celeron - N4500
 RAM	4GB DDR4
@@ -255,7 +245,7 @@ Màn hình	15.6", 1920 x 1080 Pixel, 60 Hz, Acer ComfyView Anti-glare LED-backli
 Trọng lượng	1.9 kg
 Pin	48Wh
 Hệ điều hành	Windows 11 bản quyền
-','10990000', '')
+','10990000', '');
 INSERT INTO product VALUES ('020','VP012','Acer Aspire 5 A514-54','Acer','./img/product/vanphong/Acer%20Aspire%205%20A514-54.jpg',
 'CPU	Intel® Core™ i5-1135G7
 RAM	8GB DDR4 Bus 2666 MHz
@@ -265,7 +255,7 @@ Màn hình	14.0", 1920 x 1080 Pixel, IPS, 60 Hz, Acer ComfyView Anti-glare LED-b
 Trọng lượng	1.48 kg
 Pin	48Wh
 Hệ điều hành	Windows 10 bản quyền
-','16990000', '')
+','16990000', '');
 INSERT INTO product VALUES ('021','VP012','Laptop HP 14 - dq2020nr','HP','./img/product/vanphong/Laptop%20HP%2014%20-%20dq2020nr.jpg',
 'CPU	Intel® Core™ i3-1125G4 (3.00GHz up to 4.10GHz, 6MB Cache)
 RAM	4GB DDR4 3200MHz
@@ -275,7 +265,7 @@ Màn hình	14 Inch FHD (1920 x 1080) Anti-glare 250nits
 Trọng lượng	1.46 kg
 Pin	3 Cells 41Whrs
 Hệ điều hành	Windows 10 bản quyền
-','13990000', '')
+','13990000', '');
 INSERT INTO product VALUES ('022','VP012','Samsung Galaxy Book Pro 15','Samsung','./img/product/vanphong/Samsung%20Galaxy%20Book%20Pro%2015.jpg',
 'CPU	Core i5-1135G7 (4 nhân 8 luồng), Turbo 4.2 GHz, 8MB Cache
 RAM	8GB LPDDR4X- 4267MHz
@@ -287,7 +277,7 @@ Kết nối	1 x HDMI, 1 x Thunderbolt™ 4, 1 x USB Type-C, 1 x USB Type-A 3.2 G
 Trọng lượng	1.1 kg
 Pin	4 Cell - 68Wh
 Hệ điều hành	Windows bản quyền
-','24890000', '')
+','24890000', '');
 INSERT INTO product VALUES ('023','VP012','Samsung Galaxy Book Pro 360 13','Samsung','./img/product/vanphong/Samsung%20Galaxy%20Book%20Pro%20360%2013.jpg',
 'CPU	Core i7-1165G7 (4-Core, 12MB Cache, up to 4.7GHz Max Turbo Frequency)
 RAM	8GB LPDDR4x 4267MHz
@@ -298,7 +288,7 @@ Webcam	720p HD wedcam 
 Trọng lượng	1 kg
 Pin	4 Cell - 54Wh
 Hệ điều hành	Windows 11 bản quyền
-','29990000', '')
+','29990000', '');
 INSERT INTO product VALUES ('024','VP012','MSI Modern 15 A5M 238VN','MSI','./img/product/vanphong/MSI%20Modern%2015%20A5M%20238VN.jpg',
 'CPU	Ryzen 5 5500U
 RAM	8GB DDR4 3200MHz
@@ -309,7 +299,7 @@ Webcam	720p HD
 Trọng lượng	1.6kg
 Pin	3Cell 52Whrs
 Hệ điều hành	Windows 11 bản quyền
-','19990000', '')
+','19990000', '');
 INSERT INTO product VALUES ('025','VP012','Laptop HP 15 - DW3058CL','HP','./img/product/vanphong/Laptop%20HP%2015%20-%20DW3058CL.jpg',
 'CPU	Intel® Core™ i5-1135G7
 RAM	8GB DDR4 3200MHz
@@ -319,7 +309,7 @@ Màn hình	15.6" diagonal, FHD IPS, micro-edge, BrightView, 250 nits, 45% NTSC
 Trọng lượng	1.75 kg
 Pin	3 Cells 41Whrs
 Hệ điều hành	Windows 10 bản quyền
-','18990000', '')
+','18990000', '');
 INSERT INTO product VALUES ('026','VP012','Lenovo ThinkPad X1 Nano 2021','Lennovo','./img/product/vanphong/Lenovo%20ThinkPad%20X1%20Nano%202021.jpg',
 'CPU	Core™ i5-1130G7 Processor
 RAM	8GB LPDDR4x 4267MHz
@@ -329,7 +319,7 @@ Màn hình	13 inch 2K IPS
 Trọng lượng	900gram
 Pin	3-cell 48WHrs
 Hệ điều hành	Window 10 bản quyền
-','31890000', '')
+','31890000', '');
 INSERT INTO product VALUES ('027','VP012','Asus VivoBook M433IA-EB619T','Asus','./img/product/vanphong/Asus%20VivoBook%20M433IA-EB619T.jpg',
 'CPU	AMD Ryzen7-4700U
 RAM	8GB DDR4 bus 3200MHz
@@ -341,9 +331,176 @@ Cổng kết nối	HDMI 1.4, USB 3.2, USB 2.0, Thunderbolt™ 4
 Trọng lượng	1.4 kg
 Pin	3 Cells
 Hệ điều hành	Windows 10 bản quyền
-','17490000', '')
-
-
+','17490000', ''); 
+INSERT INTO product VALUES ('028','DH011','Dell Precision 7510','Dell','./img/product/mac_dohoa/Dell%20Precision%207510.jpg',
+'CPU	Core i7-6820HQ (4 nhân 8 luồng), Turbo 3.6 GHz, Cache 8MB
+RAM	8GB DDR4- 2133 (up max 64G - 4 khe)
+Ổ cứng	SSD 256G (max 2 ổ)
+Card VGA	Nvidia Quadro M1000M- 2G
+Màn hình	15.6" Full HD (1920×1080), IPS 
+Camera	
+Cổng kết nối	Lan Gigabit, Wifi 5Ghz, Bluetooth 4, HDMI, Mini DisplayPort,
+	USB 3.0 , Thunderbolt 3, audio + mic combo, khe SSD M.2 Nvme
+Trọng lượng	2.8 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','17500000', '');
+INSERT INTO product VALUES ('029','DH011','Dell Precision 7720','Dell','./img/product/mac_dohoa/Dell%20Precision%207720.jpg',
+'CPU	Intel Core i7-7820HQ (4 nhân 8 luồng), 2.9 Ghz, Turbo 3.9 GHz, 8MB Cache
+RAM	16 GB – DDR4 Bus 2400 (Up max 64G – 4 khe)
+Ổ cứng	SSD 256G 
+Card VGA	Nvidia Quadro M2200- 4G + Intel HD Graphics 630 chạy song song
+Màn hình	15.6 inch Full HD (1920 x 1080)   IPS
+Trọng lượng	2.8 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','19300000', '');
+INSERT INTO product VALUES ('030','DH011','Dell Precision 5530','Dell','./img/product/mac_dohoa/Dell%20Precision%205530.jpg',
+'CPU	Intel i7-8850H (6 nhân 12 luồng), Turbo 4.3 GHz, Cache 9MB
+RAM	16G - DDR4 bus 2666 (up max 64G - 2 khe)
+Ổ cứng	SSD 512 NVMe (max 2 ổ)
+Card VGA	Nvidia Quadro P1000
+Màn hình	15.6 inch Full HD IPS, phủ màu 100% sRGB, viền siêu mỏng
+Trọng lượng	1.9 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','23500000', '');
+INSERT INTO product VALUES ('031','DH011','Dell Precision 5550 Core i5','Dell','./img/product/mac_dohoa/Dell%20Precision%205550.jpg',
+'CPU	Intel Core Processor i5-10400H (4 Core, 8MB Cache, 2.60 GHz to 4.60 GHz, 45W, vPro)
+RAM	8GB, DDR4 2933Mhz Non-ECC Memory
+Ổ cứng	M.2 256GB PCIe NVMe Class 35 Solid State Drive
+Card VGA	NVIDIA® Quadro® T1000
+Màn hình	15.6" UltraSharp FHD+, 1920x1200,AG,NT, w/Prem Panel Guar, 100% sRGB
+Trọng lượng	1.86 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','36990000', '');
+INSERT INTO product VALUES ('032','DH011','Dell Precision 5550 Core i7','Dell','./img/product/mac_dohoa/Dell%20Precision%205550%20i7.jpg',
+'CPU	 Intel Core Processor i7-10750H (6 Core, 12MB Cache, 2.60 GHz to 5.00 GHz, 45W)
+RAM	16GB, DDR4 2933Mhz Non-ECC Memory
+Ổ cứng	M.2 512GB PCIe NVMe Class 35 Solid State Drive
+Card VGA	NVIDIA® Quadro® T1000
+Màn hình	15.6" UltraSharp FHD+, 1920x1200,AG,NT, w/Prem Panel Guar, 100% sRGB
+Trọng lượng	1.86 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','52990000', '');
+INSERT INTO product VALUES ('033','DH011','HP Zbook 15 G2','HP','./img/product/mac_dohoa/HP%20Zbook%2015%20G2.jpg',
+'CPU	Core i7-6700HQ ( 4 nhân 8 luồng ), Turbo 3.5 GHz, Cache 6MB
+RAM	8 GB - DDR4 bus 2133 (up max 64G - 4 khe)
+Ổ cứng	256G SSD (max 2 ổ)
+Card VGA	Nvidia Quadro M1000M- 2G & Intel HD 530 chạy song song
+Màn hình	15.6 inch Full HD (1920 x 1080)
+Trọng lượng	2.5kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','16500000', '');
+INSERT INTO product VALUES ('034','DH011','HP Zbook 17 G2','HP','./img/product/mac_dohoa/HP%20Zbook%2017%20G2.jpg',
+'CPU	Intel Core i7-4810MQ (4 nhân 8 luồng), Turbo 3.8 GHz, 6MB Cache
+RAM	8 GB – DDR3L Bus 1600 (Up max 32G – 4 khe)
+Ổ cứng	256G SSD (max 4 ổ)
+Card VGA	Nvidia Quadro K4100M-4G {Optimus} 
+Màn hình	17.3 inch Full HD (1920 x 1080) 
+Trọng lượng	3.8kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','16300000', '');
+INSERT INTO product VALUES ('035','MB013','Macbook Air M1 2020 7-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M1.jpg"',
+'CPU	Apple M1
+RAM	8GB, LDDR4
+Ổ cứng	SSD 256GB
+Card VGA	Onboard 7-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','33490000', '');
+INSERT INTO product VALUES ('036','MB013','Macbook Air M1 2020 8-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M1.jpg',
+'CPU	Apple M1
+RAM	8GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard 8-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','33490000', '31990000');
+INSERT INTO product VALUES ('037','MB013','Macbook Air M2 2020 8-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M2.jpg',
+'CPU	Apple M2
+RAM	8GB, LDDR4
+Ổ cứng	SSD 256GB
+Card VGA	Onboard 8-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','32990000', '');
+INSERT INTO product VALUES ('038','MB013','Macbook Air M2 2020 10-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M2.jpg',
+'CPU	Apple M2
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard 10-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','46990000', '');
+INSERT INTO product VALUES ('039','MB013','Macbook Pro 13 inch M1 2020','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M1.jpg',
+'CPU	Apple M1
+RAM	8GB, LDDR4
+Ổ cứng	SSD 256GB
+Card VGA	Onboard GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 500 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','33990000', '');
+INSERT INTO product VALUES ('040','MB013','Macbook Pro 14 inch M1 2021','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M1.jpg',
+'CPU	Apple M1
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard GPU
+Màn hình	14.2 inch Liquid Retina XDR display (3024 x 1964) up to 120Hz
+Camera	1080p FaceTime HD camera
+Cổng kết nối	3 x Thunderbolt 4 (USB-C), Jack tai nghe 3.5 mm, HDMI
+Trọng lượng	1.6kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','52490000', '');
+INSERT INTO product VALUES ('041','MB013','Macbook Pro 16 inch M1 2021','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M1.jpg',
+'CPU	Apple M1
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard GPU
+Màn hình	16.2 inch Liquid Retina XDR display (3456 x 2234) up to 120Hz
+Camera	1080p FaceTime HD camera
+Cổng kết nối	3 x Thunderbolt 4 (USB-C), Jack tai nghe 3.5 mm, HDMI
+Trọng lượng	2.1kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','64490000', '58000000');
+INSERT INTO product VALUES ('042','MB013','Macbook Pro 13 inch M2 2022','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M2.jpg',
+'CPU	Apple M2
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 500 nits
+Camera	720p FaceTime HD camera
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.4kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','45990000', '');
 
 -- order
 
