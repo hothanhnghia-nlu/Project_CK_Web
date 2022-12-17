@@ -2,33 +2,50 @@ package vn.edu.hcmuaf.fit.db;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.jdbi.v3.core.Jdbi;
+import vn.edu.hcmuaf.fit.bean.Account;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class JDBiConnector {
+public class JDBIConnector {
+    private static Jdbi jdbi;
 
-    static Jdbi jdbi;
+    private static void makeConnect() {
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setURL("jdbc:mysql://" + DBProperties.getDbHost() + ":" + DBProperties.getDbPort() + "/" + DBProperties.getDbName());
+        dataSource.setUser(DBProperties.getUsername());
+        dataSource.setPassword(DBProperties.getPassword());
+        try {
+            dataSource.setUseCompression(true);
+            dataSource.setAutoReconnect(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        jdbi = Jdbi.create(dataSource);
+    }
 
-    public static Jdbi me() throws SQLException {
-        if(jdbi==null) makeConnect();
+    private JDBIConnector() {
+
+    };
+
+    public static Jdbi get() {
+        if (jdbi == null) {
+            makeConnect();
+        }
         return jdbi;
     }
 
-    private static void makeConnect() throws SQLException {
-        MysqlDataSource source = new MysqlDataSource();
-        source.setURL("jdbc:mysql://"+DBProperties.host()+":"+DBProperties.port()+"/"+DBProperties.name());
-        source.setUser(DBProperties.user());
-        source.setPassword(DBProperties.pass());
-        source.setAutoReconnect(true);
-        source.setUseCompression(true);
-        jdbi = jdbi.create(source);
-
-    }
-
-    public static void main(String[] args) throws SQLException {
-        Jdbi me = JDBiConnector.me();
-        me.withHandle(handle -> {
-            return handle.createQuery("select * from product").mapToBean(Product.class)
-        })
+    public static void main(String[] args) {
+//        List<User> users = JDBIConnector.get().withHandle(handle -> {
+//            return handle.createQuery("select * from customer")
+//                    .mapToBean(User.class).stream().collect(Collectors.toList());
+//        });
+//        System.out.println(users);
+//        List<Account> acc = JDBIConnector.get().withHandle(handle -> {
+//            return handle.createQuery("select * from account")
+//                    .mapToBean(Account.class).stream().collect(Collectors.toList());
+//        });
+//        System.out.println(acc);
     }
 }

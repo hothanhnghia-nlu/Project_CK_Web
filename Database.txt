@@ -1,0 +1,354 @@
+-- account
+INSERT INTO account VALUES (1, 'admin', 'admin', 0), (2, 'nghia', 'ng1005', 1), (3, 'long', 'bqlp314', 0), (4, 'phong', 'dcp364', 0);
+
+-- customer
+INSERT INTO customer VALUES ('KH005', 'Hồ Thanh Nghĩa', '20130333@st.hcmuaf.edu.vn', '0789456123', 2), ('KH011', 'Bùi Quốc Long', '20130314@st.hcmuaf.edu.vn', '0987654213', 3), ('KH023', 'Diệp Chấn Phong', '20130364@st.hcmuaf.edu.vn', '0373555646', 4), ('KH036', 'Trần Hoàng Hải', 'thhai789@gmail.com', '0123456789', null), ('KH048', 'Nguyễn Minh Mẫn', 'minhman02@gmail.com', '0321456987', null), ('KH050', 'Lê Hải Đăng', 'lhdang2278@outlook.com', '0789456123', null);
+
+-- category
+INSERT INTO category VALUES ('GM010', 'Gaming'), ('DH011', 'Đồ Họa'), ('VP012', 'Văn Phòng'), ('MB013', 'Macbook');
+
+
+-- product
+INSERT INTO product VALUES ('001','VP012','Dell Inspiron 16 5620','Dell','./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg',
+'CPU	Intel® Core™ i7-1260P (18MB Cache, 3.40GHZ up to 4.70GHz, 12 cores, 16 Threads)
+RAM	16 GB, DDR4, 3200 MHz
+Ổ cứng	512GB SSD M.2 PCIe NVMe Solid State Drive
+Card VGA	Intel® Iris® Xe Graphics
+Màn hình	16.0 inch FHD+ (1920 x 1200) 60Hz, Anti-Glare Non-Touch 300nits WVA Display with ComfortView Support, 98% sRGB
+Camera	1080p at 30 fps FHD camera
+	Dual-array microphones
+Cổng Kết Nối	2x USB 3.2 Gen 1 ports
+	1x USB 3.2 Gen 2x2 Type-C® port with DisplayPort® and Power Delivery
+	1x HDMI 1.4 port
+	1x Headset jack
+Trọng lượng	1,87kg
+Pin	4 Cell, 54 Wh
+Hệ điều hành	Windows 11 bản quyền
+','29990000', '24990000')
+INSERT INTO product VALUES ('002','VP012','Dell Inspiron 16 5625','Dell','./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg',
+'CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread
+RAM	8GB DDR4, 3200MHz
+Ổ cứng	512GB M.2 PCIe NVMe 
+Card VGA	AMD Radeon™ Graphics
+Màn hình	16", FHD+ 1920x1200, 60Hz, Non-Touch, AG, Wide Viewing Angle, 250 nit, ComfortView
+Camera	FHD 1080p ở tốc độ 30 khung hình / giây
+	Micrô hai dãy
+Cổng	2 USB 3.2 Gen 1 ports
+	1 USB 3.2 Gen 2 Type-C® port with DisplayPort® and Power Delivery
+	1 Headset jack
+	1 HDMI 1.4 port
+	1 power-adapter port
+Trọng lượng	1.87kg
+Pin	4 Cell, 54 Wh
+Hệ điều hành	Windows 11 bản quyền
+','22890000', '19890000')
+INSERT INTO product VALUES ('003','VP012','Dell Inspiron 7415','Dell','./img/product/vanphong/Dell%20Inspiron%207415.jpg',
+'CPU	AMD Ryzen 5 5500U
+RAM	 8GB (1x8GB) Up to 3200MHz DDR4
+Ổ cứng	256GB PCIe M.2 NVMe Class 35 Solid State Drive
+Card VGA	AMD® Radeon™ Graphics
+Màn hình	14.0-inch FHD Touch
+Webcam	720p at 30 fps HD camera, dual-array microphones
+Kết nối	2 USB 3.2 Gen 1 ports 1 USB 3.2 Gen 1 (Type-C™) port 1 headset (headphone and microphone combo) port 1 HDMI 1.4b port
+Trọng lượng	1.56 kg
+Pin	 4-Cell 54WHr
+Hệ điều hành	Window 10 bản quyền
+','21890000', '')
+INSERT INTO product VALUES ('004','VP012',' Dell Inspiron 13 5320','Dell','./img/product/vanphong/Dell%20Inspiron%2013%205320.jpg',
+'CPU	Intel® Core™ i5-1240P (12 MB cache, 12 cores, up to 4.40 GHz)
+RAM	16 GB, 2 x 8 GB, LPDDR5, 4800 MHz
+Ổ cứng	512GB M.2 NVMe™ PCIe® SSDD
+VGA	Intel® Iris® Xe Graphics
+Màn hình	13.3-inch, QHD+ 2560 x 1600, 60 Hz, anti-glare, non-touch, sRGB 100% (typical), 300 nits (typical), wide-viewing angle, ComfortView Plus
+Mux Switch	Không
+Cổng kết nối	2 Type-C
+	1 HDMI
+	1 Jack 3.5 mm
+	1 Thunderbolt
+	
+Trọng lượng	1,25 kg
+Pin	54WHrs
+Hệ điều hành	Windows 11 bản quyền
+','26890000', '')
+-- chua them img
+INSERT INTO product VALUES ('005','VP012','Dell Inspiron 15 5510','Dell','./img/product/vanphong/Dell%20Inspiron%2015%205510.jpg',
+'CPU	Intel® Core™ i5-11300H Processor 
+RAM	8GB DDR4 3200MHz
+Ổ cứng	SSD 256GB PCIe M.2 NVMe 
+Card VGA	Intel® Iris® Xe Graphics
+Màn hình	15.6-inch, FHD 1920 x 1080, 60 Hz, anti-glare, non-touch, wide-viewing angle
+Camera	720p at 30 fps HD camera, dual-array microphones
+Cổng Kết Nối	1 x USB 3.2 Gen 1 Type-C™ port with DisplayPort and PowerDelivery | 2 x USB A 3.2 Gen 1 ports | 1 x Jack 3.5 | 1x HDMI 1.4 port | 1 x Power jack
+Trọng lượng	1.63kg
+Pin	4-Cell Battery, 54WHr (Integrated)
+Hệ điều hành	Windows 10 bản quyền
+','20990000', '')
+INSERT INTO product VALUES ('006','VP012','Dell Inspiron 15 7501','Dell','./img/product/vanphong/Dell%20Inspiron%2015%207501.jpg',
+'CPU	 Intel® Core™ i5-10300H Processor 
+RAM	8GB DDR4 3200MHz
+Ổ cứng	SSD 256GB PCIe M.2 NVMe 
+Card VGA	Intel® UHD Graphics
+Màn hình	15.6-inch, FHD 1920 x 1080, 60 Hz, anti-glare, non-touch, 95%sRGB, 300 nits, wide-viewing angle
+Camera	720p at 30 fps HD camera, dual-array microphones
+Cổng Kết Nối	1 x USB 3.2 Gen 1 Type-C™ port with DisplayPort and PowerDelivery | 2 x USB A 3.2 Gen 1 ports | 1 x Jack 3.5 | 1x HDMI 1.4 port | 1 x Power jack
+Trọng lượng	1.8kg
+Pin	3-Cell Battery, 56WHr (Integrated)
+Hệ điều hành	Windows 10 bản quyền
+','22490000', '')
+INSERT INTO product VALUES ('007','VP012','Dell Vostro 5410','Dell','./img/product/vanphong/Dell%20Vostro%205410.jpg',
+'CPU	 Intel® Core™ i5-11320H Processor (8MB Cache, up to 4.4GHz)
+RAM	8GB, 2x4GB, DDR4, 3200MHz
+Ổ cứng	256GB M.2 PCIe NVMe Solid State Drive
+Card VGA	Intel® Iris® Xe Graphics
+Màn hình	14.0Inch FHD (1920 x 1080) Anti-Glare LED Backlight Non-Touch Narrow Border WVA Display
+Trọng lượng	1.44kg
+Pin	4 Cell 54Wh
+Hệ điều hành	Windows 10 bản quyền
+','21890000', '')
+INSERT INTO product VALUES ('008','VP012','Dell Vostro 16 5620','Dell','./img/product/vanphong/Dell%20Vostro%2015%205510.jpg',
+'CPU	Intel® Core™ i5-1240P (12 MB cache, 12 cores, 16 threads, up to 4.40 GHz Turbo)
+RAM	8 GB, DDR4, 3200 MHz
+Ổ cứng	256GB, M.2, PCIe NVMe, SSD
+Card VGA	Intel® Iris® Xe Graphics
+Màn hình	16.0-inch 16:10 FHD+ (1920 x 1200) Anti-Glare Non-Touch 250nits WVA Display with ComfortView Support
+Camera	1080p at 30 fps FHD camera
+	Dual-array microphones
+Cổng Kết Nối	2x USB 3.2 Gen 1 ports
+	1x USB 3.2 Gen 2x2 Type-C® port with DisplayPort® and Power Delivery
+	1x HDMI 1.4 port
+	1x Headset jack
+Trọng lượng	1,91kg
+Pin	4 Cell, 54 Wh
+Hệ điều hành	Windows 11 bản quyền
+','24890000', '')
+INSERT INTO product VALUES ('009','VP012','Dell Vostro 13 5310','Dell','./img/product/vanphong/Dell%20Vostro%2013%205310.jpg',
+'CPU	Intel Core i5 11300H (up to 4.5Ghz, 8MB cache
+RAM	8GB LPDDR4x 4267Mhz onboard
+Ổ cứng	512GB PCIe NVMe SSD (M.2 2230)
+Card VGA	MX450-2GB
+Màn hình	13.3 inch 2.5K, anti-glare, non-touch, wide-viewing angle
+Trọng lượng	1.25 kg
+Pin	4cell - 54Wh
+Hệ điều hành	Window 11 bản quyền
+','22890000', '')
+INSERT INTO product VALUES ('010','VP012','Dell Vostro 15 5510','Dell','./img/product/vanphong/Dell%20Vostro%2015%205510.jpg',
+'CPU	 Intel® Core™ i5-11320H Processor 
+RAM	8GB DDR4 3200MHz
+Ổ cứng	SSD 256GB PCIe M.2 NVMe 
+Card VGA	Intel® Iris® Xe Graphics
+Màn hình	15.6-inch, FHD 1920 x 1080, 60 Hz,
+Camera	720p at 30 fps HD camera, dual-array microphones
+Cổng Kết Nối	1 x USB 3.2 Gen 1 Type-C™ port with DisplayPort and PowerDelivery | 2 x USB A 3.2 Gen 1 ports | 1 x Jack 3.5 | 1x HDMI 1.4 port | 1 x Power jack
+Trọng lượng	1.63kg
+Pin	4-Cell Battery, 54WHr (Integrated)
+Hệ điều hành	Windows 10 bản quyền
+','21990000', '')
+INSERT INTO product VALUES ('011','VP012','Lenovo IdeaPad 5 Pro','Lenovo','./img/product/vanphong/Lenovo%20IdeaPad%205%20Pro%20.jpg',
+'CPU	AMD Ryzen 5 5500U
+RAM	 8GB (1x8GB) Up to 3200MHz DDR4
+Ổ cứng	256GB PCIe M.2 NVMe Class 35 Solid State Drive
+Card VGA	AMD® Radeon™ Graphics
+Màn hình	14.0-inch FHD Touch
+Webcam	720p at 30 fps HD camera, dual-array microphones
+Kết nối	2 USB 3.2 Gen 1 ports 1 USB 3.2 Gen 1 (Type-C™) port 1 headset (headphone and microphone combo) port 1 HDMI 1.4b port
+Trọng lượng	1.56 kgCPU	AMD Ryzen 5-5600H (3.30GHz up to 4.20GHz, 16MB Cache)
+RAM	8GB DDR4-3200Mhz
+Ổ cứng	512GB SSD M.2 2280 PCIe 3.0x4 NVMe
+Card VGA	Integrated AMD Radeon Graphics
+Màn hình	16.0 inch WQXGA (2560x1600) IPS 350nits Anti-glare, 100% sRGB, Dolby Vision, HDR 400, Free-Sync, G-Sync, DC dimmer.
+Webcam	720p + IR + ToF
+Trọng lượng	1.9 kg
+Pin	 4 Cell, 75Whs
+Hệ điều hành	Windows 11 bản quyền
+','22990000', '')
+INSERT INTO product VALUES ('012','VP012','Acer Swift 3','Acer','./img/product/vanphong/Acer%20Swift%203.jpg',
+'CPU	AMD Ryzen 7 - 5700U
+RAM	8GB DDR4
+Ổ cứng	SSD 512GB PCIe NVMe
+Card VGA	AMD Radeon Graphics
+Màn hình	14 inch FHD IPS
+Trọng lượng	1.19kg
+Pin	 3 Cells
+Hệ điều hành	Windows 10 Home
+','19990000', '')
+INSERT INTO product VALUES ('013','VP012','Asus Zenbook 14 Q409 ZA','Asus','./img/product/vanphong/Asus%20Zenbook%2014%20Q409%20ZA.jpg',
+'CPU	Intel® Core i5-1240P (upto 4.4GHz, 12 lõi | 16 luồng, 12MB Cache)
+RAM	8GB LPDDR5 bus 5200MHz
+Ổ cứng	256GB PCIe® x2 SSD
+Card VGA	Intel Iris Xe
+Màn hình	14” 2.8K (2880x1800) 90Hz 100% DCI-P3 color gamut OLED Display, 600 nits
+Camera	3D IR HD camera
+Cổng Kết Nối	2 x USB-C with Thunderbolt 4, 1 x USB-A , 1 x microSD, 1 x HDMI, 1x jack 3.5mm
+Trọng lượng	1.39kg
+Pin	4 Cell, 75 WHrs
+Hệ điều hành	Windows 11 bản quyền
+','23990000', '')
+INSERT INTO product VALUES ('014','VP012','Acer Aspire 1 A115-32','Acer','./img/product/vanphong/Acer%20Aspire%201%20A115-32.jpg',
+'CPU	Intel Celeron - N4500
+RAM	4GB DDR4
+Ổ cứng	SSD 128GB PCle NVMe
+Card VGA	Intel UHD Graphics
+Màn hình	15.6", 1920 x 1080 Pixel, 60 Hz, Acer ComfyView Anti-glare LED-backlit
+Trọng lượng	1.9 kg
+Pin	48Wh
+Hệ điều hành	Windows 11 bản quyền
+','10990000', '')
+INSERT INTO product VALUES ('015','VP012','Asus Vivobook X515JA','Asus','./img/product/vanphong/Asus%20Vivobook%20X515JA.jpg',
+'CPU	Intel® Core™ i3-1005G1 (1.20GHz up to 3.40GHz, 4MB)
+RAM	8GB DDR4 
+Ổ cứng	256GB NVMe SSD
+Card VGA	Intel UHD
+Màn hình	15.6" HD
+Camera	720P HD
+Trọng lượng	1.8 kg
+Pin	37Wh
+Hệ điều hành	Windows 10 bản quyền
+','12890000', '9890000')
+INSERT INTO product VALUES ('016','VP012','Lenovo ThinkPad E14','Lenovo','./img/product/vanphong/Lenovo%20ThinkPad%20E14.jpg',
+'CPU	Core™ i3-10110U
+RAM	8GB DDR4
+Ổ cứng	SSD 256GB
+Card VGA	Intel Graphics HD
+Màn hình	14 inch FHD
+Cổng kết nối	USB 2.0, USB 3.1 Gen 1, USB-C 3.1 Gen 1, HDMI, Ethernet (RJ-45),
+	Mic / Headphone Combo Jack
+Trọng lượng	1.69kg
+Pin	3-cell 45WHrs
+Hệ điều hành	Window 10 bản quyền
+','15900000', '')
+INSERT INTO product VALUES ('017','VP012','Asus Zenbook 14 Q408UG','Asus','./img/product/vanphong/Asus%20Zenbook%2014%20Q408UG.jpg',
+'CPU	AMD Ryzen 5 - 5500U
+RAM	8GB LPDDR4x bus 4266MHz
+Ổ cứng	256GB M.2 NVMe™ PCIe® SSD (Nâng cấp tối đa 2TB)
+Card VGA	NVIDIA Geforce MX450 2GB GDDR5
+Màn hình	14.0" FHD IPS (1920 x 1080) chống chói viền siêu mỏng NanoEdge | 100% sRGB
+Camera	3D IR HD camera
+Cổng Kết Nối	2 x USB-C 3.2 Gen 2,
+	1 x USB-A 3.2 Gen 2 (Chỉ truyền dữ liệu), 1 x microSD ,
+	1 x HDMI
+Trọng lượng	1.15kg
+Pin	63Wh
+Hệ điều hành	Windows 10 Home
+','19890000', '')
+INSERT INTO product VALUES ('018','VP012',' HP ENVY x360 13-bd0063dx','HP','./img/product/vanphong/HP%20ENVY%20x360%2013-bd0063dx.jpg',
+'CPU	Core i5-1135G7
+RAM	8 GB DDR4 bus3200
+Ổ cứng	256 GB PCIe® NVMe™
+Card VGA	Integrated Intel Iris Xe Graphics
+Màn hình	13.3 FHD IPS Touch Screen
+Webcam	HD cam
+Kết nối	1 Thunderbolt™ 4 with USB4™ Type-C® 40Gbps
+	1 SuperSpeed USB Type-C® 5Gbps
+	1 SuperSpeed USB Type-A 5Gbps
+	1 AC smart pin
+	1 headphone/microphone combo
+Trọng lượng	1.32 kg
+Pin	3-cell, 51Wh
+Hệ điều hành	Windows 10 bản quyền
+','20890000', '')
+INSERT INTO product VALUES ('019','VP012','Samsung Galaxy Book Flex Alpha 2','Samsung','./img/product/vanphong/Samsung%20Galaxy%20Book%20Flex%20Alpha%202.jpg',
+'CPU	Intel Celeron - N4500
+RAM	4GB DDR4
+Ổ cứng	SSD 128GB PCle NVMe
+Card VGA	Intel UHD Graphics
+Màn hình	15.6", 1920 x 1080 Pixel, 60 Hz, Acer ComfyView Anti-glare LED-backlit
+Trọng lượng	1.9 kg
+Pin	48Wh
+Hệ điều hành	Windows 11 bản quyền
+','10990000', '')
+INSERT INTO product VALUES ('020','VP012','Acer Aspire 5 A514-54','Acer','./img/product/vanphong/Acer%20Aspire%205%20A514-54.jpg',
+'CPU	Intel® Core™ i5-1135G7
+RAM	8GB DDR4 Bus 2666 MHz
+Ổ cứng	SSD 256GB PCle NVMe
+Card VGA	Intel Iris® Xe Graphics
+Màn hình	14.0", 1920 x 1080 Pixel, IPS, 60 Hz, Acer ComfyView Anti-glare LED-backlit
+Trọng lượng	1.48 kg
+Pin	48Wh
+Hệ điều hành	Windows 10 bản quyền
+','16990000', '')
+INSERT INTO product VALUES ('021','VP012','Laptop HP 14 - dq2020nr','HP','./img/product/vanphong/Laptop%20HP%2014%20-%20dq2020nr.jpg',
+'CPU	Intel® Core™ i3-1125G4 (3.00GHz up to 4.10GHz, 6MB Cache)
+RAM	4GB DDR4 3200MHz
+Ổ cứng	128GB PCIe NVMe M.2 SSD
+Card VGA	Intel UHD Graphics
+Màn hình	14 Inch FHD (1920 x 1080) Anti-glare 250nits
+Trọng lượng	1.46 kg
+Pin	3 Cells 41Whrs
+Hệ điều hành	Windows 10 bản quyền
+','13990000', '')
+INSERT INTO product VALUES ('022','VP012','Samsung Galaxy Book Pro 15','Samsung','./img/product/vanphong/Samsung%20Galaxy%20Book%20Pro%2015.jpg',
+'CPU	Core i5-1135G7 (4 nhân 8 luồng), Turbo 4.2 GHz, 8MB Cache
+RAM	8GB LPDDR4X- 4267MHz
+Ổ cứng	SSD 512GB NVMe
+Card VGA	Intel Iris Xe G7 (80 EUs)
+Màn hình	15.6 inch FHD (1920 x 1080) AMOLED Display, 370nits
+Webcam	720p HD wedcam
+Kết nối	1 x HDMI, 1 x Thunderbolt™ 4, 1 x USB Type-C, 1 x USB Type-A 3.2 Gen 1, 1 x Headphone out/Mic-in
+Trọng lượng	1.1 kg
+Pin	4 Cell - 68Wh
+Hệ điều hành	Windows bản quyền
+','24890000', '')
+INSERT INTO product VALUES ('023','VP012','Samsung Galaxy Book Pro 360 13','Samsung','./img/product/vanphong/Samsung%20Galaxy%20Book%20Pro%20360%2013.jpg',
+'CPU	Core i7-1165G7 (4-Core, 12MB Cache, up to 4.7GHz Max Turbo Frequency)
+RAM	8GB LPDDR4x 4267MHz
+Ổ cứng	SSD 256G NVMe
+Card VGA	Intel Iris Xe
+Màn hình	13.3" Full HD (1920 x 1080) cảm ứng, QLED, phủ màu 100% sRGB, sáng 600 nits
+Webcam	720p HD wedcam 
+Trọng lượng	1 kg
+Pin	4 Cell - 54Wh
+Hệ điều hành	Windows 11 bản quyền
+','29990000', '')
+INSERT INTO product VALUES ('024','VP012','MSI Modern 15 A5M 238VN','MSI','./img/product/vanphong/MSI%20Modern%2015%20A5M%20238VN.jpg',
+'CPU	Ryzen 5 5500U
+RAM	8GB DDR4 3200MHz
+Ổ cứng	512GB NVMe PCIe SSD
+Card VGA	AMD Radeon Graphics
+Màn hình	15.6 inch FHD(1920 x 1080)
+Webcam	720p HD
+Trọng lượng	1.6kg
+Pin	3Cell 52Whrs
+Hệ điều hành	Windows 11 bản quyền
+','19990000', '')
+INSERT INTO product VALUES ('025','VP012','Laptop HP 15 - DW3058CL','HP','./img/product/vanphong/Laptop%20HP%2015%20-%20DW3058CL.jpg',
+'CPU	Intel® Core™ i5-1135G7
+RAM	8GB DDR4 3200MHz
+Ổ cứng	256GB PCIe NVMe M.2 SSD
+Card VGA	Integrated
+Màn hình	15.6" diagonal, FHD IPS, micro-edge, BrightView, 250 nits, 45% NTSC
+Trọng lượng	1.75 kg
+Pin	3 Cells 41Whrs
+Hệ điều hành	Windows 10 bản quyền
+','18990000', '')
+INSERT INTO product VALUES ('026','VP012','Lenovo ThinkPad X1 Nano 2021','Lennovo','./img/product/vanphong/Lenovo%20ThinkPad%20X1%20Nano%202021.jpg',
+'CPU	Core™ i5-1130G7 Processor
+RAM	8GB LPDDR4x 4267MHz
+Ổ cứng	SSD 256 GB
+Card VGA	Intel Iris Xe
+Màn hình	13 inch 2K IPS
+Trọng lượng	900gram
+Pin	3-cell 48WHrs
+Hệ điều hành	Window 10 bản quyền
+','31890000', '')
+INSERT INTO product VALUES ('027','VP012','Asus VivoBook M433IA-EB619T','Asus','./img/product/vanphong/Asus%20VivoBook%20M433IA-EB619T.jpg',
+'CPU	AMD Ryzen7-4700U
+RAM	8GB DDR4 bus 3200MHz
+Ổ cứng	SSD 512GB NVMe
+Card VGA	AMD Radeon Graphics
+Màn hình	14.0 FHD
+Webcam	720p HD camera
+Cổng kết nối	HDMI 1.4, USB 3.2, USB 2.0, Thunderbolt™ 4
+Trọng lượng	1.4 kg
+Pin	3 Cells
+Hệ điều hành	Windows 10 bản quyền
+','17490000', '')
+
+
+
+-- order
+
+
+-- order_detail
+
+
+-- feedback
