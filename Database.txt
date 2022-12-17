@@ -1,4 +1,3 @@
-
 -- account
 INSERT INTO account VALUES (1, 'admin', 'admin', 0), (2, 'nghia', 'ng1005', 1), (3, 'long', 'bqlp314', 0), (4, 'phong', 'dcp364', 0);
 
@@ -356,7 +355,7 @@ Trọng lượng	2.3 kg
 Pin	4-cell Li-ion, 90 Wh	
 Hệ điều hành	Windows 11 Home SL	
 Đèn bàn phím	Có	
-','30,690,000','');
+','30690000','');
 INSERT INTO product VALUES ('029','GM010','Laptop Asus TUF Gaming FX506LHB','Asus','./img/product/gaming/Laptop%20Asus%20TUF%20Gaming%20FX506LHB.jpg',
 'CPU	Intel Core i5 Comet Lake - 10300H									
 RAM	8GB,DDR4 2 khe (1 khe 8 GB + 1 khe rời),2933MHz									
@@ -369,7 +368,7 @@ Trọng lượng	2.3 kg
 Pin	3-cell Li-ion, 48 Wh									
 Hệ điều hành	Windows 11 Home SL
 Đèn bàn phím	Có									
-','19,190,000','');
+','19190000','');
 INSERT INTO product VALUES ('030','GM010','Laptop Lenovo Ideapad Gaming 3 15IAH7','Lenovo','./img/product/gaming/Laptop%20Lenovo%20Ideapad%20Gaming%203%2015IAH7.jpg',
 'CPU	Intel Core i5-12500H (4 nhân hiệu năng cao, 8 nhân tiết kiệm điện)								
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz								
@@ -382,7 +381,7 @@ Trọng lượng	2.315 kg
 Pin	60Wh								
 Hệ điều hành	Windows 11 Home SL								
 Đèn bàn phím	Có									
-','26,190,000','');
+','26190000','');
 INSERT INTO product VALUES ('031','GM010','Laptop Lenovo IdeaPad Gaming 3 15IHU6','Lenovo','./img/product/gaming/Laptop%20Lenovo%20IdeaPad%20Gaming%203%2015IHU6.jpg',
 'CPU	Intel Core i5 Tiger Lake - 11300H										
 RAM	8 GBDDR4 2 khe (1 khe 4 GB + 1 khe 4 GB)3200 MHz										
@@ -395,7 +394,7 @@ Trọng lượng	2.25 kg
 Pin	45 Wh										
 Hệ điều hành	Windows 11 Home SL										
 Đèn bàn phím	Có										
-','17,490,000','');
+','17490000','');
 INSERT INTO product VALUES ('032','GM010','Laptop MSI Gaming GF63 Thin 11UC','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2011UC.jpg',
 'CPU	Intel Core i5 Tiger Lake - 11400H								
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz								
@@ -408,7 +407,7 @@ Trọng lượng	1.86 kg
 Pin	3-cell Li-ion, 51 Wh								
 Hệ điều hành	Windows 10 Home SL								
 Đèn bàn phím	Có								
-','22,990,000','');
+','22990000','');
 INSERT INTO product VALUES ('033','GM010','Laptop MSI Gaming Pulse GL66 11UDK','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20Pulse%20GL66%2011UDK.jpg',
 'CPU	Intel Core i7 Tiger Lake - 11800H						
 RAM	16 GBDDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)3200 MHz						
@@ -421,7 +420,7 @@ Trọng lượng	2.25 kg
 Pin	3 cell, 53.5 Wh						
 Hệ điều hành	Windows 10 Home SL						
 Đèn bàn phím	Có						
-','33,990,000','');
+','33990000','');
 INSERT INTO product VALUES ('034','GM010','Laptop Dell Gaming G15 5515','Dell','./img/product/gaming/Laptop%20Dell%20Gaming%20G15%205515.jpg',
 'CPU	AMD Ryzen 5 - 5600H											
 RAM	16 GBDDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)3200 MHz											
@@ -434,7 +433,7 @@ Trọng lượng	2.8 kg
 Pin	3-cell Li-ion, 56 Wh											
 Hệ điều hành	Windows 11 Home SL + Office Home & Student vĩnh viễn											
 Đèn bàn phím	Có											
-','23,490,000','');
+','23490000','');
 INSERT INTO product VALUES ('035','GM010','Laptop Acer Aspire 7 Gaming A715 42G R4XX','Acer','./img/product/gaming/Laptop%20Acer%20Aspire%207%20Gaming%20A715%2042G%20R4XX.jpg',
 'CPU	AMD Ryzen 5 - 5500U										
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz										
@@ -447,7 +446,7 @@ Trọng lượng	Windows 11 Home SL
 Pin	HD webcam										
 Hệ điều hành	Windows 11 Home SL										
 Đèn bàn phím	Có										
-','14,990,000','');
+','14990000','');
 INSERT INTO product VALUES ('036','GM010','Laptop Acer Nitro 5 Gaming AN515 57 553E','Acer','./img/product/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2057%20553E.jpg',
 'CPU	Intel Core i5 Tiger Lake - 11400H															
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz															
@@ -460,7 +459,7 @@ Trọng lượng	Windows 11 Home SL
 Pin	4-cell Li-ion, 57.5 Wh															
 Hệ điều hành	Windows 11 Home SL															
 Đèn bàn phím	Có															
-','24,990,000','');
+','24990000','');
 INSERT INTO product VALUES ('037','GM010','Laptop HP VICTUS 16 d0292TX','HP','./img/product/gaming/Laptop%20HP%20VICTUS%2016%20d0292TX.jpg',
 'CPU	Windows 11 Home SL										
 RAM	8 GBDDR4 2 khe (1 khe 4 GB + 1 khe 4 GB)3200 MHz										
@@ -473,7 +472,7 @@ Trọng lượng	2.46 kg
 Pin	4-cell Li-ion, 70 Wh										
 Hệ điều hành	Windows 11 Home SL										
 Đèn bàn phím	Có										
-','22,190,000','');
+','22190000','');
 INSERT INTO product VALUES ('038','GM010','Laptop Acer Nitro 5 Gaming AN515 45 R6EV','Acer','./img/product/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2045%20R6EV.jpg',
 'CPU	Ryzen 5, 5600H, 3.3GHz													
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz													
@@ -486,7 +485,7 @@ Trọng lượng	2.2 kg
 Pin	GTX 1650 4GB													
 Hệ điều hành	Windows 11 Home SL													
 Đèn bàn phím	Có													
-','22,490,000','');
+','22490000','');
 INSERT INTO product VALUES ('039','GM010','Laptop Asus ROG Strix Gaming G513IH','Asus','./img/product/gaming/Laptop%20Asus%20ROG%20Strix%20Gaming%20G513IH.jpg',
 'CPU	Ryzen 7, 4800H, 2.9GHz										
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz										
@@ -499,7 +498,7 @@ Trọng lượng	2.1 kg
 Pin	4-cell, 56Wh										
 Hệ điều hành	LAN (RJ45)3x Type-A USB 3.2 Gen 1USB Type-C (Power Delivery and DisplayPort)HDMIJack tai nghe 3.5 mm										
 Đèn bàn phím	Có										
-','21,190,000','');
+','21190000','');
 INSERT INTO product VALUES ('040','GM010','Laptop MSI Gaming Bravo 15 B5DD','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20Bravo%2015%20B5DD.jpg',
 'CPU	Ryzen 5, 5600H, 3.3GHz							
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz							
@@ -512,7 +511,7 @@ Trọng lượng	2.35 kg
 Pin	3-cell, 52Wh							
 Hệ điều hành	Windows 11 Home SL							
 Đèn bàn phím	Có							
-','18,490,000','');
+','18490000','');
 INSERT INTO product VALUES ('041','GM010','Laptop MSI Gaming Alpha 15 B5EEK','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20Alpha%2015%20B5EEK.jpg',
 'CPU	Ryzen 7, 5800H, 3.2GHz														
 RAM	16 GBDDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)3200 MHz														
@@ -525,7 +524,7 @@ Trọng lượng	2.35 kg
 Pin	4-cell, 90Wh														
 Hệ điều hành	Windows 11 Home SL														
 Đèn bàn phím	Có														
-','32,490,000','');
+','32490000','');
 INSERT INTO product VALUES ('042','GM010','Laptop MSI Creator Z16P B12UGST','MSI','./img/product/gaming/Laptop%20MSI%20Creator%20Z16P%20B12UGST.jpg',
 'CPU	i7, 12700H, 2.30 GHz						
 RAM	32 GBDDR5 2 khe (1 khe 16 GB + 1 khe 16 GB)5200 MHz						
@@ -538,7 +537,7 @@ Trọng lượng	2.39 kg
 Pin	4-cell, 90Wh						
 Hệ điều hành	Windows 11 Home SL						
 Đèn bàn phím	Có						
-','79,990,000','');
+','79990000','');
 INSERT INTO product VALUES ('043','GM010','Laptop MSI Gaming GE66 Raider 11UH','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20GE66%20Raider%2011UH.jpg',
 'CPU	i7, 11800H, 2.30 GHz							
 RAM	32 GBDDR4 2 khe (1 khe 16 GB + 1 khe 16 GB)3200 MHz							
@@ -551,7 +550,7 @@ Trọng lượng	2.38 Kg
 Pin	4-cell, 99.9Wh							
 Hệ điều hành	Windows 10 Home SL							
 Đèn bàn phím	Có							
-','77,990,000','');
+','77990000','');
 INSERT INTO product VALUES ('044','GM010','Laptop MSI Gaming GS66 Stealth 11UG','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20GS66%20Stealth%2011UG.jpg',
 'CPU	i7, 11800H, 2.30 GHz						
 RAM	32 GBDDR4 2 khe (1 khe 16 GB + 1 khe 16 GB)3200 MHz						
@@ -564,7 +563,7 @@ Trọng lượng	2.1 Kg
 Pin	4-cell, 99.9Wh						
 Hệ điều hành	USB Type-CLAN (RJ45)Thunderbolt 4 USB-C3 x USB 3.2HDMIJack tai nghe 3.5 mm						
 Đèn bàn phím	Có						
-','64,990,000','');
+','64990000','');
 INSERT INTO product VALUES ('045','GM010','Laptop Dell Gaming Alienware m15 R6','Dell','./img/product/gaming/Laptop%20Dell%20Gaming%20Alienware%20m15%20R6.jpg',
 'CPU	i7, 11800H, 2.30 GHz															
 RAM	32 GBDDR4 2 khe (1 khe 16 GB + 1 khe 16 GB)3200 MHz															
@@ -577,7 +576,7 @@ Trọng lượng	2.69 kg
 Pin	6-cell Li-ion, 86 Wh															
 Hệ điều hành	LAN (RJ45)Thunderbolt 4 USB-C3 x USB 3.2HDMIJack tai nghe 3.5 mm															
 Đèn bàn phím	Có															
-','61,990,000','');
+','61990000','');
 INSERT INTO product VALUES ('046','GM010','Laptop MSI Gaming GE66 Raider 11UG','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20GE66%20Raider%2011UG.jpg',
 'CPU	i7, 11800H, 2.30 GHz							
 RAM	16 GBDDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)3200 MHz							
@@ -589,7 +588,7 @@ Cổng Kết Nối	USB Type-CLAN (RJ45)Thunderbolt 4 USB-C3 x USB 3.2HDMIMini Di
 Trọng lượng	2.38 Kg							
 Pin	4-cell, 99.9Wh							
 Hệ điều hành	Windows 10 Home SL							
-','59,990,000','');
+','59990000','');
 INSERT INTO product VALUES ('047','GM010','Laptop MSI Gaming Vector GP66 12UGS','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20Vector%20GP66%2012UGS.jpg',
 'CPU	i7, 12700H, 2.30 GHz									
 RAM	16 GBDDR4 2 khe (1 khe 8 GB + 1 khe 8 GB)3200 MHz									
@@ -602,7 +601,7 @@ Trọng lượng	2.9 kg
 Pin	4-cell, 65Wh									
 Hệ điều hành	Windows 11 Home SL									
 Đèn bàn phím	Có									
-','55,990,000','');
+','55990000','');
 INSERT INTO product VALUES ('048','GM010','Laptop Asus Gaming ROG Flow Z13 GZ301Z','Asus','./img/product/gaming/Laptop%20Asus%20Gaming%20ROG%20Flow%20Z13%20GZ301Z.jpg',
 'CPU	i7, 12700H, 2.30 GHz											
 RAM	16 GBLPDDR5 (8 GB Onboard + 8 GB Onboard)5200 MHz											
@@ -615,7 +614,7 @@ Trọng lượng	1.18 kg
 Pin	4-cell, 56Wh											
 Hệ điều hành	Windows 11 Home SL											
 Đèn bàn phím	Có											
-','49,190,000','');
+','49190000','');
 INSERT INTO product VALUES ('049','GM010','Laptop Asus TUF Gaming FX507Z','Asus','./img/product/gaming/Laptop%20Asus%20TUF%20Gaming%20FX507Z.jpg',
 'CPU	i7, 12700H, 2.30 GHz										
 RAM	16 GBDDR5 2 khe (1 khe 8 GB + 1 khe 8 GB)4800 MHz										
@@ -628,7 +627,7 @@ Trọng lượng	2.2 kg
 Pin	4-cell, 90Wh										
 Hệ điều hành	Windows 11 Home SL										
 Đèn bàn phím	Có										
-','28.190.000','');
+','28190000','');
 INSERT INTO product VALUES ('050','GM010','Laptop Lenovo Legion 5 15IAH7','Lenovo','./img/product/gaming/Laptop%20Lenovo%20Legion%205%2015IAH7.jpg',
 'CPU	i5, 12500H, 2.5GHz																			
 RAM	8 GBDDR5 2 khe (1 khe 8 GB + 1 khe trống)4800 MHz																			
@@ -641,7 +640,7 @@ Trọng lượng	2.35 kg
 Pin	80 Wh																			
 Hệ điều hành	Windows 11 Home SL																			
 Đèn bàn phím	Có																			
-','34,690,000','');
+','34690000','');
 INSERT INTO product VALUES ('051','GM010','Laptop Dell Gaming G15 5511','Dell','./img/product/gaming/Laptop%20Dell%20Gaming%20G15%205511.jpg',
 'CPU	i7, 11800H, 2.30 GHz																		
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz																		
@@ -654,7 +653,7 @@ Trọng lượng	2.81 kg
 Pin	3-cell, 56Wh																		
 Hệ điều hành	Windows 11 Home SL + Office Home & Student vĩnh viễn																		
 Đèn bàn phím	Có																			
-','33,990,000','');
+','33990000','');
 INSERT INTO product VALUES ('052','GM010','Laptop Asus ROG Strix Gaming G513R','Asus','./img/product/gaming/Laptop%20Asus%20ROG%20Strix%20Gaming%20G513R.jpg',
 'CPU	Ryzen 7, 6800H, 3.2GHz					
 RAM	8 GBDDR5 2 khe (1 khe 8 GB + 1 khe trống)4800 MHz					
@@ -667,7 +666,7 @@ Trọng lượng	2.1 kg
 Pin	4-cell, 56Wh					
 Hệ điều hành	Windows 11 Home SL					
 Đèn bàn phím	Có					
-','29,190,000','');
+','29190000','');
 INSERT INTO product VALUES ('053','GM010','Laptop Lenovo Gaming Legion 5 15ACH6','Lenovo','./img/product/gaming/Laptop%20Lenovo%20Gaming%20Legion%205%2015ACH6.jpg',
 'CPU	Ryzen 7, 5800H, 3.2GHz											
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz											
@@ -680,7 +679,7 @@ Trọng lượng	2.4 kg
 Pin	60Wh											
 Hệ điều hành	Windows 11 Home SL											
 Đèn bàn phím	Có											
-','27,990,000','');
+','27990000','');
 INSERT INTO product VALUES ('054','GM010','Laptop Asus TUF Gaming FA507RC','Asus','./img/product/gaming/Laptop%20Asus%20TUF%20Gaming%20FA507RC.jpg',
 'CPU	Ryzen 7, 6800H, 3.2GHz											
 RAM	8 GBDDR5 2 khe (1 khe 8 GB + 1 khe trống)4800 MHz											
@@ -693,7 +692,7 @@ Trọng lượng	2.2 kg
 Pin	4-cell, 56Wh											
 Hệ điều hành	Windows 11 Home SL											
 Đèn bàn phím	Có											
-','27,690,000','');
+','27690000','');
 INSERT INTO product VALUES ('055','GM010','Laptop MSI Gaming GF63 Thin 11UD','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2011UD.jpg',
 'CPU	i7, 11800H, 2.30 GHz										
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz										
@@ -706,7 +705,7 @@ Trọng lượng	1.86 kg
 Pin	3-cell, 51Wh										
 Hệ điều hành	Windows 11 Home SL										
 Đèn bàn phím	Có										
-','26,490,000','');
+','26490000','');
 INSERT INTO product VALUES ('056','GM010','Laptop Acer Aspire 7 Gaming A715 42G R05G','Acer','./img/product/gaming/Laptop%20Acer%20Aspire%207%20Gaming%20A715%2042G%20R05G.jpg',
 'CPU	Ryzen 5, 5500U, 2.1GHz										
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz										
@@ -719,7 +718,7 @@ Trọng lượng	2.1 kg
 Pin	48Wh										
 Hệ điều hành	Windows 11 Home SL										
 Đèn bàn phím	Có											
-','20,490,000','');
+','20490000','');
 INSERT INTO product VALUES ('057','GM010','Laptop MSI Gaming GF63 Thin 10SC','MSI','./img/product/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2010SC.jpg',
 'CPU	i5, 10500H, 2.5GHz										
 RAM	8 GBDDR4 2 khe (1 khe 8 GB + 1 khe rời)3200 MHz										
@@ -732,7 +731,7 @@ Trọng lượng	1.86 kg
 Pin	3-cell, 51Wh										
 Hệ điều hành	Windows 10 Home SL										
 Đèn bàn phím	Có										
-','18,990,000','');
+','18990000','');
 -- laptopmac_dohoa
 
 INSERT INTO product VALUES ('058','DH011','Dell Precision 7510','Dell','./img/product/mac_dohoa/Dell%20Precision%207510.jpg',
