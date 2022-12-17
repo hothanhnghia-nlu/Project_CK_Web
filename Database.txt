@@ -733,6 +733,177 @@ Pin	3-cell, 51Wh
 Hệ điều hành	Windows 10 Home SL										
 Đèn bàn phím	Có										
 ','18,990,000','');
+-- laptopmac_dohoa
+
+INSERT INTO product VALUES ('058','DH011','Dell Precision 7510','Dell','./img/product/mac_dohoa/Dell%20Precision%207510.jpg',
+'CPU	Core i7-6820HQ (4 nhân 8 luồng), Turbo 3.6 GHz, Cache 8MB
+RAM	8GB DDR4- 2133 (up max 64G - 4 khe)
+Ổ cứng	SSD 256G (max 2 ổ)
+Card VGA	Nvidia Quadro M1000M- 2G
+Màn hình	15.6" Full HD (1920×1080), IPS 
+Camera	
+Cổng kết nối	Lan Gigabit, Wifi 5Ghz, Bluetooth 4, HDMI, Mini DisplayPort,
+	USB 3.0 , Thunderbolt 3, audio + mic combo, khe SSD M.2 Nvme
+Trọng lượng	2.8 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','17500000', '');
+INSERT INTO product VALUES ('059','DH011','Dell Precision 7720','Dell','./img/product/mac_dohoa/Dell%20Precision%207720.jpg',
+'CPU	Intel Core i7-7820HQ (4 nhân 8 luồng), 2.9 Ghz, Turbo 3.9 GHz, 8MB Cache
+RAM	16 GB – DDR4 Bus 2400 (Up max 64G – 4 khe)
+Ổ cứng	SSD 256G 
+Card VGA	Nvidia Quadro M2200- 4G + Intel HD Graphics 630 chạy song song
+Màn hình	15.6 inch Full HD (1920 x 1080)   IPS
+Trọng lượng	2.8 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','19300000', '');
+INSERT INTO product VALUES ('060','DH011','Dell Precision 5530','Dell','./img/product/mac_dohoa/Dell%20Precision%205530.jpg',
+'CPU	Intel i7-8850H (6 nhân 12 luồng), Turbo 4.3 GHz, Cache 9MB
+RAM	16G - DDR4 bus 2666 (up max 64G - 2 khe)
+Ổ cứng	SSD 512 NVMe (max 2 ổ)
+Card VGA	Nvidia Quadro P1000
+Màn hình	15.6 inch Full HD IPS, phủ màu 100% sRGB, viền siêu mỏng
+Trọng lượng	1.9 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','23500000', '');
+INSERT INTO product VALUES ('061','DH011','Dell Precision 5550 Core i5','Dell','./img/product/mac_dohoa/Dell%20Precision%205550.jpg',
+'CPU	Intel Core Processor i5-10400H (4 Core, 8MB Cache, 2.60 GHz to 4.60 GHz, 45W, vPro)
+RAM	8GB, DDR4 2933Mhz Non-ECC Memory
+Ổ cứng	M.2 256GB PCIe NVMe Class 35 Solid State Drive
+Card VGA	NVIDIA® Quadro® T1000
+Màn hình	15.6" UltraSharp FHD+, 1920x1200,AG,NT, w/Prem Panel Guar, 100% sRGB
+Trọng lượng	1.86 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','36990000', '');
+INSERT INTO product VALUES ('062','DH011','Dell Precision 5550 Core i7','Dell','./img/product/mac_dohoa/Dell%20Precision%205550%20i7.jpg',
+'CPU	 Intel Core Processor i7-10750H (6 Core, 12MB Cache, 2.60 GHz to 5.00 GHz, 45W)
+RAM	16GB, DDR4 2933Mhz Non-ECC Memory
+Ổ cứng	M.2 512GB PCIe NVMe Class 35 Solid State Drive
+Card VGA	NVIDIA® Quadro® T1000
+Màn hình	15.6" UltraSharp FHD+, 1920x1200,AG,NT, w/Prem Panel Guar, 100% sRGB
+Trọng lượng	1.86 Kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','52990000', '');
+INSERT INTO product VALUES ('063','DH011','HP Zbook 15 G2','HP','./img/product/mac_dohoa/HP%20Zbook%2015%20G2.jpg',
+'CPU	Core i7-6700HQ ( 4 nhân 8 luồng ), Turbo 3.5 GHz, Cache 6MB
+RAM	8 GB - DDR4 bus 2133 (up max 64G - 4 khe)
+Ổ cứng	256G SSD (max 2 ổ)
+Card VGA	Nvidia Quadro M1000M- 2G & Intel HD 530 chạy song song
+Màn hình	15.6 inch Full HD (1920 x 1080)
+Trọng lượng	2.5kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','16500000', '');
+INSERT INTO product VALUES ('064','DH011','HP Zbook 17 G2','HP','./img/product/mac_dohoa/HP%20Zbook%2017%20G2.jpg',
+'CPU	Intel Core i7-4810MQ (4 nhân 8 luồng), Turbo 3.8 GHz, 6MB Cache
+RAM	8 GB – DDR3L Bus 1600 (Up max 32G – 4 khe)
+Ổ cứng	256G SSD (max 4 ổ)
+Card VGA	Nvidia Quadro K4100M-4G {Optimus} 
+Màn hình	17.3 inch Full HD (1920 x 1080) 
+Trọng lượng	3.8kg
+Pin	6 Cell 72Wh
+Hệ điều hành	Windows 10 Pro
+','16300000', '');
+INSERT INTO product VALUES ('065','MB013','Macbook Air M1 2020 7-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M1.jpg"',
+'CPU	Apple M1
+RAM	8GB, LDDR4
+Ổ cứng	SSD 256GB
+Card VGA	Onboard 7-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','33490000', '');
+INSERT INTO product VALUES ('066','MB013','Macbook Air M1 2020 8-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M1.jpg',
+'CPU	Apple M1
+RAM	8GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard 8-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','33490000', '31990000');
+INSERT INTO product VALUES ('067','MB013','Macbook Air M2 2020 8-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M2.jpg',
+'CPU	Apple M2
+RAM	8GB, LDDR4
+Ổ cứng	SSD 256GB
+Card VGA	Onboard 8-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','32990000', '');
+INSERT INTO product VALUES ('068','MB013','Macbook Air M2 2020 10-Core GPU','Macbook','./img/product/mac_dohoa/Macbook%20Air%20M2.jpg',
+'CPU	Apple M2
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard 10-Core GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 400 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','46990000', '');
+INSERT INTO product VALUES ('069','MB013','Macbook Pro 13 inch M1 2020','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M1.jpg',
+'CPU	Apple M1
+RAM	8GB, LDDR4
+Ổ cứng	SSD 256GB
+Card VGA	Onboard GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 500 nits
+Camera	HD Webcam (720p Webcam)
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.29kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','33990000', '');
+INSERT INTO product VALUES ('070','MB013','Macbook Pro 14 inch M1 2021','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M1.jpg',
+'CPU	Apple M1
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard GPU
+Màn hình	14.2 inch Liquid Retina XDR display (3024 x 1964) up to 120Hz
+Camera	1080p FaceTime HD camera
+Cổng kết nối	3 x Thunderbolt 4 (USB-C), Jack tai nghe 3.5 mm, HDMI
+Trọng lượng	1.6kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','52490000', '');
+INSERT INTO product VALUES ('071','MB013','Macbook Pro 16 inch M1 2021','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M1.jpg',
+'CPU	Apple M1
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard GPU
+Màn hình	16.2 inch Liquid Retina XDR display (3456 x 2234) up to 120Hz
+Camera	1080p FaceTime HD camera
+Cổng kết nối	3 x Thunderbolt 4 (USB-C), Jack tai nghe 3.5 mm, HDMI
+Trọng lượng	2.1kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','64490000', '58000000');
+INSERT INTO product VALUES ('072','MB013','Macbook Pro 13 inch M2 2022','Macbook','./img/product/mac_dohoa/Macbook%20Pro%20M2.jpg',
+'CPU	Apple M2
+RAM	16GB, LDDR4
+Ổ cứng	SSD 512GB
+Card VGA	Onboard GPU
+Màn hình	13.3 inch Retina (2560 x 1600), LED Backlit, IPS, 500 nits
+Camera	720p FaceTime HD camera
+Cổng kết nối	2 x Thunderbolt 3 (USB-C), Jack tai nghe 3.5 mm
+Trọng lượng	1.4kg
+Pin	Khoảng 10 tiếng
+Hệ điều hành	Mac OS
+','45990000', '');
 -- order
 
 
