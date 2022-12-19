@@ -35,7 +35,7 @@
 							<div>
 								<a href="login.jsp">
 									<i class="fa fa-user"></i>
-									<span>Tài khoản</span>
+									<span>Đăng nhập</span>
 								</a>
 							</div>
 							<!-- /Account -->

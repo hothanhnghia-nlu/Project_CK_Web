@@ -7,15 +7,17 @@ public class Account implements Serializable {
     private int accountID;
     private String username;
     private String password;
+    private String email;
     private int role;
 
     public Account() {
     }
 
-    public Account(int accountID, String username, String password, int role) {
+    public Account(int accountID, String username, String password, String email, int role) {
         this.accountID = accountID;
         this.username = username;
         this.password = password;
+        this.email = email;
         this.role = role;
     }
 
@@ -43,6 +45,14 @@ public class Account implements Serializable {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getRole() {
         return role;
     }
@@ -61,6 +71,7 @@ public class Account implements Serializable {
                 "accountID=" + accountID +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 ", role=" + role +
                 '}';
     }

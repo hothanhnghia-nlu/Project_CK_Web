@@ -3,14 +3,15 @@ package vn.edu.hcmuaf.fit.bean;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    String productID;
-    String cat_id;
-    String name;
-    String brand;
-    String image;
-    String discription;
-    int price;
-    int  discount;
+    private static final long serialVersionUID = 1L;
+    private String productID;
+    private String cat_id;
+    private String name;
+    private String brand;
+    private String image;
+    private String discription;
+    private int price;
+    private int discount;
 
     public String getProductID() {
         return productID;
