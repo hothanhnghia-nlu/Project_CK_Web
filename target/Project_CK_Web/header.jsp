@@ -33,6 +33,16 @@
 						<div class="header-ctn">
 							<!-- Account -->
 							<div>
+<%--								<c:set var="auth" value="${sessionScope.auth}"/>--%>
+<%--								<c:if test="${auth == null}">--%>
+<%--									<p>Vui lòng đăng nhập</p>--%>
+<%--								</c:if>--%>
+<%--								<c:if test="${auth != null}">--%>
+<%--									<p>Xin chào bạn ${auth.fullName}</p>--%>
+<%--									    <c:if test="${auth.role>=1}">--%>
+<%--									        <p> Vào trang quản trị</p>--%>
+<%--									    </c:if>--%>
+<%--								</c:if>--%>
 								<a href="login.jsp">
 									<i class="fa fa-user"></i>
 									<span>Đăng nhập</span>
