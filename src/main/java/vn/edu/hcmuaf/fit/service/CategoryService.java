@@ -8,21 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CategoryService {
-    private static CategoryService instance;
-
-    public CategoryService() {
-    }
 
     public static CategoryService getInstance() {
-        if (instance == null) {
-            instance = new CategoryService();
-        }
-        return instance;
+        return new CategoryService();
     }
 
     public List<Category> listAllCategory (){
         List<Category> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT  * from category")
+            return handle.createQuery("SELECT * FROM category")
                     .mapToBean(Category.class)
                     .stream().collect(Collectors.toList());
         });

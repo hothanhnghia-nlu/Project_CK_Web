@@ -1,6 +1,5 @@
 -- account
-INSERT INTO account VALUES (1, 'admin', 'admin', 0), (2, 'nghia', 'ng1005', 1), (3, 'long', 'bqlp314', 0), (4, 'phong', 'dcp364', 0);
-
+INSERT INTO account VALUES (1, 'admin', 'admin', '', 0), (2, 'nghia', 'htn1005', '20130333@st.hcmuaf.edu.vn', 1), (3, 'long', 'bql314', '20130314@st.hcmuaf.edu.vn', 0), (4, 'phong', 'dcp364', '20130364@st.hcmuaf.edu.vn', 0);
 -- customer
 INSERT INTO customer VALUES ('KH005', 'Hồ Thanh Nghĩa', '20130333@st.hcmuaf.edu.vn', '0789456123', 2), ('KH011', 'Bùi Quốc Long', '20130314@st.hcmuaf.edu.vn', '0987654213', 3), ('KH023', 'Diệp Chấn Phong', '20130364@st.hcmuaf.edu.vn', '0373555646', 4), ('KH036', 'Trần Hoàng Hải', 'thhai789@gmail.com', '0123456789', null), ('KH048', 'Nguyễn Minh Mẫn', 'minhman02@gmail.com', '0321456987', null), ('KH050', 'Lê Hải Đăng', 'lhdang2278@outlook.com', '0789456123', null);
 

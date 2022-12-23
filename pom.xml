@@ -43,6 +43,11 @@
       <artifactId>jdbi3-core</artifactId>
       <version>3.35.0</version>
     </dependency>
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>javax.mail-api</artifactId>
+      <version>1.6.2</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Project_CK_Web</finalName>

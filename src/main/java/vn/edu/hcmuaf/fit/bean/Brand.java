@@ -4,20 +4,27 @@ import java.io.Serializable;
 
 public class Brand implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String Brand;
+    private String brand;
+
+    public Brand() {
+    }
+
+    public Brand(String brand) {
+        this.brand = brand;
+    }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
     public void setBrand(String brand) {
-        Brand = brand;
+        this.brand = brand;
     }
 
     @Override
     public String toString() {
         return "Brand{" +
-                "Brand='" + Brand + '\'' +
+                "Brand='" + brand + '\'' +
                 '}';
     }
 }

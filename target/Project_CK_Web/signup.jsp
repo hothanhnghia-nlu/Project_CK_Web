@@ -53,7 +53,7 @@
     <div class="form signup">
         <span class="title">Đăng ký</span>
 
-        <form action="/Project_CK_Web/signup" method="post">
+        <form action="signup" method="post">
             <%
                 if (error != null) {
             %>

@@ -52,7 +52,7 @@
     <div class="form login">
         <span class="title">Đăng nhập</span>
 
-        <form action="/Project_CK_Web/login" method="post">
+        <form action="login" method="post">
             <%
                 if (error != null) {
             %>
@@ -63,7 +63,7 @@
                 }
             %>
             <div class="input-field">
-                <input type="text" value="<%= request.getParameter("username")!=null ? request.getParameter("username") : ""%>" name="username" id="tendangnhap" placeholder="Email hoặc Tên đăng nhập">
+                <input type="text" value="<%= request.getParameter("username")!=null ? request.getParameter("username") : ""%>" name="username" id="tendangnhap" placeholder="Tên đăng nhập">
                 <i class="fa fa-envelope"></i>
             </div>
             <div class="input-field">

@@ -17,7 +17,7 @@ public class Admin extends HttpServlet {
             request.setAttribute("error","Bạn không có quyền truy cập");
             response.sendRedirect("login.jsp");
         } else {
-
+            response.getWriter().println("Xin chào Admin");
         }
     }
 

@@ -129,12 +129,6 @@
 	</footer>
 	<!-- /FOOTER -->
 
-	<!--BACKTOP-->
-	<div id="backtop">
-		<i class="fa fa-arrow-up"></i>
-	</div>
-	<!--/BACKTOP-->
-
 	<!-- jQuery Plugins -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

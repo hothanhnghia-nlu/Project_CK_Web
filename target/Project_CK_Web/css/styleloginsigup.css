@@ -215,6 +215,9 @@
     width: 450px;
     height: 40px;
     background: #2b80dd;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 18px;
     border: none;
     border-radius: 40px;
     margin-top: 20px;

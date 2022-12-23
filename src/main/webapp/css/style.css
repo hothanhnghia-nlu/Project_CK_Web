@@ -421,6 +421,7 @@ textarea.input {
 .header-ctn {
   float: right;
   padding: 15px 0px;
+  display: flex;
 }
 
 .header-ctn>div {
@@ -428,7 +429,7 @@ textarea.input {
 }
 
 .header-ctn>div+div {
-  margin-left: 15px;
+  /*margin-left: 35px;*/
 }
 
 .header-ctn>div>a {
@@ -456,7 +457,7 @@ textarea.input {
 
 .header-ctn>div>a>.qty {
   position: absolute;
-  right: 15px;
+  right: 22px;
   top: -10px;
   width: 20px;
   height: 20px;

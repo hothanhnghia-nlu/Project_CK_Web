@@ -13,6 +13,21 @@ public class Product implements Serializable {
     private int price;
     private int discount;
 
+    public Product() {
+    }
+
+    public Product(String productID, String cat_id, String name, String brand,
+                   String image, String discription, int price, int discount) {
+        this.productID = productID;
+        this.cat_id = cat_id;
+        this.name = name;
+        this.brand = brand;
+        this.image = image;
+        this.discription = discription;
+        this.price = price;
+        this.discount = discount;
+    }
+
     public String getProductID() {
         return productID;
     }

@@ -12,7 +12,8 @@ public class CustomerService {
         return new CustomerService();
     }
 
-    public void insertCustomer(String id, String fullName, String email, String phone, int accID) {
+    // Add a new customer
+    public void insert(String id, String fullName, String email, String phone, int accID) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO customer (?, ?, ?, ?, ?)")
                         .bind(0, id)
@@ -24,6 +25,28 @@ public class CustomerService {
         );
     }
 
+    // Update customer
+    public void update(Customer customer) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE customer SET id = ?, fullname = ?, email = ?, phone_number = ?")
+                        .bind(0, customer)
+                        .execute()
+        );
+    }
+
+    // Select customer by id
+    public Customer selectById(Customer customer) {
+        Customer c = (Customer) JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM customer WHERE id = ?")
+                        .bind(0, customer)
+                        .mapToBean(Customer.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return c;
+    }
+
+    // Check account exist
     public boolean checkExist(String id) {
         List<Customer> customers = JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM account WHERE id = ?")

@@ -9,21 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductService {
-    private static ProductService instance;
-
-    public ProductService() {
-    }
 
     public static ProductService getInstance() {
-        if (instance == null) {
-            instance = new ProductService();
-        }
-        return instance;
+        return new ProductService();
     }
 
     public List<Product> listAllProduct (){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT  * from product")
+            return handle.createQuery("SELECT * FROM product")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
@@ -39,7 +32,7 @@ public class ProductService {
     }
     public List<Product> getTop3NewProduct (){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT  * FROM product\n" +
+            return handle.createQuery("SELECT * FROM product\n" +
                             "    order by productID DESC\n" +
                             "    LIMIT 3;")
                     .mapToBean(Product.class)
@@ -49,7 +42,7 @@ public class ProductService {
     }
     public Product getProductByID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * from product WHERE productID= ?")
+            return handle.createQuery("SELECT * FROM product WHERE productID= ?")
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
