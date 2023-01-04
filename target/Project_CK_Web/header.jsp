@@ -11,8 +11,8 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <a href="index.jsp" class="logo">
-                            <img src="./img/logo.png" alt="">
+                        <a href="home" class="logo">
+                            <img src="assets/img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             </c:if>
 
                             <c:if test="${sessionScope.auth != null}">
-                                <a href="#">
+                                <a href="javascript:;" class="dropdown">
                                     <i class="fa fa-user"></i>
                                     <span>Xin chào ${sessionScope.auth.username}</span>
                                 </a>
@@ -51,7 +51,7 @@
                             </c:if>
 
                             <c:if test="${sessionScope.auth.role >= 1}">
-                                <a href="admin/Admin">
+                                <a href="admin">
                                     <i class="fa fa-cog"></i>
                                     <span>Admin</span>
                                 </a>
@@ -140,7 +140,7 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="index.jsp">Trang chủ</a></li>
+                <li class="active"><a href="home">Trang chủ</a></li>
                 <li><a href="gaming-category.jsp">Latop Gaming <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
                         <li><a href="#">Msi</a></li>

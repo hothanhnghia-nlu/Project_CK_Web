@@ -13,22 +13,22 @@
 		<title>Trang chủ</title>
 
 		<!-- Google font -->
-		<link rel="stylesheet" href="fonts/css/all.css">
+		<link rel="stylesheet" href="assets/fonts/css/all.css">
 
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<!-- Slick -->
-		<link type="text/css" rel="stylesheet" href="css/slick.css"/>
-		<link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+		<link type="text/css" rel="stylesheet" href="assets/css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="assets/css/slick-theme.css"/>
 
 		<!-- nouislider -->
-		<link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+		<link type="text/css" rel="stylesheet" href="assets/css/nouislider.min.css"/>
 
 		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
 		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,15 +58,15 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
 						<div class="item active">
-							<a href="#"><img src="img/banner 1.jpg" alt="Sale laptop Noel"></a>
+							<a href="#"><img src="assets/img/banner 1.jpg" alt="Sale laptop Noel"></a>
 						</div>
 
 						<div class="item">
-							<a href="#"><img src="img/banner 2.jpg" alt="Khai xuân laptop"></a>
+							<a href="#"><img src="assets/img/banner 2.jpg" alt="Khai xuân laptop"></a>
 						</div>
 
 						<div class="item">
-							<a href="#"><img src="img/banner 3.jpg" alt="Ưu đãi laptop"></a>
+							<a href="#"><img src="assets/img/banner 3.jpg" alt="Ưu đãi laptop"></a>
 						</div>
 					</div>
 
@@ -84,10 +84,10 @@
 			<div class="col-md-2">
 				<div class="sub-banner">
 					<div class="banner1">
-						<a href="#"><img src="img/banner 4.jpg" alt="Macbook"></a>
+						<a href="#"><img src="assets/img/banner 4.jpg" alt="Macbook"></a>
 					</div>
 					<div class="banner2">
-						<a href="#"><img src="img/banner 5.jpg" alt="Laptop Gaming"></a>
+						<a href="#"><img src="assets/img/banner 5.jpg" alt="Laptop Gaming"></a>
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 									<!-- product -->
 									<div class="product">
 										<div class="product-img">
-											<img src="img/product/van phong/Acer Aspire 5 A514-54.jpg" alt="">
+											<img src="assets/img/product/van phong/Acer Aspire 5 A514-54.jpg" alt="">
 											<div class="product-label">
 												<span class="sale">-10%</span>
 												<span class="new">NEW</span>
@@ -152,7 +152,7 @@
 									<!-- product -->
 									<div class="product">
 										<div class="product-img">
-											<img src="img/product/van phong/Asus Zenbook 14 Q408UG.jpg" alt="">
+											<img src="assets/img/product/van phong/Asus Zenbook 14 Q408UG.jpg" alt="">
 											<div class="product-label">
 												<span class="sale">-25%</span>
 											</div>
@@ -183,7 +183,7 @@
 									<!-- product -->
 									<div class="product">
 										<div class="product-img">
-											<img src="./img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+											<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
 											<div class="product-label">
 												<span class="sale">-30%</span>
 											</div>
@@ -209,7 +209,7 @@
 									<!-- product -->
 									<div class="product">
 										<div class="product-img">
-											<img src="./img/product/mac_dohoa/Dell Precision 5530.jpg" alt=" ">
+											<img src="assets/img/product/mac_dohoa/Dell Precision 5530.jpg" alt=" ">
 										</div>
 										<div class="product-body">
 											<p class="product-category">Đồ Hoạ</p>
@@ -237,7 +237,7 @@
 									<!-- product -->
 									<div class="product">
 										<div class="product-img">
-											<img src="img/product/gaming/Laptop MSI Gaming Alpha 15 B5EEK.jpg" alt="">
+											<img src="assets/img/product/gaming/Laptop MSI Gaming Alpha 15 B5EEK.jpg" alt="">
 										</div>
 										<div class="product-body">
 											<p class="product-category">Gaming</p>
@@ -300,7 +300,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="img/product/mac_dohoa/HP Zbook 17 G2.jpg" alt="">
+												<img src="assets/img/product/mac_dohoa/HP Zbook 17 G2.jpg" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
@@ -332,7 +332,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/van phong/Asus Zenbook 14 Q409 ZA.jpg" alt="">
+												<img src="assets/img/product/van phong/Asus Zenbook 14 Q409 ZA.jpg" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -363,7 +363,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+												<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
 												<div class="product-label">
 													<span class="sale">-10%</span>
 													<span class="new">NEW</span>
@@ -390,7 +390,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/van phong/Samsung Galaxy Book Pro 360 13.jpg" alt="">
+												<img src="assets/img/product/van phong/Samsung Galaxy Book Pro 360 13.jpg" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -421,7 +421,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/van phong/MSI Modern 15 A5M 238VN.jpg" alt="">
+												<img src="assets/img/product/van phong/MSI Modern 15 A5M 238VN.jpg" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -452,7 +452,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/gaming/Laptop Asus ROG Strix Gaming G513R.jpg" alt="">
+												<img src="assets/img/product/gaming/Laptop Asus ROG Strix Gaming G513R.jpg" alt="">
 												<div class="product-label">
 													<span class="new">NEW</span>
 												</div>
@@ -519,7 +519,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/van phong/Asus Vivobook X515JA.jpg" alt="">
+												<img src="assets/img/product/van phong/Asus Vivobook X515JA.jpg" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
@@ -551,7 +551,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/van phong/Lenovo ThinkPad E14.jpg" alt="">
+												<img src="assets/img/product/van phong/Lenovo ThinkPad E14.jpg" alt="">
 												<div class="product-label">
 													<span class="new">Old</span>
 												</div>
@@ -582,7 +582,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+												<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 												</div>
@@ -608,7 +608,7 @@
 										<!-- product -->
 										<div class="product">
 											<div class="product-img">
-												<img src="./img/product/mac_dohoa/Dell Precision 5530.jpg" alt=" ">
+												<img src="assets/img/product/mac_dohoa/Dell Precision 5530.jpg" alt=" ">
 											</div>
 											<div class="product-body">
 												<p class="product-category">Đồ Hoạ</p>
@@ -685,12 +685,12 @@
 	<!--/BACKTOP-->
 
 	<!-- jQuery Plugins -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/slick.min.js"></script>
-	<script src="js/nouislider.min.js"></script>
-	<script src="js/jquery.zoom.min.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/backtop.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/nouislider.min.js"></script>
+	<script src="assets/js/jquery.zoom.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/backtop.js"></script>
 	</body>
 </html>

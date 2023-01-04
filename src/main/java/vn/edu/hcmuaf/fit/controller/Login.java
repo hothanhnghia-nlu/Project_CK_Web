@@ -15,13 +15,14 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Account account = AccountService.getInstances().checkLogin(username, password);
+
         if (account == null) {
             request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession(true);
             session.setAttribute("auth", account);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("home");
         }
     }
 

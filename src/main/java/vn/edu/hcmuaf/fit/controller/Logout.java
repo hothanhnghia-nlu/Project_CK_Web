@@ -11,7 +11,7 @@ public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         session.removeAttribute("auth");
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("home");
     }
 
     @Override

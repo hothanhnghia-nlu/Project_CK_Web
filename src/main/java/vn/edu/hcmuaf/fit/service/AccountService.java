@@ -3,14 +3,7 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.bean.Account;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.util.List;
-import java.util.Properties;
 import java.util.stream.Collectors;
 
 public class AccountService {
@@ -64,29 +57,37 @@ public class AccountService {
         );
     }
 
-    public static boolean sendMail(String to, String subject, String text) {
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("shopphoneltw@gmail.com", "abcdabcd");
-            }
-        });
-        try {
-            Message message = new MimeMessage(session);
-            message.setHeader("Content-Type", "text/plain; charset=UTF-8");
-            message.setFrom(new InternetAddress("shopphoneltw@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject(subject);
-            message.setText(text);
-            Transport.send(message);
-        } catch (Exception e) {
-            return false;
+    // Get username and password by email
+    public String getUsernameAndPassword(String email) {
+        List<Account> accounts = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT * FROM account WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Account.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        String res = "";
+        for (int i = 0; i < accounts.size(); i++) {
+            res += "Username: " +  accounts.get(i).getUsername() + "\nPassword: " + accounts.get(i).getPassword();
         }
-        return true;
+        return res;
+    }
+
+    // Check email exist
+    public boolean checkEmailExist(String email) {
+        List<Account> accounts = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT email FROM account WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Account.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        for (int i = 0; i < accounts.size(); i++) {
+            Account acc = accounts.get(i);
+            if (acc.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,13 +1,14 @@
 package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.bean.Account;
+import vn.edu.hcmuaf.fit.bean.Customer;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "Admin", value = "/admin/Admin")
+@WebServlet(name = "Admin", value = "/admin")
 public class Admin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,12 +18,13 @@ public class Admin extends HttpServlet {
             request.setAttribute("error","Bạn không có quyền truy cập");
             response.sendRedirect("login.jsp");
         } else {
-            response.getWriter().println("Xin chào Admin");
+//            response.getWriter().println("Xin chào Admin");
+            response.sendRedirect("admin/order-list");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        doGet(request, response);
     }
 }

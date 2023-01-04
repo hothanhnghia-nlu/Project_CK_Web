@@ -35,15 +35,34 @@ public class CustomerService {
     }
 
     // Select customer by id
-    public Customer selectById(Customer customer) {
-        Customer c = (Customer) JDBIConnector.get().withHandle(handle ->
+    public Customer selectById(String id) {
+        List<Customer> customers = JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT * FROM customer WHERE id = ?")
-                        .bind(0, customer)
+                        .bind(0, id)
                         .mapToBean(Customer.class)
                         .stream()
                         .collect(Collectors.toList())
         );
+        Customer c = new Customer();
+        for (int i = 0; i < customers.size(); i++) {
+            c = customers.get(i);
+        }
         return c;
+    }
+
+    public String selectCustomerId(String fullName) {
+        List<Customer> customers = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT id FROM customer WHERE fullname = ?")
+                        .bind(0, fullName)
+                        .mapToBean(Customer.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        String res = "";
+        for (int i = 0; i < customers.size(); i++) {
+            res += customers.get(i).getId();
+        }
+        return res;
     }
 
     // Check account exist
@@ -62,5 +81,10 @@ public class CustomerService {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(CustomerService.getInstance().selectById("KH011"));
+        System.out.println(CustomerService.getInstance().selectCustomerId("Nguyen Minh Man"));
     }
 }

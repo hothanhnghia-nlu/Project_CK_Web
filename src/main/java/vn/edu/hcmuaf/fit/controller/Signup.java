@@ -19,8 +19,9 @@ public class Signup extends HttpServlet {
             request.setAttribute("error", "Mật khẩu xác nhận không đúng");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
-            boolean checkExist = AccountService.getInstances().checkAccountExist(username);
-            if (checkExist == false) {
+            boolean accountExist = AccountService.getInstances().checkAccountExist(username);
+            boolean emailExist = AccountService.getInstances().checkEmailExist(email);
+            if (!accountExist || !emailExist) {
                 AccountService.getInstances().register(username, password, email);
                 response.sendRedirect("success-signup.jsp");
             } else {

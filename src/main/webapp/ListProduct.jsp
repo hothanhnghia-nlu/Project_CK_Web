@@ -1,9 +1,9 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>`
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Category" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Brand" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,22 +15,22 @@
     <title>Trang chủ</title>
 
     <!-- Google font -->
-    <link rel="stylesheet" href="fonts/css/all.css">
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="css/slick.css"/>
-    <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/slick-theme.css"/>
 
     <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/nouislider.min.css"/>
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,9 +41,9 @@
 
 </head>
 <body>
-<!-- HEADER -->
-<header>
+    <!-- HEADER -->
     <jsp:include page="header.jsp"/>
+    <!-- /HEADER -->
 
     <!-- SECTION -->
     <div class="section">
@@ -236,15 +236,23 @@
     </div>
     <!-- /SECTION -->
 
+    <!-- FOOTER -->
     <jsp:include page="footer.jsp"/>
+    <!-- /FOOTER -->
+
+    <!--BACKTOP-->
+    <div id="backtop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <!--/BACKTOP-->
 
     <!-- jQuery Plugins -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/nouislider.min.js"></script>
-    <script src="js/jquery.zoom.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/backtop.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/nouislider.min.js"></script>
+    <script src="assets/js/jquery.zoom.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/backtop.js"></script>
 </body>
 </html>

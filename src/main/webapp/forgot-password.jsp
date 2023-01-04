@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String error = (String) request.getAttribute("error");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,24 +14,24 @@
     <title>Tài khoản</title>
 
     <!-- Google font -->
-    <link rel="stylesheet" href="fonts/css/all.css">
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
 
     <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
 
     <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="css/slick.css"/>
-    <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/slick-theme.css"/>
     <!-- Themify Icons -->
     <link href="http://yoursite.com/themify-icons.css" rel="stylesheet">
     <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/nouislider.min.css"/>
 
     <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/styleloginsigup.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="assets/css/styleloginsigup.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -53,8 +56,17 @@
                 <div class="forgot_pwd">
                     <p class="heading">Phục hồi mật khẩu</p>
                     <p class="note">Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.</p>
-                    <form action="login" method="post">
-                        <input class="input" name="email" type="email" placeholder="Email">
+                    <form action="resetPass" method="post">
+                        <%
+                            if (error != null) {
+                        %>
+                        <div class="alert" role="alert" style="color: #ff0000; margin-bottom: -15px">
+                            <%= error %>
+                        </div>
+                        <%
+                            }
+                        %>
+                        <input class="input" name="email" type="email" placeholder="Nhập email của bạn" required>
                         <input class="submit-btn" type="submit" value="Lấy lại mật khẩu">
                     </form>
                     <a href="login.jsp">Quay lại</a>
@@ -73,13 +85,13 @@
 
 
 <!-- jQuery Plugins -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slick.min.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/jquery.zoom.min.js"></script>
-<script src="js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/nouislider.min.js"></script>
+<script src="assets/js/jquery.zoom.min.js"></script>
+<script src="assets/js/main.js"></script>
 <!-- Nice Select JS -->
-<script src="js/nicesellect.js"></script>
+<script src="assets/js/nicesellect.js"></script>
 </body>
 </html>
