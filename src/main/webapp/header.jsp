@@ -106,13 +106,8 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-<<<<<<< Updated upstream
                 <li class="active"><a href="home">Trang chủ</a></li>
-                <li><a href="gaming-category.jsp">Latop Gaming <i class="fa fa-angle-down"></i></a>
-=======
-                <li class="active"><a href="index.jsp">Trang chủ</a></li>
                 <li><a href="list-product?id=GM010">Latop Gaming <i class="fa fa-angle-down"></i></a>
->>>>>>> Stashed changes
                     <ul class="dropdown">
                         <li><a href="#">Msi</a></li>
                         <li><a href="#">Dell</a></li>
