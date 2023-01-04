@@ -41,6 +41,24 @@ public class ProductService {
         });
         return pro;
     }
+    public List<Product> getTopProduct (int n){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM product order by price DESC LIMIT ?")
+                    .bind(0, n)
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return pro;
+    }  public List<Product> getTopSeller (int n){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM product order by discount DESC LIMIT ?")
+                    .bind(0, n)
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return pro;
+    }
+
     public Product getProductByID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT * FROM product WHERE productID= ?")
@@ -57,10 +75,18 @@ public class ProductService {
         });
         return pro;
     }
-
+    public List<Product> getProductByName (String name){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM product WHERE name like ?")
+                    .bind(0, "%"+name+"%")
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return pro;
+    }
     public static void main(String[] args) {
         ProductService a = new ProductService();
-        System.out.println(a.getProductByCAT_ID("VP012"));
+        System.out.println(a.getProductByName("dell"));
     }
 }
 

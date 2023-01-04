@@ -1,7 +1,7 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.bean.Order;
-import vn.edu.hcmuaf.fit.bean.OrderDetail;
+//import vn.edu.hcmuaf.fit.bean.OrderDetail;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.List;
@@ -23,15 +23,15 @@ public class OrderService {
         return orders;
     }
 
-    public List<OrderDetail> getAllOrderDetail() {
-        List<OrderDetail> orderDetails = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT * FROM order_detail AS ODD INNER JOIN product AS PD ON PD.productID = ODD.product_id")
-                        .mapToBean(OrderDetail.class)
-                        .stream()
-                        .collect(Collectors.toList())
-        );
-        return orderDetails;
-    }
+//    public List<OrderDetail> getAllOrderDetail() {
+//        List<OrderDetail> orderDetails = JDBIConnector.get().withHandle(handle ->
+//                handle.createQuery("SELECT * FROM order_detail AS ODD INNER JOIN product AS PD ON PD.productID = ODD.product_id")
+//                        .mapToBean(OrderDetail.class)
+//                        .stream()
+//                        .collect(Collectors.toList())
+//        );
+//        return orderDetails;
+//    }
 
     public void deleteOrder(String orderId) {
         JDBIConnector.get().withHandle(handle ->
@@ -49,6 +49,6 @@ public class OrderService {
     }
 
     public static void main(String[] args) {
-        System.out.println(getInstance().getAllOrderDetail());
+//        System.out.println(getInstance().getAllOrderDetail());
     }
 }

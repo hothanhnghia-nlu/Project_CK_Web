@@ -145,7 +145,7 @@
 											<div class="row">
 												<div class="col-md-12">
 													<h5>Nội dung về tính năng</h5>
-													<p><%=p.getDiscription()%></p>
+													<%=p.getDiscription()%>
 
 												</div>
 											</div>

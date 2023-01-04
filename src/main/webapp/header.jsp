@@ -22,8 +22,8 @@
                 <div class="col-md-6">
                     <div class="header-search">
                         <form>
-                            <input class="input" placeholder="Nhập tên sản phẩm cần tìm...">
-                            <button class="search-btn">Tìm kiếm</button>
+                            <input type="text" name="namespace" class="input" placeholder="Nhập tên sản phẩm cần tìm...">
+                            <button type="submit" class="search-btn">Tìm kiếm</button>
                         </form>
                     </div>
                 </div>

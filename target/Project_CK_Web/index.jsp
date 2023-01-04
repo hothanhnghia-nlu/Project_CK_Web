@@ -1,3 +1,7 @@
+<%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -115,152 +119,65 @@
 					<div class="row">
 						<div class="products-tabs">
 							<!-- tab -->
-							<div id="tab2" class="tab-pane fade in active">
+							<div id="tab3" class="tab-pane fade in active">
 								<div class="products-slick" data-nav="#slick-nav-2">
-									<!-- product -->
-									<div class="product">
-										<div class="product-img">
-											<img src="assets/img/product/van phong/Acer Aspire 5 A514-54.jpg" alt="">
-											<div class="product-label">
-												<span class="sale">-10%</span>
-												<span class="new">NEW</span>
-											</div>
-										</div>
-										<div class="product-body">
-											<p class="product-category">Văn phòng</p>
-											<h3 class="product-name"><a href="#">Acer Aspire 5 A514-54</a></h3>
-											<h4 class="product-price">14.990.000đ <del class="product-old-price">16.890.000đ</del></h4>
-											<div class="product-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-										</div>
-									</div>
-									<!-- /product -->
+									<%List<Product> listTop = (List<Product>) request.getAttribute("listTop");
+										for (Product p : listTop) {
+									%>
 
 									<!-- product -->
-									<div class="product">
-										<div class="product-img">
-											<img src="assets/img/product/van phong/Asus Zenbook 14 Q408UG.jpg" alt="">
-											<div class="product-label">
-												<span class="sale">-25%</span>
-											</div>
-										</div>
-										<div class="product-body">
-											<p class="product-category">Văn phòng</p>
-											<h3 class="product-name"><a href="#">Asus Zenbook 14 Q408UG</a></h3>
-											<h4 class="product-price">14.890.000đ <del class="product-old-price">19.890.000đ</del></h4>
-											<div class="product-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-										</div>
-									</div>
-									<!-- /product -->
+									<div class="col-md-4 col-xs-6">
+										<div class="product">
+											<div class="product-img">
+												<img src="<%=p.getImage()%>" alt="">
+												<div class="product-label">
+													<!-- <span class="sale">-30%</span> -->
+													<% boolean check = p.getDiscount()!=0 ? true :false;
+														if(check==true){%>
+													<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
+													<%}%>
+													<span class="new">NEW</span>
 
-									<!-- product -->
-									<div class="product">
-										<div class="product-img">
-											<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
-											<div class="product-label">
-												<span class="sale">-30%</span>
+												</div>
 											</div>
-										</div>
-										<div class="product-body">
-											<p class="product-category">Mac</p>
-											<h3 class="product-name"><a href="#">Macbook Air M1 2020 8-Core GPU</a></h3>
-											<h4 class="product-price">31.990.000đ <del class="product-old-price">34.990.000đ</del></h4>
-											<div class="product-rating">
-											</div>
-											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-										</div>
-									</div>
-									<!-- /product -->
+											<div class="product-body">
+												<p class="product-category"><%=p.getBrand()%>
+												</p>
+												<h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
+												</a></h3>
 
-									<!-- product -->
-									<div class="product">
-										<div class="product-img">
-											<img src="assets/img/product/mac_dohoa/Dell Precision 5530.jpg" alt=" ">
-										</div>
-										<div class="product-body">
-											<p class="product-category">Đồ Hoạ</p>
-											<h3 class="product-name"><a href="#">Dell Precision 5530</a></h3>
-											<h4 class="product-price">23.500.000đ</h4>
-											<div class="product-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-										</div>
-									</div>
-									<!-- /product -->
+												<% if(check==true){%>
+												<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
+												<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
+												<%} else {%>
+												<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
+												<br>
+												<%}%>
 
-									<!-- product -->
-									<div class="product">
-										<div class="product-img">
-											<img src="assets/img/product/gaming/Laptop MSI Gaming Alpha 15 B5EEK.jpg" alt="">
-										</div>
-										<div class="product-body">
-											<p class="product-category">Gaming</p>
-											<h3 class="product-name"><a href="#">Laptop MSI Gaming Alpha 15 B5EEK</a></h3>
-											<h4 class="product-price">32.490.000đ</h4>
-											<div class="product-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+															class="tooltipp">Yêu thích</span></button>
+													<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+															class="tooltipp">So sánh</span></button>
+													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span>
+													</button>
+												</div>
 											</div>
-											<div class="product-btns">
-												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
+											<div class="add-to-cart">
+												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
 											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
 										</div>
 									</div>
 									<!-- /product -->
+									<div class="clearfix visible-sm visible-xs"></div>
+									<%}%>
 								</div>
 							</div>
 							<!-- /tab -->
@@ -297,188 +214,63 @@
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/mac_dohoa/HP Zbook 17 G2.jpg" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Đồ hoạ</p>
-												<h3 class="product-name"><a href="#">HP Zbook 17 G2</a></h3>
-												<h4 class="product-price">11.000.000đ<del class="product-old-price">16.300.000đ</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm vào yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+										<%List<Product> listNew = (List<Product>) request.getAttribute("listNew");
+											for (Product p : listNew) {
+										%>
 
 										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/van phong/Asus Zenbook 14 Q409 ZA.jpg" alt="">
-												<div class="product-label">
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Văn Phòng</p>
-												<h3 class="product-name"><a href="#">Asus Zenbook 14 Q409 ZA</a></h3>
-												<h4 class="product-price">16.800.000đ<del class="product-old-price">23.990.000đ</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+										<div class="col-md-4 col-xs-6">
+											<div class="product">
+												<div class="product-img">
+													<img src="<%=p.getImage()%>" alt="">
+													<div class="product-label">
+														<!-- <span class="sale">-30%</span> -->
+														<% boolean check = p.getDiscount()!=0 ? true :false;
+															if(check==true){%>
+														<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
+														<%}%>
+														<span class="new">NEW</span>
 
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
-												<div class="product-label">
-													<span class="sale">-10%</span>
-													<span class="new">NEW</span>
+													</div>
 												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Mac</p>
-												<h3 class="product-name"><a href="#">Macbook Pro 16 inch M1 2021</a></h3>
-												<h4 class="product-price">58.000.000đ <del class="product-old-price">64.490.000đ</del></h4>
-												<div class="product-rating">
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+												<div class="product-body">
+													<p class="product-category"><%=p.getBrand()%>
+													</p>
+													<h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
+													</a></h3>
 
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/van phong/Samsung Galaxy Book Pro 360 13.jpg" alt="">
-												<div class="product-label">
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Văn Phòng</p>
-												<h3 class="product-name"><a href="#">Samsung Galaxy Book Pro 360 13</a></h3>
-												<h4 class="product-price">29.990.000đ</h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+													<% if(check==true){%>
+													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
+													<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
+													<%} else {%>
+													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
+													<br>
+													<%}%>
 
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/van phong/MSI Modern 15 A5M 238VN.jpg" alt="">
-												<div class="product-label">
-													<span class="new">NEW</span>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+																class="tooltipp">Yêu thích</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+																class="tooltipp">So sánh</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span>
+														</button>
+													</div>
 												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Văn Phòng</p>
-												<h3 class="product-name"><a href="#">MSI Modern 15 A5M 238VN</a></h3>
-												<h4 class="product-price">16.990.000đ <del class="product-old-price">19.990.000đ</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
 												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
 											</div>
 										</div>
 										<!-- /product -->
-
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/gaming/Laptop Asus ROG Strix Gaming G513R.jpg" alt="">
-												<div class="product-label">
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Gaming</p>
-												<h3 class="product-name"><a href="#">Laptop Asus ROG Strix Gaming G513R</a></h3>
-												<h4 class="product-price">29.190.000đ <del class="product-old-price">29.190.000đ</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+										<div class="clearfix visible-sm visible-xs"></div>
+										<%}%>
 									</div>
 								</div>
 								<!-- /tab -->
@@ -516,150 +308,62 @@
 								<!-- tab -->
 								<div id="tab2" class="tab-pane fade in active">
 									<div class="products-slick" data-nav="#slick-nav-2">
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/van phong/Asus Vivobook X515JA.jpg" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Văn Phòng</p>
-												<h3 class="product-name"><a href="#">Asus Vivobook X515JA</a></h3>
-												<h4 class="product-price">9.890.000đ <del class="product-old-price">12.890.000đ</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+										<%List<Product> listSeller = (List<Product>) request.getAttribute("listSeller");
+											for (Product p : listSeller) {
+										%>
 
 										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/van phong/Lenovo ThinkPad E14.jpg" alt="">
-												<div class="product-label">
-													<span class="new">Old</span>
-												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Văn Phòng</p>
-												<h3 class="product-name"><a href="#">Lenovo ThinkPad E14</a></h3>
-												<h4 class="product-price">12.900.000đ <del class="product-old-price">15.900.000đ</del></h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+										<div class="col-md-4 col-xs-6">
+											<div class="product">
+												<div class="product-img">
+													<img src="<%=p.getImage()%>" alt="">
+													<div class="product-label">
+														<!-- <span class="sale">-30%</span> -->
+														<% boolean check = p.getDiscount()!=0 ? true :false;
+															if(check==true){%>
+														<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
+														<%}%>
+														<span class="new">NEW</span>
 
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
-												<div class="product-label">
-													<span class="sale">-30%</span>
+													</div>
 												</div>
-											</div>
-											<div class="product-body">
-												<p class="product-category">Mac</p>
-												<h3 class="product-name"><a href="#">Macbook Air M1 2020 8-Core GPU</a></h3>
-												<h4 class="product-price">31.990.000đ <del class="product-old-price">34.990.000đ</del></h4>
-												<div class="product-rating">
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+												<div class="product-body">
+													<p class="product-category"><%=p.getBrand()%>
+													</p>
+													<h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
+													</a></h3>
 
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="assets/img/product/mac_dohoa/Dell Precision 5530.jpg" alt=" ">
-											</div>
-											<div class="product-body">
-												<p class="product-category">Đồ Hoạ</p>
-												<h3 class="product-name"><a href="#">Dell Precision 5530</a></h3>
-												<h4 class="product-price">23.500.000đ</h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
-												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-											</div>
-										</div>
-										<!-- /product -->
+													<% if(check==true){%>
+													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
+													<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
+													<%} else {%>
+													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
+													<br>
+													<%}%>
 
-										<!-- product -->
-										<div class="product">
-											<div class="product-img">
-												<img src="img/product/gaming/Laptop MSI Gaming Alpha 15 B5EEK.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<p class="product-category">Gaming</p>
-												<h3 class="product-name"><a href="#">Laptop MSI Gaming Alpha 15 B5EEK</a></h3>
-												<h4 class="product-price">32.490.000đ</h4>
-												<div class="product-rating">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
+													<div class="product-rating">
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+														<i class="fa fa-star"></i>
+													</div>
+													<div class="product-btns">
+														<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+																class="tooltipp">Yêu thích</span></button>
+														<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+																class="tooltipp">So sánh</span></button>
+														<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span>
+														</button>
+													</div>
 												</div>
-												<div class="product-btns">
-													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span></button>
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
 												</div>
-											</div>
-											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
 											</div>
 										</div>
 										<!-- /product -->
+										<%}%>
 									</div>
 								</div>
 								<!-- /tab -->

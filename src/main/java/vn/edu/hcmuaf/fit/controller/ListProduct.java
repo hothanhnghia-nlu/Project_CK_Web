@@ -15,6 +15,7 @@ import java.util.List;
 public class ListProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String id = request.getParameter("id");
         ProductService pro = new ProductService();
         CategoryService cat = new CategoryService();
@@ -30,8 +31,12 @@ public class ListProduct extends HttpServlet {
         request.setAttribute("listBrand", pro.getAllbrand());
         request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
-        request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
 
+        //chuyen huong trang tim kiem
+        String name = request.getParameter("namespace");
+        if(name!=null)
+        response.sendRedirect("/Project_CK_Web_war/Search?namespace="+name);
+        else request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
     }
 
     @Override
