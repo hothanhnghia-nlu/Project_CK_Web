@@ -12,7 +12,7 @@ import java.io.IOException;
 public class ProductDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String id = request.getParameter("pid");
+        String id = request.getParameter("pid");
         ProductService pro = new ProductService();
         Product product = pro.getProductByID(id);
         request.setAttribute("detail",product);

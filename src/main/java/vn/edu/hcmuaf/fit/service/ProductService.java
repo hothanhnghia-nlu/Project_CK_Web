@@ -30,11 +30,12 @@ public class ProductService {
         });
         return pro;
     }
-    public List<Product> getTop3NewProduct (){
+    public List<Product> getTopNewProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT * FROM product\n" +
                             "    order by productID DESC\n" +
-                            "    LIMIT 3;")
+                            "    LIMIT ?;")
+                    .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
@@ -48,10 +49,18 @@ public class ProductService {
         });
         return pro.get(0);
     }
+    public List<Product> getProductByCAT_ID (String id){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM product WHERE cat_id= ?")
+                    .bind(0, id)
+                    .mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+        return pro;
+    }
 
     public static void main(String[] args) {
         ProductService a = new ProductService();
-        System.out.println(a.getProductByID("001"));
+        System.out.println(a.getProductByCAT_ID("VP012"));
     }
 }
 

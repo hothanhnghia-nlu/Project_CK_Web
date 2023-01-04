@@ -15,13 +15,20 @@ import java.util.List;
 public class ListProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
         ProductService pro = new ProductService();
         CategoryService cat = new CategoryService();
-        List<Product> list = pro.listAllProduct();
+        List<Product> list ;
+        if(id==null){
+            list = pro.listAllProduct();
+        } else {
+
+            list = pro.getProductByCAT_ID(id);
+        }
 //        response.getWriter().println(list);
         request.setAttribute("list", list);
         request.setAttribute("listBrand", pro.getAllbrand());
-        request.setAttribute("listNew", pro.getTop3NewProduct());
+        request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
         request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
 
