@@ -84,9 +84,18 @@ public class ProductService {
         });
         return pro;
     }
+    //admin
+    public void deleteProduct(String Id) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("DELETE FROM product WHERE productID = ?")
+                        .bind(0, Id)
+                        .execute()
+        );
+    }
+
     public static void main(String[] args) {
         ProductService a = new ProductService();
-        System.out.println(a.getProductByName("dell"));
+        a.deleteProduct("001");
     }
 }
 
