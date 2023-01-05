@@ -47,6 +47,10 @@ ul, ol {
   transition: 0.2s all;
 }
 
+.order-submit {
+  margin-left: 180px;
+}
+
 .primary-btn:hover, .primary-btn:focus {
   opacity: 0.9;
   color: #FFF;
@@ -71,6 +75,12 @@ ul, ol {
 textarea.input {
   padding: 15px;
   min-height: 90px;
+}
+
+.error {
+  color: #ff0000;
+  width: 100%;
+  margin-top: 10px;
 }
 
 /*-- Number input --*/
@@ -1784,10 +1794,11 @@ img {
 
 .order-details {
   position: relative;
-  padding: 0px 30px 30px;
+  padding: 0px 30px;
   border-right: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
+  background: #FBFBFC;
 }
 
 .order-details:before {
@@ -1795,7 +1806,6 @@ img {
   position: absolute;
   left: -1px;
   right: -1px;
-  top: -15px;
   height: 30px;
   border-top: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
@@ -1834,6 +1844,11 @@ img {
 .order-summary .order-col .order-total {
   font-size: 24px;
   color: #ff0000;
+}
+
+.order-summary .bounder {
+  margin-top: 10px;
+  border-top: 1px solid #cccccc;
 }
 
 .order-details .payment-method {

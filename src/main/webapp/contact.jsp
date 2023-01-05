@@ -1,8 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String error = (String) request.getAttribute("error");
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,16 +71,7 @@
                         <div class="title">
                             <h3>LIÊN HỆ</h3>
                         </div>
-                        <form class="form" action="contact" method="post">
-                            <%
-                                if (error != null) {
-                            %>
-                            <div class="alert" role="alert" style="color: #ff0000; margin-bottom: -15px">
-                                <%= error %>
-                            </div>
-                            <%
-                                }
-                            %>
+                        <form id="frm" class="form" action="contact" method="post">
                             <div class="row">
                                 <div class="col-lg-6 col-12">
                                     <div class="form-group">
@@ -107,18 +94,18 @@
                                 <div class="col-lg-6 col-12">
                                     <div class="form-group">
                                         <label>Tên sản phẩm cần tư vấn<span>*</span></label>
-                                        <input name="text" type="text" placeholder="">
+                                        <input name="subject" type="text" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group message">
                                         <label>Nội dung<span>*</span></label>
-                                        <textarea name="message" placeholder=""></textarea>
+                                        <textarea name="content" placeholder=""></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group button">
-                                        <button type="submit" class="btn " value="Click me!" onclick="alert('Dữ liệu đã được lưu!');">GỬI TIN NHẮN</button>
+                                        <input type="submit" class="btn" value="GỬI TIN NHẮN" style="width: 150px">
                                     </div>
                                 </div>
                             </div>
@@ -131,21 +118,21 @@
                             <i class="fa fa-phone"></i>
                             <h4 class="title">Số điện thoại liên hệ:</h4>
                             <ul>
-                                <li>02812345678</li>
+                                <li><a href="#">02812345678</a></li>
                             </ul>
                         </div>
                         <div class="single-info">
                             <i class="fa fa-envelope-open"></i>
                             <h4 class="title">Email:</h4>
                             <ul>
-                                <li><a href="mailto:nlu@hcmuaf.edu.vn">nlu@hcmuaf.edu.vn</a></li>
+                                <li><a href="#">nlu@hcmuaf.edu.vn</a></li>
                             </ul>
                         </div>
                         <div class="single-info">
                             <i class="fa fa-location-arrow"></i>
                             <h4 class="title">Địa chỉ liên hệ:</h4>
                             <ul>
-                                <li>Kp.6, Phường Linh Trung, TP Thủ Đức, TP. Hồ Chí Minh</li>
+                                <li><a href="#">Kp.6, Phường Linh Trung, TP Thủ Đức, TP. Hồ Chí Minh</a></li>
                             </ul>
                         </div>
                     </div>
@@ -161,7 +148,8 @@
 <!-- /FOOTER -->
 
 <!-- jQuery Plugins -->
-<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/slick.min.js"></script>
 <script src="assets/js/nouislider.min.js"></script>
@@ -169,5 +157,6 @@
 <script src="assets/js/main.js"></script>
 <!-- Nice Select JS -->
 <script src="assets/js/nicesellect.js"></script>
+<script src="assets/js/validation.js"></script>
 </body>
 </html>
