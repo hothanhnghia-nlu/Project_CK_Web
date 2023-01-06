@@ -1,4 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +44,7 @@
 	<header>
 			<jsp:include page="header.jsp"/>
 				<!-- BREADCRUMB -->
+					<%Product p = (Product) request.getAttribute("detail");%>
 				<div id="breadcrumb" class="section">
 					<!-- container -->
 					<div class="container">
@@ -50,6 +54,7 @@
 								<ul class="breadcrumb-tree">
 									<li><a href="../../index.html">Trang chủ</a></li>
 									<li class="active"><a href="mac-category.html">Macbook</a></li>
+									<li class="active"><a href="#"><%=p.getName()%>></a></li>
 								</ul>
 							</div>
 						</div>
@@ -58,7 +63,7 @@
 					<!-- /container -->
 				</div>
 				<!-- /BREADCRUMB -->
-					<%Product p = (Product) request.getAttribute("detail");%>
+
 				<!-- SECTION -->
 				<div class="section">
 					<!-- container -->
@@ -100,8 +105,21 @@
 										<a class="review-link" href="#">10 đánh giá | Viết đánh giá của bạn</a>
 									</div>
 									<div>
-										<h3 class="product-price"><%=p.getPrice()%> <del class="product-old-price"><%=p.getDiscount()%>></del></h3>
+										<% boolean check = p.getDiscount()!=0 ? true :false;%>
+										<% if(check==true){%>
+										<h3 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h3>
+										<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
+										<%} else {%>
+										<h3 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h3>
+										<br>
+										<%}%>
+										<% check = p.getQuantity()==0 ? true :false;%>
+										<% if(check==true){%>
+										<span class="product-unavailable">Hết hàng</span>
+										<%}%>
+										<% if(check==false){%>
 										<span class="product-available">Còn hàng</span>
+										<%}%>
 									</div>
 									<div class="feature">
 										<h4></h4>
@@ -132,8 +150,8 @@
 								<div id="product-tab">
 									<!-- product tab nav -->
 									<ul class="tab-nav">
-										<li class="active"><a data-toggle="tab" href="#tab1">MÔ TẢ</a></li>
-<%--										<li><a data-toggle="tab" href="#tab2">THÔNG SỐ KỸ THUẬT</a></li>--%>
+<%--										<li class="active"><a data-toggle="tab" href="#tab1">MÔ TẢ</a></li>--%>
+										<li><a data-toggle="tab" href="#tab2">THÔNG SỐ KỸ THUẬT</a></li>
 										<li><a data-toggle="tab" href="#tab3">ĐÁNH GIÁ</a></li>
 									</ul>
 									<!-- /product tab nav -->
@@ -144,9 +162,8 @@
 										<div id="tab1" class="tab-pane fade in active">
 											<div class="row">
 												<div class="col-md-12">
-													<h5>Nội dung về tính năng</h5>
-													<%=p.getDiscription()%>
-
+													<h5>Thông Số Kỹ Thuật</h5>
+													<textarea class="resizable_textarea form-control" readonly style="height: 300px;"><%=p.getDiscription()%></textarea>
 												</div>
 											</div>
 										</div>
@@ -407,31 +424,54 @@
 									<h3 class="title">SẢN PHẨM LIÊN QUAN</h3>
 								</div>
 							</div>
+							<%
+								List<Product> list = (List<Product>) request.getAttribute("list");
+								for (Product a : list) {
+							%>
 
 							<!-- product -->
-							<div class="col-md-3 col-xs-6">
+							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
-										<img src="../../img/product/mac_dohoa/Macbook%20Air%20M1.jpg" alt="">
+										<img src="<%=a.getImage()%>" alt="">
 										<div class="product-label">
-											<span class="sales">-11%</span>
+											<!-- <span class="sale">-30%</span> -->
+											<% check = a.getDiscount()!=0 ? true :false;
+												if(check==true){%>
+											<span class="sale">-<%=(int)((1.0-(double)a.getDiscount()/(double)a.getPrice())*100)%>%</span>
+											<%}%>
+											<span class="new">NEW</span>
+
 										</div>
 									</div>
 									<div class="product-body">
-										<p class="product-category">Macbook</p>
-										<h3 class="product-name"><a href="#">MacBook Air M2 2022 10-core GPU</a></h3>
-										<h4 class="product-price">41.790.000đ <del class="product-old-price">46.990.000đ</del></h4>
+										<p class="product-category"><%=a.getBrand()%>
+										</p>
+										<h3 class="product-name"><a href="detail?pid=<%=a.getProductID()%>"><%=a.getName()%>
+										</a></h3>
+
+										<% if(check==true){%>
+										<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getDiscount())%></h4>
+										<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getPrice())%></del>
+										<%} else {%>
+										<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getPrice())%></h4>
+										<br>
+										<%}%>
+
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
 											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
+											<i class="fa fa-star"></i>
 										</div>
 										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">so sánh</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem nhanh</span></button>
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+													class="tooltipp">Yêu thích</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span
+													class="tooltipp">So sánh</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem nhanh</span>
+											</button>
 										</div>
 									</div>
 									<div class="add-to-cart">
@@ -440,102 +480,9 @@
 								</div>
 							</div>
 							<!-- /product -->
-
-							<!-- product -->
-							<div class="col-md-3 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="../../img/product/mac_dohoa/Macbook%20Air%20M1.jpg" alt="">
-										<div class="product-label">
-											<span class="sales">-10%</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Macbook</p>
-										<h3 class="product-name"><a href="#">MacBook Pro 14 inch M1 Pro 2021 14-Core GPU</a></h3>
-										<h4 class="product-price">46.990.000đ <del class="product-old-price">52.490.000đ</del></h4>
-										<div class="product-rating">
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">so sánh</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem nhanh</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
 							<div class="clearfix visible-sm visible-xs"></div>
+							<%}%>
 
-							<!-- product -->
-							<div class="col-md-3 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="../../img/product/mac_dohoa/Macbook%20Air%20M1.jpg" alt="">
-										<div class="product-label">
-											<span class="sales">-10%</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Macbook</p>
-										<h3 class="product-name"><a href="#">MacBook Air M1 2020 7-Core GPU</a></h3>
-										<h4 class="product-price">33.490.000đ <del class="product-old-price">30.090.000đ</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">so sánh</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem nhanh</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
-
-							<!-- product -->
-							<div class="col-md-3 col-xs-6">
-								<div class="product">
-									<div class="product-img">
-										<img src="../../img/product/mac_dohoa/Macbook%20Air%20M1.jpg" alt="">
-										<div class="product-label">
-											<span class="sales">-7%</span>
-										</div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Macbook</p>
-										<h3 class="product-name"><a href="#">MacBook Pro 13 inch M2 2022 10-Core GPU</a></h3>
-										<h4 class="product-price">38.790.000đ <del class="product-old-price">41.990.000đ</del></h4>
-										<div class="product-rating">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-o"></i>
-										</div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">yêu thích</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">so sánh</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">xem nhanh</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-									</div>
-								</div>
-							</div>
-							<!-- /product -->
 
 						</div>
 						<!-- /row -->

@@ -40,7 +40,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+        $(document).ready(function() {
 
+            $('#example').dataTable({}); // dòng này để nhúng bảng biểu thành dạng bảng được phân trang
+
+        } );
+    </script>
 </head>
 <body>
     <!-- HEADER -->
@@ -227,16 +233,16 @@
                     <!-- /store products -->
 
                     <!-- store bottom filter -->
-                    <!-- <div class="store-filter clearfix">
-                        <span class="store-qty">Showing 20-100 products</span>
-                        <ul class="store-pagination">
-                            <li class="active">1</li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </div> -->
+<%--                     <div class="store-filter clearfix">--%>
+<%--                        <span class="store-qty">Showing 20-100 products</span>--%>
+<%--                        <ul class="store-pagination">--%>
+<%--                            <li class="active">1</li>--%>
+<%--                            <li><a href="#">2</a></li>--%>
+<%--                            <li><a href="#">3</a></li>--%>
+<%--                            <li><a href="#">4</a></li>--%>
+<%--                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
                     <!-- /store bottom filter -->
                 </div>
                 <!-- /STORE -->
