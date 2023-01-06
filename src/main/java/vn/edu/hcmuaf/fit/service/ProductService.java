@@ -93,9 +93,40 @@ public class ProductService {
         );
     }
 
+    public void setProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE product SET cat_id=?  ,`name` = ? , brand = ?, image= ?, discription=?, quantity=?,price=?,discount=?  WHERE productID = ?")
+                        .bind(8, productID)
+                        .bind(0, cat_id)
+                        .bind(1, name)
+                        .bind(2, brand)
+                        .bind(3, image)
+                        .bind(4, discription)
+                        .bind(5, quantity)
+                        .bind(6, price)
+                        .bind(7, discount)
+                        .execute()
+        );
+    }
+    public void addProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("INSERT INTO product values (?,?,?,?,?,?,?,?,?)")
+                        .bind(0, productID)
+                        .bind(1, cat_id)
+                        .bind(2, name)
+                        .bind(3, brand)
+                        .bind(4, image)
+                        .bind(5, discription)
+                        .bind(6, quantity)
+                        .bind(7, price)
+                        .bind(8, discount)
+                        .execute()
+
+        );
+    }
     public static void main(String[] args) {
         ProductService a = new ProductService();
-        a.deleteProduct("001");
+        a.setProduct("088","VP012","Dell Inspiron 16 5625","Dell","./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg","CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread",100,22890000, 19890000);
     }
 }
 

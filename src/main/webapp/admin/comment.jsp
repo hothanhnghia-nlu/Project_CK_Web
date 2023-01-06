@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -54,16 +55,16 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <div class="row element-button">
-                                    <div class="pl-3">
-                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"
-                                           style="border: 2px solid #bdc3c7"><i
-                                                class="fas fa-print"></i> In dữ liệu</a>
-                                    </div>
-                                    <div class="pl-3">
-                                        <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"
-                                           onclick="myApp.deleteTable()" style="border: 2px solid #bdc3c7"><i
-                                                class="fas fa-eraser"></i> Xóa tất cả</a>
-                                    </div>
+<%--                                    <div class="pl-3">--%>
+<%--                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"--%>
+<%--                                           style="border: 2px solid #bdc3c7"><i--%>
+<%--                                                class="fas fa-print"></i> In dữ liệu</a>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="pl-3">--%>
+<%--                                        <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"--%>
+<%--                                           onclick="myApp.deleteTable()" style="border: 2px solid #bdc3c7"><i--%>
+<%--                                                class="fas fa-eraser"></i> Xóa tất cả</a>--%>
+<%--                                    </div>--%>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -76,155 +77,31 @@
                                                 <tr>
                                                     <th>STT</th>
                                                     <th>Tên khách hàng</th>
-                                                    <th>Ngày tạo</th>
+                                                    <th>SĐT</th>
+                                                    <th>Email</th>
+                                                    <th>Tên sản phẩm</th>
                                                     <th>Nội dung</th>
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Nguyễn Tiến Minh</td>
-                                                    <td>16/10/2022</td>
-                                                    <td>Tuyệt vời</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Lê Văn Hải</td>
-                                                    <td>18/10/2022</td>
-                                                    <td>Dùng ok trong tầm giá</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Trần Đình Long</td>
-                                                    <td>19/10/2022</td>
-                                                    <td>Máy đẹp, phù hợp cho các tác vụ nặng</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                <c:forEach items="${commentList}" var="x" varStatus="STT">
 
                                                 <tr>
-                                                    <td>4</td>
-                                                    <td>Nguyễn Đoàn Kết</td>
-                                                    <td>25/10/2022</td>
-                                                    <td>Sản phẩm tốt</td>
+                                                    <td>${STT.index+1}</td>
+                                                    <td>${x.full_name}</td>
+                                                    <td>${x.phone_number}</td>
+                                                    <td>${x.email}</td>
+                                                    <td>${x.subject_name}</td>
+                                                    <td>${x.content}</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
+                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="comment?id=${x.feedbackID}"><i
+                                                                    class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
-
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Hoàng Dũng</td>
-                                                    <td>31/10/2022</td>
-                                                    <td>Dùng ok</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>Trần Sơn Tùng</td>
-                                                    <td>08/11/2022</td>
-                                                    <td>Dòng máy yêu thích của tôi</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>Trương Thúy Vân</td>
-                                                    <td>09/11/2022</td>
-                                                    <td>Đẹp quá</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>8</td>
-                                                    <td>Trịnh Thúy Kiều</td>
-                                                    <td>09/11/2022</td>
-                                                    <td>Chất lượng của Apple quá tuyệt</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>9</td>
-                                                    <td>Trương Phi</td>
-                                                    <td>08/11/2022</td>
-                                                    <td>Sản phẩm tốt</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>Lê Na</td>
-                                                    <td>11/11/2022</td>
-                                                    <td>Tuyệt vời</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <button class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                            <button class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                </c:forEach>
 
                                                 </tbody>
                                             </table>

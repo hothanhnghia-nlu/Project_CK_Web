@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="pl-3">
                                         <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"
-                                           onclick="myApp.deleteTable()" style="border: 2px solid #bdc3c7"><i
+                                            style="border: 2px solid #bdc3c7" href="new_product"><i
                                                 class="fas fa-plus"></i> Tạo mới sản phẩm</a>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                                         <div class="btn-group ml-auto">
                                                             <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-list?id=<%=p.getProductID()%>">
                                                                 <i class="fas fa-trash-alt"></i></a>
-                                                            <a class="btn btn-primary btn-sm edit" type="button" title="Xem"><i
+                                                            <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
                                                                     class="fas fa-edit"></i></a>
                                                         </div>
                                                     </td>
