@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="cart" value="${sessionScope.cart}"/>
 <header>
     <!-- MAIN HEADER -->
     <div id="header">
@@ -60,11 +60,16 @@
                         <!-- /Account -->
 
                         <!-- Cart -->
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button"  aria-expanded="true">
-                                <i class="fa fa-shopping-cart"></i>
+                        <div  class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button"  aria-expanded="true">
+                                <i  class="fa fa-shopping-cart"></i>
                                 <span>Giỏ hàng</span>
-                                <div class="qty">3</div>
+                                <c:if test="${cart.quantity != null}">
+                                <div class="qty">${cart.quantity}</div>
+                                </c:if>
+                                <c:if test="${cart.quantity == null}">
+                                    <div class="qty">0</div>
+                                </c:if>
                             </a>
                             <div class="cart-dropdown dropdown-menu">
                                 <div class="cart-summary dropdown-item">

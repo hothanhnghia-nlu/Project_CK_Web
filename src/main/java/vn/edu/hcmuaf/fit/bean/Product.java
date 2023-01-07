@@ -32,6 +32,9 @@ public class Product implements Serializable {
     public String getProductID() {
         return productID;
     }
+    public String getKey() {
+        return productID;
+    }
 
     public void setProductID(String productID) {
         this.productID = productID;
@@ -114,4 +117,6 @@ public class Product implements Serializable {
                 ", discount=" + discount +
                 '}';
     }
+
+
 }

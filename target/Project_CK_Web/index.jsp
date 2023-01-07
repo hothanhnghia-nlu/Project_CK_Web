@@ -171,7 +171,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+												<a href="cart/add?pid=<%=p.getProductID()%>" class="add-to-cart-btn">Thêm vào giỏ hàng</a>
 											</div>
 										</div>
 									</div>
@@ -264,7 +264,7 @@
 													</div>
 												</div>
 												<div class="add-to-cart">
-													<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+													<a href="cart/add?pid=<%=p.getProductID()%>" class="add-to-cart-btn">Thêm vào giỏ hàng</a>
 												</div>
 											</div>
 										</div>
@@ -358,7 +358,7 @@
 													</div>
 												</div>
 												<div class="add-to-cart">
-													<button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+													<a href="cart/add?pid=<%=p.getProductID()%>" class="add-to-cart-btn">Thêm vào giỏ hàng</a>
 												</div>
 											</div>
 										</div>
