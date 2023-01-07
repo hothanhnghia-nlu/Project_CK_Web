@@ -124,9 +124,19 @@ public class ProductService {
 
         );
     }
+    public Product get(String id) {
+        return JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM  product WHERE productID = ?")
+                    .bind(0,id)
+                    .mapToBean(Product.class).findFirst().orElse(null);
+        });
+    }
     public static void main(String[] args) {
         ProductService a = new ProductService();
-        a.setProduct("088","VP012","Dell Inspiron 16 5625","Dell","./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg","CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread",100,22890000, 19890000);
+//        a.setProduct("088","VP012","Dell Inspiron 16 5625","Dell","./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg","CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread",100,22890000, 19890000);
+        System.out.println(a.get("001"));
     }
+
+
 }
 
