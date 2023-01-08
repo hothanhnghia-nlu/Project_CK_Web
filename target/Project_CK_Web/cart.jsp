@@ -147,12 +147,10 @@
                                         <!--/ End Input Order -->
                                     </td>
                                     <c:if test="${p.discount == 0}">
-                                        <td class="total-amount" data-title="Total"><span><fmt:formatNumber
-                                                value="${p.price*p.quantity}" type="currency"/></span></td>
+                                        <td class="total-amount" data-title="Total"><span><fmt:formatNumber value="${p.price*p.quantity}" type="currency"/></span></td>
                                     </c:if>
                                     <c:if test="${p.discount != 0}">
-                                        <td class="total-amount" data-title="Total"><span><fmt:formatNumber
-                                                value="${p.discount*p.quantity}" type="currency"/></span></td>
+                                        <td class="total-amount" data-title="Total"><span><fmt:formatNumber value="${p.discount*p.quantity}" type="currency"/></span></td>
                                     </c:if>
 
                                     <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
@@ -208,7 +206,7 @@
                                             </c:if>
                                         </ul>
                                         <div class="button5">
-                                            <a href="checkout.html" class="btn">Thanh toán</a>
+                                            <a href="checkout" class="btn">Thanh toán</a>
                                             <a href="home.html" class="btn">Tiếp tục mua sắm</a>
                                         </div>
                                     </div>

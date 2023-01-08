@@ -28,8 +28,8 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-user"></i> Hồ sơ</a></li>
-                    <li><a href="table_account.jsp"><i class="fa fa-user-edit"></i> Quản lý tài khoản</a></li>
-                    <li><a href="tables_user.jsp"><i class="fa fa-users"></i> Quản lý khách hàng</a></li>
+                    <li><a href="table_account"><i class="fa fa-user-edit"></i> Quản lý tài khoản</a></li>
+                    <li><a href="table_user"><i class="fa fa-users"></i> Quản lý khách hàng</a></li>
                     <li><a href="product-list"><i class="fa fa-table"></i> Quản lý sản phẩm</a></li>
                     <li><a href="comment"><i class="fa fa-sticky-note"></i> Quản lý đánh giá</a></li>
                     <li><a href="order-list"><i class="fa fa-cart-shopping"></i> Quản lý đơn hàng</a></li>
