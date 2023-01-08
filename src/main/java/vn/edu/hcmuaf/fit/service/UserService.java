@@ -12,6 +12,8 @@ public class UserService {
         return new UserService();
     }
 
+
+
     // Check login is right
     public User checkLogin(String username, String password) {
         List<User> accounts = JDBIConnector.get().withHandle(h ->
@@ -112,8 +114,34 @@ public class UserService {
         }
         return false;
     }
-
-    public static void main(String[] args) {
-        System.out.println(getInstances().getAll());
+    public  List<User> listALlUser(){
+        List<User> lu = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM user")
+                    .mapToBean(User.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return lu;
     }
+    //admin
+    public void deleteUser(String Id){
+        JDBIConnector.get().withHandle(handle -> {
+            return handle.createUpdate("DELETE FROM user WHERE id = ?")
+                    .bind(0,Id)
+                    .execute();
+
+        });
+    }
+    public void updateID (int id, int role){
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE user SET role=?   WHERE id = ?")
+                        .bind(1, id)
+                        .bind(0, role)
+                        .execute()
+        );
+    }
+    public static void main(String[] args) {
+        System.out.println(getInstances().listALlUser());
+    }
+
+
 }
