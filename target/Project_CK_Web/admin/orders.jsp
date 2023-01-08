@@ -112,7 +112,7 @@
                                 <div class="btn-group ml-auto">
                                   <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list" title="Xóa" id="${x.orderId}"><i
                                           class="fas fa-trash-alt"></i></a>
-                                  <a class="btn btn-primary btn-sm edit" type="button" href="order-list" title="Xem"><i
+                                  <a class="btn btn-primary btn-sm edit" type="button" href="order-detail?id=${x.orderId}" title="Xem"><i
                                           class="fas fa-eye"></i></a>
                                 </div>
                               </td>
