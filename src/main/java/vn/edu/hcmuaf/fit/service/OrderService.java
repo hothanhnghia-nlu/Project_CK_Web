@@ -22,6 +22,15 @@ public class OrderService {
         );
         return orders;
     }
+    public int getNewID() {
+        List<Order> orders = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM orders order by orderID DESC Limit 1")
+                        .mapToBean(Order.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return Integer.parseInt(orders.get(0).getOrderId());
+    }
 
 //    public List<OrderDetail> getAllOrderDetail() {
 //        List<OrderDetail> orderDetails = JDBIConnector.get().withHandle(handle ->
@@ -48,19 +57,33 @@ public class OrderService {
         );
     }
 
-    public void addOrder(String fullName, String phone, String email, String address, String note) {
+    public void addOrder(String id,String fullName, String phone, String email, String address, String note) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO orders (full_name, phone_number, email, address, note, order_date) VALUES (?, ?, ?, ?, ?, NOW())")
-                        .bind(0, fullName)
-                        .bind(1, phone)
-                        .bind(2, email)
-                        .bind(3, address)
-                        .bind(4, note)
+                handle.createUpdate("INSERT INTO orders  VALUES (?,?, ?, ?, ?, ?, NOW(),?)")
+                        .bind(0, id)
+                        .bind(1, fullName)
+                        .bind(2, phone)
+                        .bind(3, email)
+                        .bind(4, address)
+                        .bind(5, note)
+                        .bind(6, note)
+                        .execute()
+        );
+    }
+    public void addOrderDetails(String id,String productID, int quantity, int price) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("INSERT INTO order_detail  VALUES (?,?, ?, ?, ?)")
+                        .bind(0, id)
+                        .bind(1, productID)
+                        .bind(2, quantity)
+                        .bind(3, price)
+                        .bind(4, quantity*price)
+
                         .execute()
         );
     }
 
     public static void main(String[] args) {
-//        System.out.println(getInstance().getAllOrderDetail());
+        getInstance().addOrderDetails("1","007",600,2);
     }
 }
