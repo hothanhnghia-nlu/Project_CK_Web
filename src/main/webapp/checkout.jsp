@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -73,21 +74,42 @@
 							<div class="section-title">
 								<h3 class="title">THÔNG TIN GIAO HÀNG</h3>
 							</div>
-							<div class="form-group">
-								<label>Họ và tên<span><strong class="compulsory"> *</strong></span></label>
-								<input class="input" type="text" name="name" placeholder="Họ và tên">
-							</div>
-							<div class="form-group">
-								<label>Email<span><strong class="compulsory"> *</strong></span></label>
-								<input class="input" type="email" name="email" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<label>Số điện thoại<span><strong class="compulsory"> *</strong></span></label>
-								<input class="input" type="tel" name="phone" placeholder="Số điện thoại">
-							</div>
+							<c:if test="${sessionScope.auth == null}">
+								<div class="section-title">
+									<p style="margin-top: -15px">Bạn đã có tài khoản? <a href="login.jsp">Đăng nhập</a></p>
+								</div>
+								<div class="form-group">
+									<label>Họ và tên<span><strong class="compulsory"> *</strong></span></label>
+									<input class="input" type="text" name="name" placeholder="Họ và tên">
+								</div>
+								<div class="form-group">
+									<label>Email<span><strong class="compulsory"> *</strong></span></label>
+									<input class="input" type="email" name="email" placeholder="Email">
+								</div>
+								<div class="form-group">
+									<label>Số điện thoại<span><strong class="compulsory"> *</strong></span></label>
+									<input class="input" type="tel" name="phone" placeholder="Số điện thoại">
+								</div>
+							</c:if>
+
+							<c:if test="${sessionScope.auth != null}">
+								<div class="form-group">
+									<label>Họ và tên<span><strong class="compulsory"> *</strong></span></label>
+									<input class="input" type="text" name="name" value="${sessionScope.auth.fullName}">
+								</div>
+								<div class="form-group">
+									<label>Email<span><strong class="compulsory"> *</strong></span></label>
+									<input class="input" type="email" name="email" value="${sessionScope.auth.email}">
+								</div>
+								<div class="form-group">
+									<label>Số điện thoại<span><strong class="compulsory"> *</strong></span></label>
+									<input class="input" type="tel" name="phone" value="${sessionScope.auth.phoneNumber}">
+								</div>
+							</c:if>
+
 							<div class="form-group">
 								<label>Địa chỉ<span><strong class="compulsory"> *</strong></span></label>
-								<input class="input" type="text" name="address" placeholder="Địa chỉ">
+								<input class="input" type="text" name="address" placeholder="Số nhà, phường/xã, quận/huyện, tỉnh/thành phố">
 							</div>
 							<!-- Order notes -->
 							<div class="form-group">
@@ -131,7 +153,7 @@
 						<!-- /Billing Details -->
 
 						<!-- Order Details -->
-						<div class="col-md-5 order-details" style="background: #fafafa; top: 15px">
+						<div class="col-md-5 order-details" style="background: #fafafa">
 							<div class="section-title text-center">
 								<h3 class="title">ĐƠN HÀNG CỦA BẠN</h3>
 							</div>
@@ -141,7 +163,7 @@
 									<div><strong>ĐƠN GIÁ</strong></div>
 								</div>
 								<div class="order-products">
-									<c:forEach items="${data}" var="d">
+									<c:forEach items="${list}" var="d">
 										<div class="order-col">
 											<div>${d.name}</div>
 											<div>${d.price}đ</div>

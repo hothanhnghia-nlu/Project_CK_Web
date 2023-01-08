@@ -42,7 +42,7 @@
         <div class="">
           <div class="page-title">
             <div class="title_left" style="width: 50%;">
-              <h3>Danh sách đơn hàng / Chi tiết sản phẩm</h3>
+              <h3>Chi tiết sản phẩm</h3>
             </div>
 
             <div class="title_right">

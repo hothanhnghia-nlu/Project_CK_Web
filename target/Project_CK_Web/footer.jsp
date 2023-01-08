@@ -59,10 +59,10 @@
 						<div class="footer">
 							<h3 class="footer-title">CHUYÊN CUNG CẤP</h3>
 							<ul class="footer-links">
-								<li><a href="gaming-category.jsp">Laptop Gaming</a></li>
-								<li><a href="graphic-category.jsp">Laptop Đồ Họa</a></li>
-								<li><a href="office-category.jsp">Laptop Văn Phòng</a></li>
-								<li><a href="mac-category.jsp">Macbook</a></li>
+								<li><a href="list-product?id=GM010">Laptop Gaming</a></li>
+								<li><a href="list-product?id=DH011">Laptop Đồ Họa</a></li>
+								<li><a href="list-product?id=VP012">Laptop Văn Phòng</a></li>
+								<li><a href="list-product?id=MB013">Macbook</a></li>
 							</ul>
 						</div>
 					</div>

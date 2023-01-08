@@ -53,9 +53,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<ul class="breadcrumb-tree">
-									<li><a href="../../index.html">Trang chủ</a></li>
-									<li class="active"><a href="mac-category.html">Macbook</a></li>
-									<li class="active"><a href="#"><%=p.getName()%>></a></li>
+									<li><a href="home">Trang chủ</a></li>
+									<li class="active"><a href="#"><%=p.getName()%></a></li>
 								</ul>
 							</div>
 						</div>
@@ -140,7 +139,7 @@
 												<span class="qty-down">-</span>
 											</div>
 										</div>
-										<button class="add-to-cart-btn">Mua ngay</button>
+										<a href="cart/add?pid=<%=p.getProductID()%>" class="primary-btn">Mua ngay</a>
 									</div>
 								</div>
 							</div>
@@ -169,61 +168,6 @@
 											</div>
 										</div>
 										<!-- /tab1  -->
-
-<%--										<!-- tab2  -->--%>
-<%--										<div id="tab2" class="tab-pane fade in">.--%>
-<%--											<div class="row">--%>
-<%--												<div class="col-md-12">--%>
-<%--													<table class="table_model">--%>
-<%--														<tr>--%>
-<%--															<td>CPU</td>--%>
-<%--															<td>Apple M2</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>RAM</td>--%>
-<%--															<td>8GB</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Ổ cứng</td>--%>
-<%--															<td>SSD 256GB</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Card đồ họa</td>--%>
-<%--															<td>Card tích hợp - 10 nhân GPU</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Màn hình</td>--%>
-<%--															<td>13.3 inch Retina (2560 x 1600), Wide color, IPS, 500 nits brightness</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Camera</td>--%>
-<%--															<td>720p FaceTime Camera</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Cổng kết nối</td>--%>
-<%--															<td>2 x Thunderbolt 3, Jack tai nghe 3.5 mm</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Trọng lượng</td>--%>
-<%--															<td>1.4kg</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Pin</td>--%>
-<%--															<td>khoảng 10 tiếng</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Hệ điều hành</td>--%>
-<%--															<td>Mac OS</td>--%>
-<%--														</tr>--%>
-<%--														<tr>--%>
-<%--															<td>Kích thước</td>--%>
-<%--															<td>30.41(L) x 21.24(W) x 1.56(H) cm</td>--%>
-<%--														</tr>--%>
-<%--													</table>--%>
-<%--												</div>--%>
-<%--											</div>--%>
-<%--										</div>--%>
-<%--										<!-- /tab2  -->--%>
 
 										<!-- tab3  -->
 										<div id="tab3" class="tab-pane fade in">
@@ -318,22 +262,6 @@
 														<ul class="reviews">
 															<li>
 																<div class="review-heading">
-																	<h5 class="name">Minh</h5>
-																	<p class="date">9 giờ trước</p>
-																	<div class="review-rating">
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																	</div>
-																</div>
-																<div class="review-body">
-																	<p>Tuyệt vời</p>
-																</div>
-															</li>
-															<li>
-																<div class="review-heading">
 																	<h5 class="name">Hải</h5>
 																	<p class="date">3 ngày trước</p>
 																	<div class="review-rating">
@@ -379,7 +307,7 @@
 												<!-- Review Form -->
 												<div class="col-md-3">
 													<div id="review-form">
-														<form class="review-form" action="contact" method="post">
+														<form id="frm" class="review-form" action="contact" method="post">
 															<c:if test="${sessionScope.auth == null}">
 																<input class="input" type="text" name="name" placeholder="Nhập họ tên của bạn">
 																<input class="input" type="email" name="email" placeholder="Nhập email của bạn">

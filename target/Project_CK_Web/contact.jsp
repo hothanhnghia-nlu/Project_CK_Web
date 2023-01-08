@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,24 +74,48 @@
                         </div>
                         <form id="frm" class="form" action="contact" method="post">
                             <div class="row">
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group">
-                                        <label>Họ và tên<span>*</span></label>
-                                        <input name="name" type="text" placeholder="">
+                                <c:if test="${sessionScope.auth == null}">
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Họ và tên<span>*</span></label>
+                                            <input name="name" type="text" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group">
-                                        <label>Điện thoại<span>*</span></label>
-                                        <input name="phone" type="text" placeholder="">
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Điện thoại<span>*</span></label>
+                                            <input name="phone" type="text" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group">
-                                        <label>Email<span>*</span></label>
-                                        <input name="email" type="email" placeholder="">
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Email<span>*</span></label>
+                                            <input name="email" type="email" placeholder="">
+                                        </div>
                                     </div>
-                                </div>
+                                </c:if>
+
+                                <c:if test="${sessionScope.auth != null}">
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Họ và tên<span>*</span></label>
+                                            <input name="name" type="text" value="${sessionScope.auth.fullName}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Điện thoại<span>*</span></label>
+                                            <input name="phone" type="text" value="${sessionScope.auth.phoneNumber}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <div class="form-group">
+                                            <label>Email<span>*</span></label>
+                                            <input name="email" type="email" value="${sessionScope.auth.email}">
+                                        </div>
+                                    </div>
+                                </c:if>
+
                                 <div class="col-lg-6 col-12">
                                     <div class="form-group">
                                         <label>Tên sản phẩm cần tư vấn<span>*</span></label>
@@ -146,6 +171,12 @@
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"/>
 <!-- /FOOTER -->
+
+<!--BACKTOP-->
+<div id="backtop">
+    <i class="fa fa-arrow-up"></i>
+</div>
+<!--/BACKTOP-->
 
 <!-- jQuery Plugins -->
 <script src="assets/js/jquery-3.6.1.min.js"></script>

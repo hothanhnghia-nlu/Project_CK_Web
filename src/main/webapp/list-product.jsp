@@ -77,7 +77,7 @@
                                 </label>
                             </div>
                             <%}%>
-                            <input type="submit" value="Submit" href="/Category/cateID=dasda">
+                            <input type="submit" value="Tìm kiếm" href="/Category/cateID=dasda">
                         </div>
                     </div>
                     <!-- /aside Widget -->
@@ -169,13 +169,13 @@
                     <!-- /store top filter -->
 
                     <!-- store products -->
-                    <div class="row">
+                    <div id="pagination" class="row">
                        <%List<Product> list = (List<Product>) request.getAttribute("list");
                             for (Product p : list) {
                         %>
 
                         <!-- product -->
-                        <div class="col-md-4 col-xs-6">
+                        <div class="col-md-4 col-xs-6 contentPage">
                             <div class="product">
                                 <div class="product-img">
                                     <img src="<%=p.getImage()%>" alt="">
@@ -264,12 +264,14 @@
     <!--/BACKTOP-->
 
     <!-- jQuery Plugins -->
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-3.6.1.min.js" ></script>
+    <script src="http://1892.yn.lt/blogger/JQuery/Pagging/js/jquery.twbsPagination.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/slick.min.js"></script>
     <script src="assets/js/nouislider.min.js"></script>
     <script src="assets/js/jquery.zoom.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/backtop.js"></script>
+    <script src="assets/js/pagination.js"></script>
 </body>
 </html>

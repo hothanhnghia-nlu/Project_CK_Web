@@ -111,7 +111,7 @@
                 <li class="active"><a href="home">Trang chủ</a></li>
                 <li><a href="list-product?id=GM010">Latop Gaming <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="#">Msi</a></li>
+                        <li><a href="#">MSI</a></li>
                         <li><a href="#">Dell</a></li>
                         <li><a href="#">Lenovo</a></li>
                         <li><a href="#">HP</a></li>
@@ -128,7 +128,7 @@
                 </li>
                 <li><a href="list-product?id=VP012">Laptop Văn Phòng <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="#">Msi</a></li>
+                        <li><a href="#">MSI</a></li>
                         <li><a href="#">Dell</a></li>
                         <li><a href="#">Lenovo</a></li>
                         <li><a href="#">HP</a></li>
