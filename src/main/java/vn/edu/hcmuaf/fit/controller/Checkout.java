@@ -15,16 +15,6 @@ import java.util.List;
 public class Checkout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setCharacterEncoding("UTF-8");
-//        String name = request.getParameter("name");
-//        String email = request.getParameter("email");
-//        String phone = request.getParameter("phone");
-//        String address = request.getParameter("address");
-//        String note = request.getParameter("note");
-//
-//        OrderService.getInstance().addOrder(name, email, phone, address, note);
-//        response.sendRedirect("success.jsp");
-
         request.getRequestDispatcher("checkout.jsp").forward(request,response);
     }
 

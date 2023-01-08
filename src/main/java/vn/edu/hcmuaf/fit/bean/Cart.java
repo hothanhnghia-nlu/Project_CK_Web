@@ -40,6 +40,7 @@ public class Cart implements Serializable {
     public int getQuantity() {
         return quantity;
     }
+
     public Collection<Product> getListProduct(){
         return listProduct.values();
     }

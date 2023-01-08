@@ -124,7 +124,7 @@
                                         <!-- Input Order -->
                                         <div class="input-group" style="margin-right:-76px">
                                             <div class="button minus" >
-                                                <button type="button" class="btn btn-primary btn-number qty-down"
+                                                <button class="btn btn-primary btn-number qty-down"
                                                         <c:if test="${p.quantity ==1}">
                                                         disabled="disabled"
                                                         </c:if>
@@ -133,10 +133,10 @@
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </div>
-                                            <input type="number" name="quant[1]" class="input-number" data-min="1"
+                                            <input type="text" name="quant[1]" class="input-number" data-min="1"
                                                    data-max="100" value="${p.quantity}" style="outline: none">
                                             <div class="button plus">
-                                                <button type="button" class="btn btn-primary btn-number qty-up"
+                                                <button class="btn btn-primary btn-number qty-up"
                                                         data-type="plus"
                                                         data-field="quant[1]"  style="outline: none">
                                                     <i class="fa fa-plus"></i>

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-Built-By: Bui Quoc Long
-Build-Jdk: 15
+Built-By: ASUS
+Build-Jdk: Oracle OpenJDK version 15
 

@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.bean.Order;
-//import vn.edu.hcmuaf.fit.bean.OrderDetail;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.List;
@@ -55,7 +54,7 @@ public class OrderService {
 
     public void addOrder(String id,String fullName, String phone, String email, String address, String note) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO orders  VALUES (?,?, ?, ?, ?, ?, NOW())")
+                handle.createUpdate("INSERT INTO orders (orderID, full_name, phone_number, email, address, note, order_date)  VALUES (?,?, ?, ?, ?, ?, NOW())")
                         .bind(0, id)
                         .bind(1, fullName)
                         .bind(2, phone)
@@ -65,20 +64,15 @@ public class OrderService {
                         .execute()
         );
     }
-    public void addOrderDetails(String id,String productID, int quantity, int price) {
+    public void addOrderDetails(String id,String productID, int quantity, double price) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO order_detail  VALUES (?,?, ?, ?, ?)")
+                handle.createUpdate("INSERT INTO order_detail (order_id, product_id, quantity, price, total)  VALUES (?,?, ?, ?, ?)")
                         .bind(0, id)
                         .bind(1, productID)
                         .bind(2, quantity)
                         .bind(3, price)
-                        .bind(4, quantity*price)
-
+                        .bind(4, quantity * price)
                         .execute()
         );
-    }
-
-    public static void main(String[] args) {
-        getInstance().addOrderDetails("1","007",600,2);
     }
 }
