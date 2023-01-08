@@ -44,9 +44,10 @@ public class Checkout extends HttpServlet {
         OrderService.getInstance().addOrder(id,name,phone,email,address,note);
         for (Product p: list){
             int discount = p.getDiscount()==0?p.getPrice():p.getDiscount();
-            OrderService.getInstance().addOrderDetails(id,p.getProductID(),p.getQuantity(),discount);
+            OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),discount);
         }
 
-        response.sendRedirect("/Project_CK_Web_war/success.jsp");
+//        response.sendRedirect("/Project_CK_Web_war/success.jsp");
+        response.sendRedirect("/Project_CK_Web/success.jsp");
     }
 }

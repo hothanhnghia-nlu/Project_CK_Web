@@ -68,7 +68,7 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="home.html">Trang Chủ</a></li>
+                    <li><a href="home">Trang Chủ</a></li>
                     <li class="active">Giỏ Hàng</li>
                 </ul>
             </div>
@@ -81,9 +81,8 @@
 
 <!-- SECTION -->
 <c:if test="${check}">
-    <div class="success_order text-center">
-        <h2>Chưa có sản phẩm trong giỏ hàng</h2>
-        <a href="home" class="primary-btn">Tiếp tục mua sắm</a>
+    <div>
+        <a href="blank.jsp"></a>
     </div>
 </c:if>
 <c:if test="${!check}">
@@ -208,8 +207,8 @@
                                             </c:if>
                                         </ul>
                                         <div class="button5">
-                                            <a href="checkout.html" class="btn">Thanh toán</a>
-                                            <a href="home.html" class="btn">Tiếp tục mua sắm</a>
+                                            <a href="checkout.jsp" class="btn">Thanh toán</a>
+                                            <a href="home" class="btn">Tiếp tục mua sắm</a>
                                         </div>
                                     </div>
                                 </div>
