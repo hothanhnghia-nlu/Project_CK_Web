@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
     private String contactId;
-    private Customer customer;
+    private User customer;
     private String subject;
     private String content;
 
     public Contact() {
     }
 
-    public Contact(String contactId, Customer customer, String subject, String content) {
+    public Contact(String contactId, User customer, String subject, String content) {
         this.contactId = contactId;
         this.customer = customer;
         this.subject = subject;
@@ -27,11 +27,11 @@ public class Contact implements Serializable {
         this.contactId = contactId;
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 

@@ -1,7 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.bean.Account;
-import vn.edu.hcmuaf.fit.service.AccountService;
+import vn.edu.hcmuaf.fit.bean.User;
+import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,14 +14,14 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Account account = AccountService.getInstances().checkLogin(username, password);
+        User user = UserService.getInstances().checkLogin(username, password);
 
-        if (account == null) {
+        if (user == null) {
             request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession(true);
-            session.setAttribute("auth", account);
+            session.setAttribute("auth", user);
             response.sendRedirect("home");
         }
     }

@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.service.OrderService;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -12,9 +14,11 @@ public class Checkout extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String tel = request.getParameter("tel");
+        String phone = request.getParameter("phone");
         String address = request.getParameter("address");
+        String note = request.getParameter("note");
 
+        OrderService.getInstance().addOrder(name, email, phone, address, note);
         response.sendRedirect("success.jsp");
     }
 

@@ -20,7 +20,7 @@
 
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
-                    <div class="header-search">
+                    <div class="header-search" style="margin-right: 20px">
                         <form>
                             <input type="text" name="namespace" class="input" placeholder="Nhập tên sản phẩm cần tìm...">
                             <button type="submit" class="search-btn">Tìm kiếm</button>
@@ -42,12 +42,10 @@
                             </c:if>
 
                             <c:if test="${sessionScope.auth != null}">
-                                <a href="javascript:;" class="dropdown">
-                                    <i class="fa fa-user"></i>
-                                    <span>Xin chào ${sessionScope.auth.username}</span>
+                                <a href="javascript:;" class="dropdown" style="margin-right: 20px">
+                                    <i class="fa fa-user" style="margin-left: -30px"></i>
+                                    <span style="margin-left: -30px">${sessionScope.auth.fullName}</span>
                                 </a>
-
-<%--                                <li><a href="logout"><strong>Đăng xuất</strong></a></li>--%>
                             </c:if>
 
                             <c:if test="${sessionScope.auth.role >= 1}">
@@ -56,41 +54,40 @@
                                     <span>Admin</span>
                                 </a>
                             </c:if>
+
+                            <c:if test="${sessionScope.auth.role < 1}">
+                                <a href="logout">
+                                    <i class="fa fa-sign-out"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </c:if>
                         </div>
                         <!-- /Account -->
 
                         <!-- Cart -->
-                        <div  class="dropdown">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button"  aria-expanded="true">
-                                <i  class="fa fa-shopping-cart"></i>
-                                <span>Giỏ hàng</span>
-                                <c:if test="${cart.quantity != null}">
-                                <div class="qty">${cart.quantity}</div>
-                                </c:if>
-                                <c:if test="${cart.quantity == null}">
+                        <div>
+                            <c:if test="${cart.quantity == null}">
+                                <a href="blank.jsp">
+                                    <i  class="fa fa-shopping-cart"></i>
+                                    <span>Giỏ hàng</span>
                                     <div class="qty">0</div>
-                                </c:if>
-                            </a>
-                            <div class="cart-dropdown dropdown-menu">
-                                <div class="cart-summary dropdown-item">
-                                    <small>3 Sản phẩm được chọn</small>
-                                    <h5>TỔNG CỘNG: 59.670.000đ</h5>
-                                </div>
-                                <div class="cart-btn dropdown-item">
-                                    <a href="cart.jsp">Xem giỏ hàng</a>
-                                </div>
-                            </div>
+                                </a>
+                            </c:if>
+
+                            <c:if test="${cart.quantity != null}">
+                                <a href="cart.jsp">
+                                    <i  class="fa fa-shopping-cart"></i>
+                                    <span>Giỏ hàng</span>
+                                    <c:if test="${cart.quantity != null}">
+                                        <div class="qty">${cart.quantity}</div>
+                                    </c:if>
+                                    <c:if test="${cart.quantity == null}">
+                                        <div class="qty">0</div>
+                                    </c:if>
+                                </a>
+                            </c:if>
                         </div>
                         <!-- /Cart -->
-
-                        <!-- Menu Toogle -->
-                        <div class="menu-toggle">
-                            <a href="#">
-                                <i class="fa fa-bars"></i>
-                                <span>Menu</span>
-                            </a>
-                        </div>
-                        <!-- /Menu Toogle -->
                     </div>
                 </div>
                 <!-- /ACCOUNT -->

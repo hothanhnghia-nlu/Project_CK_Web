@@ -16,7 +16,7 @@
             </div>
             <div class="profile_info">
                 <span>Xin chào,</span>
-                <h2>${sessionScope.auth.username}</h2>
+                <h2>${sessionScope.auth.fullName}</h2>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -51,7 +51,7 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                        data-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/img/avatar.png" alt="">${sessionScope.auth.username}
+                        <img src="../assets/img/avatar.png" alt="">${sessionScope.auth.fullName}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/home"><i class="fa fa-home"></i> Trang mua hàng</a>

@@ -1,6 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.service.AccountService;
+import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,10 +19,10 @@ public class Signup extends HttpServlet {
             request.setAttribute("error", "Mật khẩu xác nhận không đúng");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
-            boolean accountExist = AccountService.getInstances().checkAccountExist(username);
-            boolean emailExist = AccountService.getInstances().checkEmailExist(email);
+            boolean accountExist = UserService.getInstances().checkAccountExist(username);
+            boolean emailExist = UserService.getInstances().checkEmailExist(email);
             if (!accountExist || !emailExist) {
-                AccountService.getInstances().register(username, password, email);
+                UserService.getInstances().register(username, password, email);
                 response.sendRedirect("success-signup.jsp");
             } else {
                 request.setAttribute("error", "Tài khoản đã tồn tại");

@@ -36,7 +36,7 @@ public class ListProduct extends HttpServlet {
         String name = request.getParameter("namespace");
         if(name!=null)
         response.sendRedirect("/Project_CK_Web_war/Search?namespace="+name);
-        else request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
+        else request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 
     @Override

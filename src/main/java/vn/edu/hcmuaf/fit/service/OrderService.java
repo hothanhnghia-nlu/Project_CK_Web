@@ -15,7 +15,7 @@ public class OrderService {
 
     public List<Order> getAllOrder() {
         List<Order> orders = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT * FROM orders AS OD INNER JOIN customer AS CUS ON CUS.id = OD.customer_id")
+                handle.createQuery("SELECT * FROM orders")
                         .mapToBean(Order.class)
                         .stream()
                         .collect(Collectors.toList())
@@ -33,7 +33,7 @@ public class OrderService {
 //        return orderDetails;
 //    }
 
-    public void deleteOrder(String orderId) {
+    public void deleteOrder(int orderId) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("DELETE FROM orders WHERE orderID = ?")
                         .bind(0, orderId)
@@ -44,6 +44,18 @@ public class OrderService {
     public void deleteAll() {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("DELETE FROM orders")
+                        .execute()
+        );
+    }
+
+    public void addOrder(String fullName, String phone, String email, String address, String note) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("INSERT INTO orders (full_name, phone_number, email, address, note, order_date) VALUES (?, ?, ?, ?, ?, NOW())")
+                        .bind(0, fullName)
+                        .bind(1, phone)
+                        .bind(2, email)
+                        .bind(3, address)
+                        .bind(4, note)
                         .execute()
         );
     }

@@ -1,8 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.bean.Account;
 import vn.edu.hcmuaf.fit.bean.Product;
-import vn.edu.hcmuaf.fit.service.AccountService;
 import vn.edu.hcmuaf.fit.service.CategoryService;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
@@ -27,7 +25,7 @@ public class Search extends HttpServlet {
         request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
 
-        request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
+        request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 
     @Override

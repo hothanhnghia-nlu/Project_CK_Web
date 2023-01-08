@@ -72,7 +72,6 @@
                         <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                           <thead>
                           <tr>
-                            <th>STT</th>
                             <th>Mã đơn hàng</th>
                             <th>Tên khách hàng</th>
                             <th>SĐT</th>
@@ -86,7 +85,6 @@
                           <tbody>
                           <c:forEach items="${orderList}" var="x" varStatus="STT">
                             <tr>
-                              <td>${STT.index+1}</td>
                               <td>${x.orderId}</td>
                               <td>${x.fullName}</td>
                               <td>${x.phoneNumber}</td>
@@ -94,6 +92,9 @@
                               <td>${x.note}</td>
                               <td>${x.orderDate}</td>
                               <td style="color: #FFF; font-size: 17px">
+                                  <c:if test="${x.status == 'Đang xử lý'}">
+                                      <span class="badge bg-warning">${x.status}</span>
+                                  </c:if>
                                   <c:if test="${x.status == 'Chờ thanh toán'}">
                                       <span class="badge bg-info">${x.status}</span>
                                   </c:if>

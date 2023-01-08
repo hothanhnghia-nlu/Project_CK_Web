@@ -1,6 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.service.AccountService;
+import vn.edu.hcmuaf.fit.service.UserService;
 import vn.edu.hcmuaf.fit.service.MailService;
 
 import javax.servlet.*;
@@ -15,8 +15,8 @@ public class ResetPass extends HttpServlet {
         String email = request.getParameter("email");
         String subject = "Password Recovery";
         String content = "Hi, we provide your username and password again:\n"
-                + AccountService.getInstances().getUsernameAndPassword(email);
-        boolean emailExist = AccountService.getInstances().checkEmailExist(email);
+                + UserService.getInstances().getUsernameAndPassword(email);
+        boolean emailExist = UserService.getInstances().checkEmailExist(email);
 
         if (!emailExist) {
             request.setAttribute("error", "Email không tồn tại! Vui lòng nhập lại email!");

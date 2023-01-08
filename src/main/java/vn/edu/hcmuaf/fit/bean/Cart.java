@@ -7,18 +7,18 @@ import java.util.HashMap;
 
 public class Cart implements Serializable {
     HashMap<String, Product> listProduct;
-    Customer customer;
+    User customer;
     long totalMoney;
     int quantity;
 
     public Cart() {
         listProduct = new HashMap<>();
-        customer = new Customer();
+        customer = new User();
         totalMoney = 0;
         quantity = 0;
     }
 
-    public Cart( Customer customer, long totalMoney, int quantity) {
+    public Cart(User customer, long totalMoney, int quantity) {
         this.listProduct = new HashMap<>();
         this.customer = customer;
         this.totalMoney = totalMoney;
@@ -44,11 +44,11 @@ public class Cart implements Serializable {
         return listProduct.values();
     }
 
-    public Customer getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
     public void put(Product product){

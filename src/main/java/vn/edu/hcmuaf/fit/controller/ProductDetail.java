@@ -17,7 +17,7 @@ public class ProductDetail extends HttpServlet {
         Product product = pro.getProductByID(id);
         request.setAttribute("list",ProductService.getInstance().getTopSeller(3));
         request.setAttribute("detail",product);
-        request.getRequestDispatcher("detail.jsp").forward(request, response);
+        request.getRequestDispatcher("product-detail.jsp").forward(request, response);
     }
 
     @Override

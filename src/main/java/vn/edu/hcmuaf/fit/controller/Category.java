@@ -17,7 +17,7 @@ public class Category extends HttpServlet {
 //        request.setAttribute("listBrand", pro.getAllbrand());
 //        request.setAttribute("listNew", pro.getTop3NewProduct());
 //        request.setAttribute("listCate", cat.listAllCategory());
-//        request.getRequestDispatcher("ListProduct.jsp").forward(request,response);
+//        request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 
     @Override
