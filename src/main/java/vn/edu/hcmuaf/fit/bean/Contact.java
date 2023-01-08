@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String contactId;
+    private String feedbackID ;
     private User customer;
     private String subject;
     private String content;
@@ -12,19 +12,19 @@ public class Contact implements Serializable {
     public Contact() {
     }
 
-    public Contact(String contactId, User customer, String subject, String content) {
-        this.contactId = contactId;
+    public Contact(String feedbackID, User customer, String subject, String content) {
+        this.feedbackID = feedbackID;
         this.customer = customer;
         this.subject = subject;
         this.content = content;
     }
 
-    public String getContactId() {
-        return contactId;
+    public String getFeedbackID() {
+        return feedbackID;
     }
 
-    public void setContactId(String contactId) {
-        this.contactId = contactId;
+    public void setFeedbackID(String feedbackID) {
+        this.feedbackID = feedbackID;
     }
 
     public User getCustomer() {
@@ -54,7 +54,7 @@ public class Contact implements Serializable {
     @Override
     public String toString() {
         return "Contact{" +
-                "contactId='" + contactId + '\'' +
+                "contactId='" + feedbackID + '\'' +
                 ", customer=" + customer +
                 ", subject='" + subject + '\'' +
                 ", content='" + content + '\'' +
