@@ -33,9 +33,10 @@ public class Checkout extends HttpServlet {
         String id = ""+(OrderService.getInstance().getNewID()+1);
         OrderService.getInstance().addOrder(id,name,phone,email,address,note);
         for (Product p: list){
-            int discount = p.getDiscount()==0?p.getPrice():p.getDiscount();
+            double discount = p.getDiscount()==0?p.getPrice():p.getDiscount();
             OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),discount);
         }
+        session.removeAttribute("cart");
 
 //        response.sendRedirect("/Project_CK_Web_war/success.jsp");
         response.sendRedirect("/Project_CK_Web/success.jsp");

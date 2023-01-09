@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.bean.Order;
+import vn.edu.hcmuaf.fit.service.OrderDetailService;
 import vn.edu.hcmuaf.fit.service.OrderService;
 
 import javax.servlet.*;
@@ -14,13 +15,14 @@ public class AdOrders extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-//        OrderService.getInstance().deleteOrder(id);
-//        OrderService.getInstance().deleteAll();
 
+        if (id != null) {
+            OrderService.getInstance().deleteOrder(Integer.parseInt(id));
+            OrderDetailService.getInstance().deleteOrderDetail(Integer.parseInt(id));
+        }
         List<Order> orderList = OrderService.getInstance().getAllOrder();
         request.setAttribute("orderList", orderList);
         request.getRequestDispatcher("orders.jsp").forward(request,response);
-
     }
 
     @Override

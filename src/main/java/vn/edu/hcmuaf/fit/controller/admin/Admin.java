@@ -18,7 +18,7 @@ public class Admin extends HttpServlet {
             response.sendRedirect("login.jsp");
         } else {
 //            response.getWriter().println("Xin chào Admin");
-            response.sendRedirect("admin/order-list");
+            response.sendRedirect("admin/table_account");
         }
     }
 

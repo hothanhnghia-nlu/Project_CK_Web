@@ -81,10 +81,27 @@
 
 <!-- SECTION -->
 <c:if test="${check}">
-    <div>
-        <a href="blank.jsp"></a>
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="load_image text-center">
+                        <img src="assets/img/bag.png" alt="">
+                    </div>
+                    <div class="back_home text-center">
+                        <h4>Không có sản phẩm nào trong giỏ hàng</h4>
+                        <a href="home" class="primary-btn">VỀ TRANG CHỦ</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
     </div>
 </c:if>
+
 <c:if test="${!check}">
     <div class="section">
         <div class="shopping-cart section">

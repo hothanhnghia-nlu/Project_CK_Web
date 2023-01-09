@@ -77,7 +77,6 @@
                               <th>Số lượng</th>
                               <th>Đơn giá</th>
                               <th>Thành tiền</th>
-                              <th>Tính năng</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -88,12 +87,6 @@
                                 <td>${x.quantity}</td>
                                 <td>${x.price}đ</td>
                                 <td>${x.price * x.quantity}đ</td>
-                                <td>
-                                  <div class="btn-group ml-auto">
-                                    <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa"><i
-                                          class="fas fa-trash-alt"></i></a>
-                                  </div>
-                                </td>
                               </tr>
                             </c:forEach>
                           </tbody>

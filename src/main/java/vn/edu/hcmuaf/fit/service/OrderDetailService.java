@@ -32,6 +32,15 @@ public class OrderDetailService {
         );
         return orders;
     }
+
+    public void deleteOrderDetail(int orderId) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("DELETE FROM order_detail WHERE order_id = ?")
+                        .bind(0, orderId)
+                        .execute()
+        );
+    }
+
     public static void main(String[] args) {
         System.out.println(getInstance().getAllOrderDetail());
     }

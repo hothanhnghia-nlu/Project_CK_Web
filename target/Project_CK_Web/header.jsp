@@ -137,6 +137,10 @@
                     </ul>
                 </li>
                 <li><a href="list-product?id=MB013">Macbook <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Macbook Air</a></li>
+                        <li><a href="#">Macbook Pro</a></li>
+                    </ul>
                 </li>
 
                 <li><a href="contact.jsp">Liên hệ</a></li>

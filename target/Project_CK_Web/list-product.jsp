@@ -77,7 +77,6 @@
                                 </label>
                             </div>
                             <%}%>
-                            <input type="submit" value="Tìm kiếm" href="/Category/cateID=dasda">
                         </div>
                     </div>
                     <!-- /aside Widget -->
