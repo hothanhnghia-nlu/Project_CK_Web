@@ -92,7 +92,7 @@
                     </div>
                     <div class="back_home text-center">
                         <h4>Không có sản phẩm nào trong giỏ hàng</h4>
-                        <a href="home" class="primary-btn">VỀ TRANG CHỦ</a>
+                        <a href="home" class="primary-btn" style="font-weight: normal">TIẾP TỤC MUA SẮM</a>
                     </div>
                 </div>
             </div>
@@ -142,20 +142,17 @@
                                         <div class="input-group" style="margin-right:-76px">
                                             <div class="button minus" >
                                                 <button class="btn btn-primary btn-number qty-down"
-                                                        <c:if test="${p.quantity ==1}">
-                                                        disabled="disabled"
-                                                        </c:if>
                                                         data-type="minus"
-                                                        data-field="quant[1]" style="outline: none">
+                                                         style="outline: none" onclick="handleMinus()">
                                                     <i class="fa fa-minus"></i>
                                                 </button>
                                             </div>
-                                            <input type="text" name="quant[1]" class="input-number" data-min="1"
+                                            <input type="text" id="amount" name="quant[1]" class="input-number" data-min="1"
                                                    data-max="100" value="${p.quantity}" style="outline: none">
                                             <div class="button plus">
                                                 <button class="btn btn-primary btn-number qty-up"
                                                         data-type="plus"
-                                                        data-field="quant[1]"  style="outline: none">
+                                                          style="outline: none" onclick="handlePlus()">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                             </div>
@@ -254,5 +251,6 @@
 <script src="../../js/main.js"></script>
 <!-- Nice Select JS -->
 <script src="../../js/nicesellect.js"></script>
+<script src="assets/js/minPlus.js"></script>
 </body>
 </html>

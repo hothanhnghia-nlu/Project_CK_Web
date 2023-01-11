@@ -61,9 +61,9 @@ CREATE TABLE `order_detail`  (
   `order_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `product_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `quantity` int NULL DEFAULT 0,
-  `price` decimal(10, 2) NULL DEFAULT NULL,
-  `total` decimal(10, 2) NULL DEFAULT NULL,
-  PRIMARY KEY (`order_id`) USING BTREE,
+  `price` decimal(10, 1) NULL DEFAULT NULL,
+  `total` decimal(65, 1) NULL DEFAULT NULL,
+  PRIMARY KEY (`order_id`, `product_id`) USING BTREE,
   INDEX `FK_PD`(`product_id` ASC) USING BTREE,
   CONSTRAINT `FK_PD` FOREIGN KEY (`product_id`) REFERENCES `product` (`productID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -84,7 +84,7 @@ CREATE TABLE `orders`  (
   `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `order_date` datetime NULL DEFAULT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'Đang xử lý',
   PRIMARY KEY (`orderID`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
@@ -104,8 +104,8 @@ CREATE TABLE `product`  (
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `discription` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `quantity` int NULL DEFAULT 0,
-  `price` decimal(10, 2) NULL DEFAULT NULL,
-  `discount` decimal(10, 2) NULL DEFAULT NULL,
+  `price` decimal(10, 1) NULL DEFAULT NULL,
+  `discount` decimal(10, 1) NULL DEFAULT NULL,
   PRIMARY KEY (`productID`) USING BTREE,
   INDEX `FK_CAT`(`cat_id` ASC) USING BTREE,
   CONSTRAINT `FK_CAT` FOREIGN KEY (`cat_id`) REFERENCES `category` (`categoryID`) ON DELETE RESTRICT ON UPDATE RESTRICT

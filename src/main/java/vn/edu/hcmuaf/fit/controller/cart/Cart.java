@@ -17,18 +17,6 @@ public class Cart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         vn.edu.hcmuaf.fit.bean.Cart cart = (vn.edu.hcmuaf.fit.bean.Cart) request.getSession().getAttribute("cart");
-//        if (cart == null){
-//            response.getWriter().println("Cart is empty");
-//
-//        }else{
-//            Collection<Product> list = cart.getListProduct();
-//            for (Product p : list) {
-//                request.setAttribute("product",p);
-//            }
-//            response.getWriter().println("Total: " + cart.getTotalMoney());
-//        }
-
-        HttpSession session = request.getSession();
         Collection<Product> list = cart.getListProduct();
         double total = cart.getTotalMoney();
         boolean checkList = list.isEmpty();

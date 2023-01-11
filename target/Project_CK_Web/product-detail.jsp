@@ -134,9 +134,9 @@
 										<div class="qty-label">
 											Số lượng:
 											<div class="input-number">
-												<input type="number" value="1">
-												<span class="qty-up">+</span>
-												<span class="qty-down">-</span>
+												<input type="number" id="amount" name="amount" value="1">
+												<span class="qty-up" onclick="handlePlus()">+</span>
+												<span class="qty-down" onclick="handleMinus()">-</span>
 											</div>
 										</div>
 										<a href="cart/add?pid=<%=p.getProductID()%>" class="primary-btn">Mua ngay</a>
@@ -446,5 +446,6 @@
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/backtop.js"></script>
 	<script src="assets/js/validation.js"></script>
-	</body>
+	<script src="assets/js/minPlus.js"></script>
+</body>
 </html>

@@ -74,7 +74,7 @@
                 </div>
                 <div class="back_home text-center">
                     <h4>Không có sản phẩm nào trong giỏ hàng</h4>
-                    <a href="home" class="primary-btn">VỀ TRANG CHỦ</a>
+                    <a href="home" class="primary-btn" style="font-weight: normal">TIẾP TỤC MUA SẮM</a>
                 </div>
             </div>
         </div>

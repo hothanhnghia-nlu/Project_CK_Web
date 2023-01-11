@@ -179,7 +179,7 @@
 						<div class="order-products">
 							<c:forEach items="${list}" var="p">
 								<div class="order-col">
-									<div>${p.name}</div>
+									<div>${p.quantity}x ${p.name}</div>
 									<c:if test="${p.discount == 0}">
 										<div><fmt:formatNumber value="${p.price}" type="currency"/></div>
 									</c:if>
