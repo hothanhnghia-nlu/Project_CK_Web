@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String error = (String) request.getAttribute("error");
@@ -15,6 +15,7 @@
 
     <!-- Google font -->
     <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/laptop-icon.png" />
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -31,7 +32,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-    		<link rel="stylesheet" href="assets/css/styleloginsigup.css">
+    		<link rel="stylesheet" href="assets/css/style-login-signup.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -48,64 +49,75 @@
 <!-- /HEADER -->
 
 <!-- SECTION -->
-<div class="forms " id="formss">
-    <!-- Registration Form -->
-    <div class="form signup">
-        <span class="title">Đăng ký</span>
+<div class="page-contain login-page">
 
-        <form action="signup" method="post">
-            <%
-                if (error != null) {
-            %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-            <%
-                }
-            %>
-            <div class="input-field">
-                <input id="username" value="<%= request.getParameter("user")!=null ? request.getParameter("user") : ""%>" type="text" name="user" placeholder="Tên đăng nhập" required>
-                <i class="fa fa-user" id="iusername"></i>
-            </div>
-            <div class="input-field">
-                <input id="email" type="text" name="email" placeholder="Email" required>
-                <i class="fa fa-envelope icon" id="iemail"></i>
-            </div>
-            <div class="input-field">
-                <input id="matkhau" type="password" name="pass" class="password" placeholder="Mật khẩu" required>
-                <i class="fa fa-lock icon" id="imatkhau"></i>
-                <div id="show-pass">
-                    <i class="fa fa-eye-slash showHidePw"></i>
+    <!-- Main content -->
+    <div id="main-content" class="main-content" style="padding-bottom: 30px">
+        <div class="container">
+
+            <div class="row">
+
+                <!--Form Sign In-->
+                <div class="col-md-7 col-lg-6 col-md-offset-3">
+                    <div style="text-align: center; margin-top: 40px">
+                        <h3 style="font-weight: 400; color: black">ĐĂNG KÝ TÀI KHOẢN</h3>
+                        <p>Bạn đã có tài khoản? <a href="login.jsp" style="color: #2b80dd">Đăng nhập ngay</a></p>
+                    </div>
+                    <div class="signin-container">
+                        <form action="signup" name="frm-login" method="post">
+                            <%
+                            if (error != null) {
+                            %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= error %>
+                            </div>
+                            <%
+                            }
+                            %>
+                            <p class="form-row">
+                                <label for="fid-name"><strong>Họ và tên </strong><span class="requite">*</span></label>
+                                <input type="text" id="fid-name" name="name" value="" placeholder="Họ và tên" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <label for="fid-username"><strong>Tên đăng nhập </strong><span class="requite">*</span></label>
+                                <input type="text" id="fid-username" name="username" value="<%= request.getParameter("username")!=null ? request.getParameter("username") : ""%>" placeholder="Tên đăng nhập" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <label for="fid-email"><strong>Email </strong><span class="requite">*</span></label>
+                                <input type="email" id="fid-email" name="email" value="" placeholder="Email" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <label for="fid-tel"><strong>Số điện thoại </strong><span class="requite">*</span></label>
+                                <input type="text" id="fid-tel" name="phone" value="" placeholder="Số điện thoại" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <label for="fid-pass"><strong>Mật khẩu </strong><span class="requite">*</span></label>
+                                <input type="password" id="fid-pass" name="password" value="" placeholder="Mật khẩu" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <label for="fid-repass"><strong>Xác nhận mật khẩu </strong><span class="requite">*</span></label>
+                                <input type="password" id="fid-repass" name="repass" value="" placeholder="Nhập lại mật khẩu" class="txt-input" required>
+                            </p>
+                            <p class="form-row wrap-btn">
+                                <input class="btn btn-submit btn-bold" type="submit" value="Đăng ký">
+                            </p>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="input-field">
-                <input id="rmatkhau" type="password" name="repass" class="password" placeholder="Nhập lại mật khẩu" required>
-                <i class="fa fa-lock icon" id="irmatkhau"></i>
-                <div id="show-pass1">
-                    <i class="fa fa-eye-slash showHidePw"></i>
-                </div>
+
             </div>
 
-            <div class="input-field button">
-                <input id="dangky" type="submit" value="Đăng ký">
-            </div>
-        </form>
+        </div>
 
-        <div class="login-signup">
-                    <span class="text">Đã có tài khoản?
-                        <a href="login.jsp" class="text login-link">Đăng nhập ngay</a>
-                    </span>
-        </div>
-        <div align="center">
-            <p id="ketqua"> </p>
-        </div>
     </div>
+
 </div>
 <!-- /SECTION -->
 
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"/>
 <!-- /FOOTER -->
+
 
 <!-- jQuery Plugins -->
 <script src="assets/js/jquery.min.js"></script>

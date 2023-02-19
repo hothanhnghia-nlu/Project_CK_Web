@@ -2736,6 +2736,64 @@ nav li .dropdown.sub-dropdown li:last-child a {
     background: #2b80dd;
 }
 
+.page-404{
+    background-image: url("../img/404-bg.jpg");
+    background-position: center center;
+}
+.content-404{
+    max-width: 570px;
+    padding: 100px 0 130px;
+    display: block;
+    text-align: center;
+}
+.content-404 .heading{
+    font-size:90px;
+    font-weight:700;
+    margin-bottom:13px;
+    color:#e73918
+}
+.content-404 .title{
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:20px;
+    color: #222222;
+}
+.content-404 p{
+    color:#666;
+    margin-bottom:45px;
+    font-size:16px
+}
+.content-404 .button{
+    background: #2b80dd;
+    display: inline-block;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 25px;
+    border: none;
+    -webkit-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+    border-radius: 30px;
+}
+.content-404 .button:before {
+    font-family: "FontAwesome";
+    content: "\f104";
+    display: inline-block;
+    width: 0;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    opacity: 0;
+    text-align: left;
+}
+.content-404 .button:hover:before {
+    width: 16px;
+    opacity: 1;
+}
 
 #backtop {
     height: 50px;

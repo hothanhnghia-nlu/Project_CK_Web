@@ -17,6 +17,7 @@
 
 	<!-- Google font -->
 	<link rel="stylesheet" href="assets/fonts/css/all.css">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/laptop-icon.png" />
 
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -132,25 +133,45 @@
 					</div>
 					<!-- /Order notes -->
 					<div class="payments">
-						<div><strong>HÌNH THỨC THANH TOÁN</strong></div><br>
+						<label><strong>PHƯƠNG THỨC THANH TOÁN</strong></label><br>
 						<div class="row">
 							<div class="col-xs-12 select">
-								<input name="collapseGroup" id="cod" type="radio" data-target="#collapseOne" value="COD">
-								<label for="cod" style="font-weight: normal">Thanh toán khi nhận hàng (COD)</label><br>
-								<input name="collapseGroup" id="card" type="radio" data-toggle="collapse" data-target="#collapseOne" value="CARD">
-								<label for="card" style="font-weight: normal">Thanh toán qua thẻ tín dụng (Card)</label>
-								<div class="panel-group" id="accordion">
-									<div class="panel panel-default">
-										<div id="collapseOne" class="panel-collapse collapse">
-											<ul class="footer-payments text-center">
-												<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-												<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-												<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-												<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-											</ul>
+								<form class="bs-example" action="">
+									<div class="panel-group" id="accordion">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+													<label for='r11' style='width: 350px;'>
+														<input type='radio' id='r11' name='occupation' value='cod'> Thanh toán khi giao hàng (COD)
+														<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"></a>
+													</label>
+												</h4>
+											</div>
+											<div id="collapseOne" class="panel-collapse collapse">
+												<div class="panel-body">
+													<p style="text-align: center; color: #333333">COD - giao hàng & thu tiền tận nơi thông qua đơn vị vận chuyển, Minh Thư Group miễn phí vận chuyển cho các đơn hàng tại Biên Hòa</p>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<h4 class=panel-title>
+													<label for='r12' style='width: 350px;'>
+														<input type='radio' id='r12' name='occupation' value='card'> Chuyển khoản qua ngân hàng
+														<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"></a>
+													</label>
+												</h4>
+											</div>
+											<div id="collapseTwo" class="panel-collapse collapse">
+												<div class="panel-body">
+													<p style="text-align: center; color: #333333">Tài Khoản Ngân Hàng:<br/>
+
+													</p>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>

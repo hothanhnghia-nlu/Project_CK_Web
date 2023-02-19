@@ -1,0 +1,132 @@
+.signin-container{
+    margin-top: 50px;
+}
+.signin-container .form-row{
+    margin-bottom: 13px;
+}
+.signin-container .form-row label{
+    display: block;
+    font-size: 14px;
+    color: #333333;
+    margin: 0 0 3px;
+}
+.signin-container .form-row .requite{
+    color: #ff0000;
+}
+.signin-container .form-row input{
+    padding: 10px 10px 9px;
+    color: #444444;
+    width: 100%;
+    border: 1px solid #cccccc;
+}
+.signin-container .form-row .txt-input{
+    border-radius: 4px !important;
+}
+.signin-container .form-row .btn-submit{
+    min-width: 132px;
+    margin-top: 7px;
+    color: #ffffff;
+}
+.signin-container .form-row .link-to-help{
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.signin-container .form-row.wrap-btn{
+    text-align: center;
+}
+.signin-container .form-row .link-to-help{
+    float: none;
+    /*margin: 24px 0 0;*/
+}
+.signin-container .form-row .btn-submit{
+    width: 100%;
+    margin-top: 20px;
+    background: #2b80dd;
+}
+.signin-container{
+    margin-top: 20px;
+}
+.btn.btn-bold{
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 9999px;
+    text-align: center;
+    font-weight: 700;
+    padding: 12px;
+}
+.btn.btn-bold:hover{
+    background: #2b80dd;
+}
+.loginSocial{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.loginSocial button{
+    margin: 0 5px;
+    padding-right: 10px;
+    text-indent: 30px;
+    line-height: 24px;
+    border-radius: 12px;
+    color: #fff;
+    border: none;
+}
+.loginSocial button.btnSocialloginFB {
+    background: #546ea6 url(//theme.hstatic.net/1000262653/1000759281/14/facebook.png?v=910) no-repeat 0 center;
+}
+.loginSocial button.btnSociallogingg {
+    background: #df5656 url(//theme.hstatic.net/1000262653/1000759281/14/googleplus.png?v=910) no-repeat 0 center;
+}
+#forgot_pass .section {
+    border-top: 2px solid #E4E7ED;
+    border-bottom: 3px solid #2b80dd;
+    margin-top: 30px;
+}
+
+.forgot_pwd {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.forgot_pwd .heading {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.forgot_pwd .note {
+    font-size: 15px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.forgot_pwd form {
+    position: relative;
+    max-width: 450px;
+    margin: auto;
+}
+
+.forgot_pwd form .input {
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.forgot_pwd form button a {
+    font-weight: bold;
+    font-size: 18px;
+    color: #FFF;
+}
+
+.forgot_pwd form .submit-btn {
+    width: 450px;
+    height: 40px;
+    background: #2b80dd;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 40px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

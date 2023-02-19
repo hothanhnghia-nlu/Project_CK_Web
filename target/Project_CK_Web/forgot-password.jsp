@@ -15,6 +15,7 @@
 
     <!-- Google font -->
     <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/laptop-icon.png" />
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -31,7 +32,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-    <link rel="stylesheet" href="assets/css/styleloginsigup.css">
+    <link rel="stylesheet" href="assets/css/style-login-signup.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
