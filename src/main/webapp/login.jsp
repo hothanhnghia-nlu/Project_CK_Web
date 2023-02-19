@@ -15,6 +15,7 @@
 
     <!-- Google font -->
     <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/laptop-icon.png" />
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -31,7 +32,7 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-    		<link rel="stylesheet" href="assets/css/styleloginsigup.css">
+    <link rel="stylesheet" href="assets/css/style-login-signup.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -48,57 +49,72 @@
 <!-- /HEADER -->
 
 <!-- SECTION -->
-<div id="forms">
-    <div class="form login">
-        <span class="title">Đăng nhập</span>
+<div class="login-page">
 
-        <form action="login" method="post">
-            <%
-                if (error != null) {
-            %>
-            <div class="alert alert-danger" role="alert">
-                <%= error %>
-            </div>
-            <%
-                }
-            %>
-            <div class="input-field">
-                <input type="text" value="<%= request.getParameter("username")!=null ? request.getParameter("username") : ""%>" name="username" id="tendangnhap" placeholder="Tên đăng nhập">
-                <i class="fa fa-envelope"></i>
-            </div>
-            <div class="input-field">
-                <input type="password" name="password" id="matkhaulogin" class="password" placeholder="Mật khẩu">
-                <i class="fa fa-lock"></i>
-                <div id="show-pass">
-                    <i class="fa fa-eye-slash showHidePw"></i>
+    <!-- Main content -->
+    <div id="main-content" class="main-content" style="padding-bottom: 30px">
+        <div class="container">
+
+            <div class="row">
+
+                <!--Form Sign In-->
+                <div class="col-md-7 col-lg-6 col-md-offset-3">
+                    <div style="text-align: center; margin-top: 40px">
+                        <h3 style="font-weight: 400; color: black">ĐĂNG NHẬP TÀI KHOẢN</h3>
+                        <p>Bạn chưa có tài khoản? <a href="signup.jsp" style="color: #2b80dd">Đăng ký ngay</a></p>
+                    </div>
+                    <div class="signin-container">
+                        <form action="login" name="frm-login" method="post">
+                            <%
+                            if (error != null) {
+                            %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= error %>
+                            </div>
+                            <%
+                            }
+                            %>
+                            <p class="form-row">
+                                <label for="fid-name"><strong>Tên đăng nhập </strong><span class="requite">*</span></label>
+                                <input type="text" id="fid-name" name="username" value="<%= request.getParameter("username")!=null ? request.getParameter("username") : ""%>" placeholder="Tên đăng nhập" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <label for="fid-pass"><strong>Mật khẩu </strong><span class="requite">*</span></label>
+                                <input type="password" id="fid-pass" name="password" value="" placeholder="Mật khẩu" class="txt-input" required>
+                            </p>
+                            <p class="form-row">
+                                <a href="forgot-password.jsp" class="link-to-help">Quên mật khẩu?</a>
+                            </p>
+                            <p class="form-row wrap-btn">
+                                <input class="btn btn-submit btn-bold" type="submit" value="Đăng nhập">
+                            </p>
+                        </form>
+                    </div>
+                    <div>
+                        <h5 style="text-align: center; margin-top: 30px">Hoặc đăng nhập bằng</h5>
+                        <div class="loginSocial text-center">
+                            <button type="button" class="btnSocialloginFB">Facebook</button>
+<%--                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">--%>
+<%--                            </fb:login-button>--%>
+                            <button type="button" class="btnSociallogingg">Google+</button>
+                        </div>
+                    </div>
+                    <div id="status"></div>
                 </div>
-            </div>
-            <div class="checkbox-text">
-                <div class="checkbox-content">
-                    <input type="checkbox" id="logCheck">
-                    <label for="logCheck" class="text">Lưu mật khẩu</label>
-                </div>
 
-                <a href="forgot-password.jsp" class="text">Quên mật khẩu</a>
             </div>
 
-            <div class="input-field button" id="dangnhap">
-                <input type="submit" value="Đăng nhập">
-            </div>
-        </form>
-
-        <div class="login-signup">
-                    <span class="text">Chưa có tài khoản?
-                        <a href="signup.jsp" class="text signup-link">Đăng ký ngay</a>
-                    </span>
         </div>
+
     </div>
+
 </div>
 <!-- /SECTION -->
 
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"/>
 <!-- /FOOTER -->
+
 
 <!-- jQuery Plugins -->
 <script src="assets/js/jquery.min.js"></script>
@@ -110,5 +126,53 @@
 <!-- Nice Select JS -->
 <script src="assets/js/nicesellect.js"></script>
 <script src="assets/js/showpass.js"></script>
+
+<!-- Script login by FB, GG -->
+<script>
+
+    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+        console.log('statusChangeCallback');
+        console.log(response);                   // The current login status of the person.
+        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+            testAPI();
+        } else {                                 // Not logged into your webpage or we are unable to tell.
+            document.getElementById('status').innerHTML = 'Please log ' +
+                'into this webpage.';
+        }
+    }
+
+
+    function checkLoginState() {               // Called when a person is finished with the Login Button.
+        FB.getLoginStatus(function(response) {   // See the onlogin handler
+            statusChangeCallback(response);
+        });
+    }
+
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '768788668010334',
+            cookie     : true,                     // Enable cookies to allow the server to access the session.
+            xfbml      : true,                     // Parse social plugins on this webpage.
+            version    : 'v16.0'           // Use this Graph API version for this call.
+        });
+
+
+        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+            statusChangeCallback(response);        // Returns the login status.
+        });
+    };
+
+    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            document.getElementById('status').innerHTML =
+                'Thanks for logging in, ' + response.name + '!';
+        });
+    }
+
+</script>
+
 </body>
 </html>

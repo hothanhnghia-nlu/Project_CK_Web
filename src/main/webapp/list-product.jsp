@@ -18,6 +18,7 @@
 
     <!-- Google font -->
     <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/laptop-icon.png" />
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

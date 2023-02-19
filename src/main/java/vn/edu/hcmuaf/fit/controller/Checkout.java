@@ -37,8 +37,6 @@ public class Checkout extends HttpServlet {
             OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),discount);
         }
         session.removeAttribute("cart");
-
-//        response.sendRedirect("/Project_CK_Web_war/success.jsp");
-        response.sendRedirect("/Project_CK_Web/success.jsp");
+        response.sendRedirect("success.jsp");
     }
 }

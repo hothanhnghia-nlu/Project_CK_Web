@@ -11,10 +11,13 @@ import java.io.IOException;
 public class Signup extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
+        String name = request.getParameter("name");
+        String username = request.getParameter("username");
         String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String password = request.getParameter("password");
         String rePass = request.getParameter("repass");
+
         if (!password.equals(rePass)) {
             request.setAttribute("error", "Mật khẩu xác nhận không đúng");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
@@ -22,7 +25,7 @@ public class Signup extends HttpServlet {
             boolean accountExist = UserService.getInstances().checkAccountExist(username);
             boolean emailExist = UserService.getInstances().checkEmailExist(email);
             if (!accountExist || !emailExist) {
-                UserService.getInstances().register(username, password, email);
+                UserService.getInstances().addUser(name, email, phone, username, password);
                 response.sendRedirect("success-signup.jsp");
             } else {
                 request.setAttribute("error", "Tài khoản đã tồn tại");
