@@ -28,6 +28,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
+
 </head>
 
 <body class="nav-md">
@@ -102,20 +104,25 @@
                                                     <td>${u.email}</td>
                                                     <td>${u.password}</td>
                                                     <td>
-                                                    <select style="width: 40px;" tabindex="0" name="role">
-                                                        <option>${u.role}</option>
-                                                        <option value="0" >0</option>
-                                                        <option value="1" >1</option>
-                                                    </select>
+                                                        <select style="width: 80px;" tabindex="0" name="role">
+                                                            <c:if test="${u.role == 0}">
+                                                                <option value="${u.role}">User</option>
+                                                            </c:if>
+                                                            <c:if test ="${u.role == 1}">
+                                                                <option value="${u.role}">Admin</option>
+                                                            </c:if>
+                                                            <option value="0" >User</option>
+                                                            <option value="1" >Admin</option>
+                                                        </select>
 
                                                     </td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="table_account?id=${u.id}"><i
-                                                                    class="fas fa-trash-alt"></i></a>
-                                                            <button class="btn btn-primary btn-sm edit" type="submit" title="Sửa" ><i
-                                                                    class="fas fa-edit"></i></button>
-                                                        </div>
+                                                        <td>
+                                                            <div class="btn-group ml-auto">
+                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="table_account?id=${u.id}"><i
+                                                                        class="fas fa-trash-alt"></i></a>
+                                                                <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
+                                                                        class="fas fa-rotate"></i></button>
+                                                            </div>
                                                     </td>
                                                     </form>
                                                 </tr>

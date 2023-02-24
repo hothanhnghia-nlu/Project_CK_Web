@@ -14,10 +14,11 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        password = UserService.getInstances().hashPassword(password);
         User user = UserService.getInstances().checkLogin(username, password);
 
         if (user == null) {
-            request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+            request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession(true);

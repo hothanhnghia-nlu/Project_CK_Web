@@ -3,6 +3,8 @@ package vn.edu.hcmuaf.fit.service;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
+import java.security.MessageDigest;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +13,6 @@ public class UserService {
     public static UserService getInstances() {
         return new UserService();
     }
-
-
 
     // Check login is right
     public User checkLogin(String username, String password) {
@@ -49,17 +49,7 @@ public class UserService {
     }
 
     // Register a new account
-    public void register(String username, String password, String email) {
-        JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO user (username, password, email) VALUES (?, ?, ?)")
-                        .bind(0, username)
-                        .bind(1, password)
-                        .bind(2, email)
-                        .execute()
-        );
-    }
-
-    public void addUser(String fullName, String email, String phone, String username, String password) {
+    public void register(String fullName, String email, String phone, String username, String password) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO user (full_name, email, phone_number, username, password) VALUES (?, ?, ?, ?, ?)")
                         .bind(0, fullName)
@@ -71,10 +61,20 @@ public class UserService {
         );
     }
 
+    // Update a user
+    public void updatePassword(String username, String newPass) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE user SET password = ? WHERE username = ?")
+                        .bind(0, username)
+                        .bind(1, newPass)
+                        .execute()
+        );
+    }
+
     // Get username and password by email
     public String getUsernameAndPassword(String email) {
         List<User> accounts = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM user WHERE email = ?")
+                h.createQuery("SELECT username, password FROM user WHERE email = ?")
                         .bind(0, email)
                         .mapToBean(User.class)
                         .stream()
@@ -114,6 +114,23 @@ public class UserService {
         }
         return false;
     }
+
+    // Encrypt password
+    public String hashPassword(String password) {
+        String salt = "aspkmhtvtu#pgjliu7zlqfcy";
+        String result = null;
+        password += salt;
+
+        try {
+            byte[] dataBytes = password.getBytes("UTF-8");
+            MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
+            result = Base64.getEncoder().encodeToString(sha256.digest(dataBytes));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public  List<User> listALlUser(){
         List<User> lu = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT * FROM user")
@@ -140,8 +157,6 @@ public class UserService {
         );
     }
     public static void main(String[] args) {
-        System.out.println(getInstances().listALlUser());
+//        System.out.println(getInstances().listALlUser());
     }
-
-
 }

@@ -76,7 +76,7 @@
                             %>
                             <p class="form-row">
                                 <label for="fid-name"><strong>Họ và tên </strong><span class="requite">*</span></label>
-                                <input type="text" id="fid-name" name="name" value="" placeholder="Họ và tên" class="txt-input" required>
+                                <input type="text" id="fid-name" name="name" value="<%= request.getParameter("name")!=null ? request.getParameter("name") : ""%>" placeholder="Họ và tên" class="txt-input" required>
                             </p>
                             <p class="form-row">
                                 <label for="fid-username"><strong>Tên đăng nhập </strong><span class="requite">*</span></label>
@@ -84,11 +84,11 @@
                             </p>
                             <p class="form-row">
                                 <label for="fid-email"><strong>Email </strong><span class="requite">*</span></label>
-                                <input type="email" id="fid-email" name="email" value="" placeholder="Email" class="txt-input" required>
+                                <input type="email" id="fid-email" name="email" value="<%= request.getParameter("email")!=null ? request.getParameter("email") : ""%>" placeholder="Email" class="txt-input" required>
                             </p>
                             <p class="form-row">
                                 <label for="fid-tel"><strong>Số điện thoại </strong><span class="requite">*</span></label>
-                                <input type="text" id="fid-tel" name="phone" value="" placeholder="Số điện thoại" class="txt-input" required>
+                                <input type="text" id="fid-tel" name="phone" value="<%= request.getParameter("phone")!=null ? request.getParameter("phone") : ""%>" placeholder="Số điện thoại" class="txt-input" required>
                             </p>
                             <p class="form-row">
                                 <label for="fid-pass"><strong>Mật khẩu </strong><span class="requite">*</span></label>
