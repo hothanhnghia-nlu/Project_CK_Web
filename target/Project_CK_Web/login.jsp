@@ -90,17 +90,18 @@
                             </p>
                         </form>
                     </div>
-                    <div>
-                        <h5 style="text-align: center; margin-top: 30px">Hoặc đăng nhập bằng</h5>
-                        <div class="loginSocial text-center">
+
+                    <h5 style="text-align: center; margin-top: 30px">Hoặc đăng nhập bằng</h5>
+                    <div class="loginSocial text-center">
+                        <a href="https://www.facebook.com/dialog/oauth?client_id=768788668010334&redirect_uri=http://localhost:8080/Project_CK_Web/login-facebook" style="color: #FFFFFF">
                             <button type="button" class="btnSocialloginFB">Facebook</button>
-<%--                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">--%>
-<%--                            </fb:login-button>--%>
+                        </a>
+
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/Project_CK_Web/login-google&response_type=code
+                                &client_id=136400597387-ljfp47fjs5fjc9hdnuj2ee70kim3qfu1.apps.googleusercontent.com&approval_prompt=force" style="color: #FFFFFF">
                             <button type="button" class="btnSociallogingg">Google+</button>
-                        </div>
+                        </a>
                     </div>
-                    <div id="status"></div>
-                </div>
 
             </div>
 
@@ -126,53 +127,6 @@
 <!-- Nice Select JS -->
 <script src="assets/js/nicesellect.js"></script>
 <script src="assets/js/showpass.js"></script>
-
-<!-- Script login by FB, GG -->
-<script>
-
-    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-        console.log('statusChangeCallback');
-        console.log(response);                   // The current login status of the person.
-        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-            testAPI();
-        } else {                                 // Not logged into your webpage or we are unable to tell.
-            document.getElementById('status').innerHTML = 'Please log ' +
-                'into this webpage.';
-        }
-    }
-
-
-    function checkLoginState() {               // Called when a person is finished with the Login Button.
-        FB.getLoginStatus(function(response) {   // See the onlogin handler
-            statusChangeCallback(response);
-        });
-    }
-
-
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '768788668010334',
-            cookie     : true,                     // Enable cookies to allow the server to access the session.
-            xfbml      : true,                     // Parse social plugins on this webpage.
-            version    : 'v16.0'           // Use this Graph API version for this call.
-        });
-
-
-        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-            statusChangeCallback(response);        // Returns the login status.
-        });
-    };
-
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-            console.log('Successful login for: ' + response.name);
-            document.getElementById('status').innerHTML =
-                'Thanks for logging in, ' + response.name + '!';
-        });
-    }
-
-</script>
 
 </body>
 </html>
