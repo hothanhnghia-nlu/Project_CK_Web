@@ -25,6 +25,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
+
   </head>
 
   <body class="nav-md">

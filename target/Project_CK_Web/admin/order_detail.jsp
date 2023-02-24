@@ -16,7 +16,7 @@
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../assets/fonts/css/all.css" rel="stylesheet">
-    
+
     <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.css" rel="stylesheet">
     <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css" rel="stylesheet">
@@ -25,6 +25,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
+
   </head>
 
   <body class="nav-md">
