@@ -102,6 +102,8 @@
                                                     <td>${u.email}</td>
                                                     <td>${u.password}</td>
                                                     <td>
+
+
                                                         <select style="width: 80px;" tabindex="0" name="role">
                                                             <c:if test="${u.role == 0}">
                                                                 <option value="${u.role}">User</option>
