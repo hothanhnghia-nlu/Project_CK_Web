@@ -188,7 +188,7 @@
 				<!-- /Billing Details -->
 
 				<!-- Order Details -->
-				<div class="col-md-5 order-details" style="background: #fafafa">
+				<div class="col-md-4 order-details" style="background: #fafafa; margin-left: 10px">
 					<div class="section-title text-center">
 						<h3 class="title">ĐƠN HÀNG CỦA BẠN</h3>
 					</div>
