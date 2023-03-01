@@ -62,7 +62,7 @@
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
-						<div class="item active">
+						<div class="item">
 							<a href="#"><img src="assets/img/banner 6.jpg" alt="Khai xuân laptop"></a>
 						</div>
 
@@ -70,7 +70,7 @@
 							<a href="#"><img src="assets/img/banner 6.jpg" alt="Sale laptop Noel"></a>
 						</div>
 
-						<div class="item">
+						<div class="item active">
 							<a href="#"><img src="assets/img/banner 3.jpg" alt="Ưu đãi laptop"></a>
 						</div>
 					</div>
