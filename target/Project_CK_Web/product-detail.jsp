@@ -72,24 +72,50 @@
 						<!-- row -->
 						<div class="row">
 							<!-- Product main img -->
-							<div class="col-md-5 col-md-push-1">
+							<div class="col-md-5 col-md-push-2">
 								<div id="product-main-img">
 									<div class="product-preview">
-										<img src="<%=p.getImage()%>" he alt="">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M1.jpg" alt="">
 									</div>
 								</div>
 							</div>
 							<!-- /Product main img -->
 
-<%--							<!-- Product thumb imgs -->--%>
+							<!-- Product thumb imgs -->
 							<div class="col-md-2  col-md-pull-5">
-<%--								<div id="product-imgs">--%>
-<%--									<div class="product-preview">--%>
-<%--										<img src="<%=p.getImage()%>" alt="">--%>
-<%--									</div>--%>
-<%--								</div>--%>
+								<div id="product-imgs">
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M1.jpg" alt="">
+									</div>
+								</div>
 							</div>
-<%--							<!-- /Product thumb imgs -->--%>
+							<!-- /Product thumb imgs -->
+
+
 
 							<!-- Product details -->
 							<div class="col-md-5">
@@ -164,7 +190,9 @@
 											<div class="row">
 												<div class="col-md-12">
 													<h5>Thông Số Kỹ Thuật</h5>
-													<textarea class="resizable_textarea form-control" readonly style="height: 300px;"><%=p.getDiscription()%></textarea>
+													<table>
+														<%=p.getDiscription()%>
+													</table>
 												</div>
 											</div>
 										</div>
