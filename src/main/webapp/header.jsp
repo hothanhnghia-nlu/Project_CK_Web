@@ -34,13 +34,14 @@
                     <div class="header-ctn">
                         <!-- Account -->
                         <div style="list-style: none; display: flex">
-                            <c:if test="${sessionScope.auth == null}">
+                            <c:if test="${sessionScope.auth == null && sessionScope.oAuth == null}">
                                 <a href="login.jsp">
                                     <i class="fa fa-user"></i>
                                     <span>Đăng nhập</span>
                                 </a>
                             </c:if>
 
+                            <!-- Normally login -->
                             <c:if test="${sessionScope.auth != null}">
                                 <a href="javascript:;" class="dropdown" style="margin-right: 20px">
                                     <i class="fa fa-user" style="margin-left: -30px"></i>
@@ -48,6 +49,19 @@
                                 </a>
                             </c:if>
 
+                            <!-- Google login -->
+                            <c:if test="${sessionScope.oAuth != null}">
+                                <a href="javascript:;" class="dropdown" style="margin-right: 20px">
+                                    <i class="fa fa-user" style="margin-left: -30px"></i>
+                                    <span style="margin-left: -30px">${sessionScope.oAuth.name}</span>
+                                </a>
+                                <a href="logout">
+                                    <i class="fa fa-sign-out"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </c:if>
+
+                            <!-- Set admin -->
                             <c:if test="${sessionScope.auth.role >= 1}">
                                 <a href="admin">
                                     <i class="fa fa-cog"></i>

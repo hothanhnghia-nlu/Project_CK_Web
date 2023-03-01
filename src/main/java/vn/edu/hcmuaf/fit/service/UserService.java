@@ -32,15 +32,15 @@ public class UserService {
 
     // Check account exist
     public boolean checkAccountExist(String username) {
-        List<User> users = JDBIConnector.get().withHandle(h ->
+        List<User> user = JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM user WHERE username = ?")
                         .bind(0, username)
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())
         );
-        for (int i = 0; i < users.size(); i++) {
-            User acc = users.get(i);
+        for (int i = 0; i < user.size(); i++) {
+            User acc = user.get(i);
             if (acc.getUsername().equals(username)) {
                 return true;
             }
@@ -61,12 +61,12 @@ public class UserService {
         );
     }
 
-    // Update a user
-    public void updatePassword(String username, String newPass) {
+    // Update a new password
+    public void updatePassword(String email, String newPassword) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("UPDATE user SET password = ? WHERE username = ?")
-                        .bind(0, username)
-                        .bind(1, newPass)
+                handle.createUpdate("UPDATE user SET password = ? WHERE email = ?")
+                        .bind(0, newPassword)
+                        .bind(1, email)
                         .execute()
         );
     }

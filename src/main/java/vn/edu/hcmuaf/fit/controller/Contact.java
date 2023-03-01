@@ -26,9 +26,6 @@ public class Contact extends HttpServlet {
 
         String id = ""+(ContactService.getInstances().getNewID()+1);
         ContactService.getInstances().insert(id,name, phone, email, subject, content);
-//        response.sendRedirect("/Project_CK_Web_war/home");
-        response.sendRedirect("/Project_CK_Web/home");
-
-
+        response.sendRedirect("home");
     }
 }
