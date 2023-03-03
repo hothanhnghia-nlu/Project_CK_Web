@@ -57,7 +57,7 @@
                 <div class="forgot_pwd">
                     <p class="heading">Phục hồi mật khẩu</p>
                     <p class="note">Chúng tôi sẽ gửi cho bạn một email để kích hoạt việc đặt lại mật khẩu.</p>
-                    <form action="resetPass" method="post">
+                    <form action="forgot-password" method="post">
                         <%
                             if (error != null) {
                         %>
