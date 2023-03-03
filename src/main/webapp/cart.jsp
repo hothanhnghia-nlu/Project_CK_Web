@@ -38,14 +38,17 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<!--    <script src="assets/js/jquery-3.6.1.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <![endif]-->
-    <script>
-        $(document).ready(function () {
+    <%--    <script>--%>
 
-            $('#example').dataTable({}); // dòng này để nhúng bảng biểu thành dạng bảng được phân trang
+    <%--    $(document).ready(function () {--%>
 
-        });
-    </script>
+    <%--            $('#example').dataTable({}); // dòng này để nhúng bảng biểu thành dạng bảng được phân trang--%>
+
+    <%--        });--%>
+    <%--    </script>--%>
 </head>
 <body>
 <!-- HEADER -->
@@ -122,57 +125,26 @@
                             </tr>
                             </thead>
                             <tbody>
-
                             <c:forEach items="${list}" var="p">
                                 <tr>
-                                    <td><img src="${p.image}" alt=""></td>
-                                    <td class="product-des" data-title="Description">
-                                        <p class="product-des">
-
-                                            <a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a>
-                                        </p>
-                                    </td>
+                                    <td><img src="${p.image}"></td>
+                                    <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p></td>
                                     <c:if test="${p.discount == 0}">
-                                    <td class="price" data-title="Price"><span><fmt:formatNumber value="${p.price}" type="currency"/> </span></td>
+                                        <td style="width: 175px; text-align: center"><fmt:formatNumber value="${p.price}" type="currency"/></td>
                                     </c:if>
                                     <c:if test="${p.discount != 0}">
-                                        <td class="price" data-title="Price"><span><fmt:formatNumber value="${p.discount}" type="currency"/> </span></td>
+                                        <td style="width: 175px; text-align: center"><fmt:formatNumber value="${p.discount}" type="currency"/></td>
                                     </c:if>
-                                    <td class="qty" data-title="Qty">
-                                        <!-- Input Order -->
-                                        <div class="input-group" style="margin-right:-76px">
-                                            <div class="button minus" >
-                                                <button class="btn btn-primary btn-number qty-down"
-                                                        data-type="minus"
-                                                         style="outline: none" onclick="handleMinus()">
-                                                    <i class="fa fa-minus"></i>
-                                                </button>
-                                            </div>
-                                            <input type="text" id="amount" name="quant[1]" class="input-number" data-min="1"
-                                                   data-max="100" value="${p.quantity}" style="outline: none">
-                                            <div class="button plus">
-                                                <button class="btn btn-primary btn-number qty-up"
-                                                        data-type="plus"
-                                                          style="outline: none" onclick="handlePlus()">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <!--/ End Input Order -->
-                                    </td>
+                                    <td style="width: 185px"><input class="amount" min="1" type="number" value="${p.quantity}" style="height: 40px;text-align: center"></td>
                                     <c:if test="${p.discount == 0}">
-                                        <td class="total-amount" data-title="Total"><span><fmt:formatNumber
-                                                value="${p.price*p.quantity}" type="currency"/></span></td>
+                                        <td class="price" data-value="${p.price}" style="width: 175px"><fmt:formatNumber value="${p.price}" type="currency"/></td>
                                     </c:if>
                                     <c:if test="${p.discount != 0}">
-                                        <td class="total-amount" data-title="Total"><span><fmt:formatNumber
-                                                value="${p.discount*p.quantity}" type="currency"/></span></td>
+                                        <td class="price" data-value="${p.discount}" style="width: 175px"><fmt:formatNumber value="${p.discount}" type="currency"/></td>
                                     </c:if>
-
                                     <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
                                             class="fa fa-trash"></i></a></td>
                                 </tr>
-
                             </c:forEach>
                             </tbody>
                         </table>
@@ -185,37 +157,39 @@
                         <div class="total-amount">
                             <div class="row">
                                 <div class="col-lg-8 col-md-5 col-12">
-                                    <div class="left">
+                                    <div class="left" style="display: inline-flex">
                                         <div class="coupon">
                                             <form action="#" target="_blank">
-                                                <input name="Coupon" placeholder="Nhâp mã giảm giá">
+                                                <input name="Coupon" placeholder="Nhâp mã giảm giá"/>
                                                 <button class="btn">Áp dụng</button>
                                             </form>
                                         </div>
-
+                                        <div>
+                                            <button id="update" type="submit" class=" btn primary-btn" style="margin: 12px;border-radius: 5px;outline: none">Cập nhật</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-7 col-12">
                                     <div class="right">
                                         <ul>
                                             <c:if test="${check}">
-                                                <li><strong>Tổng tạm tính</strong><span><fmt:formatNumber value="0"
-                                                                                                          type="currency"/></span>
+                                                <li class="sumprice"><strong>Tổng tạm tính</strong><span><fmt:formatNumber value="0"
+                                                                                                                           type="currency"/></span>
                                                 </li>
                                             </c:if>
                                             <c:if test="${!check}">
-                                                <li><strong>Tổng tạm tính</strong><span><fmt:formatNumber
+                                                <li class="sumprice"><strong>Tổng tạm tính</strong><span><fmt:formatNumber
                                                         value="${total}"
                                                         type="currency"/></span>
                                                 </li>
                                             </c:if>
                                             <li><strong>Phí vận chuyển</strong><span>0đ</span></li>
                                             <c:if test="${check}">
-                                                <li class="last"><strong>Thành tiền</strong><span
+                                                <li class=" last sumprice"><strong>Thành tiền</strong><span
                                                         class="total"><strong>0</strong></span></li>
                                             </c:if>
                                             <c:if test="${!check}">
-                                                <li class="last"><strong>Thành tiền</strong><span
+                                                <li class=" last sumprice"><strong>Thành tiền</strong><span
                                                         class="total"><strong><fmt:formatNumber value="${total}"
                                                                                                 type="currency"/></strong></span>
                                                 </li>
@@ -250,8 +224,9 @@
 <script src="../../js/nouislider.min.js"></script>
 <script src="../../js/jquery.zoom.min.js"></script>
 <script src="../../js/main.js"></script>
-<!-- Nice Select JS -->
+
+<!-- Nice Select JS -->z`
 <script src="../../js/nicesellect.js"></script>
-<script src="assets/js/minPlus.js"></script>
+<script src="assets/js/cart.js"></script>
 </body>
 </html>
