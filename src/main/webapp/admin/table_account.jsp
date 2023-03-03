@@ -83,8 +83,7 @@
                                                     <th>Họ và tên</th>
                                                     <th>Tên tài khoản</th>
                                                     <th>Email</th>
-                                                    <th>Mật khẩu</th>
-                                                    <th>Phân quyền</th>
+                                                    <th>Vai trò</th>
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
@@ -102,7 +101,6 @@
                                                     <td>${u.fullName}</td>
                                                     <td>${u.username}</td>
                                                     <td>${u.email}</td>
-                                                    <td>${u.password}</td>
                                                     <td>
                                                         <select style="width: 80px;" tabindex="0" name="role">
                                                             <c:if test="${u.role == 0}">

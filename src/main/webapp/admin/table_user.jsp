@@ -83,6 +83,8 @@
                                                     <th>Họ và tên</th>
                                                     <th>Email</th>
                                                     <th>Số điện thoại</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>Ngày sinh</th>
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
@@ -98,6 +100,8 @@
                                                     <td>${u.fullName}</td>
                                                     <td>${u.email}</td>
                                                     <td>${u.phoneNumber}</td>
+                                                    <td>sgsf</td>
+                                                    <td>sdgfds</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
                                                             <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="table_user?id=${u.id}"><i
