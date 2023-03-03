@@ -88,7 +88,7 @@
 					<div class="section-title">
 						<h3 class="title">THÔNG TIN GIAO HÀNG</h3>
 					</div>
-					<c:if test="${sessionScope.auth == null}">
+					<c:if test="${sessionScope.auth == null && sessionScope.oAuth == null}">
 
 						<div class="section-title">
 							<p style="margin-top: -15px">Bạn đã có tài khoản? <a href="login.jsp">Đăng nhập</a></p>
@@ -119,6 +119,21 @@
 						<div class="form-group">
 							<label>Số điện thoại<span><strong class="compulsory"> *</strong></span></label>
 							<input class="input" type="tel" name="phone" value="${sessionScope.auth.phoneNumber}">
+						</div>
+					</c:if>
+
+					<c:if test="${sessionScope.oAuth != null}">
+						<div class="form-group">
+							<label>Họ và tên<span><strong class="compulsory"> *</strong></span></label>
+							<input class="input" type="text" name="name" value="${sessionScope.oAuth.name}">
+						</div>
+						<div class="form-group">
+							<label>Email<span><strong class="compulsory"> *</strong></span></label>
+							<input class="input" type="email" name="email" value="${sessionScope.oAuth.email}">
+						</div>
+						<div class="form-group">
+							<label>Số điện thoại<span><strong class="compulsory"> *</strong></span></label>
+							<input class="input" type="tel" name="phone" value="" placeholder="Số điện thoại">
 						</div>
 					</c:if>
 

@@ -6,6 +6,7 @@ import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class ProductService {
@@ -65,7 +66,7 @@ public class ProductService {
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
-        return pro.get(0);
+        return reDiscription(pro.get(0));
     }
     public List<Product> getProductByCAT_ID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
@@ -130,6 +131,26 @@ public class ProductService {
                     .bind(0,id)
                     .mapToBean(Product.class).findFirst().orElse(null);
         });
+    }
+    public Product reDiscription(Product p){
+
+        StringTokenizer st = new StringTokenizer ( p. getDiscription(),"\t" ) ;
+        String resut= "";
+        boolean check= true;
+        while ( st. hasMoreTokens ()) {
+
+            if(check) {
+                resut=resut+"<tr> \n";
+                resut= resut +"<td>" + st.nextToken() + "</td> \n";
+                check = false;
+            }else {
+                resut=resut +"<td>" + st.nextToken() + "</td> \n"
+                        + "</tr> \n";
+                check = true;
+            }
+        }
+        p.setDiscription(resut);
+        return p;
     }
     public static void main(String[] args) {
         ProductService a = new ProductService();

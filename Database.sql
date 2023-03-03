@@ -114,7 +114,18 @@ CREATE TABLE `product`  (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('001', 'VP012', 'Dell Inspiron 16 5620', 'Dell', './assets/img/product/vanphong/Dell%20Inspiron%2016%205620.jpg', 'CPU	Intel® Core™ i7-1260P (18MB Cache, 3.40GHZ up to 4.70GHz, 12 cores, 16 Threads)\nRAM	16 GB, DDR4, 3200 MHz\nỔ cứng	512GB SSD M.2 PCIe NVMe Solid State Drive\nCard VGA	Intel® Iris® Xe Graphics\nMàn hình	16.0 inch FHD+ (1920 x 1200) 60Hz, Anti-Glare Non-Touch 300nits WVA Display with ComfortView Support, 98% sRGB\nCamera	1080p at 30 fps FHD camera\n	Dual-array microphones\nCổng Kết Nối	2x USB 3.2 Gen 1 ports\n	1x USB 3.2 Gen 2x2 Type-C® port with DisplayPort® and Power Delivery\n	1x HDMI 1.4 port\n	1x Headset jack\nTrọng lượng	1,87kg\nPin	4 Cell, 54 Wh\nHệ điều hành	Windows 11 bản quyền\n', 10, 29990000.00, 24990000.00);
+INSERT INTO `product` VALUES ('001', 'VP012', 'Dell Inspiron 16 5620', 'Dell', './assets/img/product/vanphong/Dell%20Inspiron%2016%205620.jpg', 
+'CPU	Intel® Core™ i7-1260P (18MB Cache, 3.40GHZ up to 4.70GHz, 12 cores, 16 Threads)
+RAM	16 GB, DDR4, 3200 MHz
+Ổ cứng	512GB SSD M.2 PCIe NVMe Solid State Drive
+Card VGA	Intel® Iris® Xe Graphics
+àn hình	16.0 inch FHD+ (1920 x 1200) 60Hz, Anti-Glare Non-Touch 300nits WVA Display with ComfortView Support, 98% sRGB
+Camera	1080p at 30 fps FHD camera,	Dual-array microphones
+Cổng Kết Nối	2x USB 3.2 Gen 1 ports, 1x USB 3.2 Gen 2x2 Type-C® port with DisplayPort® and Power Delivery, 1x HDMI 1.4 port, 1x Headset jack
+Trọng lượng	1,87kg
+Pin	4 Cell, 54 Wh
+Hệ điều hành	Windows 11 bản quyền
+', 10, 29990000.00, 24990000.00);
 INSERT INTO product VALUES ('002','VP012','Dell Inspiron 16 5625','Dell','./assets/img/product/vanphong/Dell%20Inspiron%2016%205620.jpg',
 'CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread
 RAM	8GB DDR4, 3200MHz
@@ -123,11 +134,7 @@ Card VGA	AMD Radeon™ Graphics
 Màn hình	16", FHD+ 1920x1200, 60Hz, Non-Touch, AG, Wide Viewing Angle, 250 nit, ComfortView
 Camera	FHD 1080p ở tốc độ 30 khung hình / giây
 	Micrô hai dãy
-Cổng	2 USB 3.2 Gen 1 ports
-	1 USB 3.2 Gen 2 Type-C® port with DisplayPort® and Power Delivery
-	1 Headset jack
-	1 HDMI 1.4 port
-	1 power-adapter port
+Cổng	2 USB 3.2 Gen 1 ports, 1 USB 3.2 Gen 2 Type-C® port with DisplayPort® and Power Delivery, 1 Headset jack , 1 HDMI 1.4 port, 1 power-adapter port
 Trọng lượng	1.87kg
 Pin	4 Cell, 54 Wh
 Hệ điều hành	Windows 11 bản quyền
@@ -139,7 +146,7 @@ RAM	 8GB (1x8GB) Up to 3200MHz DDR4
 Card VGA	AMD® Radeon™ Graphics
 Màn hình	14.0-inch FHD Touch
 Webcam	720p at 30 fps HD camera, dual-array microphones
-Kết nối	2 USB 3.2 Gen 1 ports 1 USB 3.2 Gen 1 (Type-C™) port 1 headset (headphone and microphone combo) port 1 HDMI 1.4b port
+Kết nối 2 USB 3.2 Gen 1 ports 1 USB 3.2 Gen 1 (Type-C™) port 1 headset (headphone and microphone combo) port 1 HDMI 1.4b port
 Trọng lượng	1.56 kg
 Pin	 4-Cell 54WHr
 Hệ điều hành	Window 10 bản quyền
@@ -151,11 +158,7 @@ RAM	16 GB, 2 x 8 GB, LPDDR5, 4800 MHz
 VGA	Intel® Iris® Xe Graphics
 Màn hình	13.3-inch, QHD+ 2560 x 1600, 60 Hz, anti-glare, non-touch, sRGB 100% (typical), 300 nits (typical), wide-viewing angle, ComfortView Plus
 Mux Switch	Không
-Cổng kết nối	2 Type-C
-	1 HDMI
-	1 Jack 3.5 mm
-	1 Thunderbolt
-	
+Cổng kết nối	2 Type-C, 1 HDMI, 1 Jack 3.5 mm, 1 Thunderbolt
 Trọng lượng	1,25 kg
 Pin	54WHrs
 Hệ điều hành	Windows 11 bản quyền
