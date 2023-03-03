@@ -72,24 +72,50 @@
 						<!-- row -->
 						<div class="row">
 							<!-- Product main img -->
-							<div class="col-md-5 col-md-push-1">
+							<div class="col-md-5 col-md-push-2">
 								<div id="product-main-img">
 									<div class="product-preview">
-										<img src="<%=p.getImage()%>" he alt="">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M1.jpg" alt="">
 									</div>
 								</div>
 							</div>
 							<!-- /Product main img -->
 
-<%--							<!-- Product thumb imgs -->--%>
+							<!-- Product thumb imgs -->
 							<div class="col-md-2  col-md-pull-5">
-<%--								<div id="product-imgs">--%>
-<%--									<div class="product-preview">--%>
-<%--										<img src="<%=p.getImage()%>" alt="">--%>
-<%--									</div>--%>
-<%--								</div>--%>
+								<div id="product-imgs">
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M2.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
+									</div>
+
+									<div class="product-preview">
+										<img src="assets/img/product/mac_dohoa/Macbook Pro M1.jpg" alt="">
+									</div>
+								</div>
 							</div>
-<%--							<!-- /Product thumb imgs -->--%>
+							<!-- /Product thumb imgs -->
+
+
 
 							<!-- Product details -->
 							<div class="col-md-5">
@@ -164,7 +190,9 @@
 											<div class="row">
 												<div class="col-md-12">
 													<h5>Thông Số Kỹ Thuật</h5>
-													<textarea class="resizable_textarea form-control" readonly style="height: 300px;"><%=p.getDiscription()%></textarea>
+													<table>
+														<%=p.getDiscription()%>
+													</table>
 												</div>
 											</div>
 										</div>
@@ -309,7 +337,7 @@
 												<div class="col-md-3">
 													<div id="review-form">
 														<form id="frm" class="review-form" action="contact" method="post">
-															<c:if test="${sessionScope.auth == null}">
+															<c:if test="${sessionScope.auth == null && sessionScope.oAuth == null}">
 																<input class="input" type="text" name="name" placeholder="Nhập họ tên của bạn">
 																<input class="input" type="email" name="email" placeholder="Nhập email của bạn">
 															</c:if>
@@ -318,6 +346,12 @@
 																<input class="input" type="text" name="name" value="${sessionScope.auth.fullName}">
 																<input class="input" type="email" name="email" value="${sessionScope.auth.email}">
 															</c:if>
+
+															<c:if test="${sessionScope.oAuth != null}">
+																<input class="input" type="text" name="name" value="${sessionScope.oAuth.name}">
+																<input class="input" type="email" name="email" value="${sessionScope.oAuth.email}">
+															</c:if>
+
 															<textarea class="input" name="content" placeholder="Nhập nội dung đánh giá của bạn về sản phẩm này"></textarea>
 															<div class="input-rating">
 																<span>Đánh giá của bạn về sản phẩm: </span>
