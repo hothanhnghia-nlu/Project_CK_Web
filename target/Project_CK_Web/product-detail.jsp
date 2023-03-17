@@ -166,7 +166,7 @@
 <%--												<span class="qty-down" onclick="handleMinus()">-</span>--%>
 <%--											</div>--%>
 <%--										</div>--%>
-										<a href="cart/add?pid=<%=p.getProductID()%>"  class="primary-btn">Mua ngay</a>
+										<a href="cart/buy?pid=<%=p.getProductID()%>"  class="primary-btn">Mua ngay</a>
 									</div>
 								</div>
 							</div>
