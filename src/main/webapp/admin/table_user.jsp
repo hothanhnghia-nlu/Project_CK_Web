@@ -79,7 +79,7 @@
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>Mã khách hàng</th>
+                                                    <th>#</th>
                                                     <th>Họ và tên</th>
                                                     <th>Email</th>
                                                     <th>Số điện thoại</th>

@@ -80,7 +80,7 @@
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>Mã sản phẩm</th>
+                                                    <th>#</th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Ảnh</th>
                                                     <th>Số Lượng</th>

@@ -10,18 +10,20 @@ public class Order implements Serializable {
     private String address;
     private String note;
     private String orderDate;
+    private String payment;
     private String status;
 
     public Order() {
     }
 
-    public Order(String orderId, String fullName, String phoneNumber, String address, String note, String orderDate, String status) {
+    public Order(String orderId, String fullName, String phoneNumber, String address, String note, String orderDate, String payment, String status) {
         this.orderId = orderId;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.note = note;
         this.orderDate = orderDate;
+        this.payment = payment;
         this.status = status;
     }
 
@@ -71,6 +73,14 @@ public class Order implements Serializable {
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 
     public String getStatus() {

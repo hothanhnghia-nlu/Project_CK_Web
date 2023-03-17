@@ -95,9 +95,9 @@
 
                     <h5 style="text-align: center; margin-top: 30px">Hoặc đăng nhập bằng</h5>
                     <div class="loginSocial text-center">
-                        <a href="https://www.facebook.com/dialog/oauth?client_id=768788668010334&redirect_uri=http://localhost:8080/Project_CK_Web/login-facebook" style="color: #FFFFFF">
-                            <button type="button" class="btnSocialloginFB">Facebook</button>
-                        </a>
+<%--                        <a href="https://www.facebook.com/dialog/oauth?client_id=768788668010334&redirect_uri=http://localhost:8080/Project_CK_Web/login-facebook" style="color: #FFFFFF">--%>
+<%--                            <button type="button" class="btnSocialloginFB">Facebook</button>--%>
+<%--                        </a>--%>
 
                         <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Project_CK_Web/login-google&response_type=code
                                 &client_id=136400597387-ljfp47fjs5fjc9hdnuj2ee70kim3qfu1.apps.googleusercontent.com&approval_prompt=force" style="color: #FFFFFF">
