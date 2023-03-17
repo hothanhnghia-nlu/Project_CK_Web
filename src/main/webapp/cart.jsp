@@ -110,109 +110,81 @@
     <div class="section">
         <div class="shopping-cart section">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Shopping Summery -->
-                        <table class="table shopping-summery">
-                            <thead>
-                            <tr class="main-hading">
-                                <th>SẢN PHẨM</th>
-                                <th>TÊN SẢN PHẨM</th>
-                                <th class="text-center">GIÁ</th>
-                                <th class="text-center">SỐ LƯỢNG</th>
-                                <th class="text-center">TỔNG</th>
-                                <th class="text-center">XÓA</th>
-                            </tr>
-                            </thead>
-                            <tbody class="cart-item">
-                            <c:forEach items="${list}" var="p">
-                                <tr>
-                                    <td><img src="${p.image}"></td>
-                                    <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p></td>
-                                    <c:if test="${p.discount == 0}">
-                                        <td style="width: 175px; text-align: center"><fmt:formatNumber
-                                                value="${p.price}" type="currency"/></td>
-                                    </c:if>
-                                    <c:if test="${p.discount != 0}">
-                                        <td style="width: 175px; text-align: center"><fmt:formatNumber
-                                                value="${p.discount}" type="currency"/></td>
-                                    </c:if>
-                                    <td style="width: 100px;outline: none"><input class="amount" min="1" type="number"
-                                                                                  value="${p.quantity}"
-                                                                                  style="width: 85px;height: 40px;text-align: center">
-                                    </td>
-                                    <c:if test="${p.discount == 0}">
-                                        <td class="price" data-value="${p.price}" style="width: 175px"><fmt:formatNumber
-                                                value="${p.price}" type="currency"/></td>
-                                    </c:if>
-                                    <c:if test="${p.discount != 0}">
-                                        <td class="price" data-value="${p.discount}" style="width: 175px">
-                                            <fmt:formatNumber value="${p.discount}" type="currency"/></td>
-                                    </c:if>
-                                    <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
-                                            class="fa fa-trash"></i></a></td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                        <!--/ End Shopping Summery -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Total Amount -->
-                        <div class="total-amount">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-5 col-12">
-                                    <div class="left" style="display: inline-flex">
-                                        <div class="coupon">
-                                            <form action="#" target="_blank">
-                                                <input name="Coupon" placeholder="Nhâp mã giảm giá"/>
-                                                <button class="btn">Áp dụng</button>
-                                            </form>
-                                        </div>
-                                        <div>
-                                            <button id="update" type="submit" class=" btn primary-btn"
-                                                    style="margin: 12px;border-radius: 5px;outline: none">Cập nhật
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-7 col-12">
-                                    <div class="right">
-                                        <ul>
-                                            <c:if test="${check}">
-                                                <li><strong>Tổng tạm tính</strong><span class="total"><fmt:formatNumber
-                                                        value="0"
-                                                        type="currency"/></span>
-                                                </li>
-                                            </c:if>
-                                            <c:if test="${!check}">
-                                                <li><strong>Tổng tạm tính</strong><span class="total"><fmt:formatNumber
-                                                        value="${total}"
-                                                        type="currency"/></span>
-                                                </li>
-                                            </c:if>
-                                            <li><strong>Phí vận chuyển</strong><span>0đ</span></li>
-                                            <li class=" last"><strong>Thành tiền</strong><span
-                                                    class="total" id="sumprice"
-                                                    style="font-size: 20px; font-weight: 800; font-style: italic"><fmt:formatNumber
-                                                    value="${total}"
-                                                    type="currency"/></span>
-                                            </li>
+                <form action="update-cart" method="post">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Shopping Summery -->
 
-                                        </ul>
-                                        <div class="button5">
-                                            <a href="checkout.jsp" class="btn">Thanh toán</a>
-                                            <a href="home" class="btn">Tiếp tục mua sắm</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <table class="table shopping-summery">
+                                <thead>
+                                <tr class="main-hading">
+                                    <th>SẢN PHẨM</th>
+                                    <th>TÊN SẢN PHẨM</th>
+                                    <th class="text-center">GIÁ</th>
+                                    <th class="text-center">SỐ LƯỢNG</th>
+                                    <th class="text-center">TỔNG</th>
+                                    <th class="text-center">XÓA</th>
+                                </tr>
+                                </thead>
+                                <tbody class="cart-item">
+                                <c:forEach items="${list}" var="p">
+                                    <tr>
+                                        <td><img src="${p.image}"></td>
+                                        <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p>
+                                        </td>
+                                        <c:if test="${p.discount == 0}">
+                                            <td style="width: 175px; text-align: center"><fmt:formatNumber
+                                                    value="${p.price}" type="currency"/></td>
+                                        </c:if>
+                                        <c:if test="${p.discount != 0}">
+                                            <td style="width: 175px; text-align: center"><fmt:formatNumber
+                                                    value="${p.discount}" type="currency"/></td>
+                                        </c:if>
+                                        <td style="width: 100px;outline: none"><input class="amount" min="1"
+                                                                                      type="number"
+                                                                                      name="${p.productID}"
+                                                                                      value="${p.quantity}"
+                                                                                      style="width: 85px;height: 40px;text-align: center">
+                                        </td>
+                                        <c:if test="${p.discount == 0}">
+                                            <td class="price" data-value="${p.price}" style="width: 175px">
+                                                <fmt:formatNumber
+                                                        value="${p.price * p.quantity}" type="currency"/></td>
+                                        </c:if>
+                                        <c:if test="${p.discount != 0}">
+                                            <td class="price" data-value="${p.discount}" style="width: 175px">
+                                                <fmt:formatNumber value="${p.discount * p.quantity}"
+                                                                  type="currency"/></td>
+                                        </c:if>
+                                        <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
+                                                class="fa fa-trash"></i></a></td>
+                                    </tr>
+                                </c:forEach>
+                                <tr style="text-align: center">
+                                    <td colspan="4" style="font-size: 20px; font-weight: 700"> Tổng tiền:</td>
+                                    <c:if test="${check}">
+                                        <td colspan="2"><span class="total" style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber value="0" type="currency"/></span></td>
+                                    </c:if>
+                                    <c:if test="${!check}">
+                                        <td colspan="2"><span class="total" style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber value="${total}" type="currency"/></span></td>
+                                    </c:if>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+                            <!--/ End Shopping Summery -->
                         </div>
-                        <!--/ End Total Amount -->
                     </div>
-                </div>
+                    <div class="center-block justify-content-center" style="display: inline-flex;margin-left: 337px">
+                        <div>
+                            <a href="home" class="btn primary-btn" style="border-radius: 5px">Tiếp tục mua sắm</a>
+                            <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">
+                            <a href="checkout.jsp" class="btn primary-btn" style="border-radius: 5px">Thanh toán</a>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -234,6 +206,5 @@
 
 <!-- Nice Select JS -->z`
 <script src="../../js/nicesellect.js"></script>
-<script src="assets/js/cart.js"></script>
 </body>
 </html>
