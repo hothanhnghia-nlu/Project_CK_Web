@@ -52,15 +52,16 @@ public class OrderService {
         );
     }
 
-    public void addOrder(String id,String fullName, String phone, String email, String address, String note) {
+    public void addOrder(String id,String fullName, String phone, String email, String address, String note, String payment) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO orders (orderID, full_name, phone_number, email, address, note, order_date)  VALUES (?,?, ?, ?, ?, ?, NOW())")
+                handle.createUpdate("INSERT INTO orders (orderID, full_name, phone_number, email, address, note, order_date, payment)  VALUES (?,?, ?, ?, ?, ?, NOW(), ?)")
                         .bind(0, id)
                         .bind(1, fullName)
                         .bind(2, phone)
                         .bind(3, email)
                         .bind(4, address)
                         .bind(5, note)
+                        .bind(6, payment)
                         .execute()
         );
     }
