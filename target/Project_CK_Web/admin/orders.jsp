@@ -74,12 +74,13 @@
                         <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                           <thead>
                           <tr>
-                            <th>Mã đơn hàng</th>
+                            <th>#</th>
                             <th>Tên khách hàng</th>
                             <th>SĐT</th>
                             <th>Địa chỉ</th>
                             <th>Ghi chú</th>
                             <th>Ngày đặt hàng</th>
+                            <th>Thanh toán</th>
                             <th>Tình trạng</th>
                             <th>Tính năng</th>
                           </tr>
@@ -93,6 +94,7 @@
                               <td>${x.address}</td>
                               <td>${x.note}</td>
                               <td>${x.orderDate}</td>
+                              <td>${x.payment}</td>
                               <td style="color: #FFF; font-size: 17px">
                                   <c:if test="${x.status == 'Đang xử lý'}">
                                       <span class="badge bg-warning">${x.status}</span>

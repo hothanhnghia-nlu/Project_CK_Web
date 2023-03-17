@@ -27,7 +27,7 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-user"></i> Hồ sơ</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i> Thống kê</a></li>
                     <li><a href="table_account"><i class="fa fa-user-edit"></i> Quản lý tài khoản</a></li>
                     <li><a href="table_user"><i class="fa fa-users"></i> Quản lý khách hàng</a></li>
                     <li><a href="product-list"><i class="fa fa-table"></i> Quản lý sản phẩm</a></li>

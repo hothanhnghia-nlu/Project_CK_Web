@@ -138,7 +138,7 @@
 					</c:if>
 
 					<div class="form-group">
-						<label>Địa chỉ<span><strong class="compulsory"> *</strong></span></label>
+						<label>Địa chỉ giao hàng<span><strong class="compulsory"> *</strong></span></label>
 						<input class="input" type="text" name="address" placeholder="Số nhà, phường/xã, quận/huyện, tỉnh/thành phố">
 					</div>
 					<!-- Order notes -->
@@ -157,14 +157,14 @@
 											<div class="panel-heading">
 												<h4 class="panel-title">
 													<label for='r11' style='width: 350px;'>
-														<input type='radio' id='r11' name='occupation' value='cod'> Thanh toán khi giao hàng (COD)
+														<input type='radio' id='r11' name='payment' value='Tiền mặt'> Thanh toán khi giao hàng (COD)
 														<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"></a>
 													</label>
 												</h4>
 											</div>
 											<div id="collapseOne" class="panel-collapse collapse">
 												<div class="panel-body">
-													<p style="text-align: center; color: #333333">COD - giao hàng & thu tiền tận nơi thông qua đơn vị vận chuyển, Minh Thư Group miễn phí vận chuyển cho các đơn hàng tại Biên Hòa</p>
+													<p style="text-align: center; color: #333333">COD - giao hàng & thu tiền tận nơi thông qua đơn vị vận chuyển.</p>
 												</div>
 											</div>
 										</div>
@@ -172,7 +172,7 @@
 											<div class="panel-heading">
 												<h4 class=panel-title>
 													<label for='r12' style='width: 350px;'>
-														<input type='radio' id='r12' name='occupation' value='card'> Chuyển khoản qua ngân hàng
+														<input type='radio' id='r12' name='payment' value='Chuyển khoản'> Chuyển khoản qua ngân hàng
 														<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"></a>
 													</label>
 												</h4>
@@ -191,13 +191,6 @@
 						</div>
 					</div>
 
-					<div class="input-checkbox">
-						<input type="checkbox" id="terms">
-						<label for="terms">
-							<span></span>
-							Tôi đã đọc và chấp nhận các <a href="#">điều khoản</a>
-						</label>
-					</div>
 					<input type="submit" class="primary-btn order-submit" value="XÁC NHẬN ĐẶT HÀNG" style="margin-left: 180px; margin-top: 10px">
 				</div>
 				<!-- /Billing Details -->
@@ -216,13 +209,7 @@
 							<c:forEach items="${list}" var="p">
 								<div class="order-col">
 									<div>${p.quantity}x ${p.name}</div>
-									<c:if test="${p.discount == 0}">
-										<div><fmt:formatNumber value="${p.price}" type="currency"/></div>
-									</c:if>
-									<c:if test="${p.discount != 0}">
-										<div><fmt:formatNumber value="${p.discount}" type="currency"/></div>
-									</c:if>
-
+									<div><fmt:formatNumber value="${total}" type="currency"/></div>
 								</div>
 							</c:forEach>
 						</div>
@@ -233,7 +220,6 @@
 							</c:if>
 							<c:if test="${!check}">
 								<div><span><fmt:formatNumber value="${total}" type="currency"/> </span></div>
-
 							</c:if>
 
 						</div>
@@ -252,7 +238,6 @@
 							</c:if>
 							<c:if test="${!check}">
 								<div><strong class="order-total"><fmt:formatNumber value="${total}" type="currency"/></strong></div>
-
 							</c:if>
 
 						</div>
