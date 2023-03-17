@@ -25,7 +25,6 @@ public class Add extends HttpServlet {
         cart.put(p);
         cart.commit(session);
         response.sendRedirect(request.getHeader("referer"));
-
     }
 
     @Override
