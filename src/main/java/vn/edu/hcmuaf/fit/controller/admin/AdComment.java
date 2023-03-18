@@ -15,7 +15,7 @@ public class AdComment extends HttpServlet {
 //        OrderService.getInstance().deleteAll();
         String id = request.getParameter("id");
         if(id!=null){
-            CommentService.getInstance().deleteFeedback(id);
+            CommentService.getInstance().deleteComment(id);
         }
         request.setAttribute("commentList", CommentService.getInstance().listAllComment());
         request.getRequestDispatcher("comment.jsp").forward(request,response);

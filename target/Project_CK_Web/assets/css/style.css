@@ -2332,9 +2332,7 @@ img {
     color: #2b80dd;
 }
 
-.shopping-cart .total-amount {
-    margin-top: 50px;
-}
+
 
 .shopping-cart .total-amount .left .coupon form {
     background: #dcdde1;
@@ -2461,7 +2459,8 @@ img {
 
 .shopping-cart .total-amount .right ul li.last .total {
     color: #ff0000;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight:500 ;
 }
 
 .shopping-cart .total-amount .right ul li span {
