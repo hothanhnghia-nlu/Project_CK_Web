@@ -33,10 +33,10 @@ public class Checkout extends HttpServlet {
 
         String id = ""+(OrderService.getInstance().getNewID()+1);
         OrderService.getInstance().addOrder(id,name,phone,email,address,note, payment);
-        for (Product p: list){
-            double discount = p.getDiscount()==0?p.getPrice():p.getDiscount();
-            OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),discount);
-        }
+//        for (Product p: list){
+//            double discount = p.getDiscount()==0?p.getPrice():p.getDiscount();
+//            OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),discount);
+//        }
         session.removeAttribute("cart");
         response.sendRedirect("success.jsp");
     }

@@ -17,11 +17,13 @@ public class ProductService {
 
     public List<Product> listAllProduct (){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt`  " +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID  " +
+                            "WHERE products.`status`=0 and vendors.`status`=0")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
-       return pro;
+       return ImagesService.getInstance().getImgForProducts(pro);
     }
     public List<Brand> getAllbrand (){
         List<Brand> pro = JDBIConnector.get().withHandle(handle -> {
@@ -33,44 +35,44 @@ public class ProductService {
     }
     public List<Product> getTopNewProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product\n" +
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product\n" +
                             "    order by productID DESC\n" +
                             "    LIMIT ?;")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
-        return pro;
+        return  ImagesService.getInstance().getImgForProducts(pro);
     }
     public List<Product> getTopProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product order by price DESC LIMIT ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt`FROM product order by price DESC LIMIT ?")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
-        return pro;
+        return  ImagesService.getInstance().getImgForProducts(pro);
     }  public List<Product> getTopSeller (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product order by discount DESC LIMIT ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product order by discount DESC LIMIT ?")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
-        return pro;
+        return  ImagesService.getInstance().getImgForProducts(pro);
     }
 
     public Product getProductByID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product WHERE productID= ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product WHERE productID= ?")
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
-        return reDiscription(pro.get(0));
+        return reDiscription(ImagesService.getInstance().getImgForProducts(pro).get(0));
     }
     public List<Product> getProductByCAT_ID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product WHERE cat_id= ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product WHERE cat_id= ?")
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
@@ -78,7 +80,7 @@ public class ProductService {
     }
     public List<Product> getProductByName (String name){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM product WHERE name like ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product WHERE name like ?")
                     .bind(0, "%"+name+"%")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -127,14 +129,14 @@ public class ProductService {
     }
     public Product get(String id) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM  product WHERE productID = ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM  product WHERE productID = ?")
                     .bind(0,id)
                     .mapToBean(Product.class).findFirst().orElse(null);
         });
     }
     public Product reDiscription(Product p){
 
-        StringTokenizer st = new StringTokenizer ( p. getDiscription(),"\t" ) ;
+        StringTokenizer st = new StringTokenizer ( p. getDescription(),"\t" ) ;
         String resut= "";
         boolean check= true;
         while ( st. hasMoreTokens ()) {
@@ -149,13 +151,17 @@ public class ProductService {
                 check = true;
             }
         }
-        p.setDiscription(resut);
+        p.setDescription(resut);
         return p;
     }
+
     public static void main(String[] args) {
         ProductService a = new ProductService();
-//        a.setProduct("088","VP012","Dell Inspiron 16 5625","Dell","./img/product/vanphong/Dell%20Inspiron%2016%205620.jpg","CPU	 AMD Ryzen™ 5 5625U 6-core/12-thread",100,22890000, 19890000);
-        System.out.println(a.get("001"));
+        ImagesService i = new ImagesService();
+        System.out.println(a.listAllProduct());
+//                System.out.println( i.getImgForProducts(a.listAllProduct()));
+
+//        i.getImgForProducts(a.listAllProduct());
     }
 
 
