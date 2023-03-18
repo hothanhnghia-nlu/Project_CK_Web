@@ -158,14 +158,6 @@
 										</ul>
 									</div>
 									<div class="add-to-cart">
-<%--										<div class="qty-label">--%>
-<%--											Số lượng:--%>
-<%--											<div class="input-number">--%>
-<%--												<input type="number" id="amount" name="amount" value="1">--%>
-<%--												<span class="qty-up" onclick="handlePlus()">+</span>--%>
-<%--												<span class="qty-down" onclick="handleMinus()">-</span>--%>
-<%--											</div>--%>
-<%--										</div>--%>
 										<a href="cart/buy?pid=<%=p.getProductID()%>"  class="primary-btn">Mua ngay</a>
 									</div>
 								</div>
