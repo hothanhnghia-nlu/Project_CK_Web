@@ -4,6 +4,7 @@ import vn.edu.hcmuaf.fit.bean.Category;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.service.CategoryService;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.service.VendorsService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,6 +20,7 @@ public class ListProduct extends HttpServlet {
         String id = request.getParameter("id");
         ProductService pro = new ProductService();
         CategoryService cat = new CategoryService();
+
         List<Product> list ;
         if(id==null){
             list = pro.listAllProduct();
@@ -28,9 +30,9 @@ public class ListProduct extends HttpServlet {
         }
 //        response.getWriter().println(list);
         request.setAttribute("list", list);
-        request.setAttribute("listBrand", pro.getAllbrand());
         request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
+        request.setAttribute("listVendor", VendorsService.getInstance().getVendors());
 
         //chuyen huong trang tim kiem
         String name = request.getParameter("namespace");

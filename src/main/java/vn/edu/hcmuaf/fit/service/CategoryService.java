@@ -15,7 +15,7 @@ public class CategoryService {
 
     public List<Category> listAllCategory (){
         List<Category> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM category")
+            return handle.createQuery("SELECT `categoryID`,`name` FROM categories")
                     .mapToBean(Category.class)
                     .stream().collect(Collectors.toList());
         });
@@ -23,7 +23,7 @@ public class CategoryService {
     }
     public String getNameByID (String id){
         List<Category> cate = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM category where categoryID=?")
+            return handle.createQuery("SELECT `categoryID`,`name` FROM categories where categoryID=?")
                     .bind(0,id)
                     .mapToBean(Category.class)
                     .stream().collect(Collectors.toList());

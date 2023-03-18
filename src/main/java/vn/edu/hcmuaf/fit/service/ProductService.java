@@ -25,17 +25,9 @@ public class ProductService {
         });
        return ImagesService.getInstance().getImgForProducts(pro);
     }
-    public List<Brand> getAllbrand (){
-        List<Brand> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT DISTINCT product.brand FROM product")
-                    .mapToBean(Brand.class)
-                    .stream().collect(Collectors.toList());
-        });
-        return pro;
-    }
     public List<Product> getTopNewProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product\n" +
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products\n" +
                             "    order by productID DESC\n" +
                             "    LIMIT ?;")
                     .bind(0, n)
@@ -46,7 +38,7 @@ public class ProductService {
     }
     public List<Product> getTopProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt`FROM product order by price DESC LIMIT ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt`FROM products order by price DESC LIMIT ?")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -54,7 +46,7 @@ public class ProductService {
         return  ImagesService.getInstance().getImgForProducts(pro);
     }  public List<Product> getTopSeller (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product order by discount DESC LIMIT ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products order by discount DESC LIMIT ?")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -64,7 +56,7 @@ public class ProductService {
 
     public Product getProductByID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product WHERE productID= ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products WHERE productID= ?")
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
@@ -72,7 +64,7 @@ public class ProductService {
     }
     public List<Product> getProductByCAT_ID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product WHERE cat_id= ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products WHERE cat_id= ?")
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
@@ -80,7 +72,7 @@ public class ProductService {
     }
     public List<Product> getProductByName (String name){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM product WHERE name like ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products WHERE name like ?")
                     .bind(0, "%"+name+"%")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -90,7 +82,7 @@ public class ProductService {
     //admin
     public void deleteProduct(String Id) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("DELETE FROM product WHERE productID = ?")
+                handle.createUpdate("DELETE FROM products WHERE productID = ?")
                         .bind(0, Id)
                         .execute()
         );
@@ -98,7 +90,7 @@ public class ProductService {
 
     public void setProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("UPDATE product SET cat_id=?  ,`name` = ? , brand = ?, image= ?, discription=?, quantity=?,price=?,discount=?  WHERE productID = ?")
+                handle.createUpdate("UPDATE products SET cat_id=?  ,`name` = ? , brand = ?, image= ?, discription=?, quantity=?,price=?,discount=?  WHERE productID = ?")
                         .bind(8, productID)
                         .bind(0, cat_id)
                         .bind(1, name)
@@ -113,7 +105,7 @@ public class ProductService {
     }
     public void addProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO product values (?,?,?,?,?,?,?,?,?)")
+                handle.createUpdate("INSERT INTO products values (?,?,?,?,?,?,?,?,?)")
                         .bind(0, productID)
                         .bind(1, cat_id)
                         .bind(2, name)
@@ -129,7 +121,7 @@ public class ProductService {
     }
     public Product get(String id) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM  product WHERE productID = ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM  products WHERE productID = ?")
                     .bind(0,id)
                     .mapToBean(Product.class).findFirst().orElse(null);
         });
@@ -159,9 +151,7 @@ public class ProductService {
         ProductService a = new ProductService();
         ImagesService i = new ImagesService();
         System.out.println(a.listAllProduct());
-//                System.out.println( i.getImgForProducts(a.listAllProduct()));
 
-//        i.getImgForProducts(a.listAllProduct());
     }
 
 

@@ -21,7 +21,7 @@ public class Search extends HttpServlet {
 
 //        response.getWriter().println(list);
         request.setAttribute("list", list);
-        request.setAttribute("listBrand", pro.getAllbrand());
+//        request.setAttribute("listBrand", pro.getAllbrand());
         request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
 
