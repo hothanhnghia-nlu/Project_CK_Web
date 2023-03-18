@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
+import vn.edu.hcmuaf.fit.bean.Contact;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
@@ -17,7 +18,7 @@ public class UserService {
     // Check login is right
     public User checkLogin(String username, String password) {
         List<User> accounts = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM user WHERE username = ?")
+                h.createQuery("SELECT * FROM users WHERE username = ?")
                         .bind(0, username)
                         .mapToBean(User.class)
                         .stream()
@@ -33,7 +34,7 @@ public class UserService {
     // Check account exist
     public boolean checkAccountExist(String username) {
         List<User> user = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM user WHERE username = ?")
+                h.createQuery("SELECT * FROM users WHERE username = ?")
                         .bind(0, username)
                         .mapToBean(User.class)
                         .stream()
@@ -49,14 +50,15 @@ public class UserService {
     }
 
     // Register a new account
-    public void register(String fullName, String email, String phone, String username, String password) {
+    public void register(String id, String fullName, String email, String phone, String username, String password) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO user (full_name, email, phone_number, username, password) VALUES (?, ?, ?, ?, ?)")
-                        .bind(0, fullName)
-                        .bind(1, email)
-                        .bind(2, phone)
-                        .bind(3, username)
-                        .bind(4, password)
+                handle.createUpdate("INSERT INTO users (id, full_name, email, phone_number, username, password) VALUES (?, ?, ?, ?, ?, ?)")
+                        .bind(0, id)
+                        .bind(1, fullName)
+                        .bind(2, email)
+                        .bind(3, phone)
+                        .bind(4, username)
+                        .bind(5, password)
                         .execute()
         );
     }
@@ -64,32 +66,42 @@ public class UserService {
     // Update a new password
     public void updatePassword(String email, String newPassword) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("UPDATE user SET password = ? WHERE email = ?")
+                handle.createUpdate("UPDATE users SET password = ? WHERE email = ?")
                         .bind(0, newPassword)
                         .bind(1, email)
                         .execute()
         );
     }
 
-    // Get username and password by email
-    public String getUsernameAndPassword(String email) {
-        List<User> accounts = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT username, password FROM user WHERE email = ?")
-                        .bind(0, email)
+    // Update user information
+    public void updateUserInfo(String email, String address, String birthday) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET address = ?, birthday = ? WHERE email = ?")
+                        .bind(0, address)
+                        .bind(1, birthday)
+                        .bind(2, email)
+                        .execute()
+        );
+    }
+
+    // Get new id
+    public int getNewID() {
+        List<User> users = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users order by id DESC Limit 1")
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())
         );
-        String res = "";
-        for (int i = 0; i < accounts.size(); i++) {
-            res += "Username: " +  accounts.get(i).getUsername() + "\nPassword: " + accounts.get(i).getPassword();
+        for (int i = 0; i < users.size(); i++) {
+            return users.get(i).getId();
         }
-        return res;
+        return 0;
     }
 
+    // Get all user
     public List<User> getAll() {
         List<User> accounts = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM user")
+                h.createQuery("SELECT * FROM users")
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())
@@ -100,7 +112,7 @@ public class UserService {
     // Check email exist
     public boolean checkEmailExist(String email) {
         List<User> accounts = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT email FROM user WHERE email = ?")
+                h.createQuery("SELECT email FROM users WHERE email = ?")
                         .bind(0, email)
                         .mapToBean(User.class)
                         .stream()
@@ -133,16 +145,17 @@ public class UserService {
 
     public  List<User> listALlUser(){
         List<User> lu = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM user")
+            return handle.createQuery("SELECT * FROM users")
                     .mapToBean(User.class)
                     .stream().collect(Collectors.toList());
         });
         return lu;
     }
+
     //admin
     public void deleteUser(String Id){
         JDBIConnector.get().withHandle(handle -> {
-            return handle.createUpdate("DELETE FROM user WHERE id = ?")
+            return handle.createUpdate("DELETE FROM users WHERE id = ?")
                     .bind(0,Id)
                     .execute();
 
@@ -150,7 +163,7 @@ public class UserService {
     }
     public void updateID (int id, int role){
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("UPDATE user SET role=?   WHERE id = ?")
+                handle.createUpdate("UPDATE users SET role = ? WHERE id = ?")
                         .bind(1, id)
                         .bind(0, role)
                         .execute()

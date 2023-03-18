@@ -46,6 +46,7 @@ CREATE TABLE `comments`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `product_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `rating` tinyint(4) DEFAULT NULL,
   `create_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`cmtID`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
@@ -81,7 +82,7 @@ CREATE TABLE `images`  (
   `imageID` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `url` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `status` tinyint NULL DEFAULT NULL,
   PRIMARY KEY (`imageID`) USING BTREE,
   INDEX `product_id`(`product_id` ASC) USING BTREE,
@@ -91,156 +92,226 @@ CREATE TABLE `images`  (
 -- ----------------------------
 -- Records of images
 -- ----------------------------
-INSERT INTO `images` VALUES ('001', '001', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('002', '001', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('003', '002', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('004', '002', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('005', '003', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('006', '003', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('007', '004', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('008', '004', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('009', '005', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('010', '005', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('011', '006', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('012', '006', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('013', '007', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('014', '007', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('015', '008', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('016', '008', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('017', '009', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('018', '009', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('019', '010', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('020', '010', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('021', '011', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('022', '011', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('023', '012', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('024', '012', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('025', '013', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('026', '013', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('027', '014', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('028', '014', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('029', '015', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('030', '015', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('031', '016', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('032', '016', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('033', '017', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('034', '017', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('035', '018', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('036', '018', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('037', '019', 'SamSung', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('038', '019', 'Samsung', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('039', '020', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('040', '020', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('041', '021', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('042', '021', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('043', '022', 'Samsung', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('044', '022', 'Samsung', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('045', '023', 'Samsung', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('046', '023', 'Samsung', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('047', '024', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('048', '024', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('049', '025', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('050', '025', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('051', '026', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('052', '026', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('053', '027', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('054', '027', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('055', '028', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('056', '028', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('057', '029', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('058', '029', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('059', '030', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('060', '030', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('061', '031', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('062', '031', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('063', '032', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('064', '032', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('065', '033', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('066', '033', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('067', '034', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('068', '034', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('069', '035', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('070', '035', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('071', '036', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('072', '036', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('073', '037', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('074', '037', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('075', '038', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('076', '038', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('077', '039', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('078', '039', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('079', '040', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('080', '040', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('081', '041', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('082', '041', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('083', '042', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('084', '042', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('085', '043', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('086', '043', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('087', '044', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('088', '044', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('089', '045', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('090', '045', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('091', '046', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('092', '046', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('093', '047', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('094', '047', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('095', '048', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('096', '048', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('097', '049', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('098', '049', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('099', '050', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('100', '050', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('101', '051', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('102', '051', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('103', '052', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('104', '052', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('105', '053', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('106', '053', 'Lenovo', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('107', '054', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('108', '054', 'Asus', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('109', '055', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('110', '055', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('111', '056', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('112', '056', 'Acer', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('113', '057', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('114', '057', 'MSI', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('115', '058', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('116', '058', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('117', '059', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('118', '059', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('119', '060', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('120', '060', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('121', '061', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('122', '061', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('123', '062', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('124', '062', 'Dell', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('125', '063', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('126', '063', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('127', '064', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('128', '064', 'HP', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('129', '065', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('130', '065', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('131', '066', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('132', '066', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('133', '067', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('134', '067', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('135', '068', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('136', '068', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('137', '069', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('138', '069', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('139', '070', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('140', '070', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('141', '071', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('142', '071', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('143', '072', 'Macbook', './assets/img/`images', 0);
-INSERT INTO `images` VALUES ('144', '072', 'Macbook', './assets/img/`images', 0);
+INSERT INTO `images` VALUES ('001', '001',"Dell", './assets/img/`images`/vanphong/Dell%20Inspiron%2016%205620.jpg', 0);
+INSERT INTO `images` VALUES ('002', '001',"Dell", './assets/img/`images`/vanphong/Dell%20Inspiron%207415.jpg', 0);
+
+INSERT INTO `images` VALUES ('003','002','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2016%205620.jpg',0);
+INSERT INTO `images` VALUES ('004','002','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2013%205320.jpg',0);
+
+INSERT INTO `images` VALUES ('005','003','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%207415.jpg',0);
+INSERT INTO `images` VALUES ('006','003','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2016%205620.jpg',0);
+
+INSERT INTO `images` VALUES ('007','004','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2013%205320.jpg',0);
+INSERT INTO `images` VALUES ('008','004','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2016%205620.jpg',0);
+
+INSERT INTO `images` VALUES ('009','005','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2015%205510.jpg',0);
+INSERT INTO `images` VALUES ('010','005','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2015%207501.jpg',0);
+
+INSERT INTO `images` VALUES ('011','006','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2015%207501.jpg',0);
+INSERT INTO `images` VALUES ('012','006','Dell','./assets/img/`images`/vanphong/Dell%20Inspiron%2016%205620.jpg',0);
+
+INSERT INTO `images` VALUES ('013','007','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%205410.jpg',0);
+INSERT INTO `images` VALUES ('014','007','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2015%205510.jpg',0);
+
+INSERT INTO `images` VALUES ('015','008','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2015%205510.jpg',0);
+INSERT INTO `images` VALUES ('016','008','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2013%205310.jpg',0);
+
+INSERT INTO `images` VALUES ('017','009','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2013%205310.jpg',0);
+INSERT INTO `images` VALUES ('018','009','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2015%205510.jpg',0);
+
+INSERT INTO `images` VALUES ('019','010','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2015%205510.jpg',0);
+INSERT INTO `images` VALUES ('020','010','Dell','./assets/img/`images`/vanphong/Dell%20Vostro%2015%205510.jpg',0);
+
+INSERT INTO `images` VALUES ('021','011','Lenovo','./assets/img/`images`/vanphong/Lenovo%20IdeaPad%205%20Pro%20.jpg',0);
+INSERT INTO `images` VALUES ('022','011','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Ideapad%20Gaming%203%2015IAH7.jpg',0);
+
+INSERT INTO `images` VALUES ('023','012','Acer','./assets/img/`images`/vanphong/Acer%20Swift%203.jpg',0);
+INSERT INTO `images` VALUES ('024','012','Acer','./assets/img/`images`/vanphong/Acer%20Aspire%201%20A115-32.jpg',0);
+
+INSERT INTO `images` VALUES ('025','013','Asus','./assets/img/`images`/vanphong/Asus%20Zenbook%2014%20Q409%20ZA.jpg',0);
+INSERT INTO `images` VALUES ('026','013','Asus','./assets/img/`images`/vanphong/Asus%20Zenbook%2014%20Q408UG.jpg',0);
+
+INSERT INTO `images` VALUES ('027','014','Acer','./assets/img/`images`/vanphong/Acer%20Aspire%201%20A115-32.jpg',0);
+INSERT INTO `images` VALUES ('028','014','Acer','./assets/img/`images`/vanphong/Acer%20Swift%203.jpg',0);
+
+INSERT INTO `images` VALUES ('029','015','Asus','./assets/img/`images`/vanphong/Asus%20Vivobook%20X515JA.jpg',0);
+INSERT INTO `images` VALUES ('030','015','Asus','./assets/img/`images`/vanphong/Asus%20Vivobook%20X515JA.jpg',0);
+
+INSERT INTO `images` VALUES ('031','016','Lenovo','./assets/img/`images`/vanphong/Lenovo%20ThinkPad%20E14.jpg',0);
+INSERT INTO `images` VALUES ('032','016','Dell','./assets/img/`images`/vanphong/Lenovo%20ThinkPad%20X1%20Nano%202021.jpg',0);
+
+INSERT INTO `images` VALUES ('033','017','Asus','./assets/img/`images`/vanphong/Asus%20Zenbook%2014%20Q408UG.jpg',0);
+INSERT INTO `images` VALUES ('034','017','Asus','./assets/img/`images`/vanphong/Asus%20Zenbook%2014%20Q409%20ZA.jpg',0);
+
+INSERT INTO `images` VALUES ('035','018','HP','./assets/img/`images`/vanphong/HP%20ENVY%20x360%2013-bd0063dx.jpg',0);
+INSERT INTO `images` VALUES ('036','018','HP','./assets/img/`images`/vanphong/Laptop%20HP%2014%20-%20dq2020nr.jpg',0);
+
+INSERT INTO `images` VALUES ('037','019','SamSung','./assets/img/`images`/vanphong/Samsung%20Galaxy%20Book%20Flex%20Alpha%202.jpg',0);
+INSERT INTO `images` VALUES ('038','019','Samsung','./assets/img/`images`/vanphong/Samsung%20Galaxy%20Book%20Flex%20Alpha%202.jpg',0);
+
+INSERT INTO `images` VALUES ('039','020','Acer','./assets/img/`images`/vanphong/Acer%20Aspire%205%20A514-54.jpg',0);
+INSERT INTO `images` VALUES ('040','020','Acer','./assets/img/`images`/vanphong/Acer%20Aspire%201%20A115-32.jpg',0);
+
+INSERT INTO `images` VALUES ('041','021','HP','./assets/img/`images`/vanphong/Laptop%20HP%2014%20-%20dq2020nr.jpg',0);
+INSERT INTO `images` VALUES ('042','021','HP','./assets/img/`images`/vanphong/HP%20ENVY%20x360%2013-bd0063dx.jpg',0);
+
+INSERT INTO `images` VALUES ('043','022','Samsung','./assets/img/`images`/vanphong/Samsung%20Galaxy%20Book%20Pro%2015.jpg',0);
+INSERT INTO `images` VALUES ('044','022','Samsung','./assets/img/`images`/vanphong/Samsung%20Galaxy%20Book%20Pro%20360%2013.jpg',0);
+
+INSERT INTO `images` VALUES ('045','023','Samsung','./assets/img/`images`/vanphong/Samsung%20Galaxy%20Book%20Pro%20360%2013.jpg',0);
+INSERT INTO `images` VALUES ('046','023','Samsung','./assets/img/`images`/vanphong/Samsung%20Galaxy%20Book%20Pro%2015.jpg',0);
+
+INSERT INTO `images` VALUES ('047','024','MSI','./assets/img/`images`/vanphong/MSI%20Modern%2015%20A5M%20238VN.jpg',0);
+INSERT INTO `images` VALUES ('048','024','MSI','./assets/img/`images`/vanphong/MSI%20Modern%2015%20A5M%20238VN.jpg',0);
+
+INSERT INTO `images` VALUES ('049','025','HP','./assets/img/`images`/vanphong/Laptop%20HP%2015%20-%20DW3058CL.jpg',0);
+INSERT INTO `images` VALUES ('050','025','HP','./assets/img/`images`/vanphong/Laptop%20HP%2014%20-%20dq2020nr.jpg',0);
+
+INSERT INTO `images` VALUES ('051','026','Lenovo','./assets/img/`images`/vanphong/Lenovo%20ThinkPad%20X1%20Nano%202021.jpg',0);
+INSERT INTO `images` VALUES ('052','026','Lenovo','./assets/img/`images`/vanphong/Lenovo%20ThinkPad%20E14.jpg',0);
+
+INSERT INTO `images` VALUES ('053','027','Asus','./assets/img/`images`/vanphong/Asus%20VivoBook%20M433IA-EB619T.jpg',0);
+INSERT INTO `images` VALUES ('054','027','Asus','./assets/img/`images`/vanphong/Asus%20Vivobook%20X515JA.jpg',0);
+
+INSERT INTO `images` VALUES ('055','028','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX506HM.jpg',0);
+INSERT INTO `images` VALUES ('056','028','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX506LHB.jpg',0);
+
+INSERT INTO `images` VALUES ('057','029','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX506LHB.jpg',0);
+INSERT INTO `images` VALUES ('058','029','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX506HM.jpg',0);
+
+INSERT INTO `images` VALUES ('059','030','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Ideapad%20Gaming%203%2015IAH7.jpg',0);
+INSERT INTO `images` VALUES ('060','030','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20IdeaPad%20Gaming%203%2015IHU6.jpg',0);
+
+INSERT INTO `images` VALUES ('061','031','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20IdeaPad%20Gaming%203%2015IHU6.jpg',0);
+INSERT INTO `images` VALUES ('062','031','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Ideapad%20Gaming%203%2015IAH7.jpg',0);
+
+INSERT INTO `images` VALUES ('063','032','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2011UC.jpg',0);
+INSERT INTO `images` VALUES ('064','032','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Pulse%20GL66%2011UDK.jpg',0);
+
+INSERT INTO `images` VALUES ('065','033','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Pulse%20GL66%2011UDK.jpg',0);
+INSERT INTO `images` VALUES ('066','033','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2011UC.jpg',0);
+
+INSERT INTO `images` VALUES ('067','034','Dell','./assets/img/`images`/gaming/Laptop%20Dell%20Gaming%20G15%205515.jpg',0);
+INSERT INTO `images` VALUES ('068','034','Dell','./assets/img/`images`/gaming/Laptop%20Dell%20Gaming%20Alienware%20m15%20R6.jpg',0);
+
+INSERT INTO `images` VALUES ('069','035','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Aspire%207%20Gaming%20A715%2042G%20R4XX.jpg',0);
+INSERT INTO `images` VALUES ('070','035','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2045%20R6EV.jpg',0);
+
+INSERT INTO `images` VALUES ('071','036','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2057%20553E.jpg',0);
+INSERT INTO `images` VALUES ('072','036','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Aspire%207%20Gaming%20A715%2042G%20R4XX.jpg',0);
+INSERT INTO `images` VALUES ('073','037','HP','./assets/img/`images`/gaming/Laptop%20HP%20VICTUS%2016%20d0292TX.jpg',0);
+INSERT INTO `images` VALUES ('074','037','HP','./assets/img/`images`/gaming/Laptop%20HP%20VICTUS%2016%20d0292TX.jpg',0);
+
+INSERT INTO `images` VALUES ('075','038','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2045%20R6EV.jpg',0);
+INSERT INTO `images` VALUES ('076','038','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2057%20553E.jpg',0);
+
+INSERT INTO `images` VALUES ('077','039','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20ROG%20Strix%20Gaming%20G513IH.jpg',0);
+INSERT INTO `images` VALUES ('078','039','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX507Z.jpg',0);
+
+INSERT INTO `images` VALUES ('079','040','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Bravo%2015%20B5DD.jpg',0);
+INSERT INTO `images` VALUES ('080','040','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Creator%20Z16P%20B12UGST.jpg',0);
+
+INSERT INTO `images` VALUES ('081','041','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Alpha%2015%20B5EEK.jpg',0);
+INSERT INTO `images` VALUES ('082','041','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Bravo%2015%20B5DD.jpg',0);
+
+INSERT INTO `images` VALUES ('083','042','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Creator%20Z16P%20B12UGST.jpg',0);
+INSERT INTO `images` VALUES ('084','042','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Alpha%2015%20B5EEK.jpg',0);
+
+INSERT INTO `images` VALUES ('085','043','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GE66%20Raider%2011UH.jpg',0);
+INSERT INTO `images` VALUES ('086','043','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GS66%20Stealth%2011UG.jpg',0);
+
+INSERT INTO `images` VALUES ('087','044','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GS66%20Stealth%2011UG.jpg',0);
+INSERT INTO `images` VALUES ('088','044','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GE66%20Raider%2011UH.jpg',0);
+
+INSERT INTO `images` VALUES ('089','045','Dell','./assets/img/`images`/gaming/Laptop%20Dell%20Gaming%20Alienware%20m15%20R6.jpg',0);
+INSERT INTO `images` VALUES ('090','045','Dell','./assets/img/`images`/gaming/Laptop%20Dell%20Gaming%20G15%205515.jpg',0);
+
+INSERT INTO `images` VALUES ('091','046','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GE66%20Raider%2011UG.jpg',0);
+INSERT INTO `images` VALUES ('092','046','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Vector%20GP66%2012UGS.jpg',0);
+
+INSERT INTO `images` VALUES ('093','047','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20Vector%20GP66%2012UGS.jpg',0);
+INSERT INTO `images` VALUES ('094','047','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GE66%20Raider%2011UG.jpg',0);
+
+INSERT INTO `images` VALUES ('095','048','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20Gaming%20ROG%20Flow%20Z13%20GZ301Z.jpg',0);
+INSERT INTO `images` VALUES ('096','048','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX507Z.jpg',0);
+
+INSERT INTO `images` VALUES ('097','049','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FX507Z.jpg',0);
+INSERT INTO `images` VALUES ('098','049','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20Gaming%20ROG%20Flow%20Z13%20GZ301Z.jpg',0);
+
+INSERT INTO `images` VALUES ('099','050','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Legion%205%2015IAH7.jpg',0);
+INSERT INTO `images` VALUES ('100','050','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Gaming%20Legion%205%2015ACH6.jpg',0);
+
+INSERT INTO `images` VALUES ('101','051','Dell','./assets/img/`images`/gaming/Laptop%20Dell%20Gaming%20G15%205511.jpg',0);
+INSERT INTO `images` VALUES ('102','051','Dell','./assets/img/`images`/gaming/Laptop%20Dell%20Gaming%20G15%205515.jpg',0);
+
+INSERT INTO `images` VALUES ('103','052','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20ROG%20Strix%20Gaming%20G513R.jpg',0);
+INSERT INTO `images` VALUES ('104','052','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FA507RC.jpg',0);
+
+INSERT INTO `images` VALUES ('105','053','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Gaming%20Legion%205%2015ACH6.jpg',0);
+INSERT INTO `images` VALUES ('106','053','Lenovo','./assets/img/`images`/gaming/Laptop%20Lenovo%20Legion%205%2015IAH7.jpg',0);
+
+INSERT INTO `images` VALUES ('107','054','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20TUF%20Gaming%20FA507RC.jpg',0);
+INSERT INTO `images` VALUES ('108','054','Asus','./assets/img/`images`/gaming/Laptop%20Asus%20ROG%20Strix%20Gaming%20G513R.jpg',0);
+
+INSERT INTO `images` VALUES ('109','055','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2011UD.jpg',0);
+INSERT INTO `images` VALUES ('110','055','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2010SC.jpg',0);
+
+INSERT INTO `images` VALUES ('111','056','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Aspire%207%20Gaming%20A715%2042G%20R05G.jpg',0);
+INSERT INTO `images` VALUES ('112','056','Acer','./assets/img/`images`/gaming/Laptop%20Acer%20Nitro%205%20Gaming%20AN515%2057%20553E.jpg',0);
+
+INSERT INTO `images` VALUES ('113','057','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2010SC.jpg',0);
+INSERT INTO `images` VALUES ('114','057','MSI','./assets/img/`images`/gaming/Laptop%20MSI%20Gaming%20GF63%20Thin%2011UD.jpg',0);
+
+INSERT INTO `images` VALUES ('115','058','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%207510.jpg',0);
+INSERT INTO `images` VALUES ('116','058','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%207720.jpg',0);
+
+INSERT INTO `images` VALUES ('117','059','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%207720.jpg',0);
+INSERT INTO `images` VALUES ('118','059','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%207510.jpg',0);
+
+INSERT INTO `images` VALUES ('119','060','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%205530.jpg',0);
+INSERT INTO `images` VALUES ('120','060','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%207720.jpg',0);
+
+INSERT INTO `images` VALUES ('121','061','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%205550.jpg',0);
+INSERT INTO `images` VALUES ('122','061','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%205530.jpg',0);
+
+INSERT INTO `images` VALUES ('123','062','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%205550%20i7.jpg',0);
+INSERT INTO `images` VALUES ('124','062','Dell','./assets/img/`images`/mac_dohoa/Dell%20Precision%205550.jpg',0);
+
+INSERT INTO `images` VALUES ('125','063','HP','./assets/img/`images`/mac_dohoa/HP%20Zbook%2015%20G2.jpg',0);
+INSERT INTO `images` VALUES ('126','063','HP','./assets/img/`images`/mac_dohoa/HP%20Zbook%2017%20G2.jpg',0);
+
+INSERT INTO `images` VALUES ('127','064','HP','./assets/img/`images`/mac_dohoa/HP%20Zbook%2017%20G2.jpg',0);
+INSERT INTO `images` VALUES ('128','064','HP','./assets/img/`images`/mac_dohoa/HP%20Zbook%2015%20G2.jpg',0);
+
+INSERT INTO `images` VALUES ('129','065','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M1.jpg"',0);
+INSERT INTO `images` VALUES ('130','065','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M2.jpg',0);
+
+INSERT INTO `images` VALUES ('131','066','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M2.jpg',0);
+INSERT INTO `images` VALUES ('132','066','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M1.jpg',0);
+
+INSERT INTO `images` VALUES ('133','067','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M2.jpg',0);
+INSERT INTO `images` VALUES ('134','067','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M1.jpg',0);
+
+INSERT INTO `images` VALUES ('135','068','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M2.jpg',0);
+INSERT INTO `images` VALUES ('136','068','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Air%20M2.jpg',0);
+
+INSERT INTO `images` VALUES ('137','069','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M1.jpg',0);
+INSERT INTO `images` VALUES ('138','069','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M2.jpg',0);
+
+INSERT INTO `images` VALUES ('139','070','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M1.jpg',0);
+INSERT INTO `images` VALUES ('140','070','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M2.jpg',0);
+
+INSERT INTO `images` VALUES ('141','071','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M1.jpg',0);
+INSERT INTO `images` VALUES ('142','071','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M2.jpg',0);
+
+INSERT INTO `images` VALUES ('143','072','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M2.jpg',0);
+INSERT INTO `images` VALUES ('144','072','Macbook','./assets/img/`images`/mac_dohoa/Macbook%20Pro%20M1.jpg',0);
 
 -- ----------------------------
 -- Table structure for log
 -- ----------------------------
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE `log`  (
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE `logs`  (
   `logID` int NOT NULL,
   `level` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `user_id` int NOT NULL,
@@ -1285,7 +1356,7 @@ CREATE TABLE `users`  (
   `birthday` date NULL DEFAULT NULL,
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `role` tinyint NULL DEFAULT NULL,
+  `role` tinyint NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
