@@ -6,6 +6,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.Brand" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.Vendor" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,14 +88,14 @@
                         <h3 class="aside-title">Hãng sản xuất</h3>
                         <div class="checkbox-filter">
                             <%
-                                List<Brand> lists = (List<Brand>) request.getAttribute("listBrand");
-                                for (Brand p : lists) {
+                                List<Vendor> lists = (List<Vendor>) request.getAttribute("listVendor");
+                                for (Vendor v : lists) {
                             %>
                             <div class="input-checkbox">
-                                <input type="checkbox" id="brand-<%=p.getBrand()%>">
-                                <label for="brand-<%=p.getBrand()%>">
+                                <input type="checkbox" id="brand-<%=v.getName()%>">
+                                <label for="brand-<%=v.getName()%>">
                                     <span></span>
-                                    <%=p.getBrand()%>
+                                    <%=v.getName()%>
                                     <%--												<small>(578)</small>--%>
                                 </label>
                             </div>
@@ -132,14 +133,21 @@
                         %>
                         <div class="product-widget">
                             <div class="product-img">
-                                <img src="<%=p.getImage()%>" alt="">
+                                <img src="<%=p.getImage().get(0)%>" alt="">
                             </div>
                             <div class="product-body">
-                                <p class="product-category"><%=p.getBrand()%>
+                                <p class="product-category">
+                                    <% List<Vendor> listVendor = (List<Vendor>) request.getAttribute("listVendor");
+                                    for (Vendor v : listVendor) {
+                                        if(v.getVendorID().equals(p.getVendor_id())){%>
+                                             <%=v.getName()%>
+                                        <%}
+                                    }
+                                %>
                                 </p>
                                 <h3 class="product-name"><a href="#"><%=p.getName()%>
                                 </a></h3>
-                                <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
+                                <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(2312)%></h4>
                             </div>
                         </div>
                         <%}%>
@@ -178,30 +186,36 @@
                         <div class="col-md-4 col-xs-6 contentPage">
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="<%=p.getImage()%>" alt="">
+                                    <img src="<%=p.getImage().get(0)%>" alt="">
                                     <div class="product-label">
                                         <!-- <span class="sale">-30%</span> -->
-                                        <% boolean check = p.getDiscount()!=0 ? true :false;
-                                        if(check==true){%>
-                                            <span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
-                                        <%}%>
+<%--                                        <% boolean check = p.getDiscount()!=0 ? true :false;--%>
+<%--                                        if(check==true){%>--%>
+<%--                                            <span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>--%>
+<%--                                        <%}%>--%>
                                         <span class="new">NEW</span>
 
                                     </div>
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category"><%=p.getBrand()%>
+                                    <p class="product-category"> <% List<Vendor> listVendor = (List<Vendor>) request.getAttribute("listVendor");
+                                        for (Vendor v : listVendor) {
+                                            if(v.getVendorID().equals(p.getVendor_id())){%>
+                                        <%=v.getName()%>
+                                        <%}
+                                        }
+                                        %>
                                     </p>
                                     <h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
                                     </a></h3>
 
-                                    <% if(check==true){%>
-                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
-                                        <del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
-                                    <%} else {%>
-                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
-                                        <br>
-                                    <%}%>
+<%--                                    <% if(check==true){%>--%>
+<%--                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>--%>
+<%--                                        <del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>--%>
+<%--                                    <%} else {%>--%>
+<%--                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>--%>
+<%--                                        <br>--%>
+<%--                                    <%}%>--%>
 
                                     <div class="product-rating">
                                         <i class="fa fa-star"></i>
