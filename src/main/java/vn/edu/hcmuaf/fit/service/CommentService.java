@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
+import vn.edu.hcmuaf.fit.bean.Comment;
 import vn.edu.hcmuaf.fit.bean.Feedback;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
@@ -12,17 +13,17 @@ public class CommentService {
     public static CommentService getInstance() {
         return new CommentService();
     }
-    public List<Feedback> listAllComment(){
-        List<Feedback> com = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM feedback")
-                    .mapToBean(Feedback.class)
+    public List<Comment> listAllComment(){
+        List<Comment> com = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM comments")
+                    .mapToBean(Comment.class)
                     .stream().collect(Collectors.toList());
         });
         return com;
     }
-    public void deleteFeedback(String Id) {
+    public void deleteComment(String Id) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("DELETE FROM feedback WHERE feedbackID = ?")
+                handle.createUpdate("DELETE FROM comments WHERE cmtID = ?")
                         .bind(0, Id)
                         .execute()
         );

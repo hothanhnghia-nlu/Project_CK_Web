@@ -1,7 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.bean.Contact;
-import vn.edu.hcmuaf.fit.bean.Order;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.List;
@@ -14,9 +13,9 @@ public class ContactService {
     }
 
     // Add a new contact
-    public void insert(String id,String fullName, String phone, String email, String subject, String content) {
+    public void insert(String id, String fullName, String phone, String email, String subject, String content) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO feedback VALUES (?,?, ?, ?, ?, ?)")
+                handle.createUpdate("INSERT INTO contacts VALUES (?, ?, ?, ?, ?, ?, NOW())")
                         .bind(0, id)
                         .bind(1, fullName)
                         .bind(2, phone)
@@ -26,19 +25,25 @@ public class ContactService {
                         .execute()
         );
     }
+
+    // Get a new id
     public int getNewID() {
         List<Contact> contacts = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT * FROM feedback order by feedbackID DESC Limit 1")
+                handle.createQuery("SELECT * FROM contacts order by contactID DESC Limit 1")
                         .mapToBean(Contact.class)
                         .stream()
                         .collect(Collectors.toList())
         );
-        return Integer.parseInt(contacts.get(0).getFeedbackID());
+        for (int i = 0; i < contacts.size(); i++) {
+            return Integer.parseInt(contacts.get(i).getFeedbackID());
+        }
+        return 0;
     }
-    // Delete contactSSS
+
+    // Delete contact
     public void delete(String id) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("DELETE FROM feedback WHERE feedbackID = ?")
+                handle.createUpdate("DELETE FROM contacts WHERE contactID = ?")
                         .bind(0, id)
                         .execute()
         );
@@ -47,7 +52,7 @@ public class ContactService {
     // Select all contact
     public List<Contact> selectAll() {
         List<Contact> contacts = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT * FROM feedback")
+                handle.createQuery("SELECT * FROM contacts")
                         .mapToBean(Contact.class)
                         .stream()
                         .collect(Collectors.toList())
