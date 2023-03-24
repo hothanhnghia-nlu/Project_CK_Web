@@ -1,8 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.bean.Comment;
-import vn.edu.hcmuaf.fit.bean.Feedback;
-import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.List;

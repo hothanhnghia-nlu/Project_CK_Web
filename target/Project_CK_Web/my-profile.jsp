@@ -88,13 +88,13 @@
                         <div class="title">
                             <h3>THÔNG TIN CÁ NHÂN</h3>
                         </div>
-                        <form class="form" method="post">
+                        <form class="form" action="my-profile" method="post">
                             <div class="row">
                                 <c:if test="${sessionScope.auth != null}">
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Họ và tên<span>*</span></label>
-                                            <input name="name" type="text" placeholder="" value="${sessionScope.auth.fullName}" style="background: #f1f0f1; border-color: #e6e2f5" required>
+                                            <input name="name" type="text" value="${sessionScope.auth.fullName}" style="background: #f1f0f1; border-color: #e6e2f5" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
@@ -112,13 +112,13 @@
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Ngày sinh<span>*</span></label>
-                                            <input name="date" type="text" value="" style="background: #f1f0f1; border-color: #e6e2f5" required>
+                                            <input name="birthday" type="date" value="${sessionScope.auth.birthday}" placeholder="yyyy-mm-dd" style="background: #f1f0f1; border-color: #e6e2f5" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Địa chỉ<span>*</span></label>
-                                            <input name="text" type="text" value="" style="background: #f1f0f1; border-color: #e6e2f5" required>
+                                            <input name="address" type="text" value="${sessionScope.auth.address}" style="background: #f1f0f1; border-color: #e6e2f5" required>
                                         </div>
                                     </div>
                                 </c:if>
@@ -132,33 +132,15 @@
                                     </div>
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
-                                            <label>Điện thoại<span>*</span></label>
-                                            <input name="phone" type="text" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-group">
                                             <label>Email<span>*</span></label>
                                             <input name="email" type="email" style="background: #f1f0f1; border-color: #e6e2f5" value="${sessionScope.oAuth.email}" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-group">
-                                            <label>Ngày sinh<span>*</span></label>
-                                            <input name="birthday" type="text" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Địa chỉ<span>*</span></label>
-                                            <input name="address" type="text" required>
                                         </div>
                                     </div>
                                 </c:if>
 
                                 <div class="col-12">
-                                    <div class="form-group button" style="text-align: center;">
-                                        <button type="submit" class="btn">Lưu thay đổi</button>
+                                    <div class="form-group button" style="text-align: center">
+                                        <input type="submit" class="btn" value="Lưu thay đổi" style="width: 150px">
                                     </div>
                                 </div>
                             </div>
