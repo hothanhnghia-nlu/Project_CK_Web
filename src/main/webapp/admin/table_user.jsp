@@ -100,8 +100,8 @@
                                                     <td>${u.fullName}</td>
                                                     <td>${u.email}</td>
                                                     <td>${u.phoneNumber}</td>
-                                                    <td>sgsf</td>
-                                                    <td>sdgfds</td>
+                                                    <td>${u.address}</td>
+                                                    <td>${u.birthday}</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
                                                             <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="table_user?id=${u.id}"><i

@@ -98,15 +98,18 @@ public class UserService {
         return 0;
     }
 
-    // Get all user
-    public List<User> getAll() {
-        List<User> accounts = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM users")
+    // Get user email
+    public String getUserEmail() {
+        List<User> users = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT email FROM users")
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())
         );
-        return accounts;
+        for (int i = 0; i < users.size(); i++) {
+            return users.get(i).getEmail();
+        }
+        return null;
     }
 
     // Check email exist
@@ -143,6 +146,7 @@ public class UserService {
         return result;
     }
 
+    // Get all user
     public  List<User> listALlUser(){
         List<User> lu = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT * FROM users")
@@ -168,8 +172,5 @@ public class UserService {
                         .bind(0, role)
                         .execute()
         );
-    }
-    public static void main(String[] args) {
-//        System.out.println(getInstances().listALlUser());
     }
 }
