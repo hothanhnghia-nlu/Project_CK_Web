@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.bean.Category;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.service.CategoryService;
 import vn.edu.hcmuaf.fit.service.ProductService;
@@ -17,18 +16,18 @@ public class ListProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String id = request.getParameter("id");
+        String idCat = request.getParameter("idCat");
+        String idVendor = request.getParameter("idVendor");
         ProductService pro = new ProductService();
         CategoryService cat = new CategoryService();
 
         List<Product> list ;
-        if(id==null){
+        if(idCat==null){
             list = pro.listAllProduct();
-        } else {
-
-            list = pro.getProductByCAT_ID(id);
+        } else {if(idVendor==null){
+            list = pro.getProductByCAT_ID(idCat);
+        }else list = pro.getProductByCat_Id_And_Vendor(idCat,idVendor);
         }
-//        response.getWriter().println(list);
         request.setAttribute("list", list);
         request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
@@ -37,7 +36,7 @@ public class ListProduct extends HttpServlet {
         //chuyen huong trang tim kiem
         String name = request.getParameter("namespace");
         if(name!=null)
-        response.sendRedirect("/Project_CK_Web_war/Search?namespace="+name);
+        response.sendRedirect("/Project_CK_Web/Search?namespace="+name);
         else request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 
