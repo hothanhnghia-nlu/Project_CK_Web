@@ -11,12 +11,7 @@ import java.io.IOException;
 public class MyProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String birthday = request.getParameter("birthday");
-        String address = request.getParameter("address");
-        String email = UserService.getInstances().getUserEmail();
-
-        UserService.getInstances().updateUserInfo(email, address, birthday);
+        UserService.getInstances().listALlUser();
         request.getRequestDispatcher("my-profile.jsp").forward(request,response);
     }
 

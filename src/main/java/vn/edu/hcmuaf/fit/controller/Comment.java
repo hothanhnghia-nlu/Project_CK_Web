@@ -21,15 +21,9 @@ public class Comment extends HttpServlet {
         String content = request.getParameter("content");
         int rating = Integer.parseInt(request.getParameter("rating"));
 
-//        String id = ""+(ContactService.getInstances().getNewID()+1);
-//        CommentService.getInstance().insert(id, name, email, subject, content, rating);
-//        response.sendRedirect("detail");
-        String id = request.getParameter("id");
-        if(id!=null){
-            CommentService.getInstance().deleteComment(id);
-        }
-        request.setAttribute("commentList", CommentService.getInstance().listAllComment());
-        request.getRequestDispatcher("").forward(request,response);
+        String id = "" + (CommentService.getInstance().getNewID() + 1);
+        CommentService.getInstance().addCmt(id, name, email, subject, content, rating);
+        response.sendRedirect("detail");
     }
 
     @Override

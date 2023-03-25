@@ -328,7 +328,7 @@
 												<!-- Review Form -->
 												<div class="col-md-3">
 													<div id="review-form">
-														<form id="frm" class="review-form" action="contact" method="post">
+														<form id="frm" class="review-form" action="comment" method="post">
 															<c:if test="${sessionScope.auth == null && sessionScope.oAuth == null}">
 																<input class="input" type="text" name="name" placeholder="Nhập họ tên của bạn">
 																<input class="input" type="email" name="email" placeholder="Nhập email của bạn">
