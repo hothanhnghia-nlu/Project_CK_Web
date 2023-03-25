@@ -137,17 +137,11 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">
-                                    <% List<Vendor> listVendor = (List<Vendor>) request.getAttribute("listVendor");
-                                    for (Vendor v : listVendor) {
-                                        if(v.getVendorID().equals(p.getVendor_id())){%>
-                                             <%=v.getName()%>
-                                        <%}
-                                    }
-                                %>
+                                    <%=p.getVendor()%>
                                 </p>
                                 <h3 class="product-name"><a href="#"><%=p.getName()%>
                                 </a></h3>
-                                <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(2312)%></h4>
+                                <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></h4>
                             </div>
                         </div>
                         <%}%>
@@ -198,13 +192,8 @@
                                     </div>
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category"> <% List<Vendor> listVendor = (List<Vendor>) request.getAttribute("listVendor");
-                                        for (Vendor v : listVendor) {
-                                            if(v.getVendorID().equals(p.getVendor_id())){%>
-                                        <%=v.getName()%>
-                                        <%}
-                                        }
-                                        %>
+                                    <p class="product-category">
+                                        <%=p.getVendor()%>
                                     </p>
                                     <h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
                                     </a></h3>
@@ -213,7 +202,7 @@
 <%--                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>--%>
 <%--                                        <del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>--%>
 <%--                                    <%} else {%>--%>
-<%--                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>--%>
+                                        <h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></h4>
 <%--                                        <br>--%>
 <%--                                    <%}%>--%>
 

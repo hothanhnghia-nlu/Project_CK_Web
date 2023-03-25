@@ -17,9 +17,10 @@ public class ProductService {
 
     public List<Product> listAllProduct (){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt`  " +
-                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID  " +
-                            "WHERE products.`status`=0 and vendors.`status`=0")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as vendor, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0 \n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
@@ -27,9 +28,12 @@ public class ProductService {
     }
     public List<Product> getTopNewProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products\n" +
-                            "    order by productID DESC\n" +
-                            "    LIMIT ?;")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0 \n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`\n" +
+                            "order by productID DESC\n" +
+                            "LIMIT ?;")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -38,7 +42,11 @@ public class ProductService {
     }
     public List<Product> getTopProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt`FROM products order by price DESC LIMIT ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0  \n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`\n" +
+                            "order by out_price DESC LIMIT ?\n")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -46,7 +54,11 @@ public class ProductService {
         return  ImagesService.getInstance().getImgForProducts(pro);
     }  public List<Product> getTopSeller (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products order by discount DESC LIMIT ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0  and prices.quanity !=0\n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`\n" +
+                            "order by quantity ASC LIMIT ?")
                     .bind(0, n)
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
@@ -64,20 +76,39 @@ public class ProductService {
     }
     public List<Product> getProductByCAT_ID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products WHERE cat_id= ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0  \n" +
+                            "and cat_id= ? \n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`\n")
                     .bind(0, id)
                     .mapToBean(Product.class).stream().collect(Collectors.toList());
         });
-        return pro;
+        return ImagesService.getInstance().getImgForProducts(pro);
+    }
+    public List<Product> getProductByCat_Id_And_Vendor (String idCat, String idVendor){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0  and products.cat_id = ? and products.vendor_id = ?\n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`")
+                    .bind(0, idCat).bind(1, idVendor)
+                    .mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+        return ImagesService.getInstance().getImgForProducts(pro);
     }
     public List<Product> getProductByName (String name){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM products WHERE name like ?")
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0  \n" +
+                            "and products.`name` like ? \n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`")
                     .bind(0, "%"+name+"%")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
-        return pro;
+        return ImagesService.getInstance().getImgForProducts(pro);
     }
     //admin
     public void deleteProduct(String Id) {
@@ -150,7 +181,7 @@ public class ProductService {
     public static void main(String[] args) {
         ProductService a = new ProductService();
         ImagesService i = new ImagesService();
-        System.out.println(a.listAllProduct());
+        System.out.println(a.getProductByCat_Id_And_Vendor("DH011","001"));
 
     }
 
