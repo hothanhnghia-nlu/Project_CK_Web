@@ -130,30 +130,30 @@
 									<div class="col-md-4 col-xs-6">
 										<div class="product">
 											<div class="product-img">
-												<img src="<%=p.getImage()%>" alt="">
+												<img src="<%=p.getImage().get(0)%>" alt="">
 												<div class="product-label">
 													<!-- <span class="sale">-30%</span> -->
-													<% boolean check = p.getDiscount()!=0 ? true :false;
-														if(check==true){%>
-													<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
-													<%}%>
+<%--													<% boolean check = p.getDiscount()!=0 ? true :false;--%>
+<%--														if(check==true){%>--%>
+<%--													<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>--%>
+<%--													<%}%>--%>
 													<span class="new">NEW</span>
 
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category"><%=p.getBrand()%>
+												<p class="product-category"><%=p.getVendor()%>
 												</p>
 												<h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
 												</a></h3>
 
-												<% if(check==true){%>
-												<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
-												<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
-												<%} else {%>
-												<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
-												<br>
-												<%}%>
+<%--												<% if(check==true){%>--%>
+<%--												<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>--%>
+<%--												<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>--%>
+<%--												<%} else {%>--%>
+												<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></h4>
+<%--												<br>--%>
+<%--												<%}%>--%>
 
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -223,30 +223,30 @@
 										<div class="col-md-4 col-xs-6">
 											<div class="product">
 												<div class="product-img">
-													<img src="<%=p.getImage()%>" alt="">
+													<img src="<%=p.getImage().get(0)%>" alt="">
 													<div class="product-label">
 														<!-- <span class="sale">-30%</span> -->
-														<% boolean check = p.getDiscount()!=0 ? true :false;
-															if(check==true){%>
-														<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
-														<%}%>
+<%--														<% boolean check = p.getDiscount()!=0 ? true :false;--%>
+<%--															if(check==true){%>--%>
+<%--														<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>--%>
+<%--														<%}%>--%>
 														<span class="new">NEW</span>
 
 													</div>
 												</div>
 												<div class="product-body">
-													<p class="product-category"><%=p.getBrand()%>
+													<p class="product-category"><%=p.getVendor()%>
 													</p>
 													<h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
 													</a></h3>
 
-													<% if(check==true){%>
-													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
-													<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
-													<%} else {%>
-													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
-													<br>
-													<%}%>
+<%--													<% if(check==true){%>--%>
+<%--													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>--%>
+<%--													<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>--%>
+<%--													<%} else {%>--%>
+													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></h4>
+<%--													<br>--%>
+<%--													<%}%>--%>
 
 													<div class="product-rating">
 														<i class="fa fa-star"></i>
@@ -317,30 +317,30 @@
 										<div class="col-md-4 col-xs-6">
 											<div class="product">
 												<div class="product-img">
-													<img src="<%=p.getImage()%>" alt="">
+													<img src="<%=p.getImage().get(0)%>" alt="">
 													<div class="product-label">
 														<!-- <span class="sale">-30%</span> -->
-														<% boolean check = p.getDiscount()!=0 ? true :false;
-															if(check==true){%>
-														<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>
-														<%}%>
+<%--														<% boolean check = p.getDiscount()!=0 ? true :false;--%>
+<%--															if(check==true){%>--%>
+<%--														<span class="sale">-<%=(int)((1.0-(double)p.getDiscount()/(double)p.getPrice())*100)%>%</span>--%>
+<%--														<%}%>--%>
 														<span class="new">NEW</span>
 
 													</div>
 												</div>
 												<div class="product-body">
-													<p class="product-category"><%=p.getBrand()%>
+													<p class="product-category"><%=p.getVendor()%>
 													</p>
 													<h3 class="product-name"><a href="detail?pid=<%=p.getProductID()%>"><%=p.getName()%>
 													</a></h3>
 
-													<% if(check==true){%>
-													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>
-													<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
-													<%} else {%>
-													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h4>
-													<br>
-													<%}%>
+<%--													<% if(check==true){%>--%>
+<%--													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h4>--%>
+<%--													<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>--%>
+<%--													<%} else {%>--%>
+													<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></h4>
+<%--													<br>--%>
+<%--													<%}%>--%>
 
 													<div class="product-rating">
 														<i class="fa fa-star"></i>

@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.controller;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.service.CategoryService;
 import vn.edu.hcmuaf.fit.service.ProductService;
+import vn.edu.hcmuaf.fit.service.VendorsService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -17,14 +18,15 @@ public class Search extends HttpServlet {
         String name = request.getParameter("namespace");
         ProductService pro = new ProductService();
         CategoryService cat = new CategoryService();
+
         List<Product> list = pro.getProductByName(name);
 
-//        response.getWriter().println(list);
         request.setAttribute("list", list);
-//        request.setAttribute("listBrand", pro.getAllbrand());
         request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listCate", cat.listAllCategory());
+        request.setAttribute("listVendor", VendorsService.getInstance().getVendors());
 
+//        request.getRequestDispatcher("list-product.jsp").forward(request,response);
         request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 
