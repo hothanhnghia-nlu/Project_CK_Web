@@ -42,7 +42,6 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments`  (
   `cmtID` int NOT NULL,
   `full_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `phone_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `product_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -313,14 +312,13 @@ INSERT INTO `images` VALUES ('144','072','Macbook','./assets/img/product/mac_doh
 -- ----------------------------
 DROP TABLE IF EXISTS `logs`;
 CREATE TABLE `logs`  (
-
   `logID` int NOT NULL,
-  `level` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `user_id` int NOT NULL,
-  `src` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `create_date` datetime NULL DEFAULT NULL,
-  `status` tinyint NULL DEFAULT NULL,
+  `level` tinyint(4) NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `create_at` datetime NOT NULL,
+  `status` tinyint NOT NULL,
   PRIMARY KEY (`logID`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT

@@ -72,14 +72,17 @@
             <div class="row">
                 <div class="col-lg-4 col-12">
                     <div class="single-head">
-                        <div class="single-info icon-link">
-                            <i class="fa fa-user active"></i><a href="my-profile.jsp" class="link-dark active">Thông tin cá nhân</a>
+                        <div class="single-info" style="display: flex">
+                            <i class="fa fa-user active" style="float: left; background: none; color: black"></i>
+                            <a href="my-profile" class="link-dark active" style="float: right; margin: 10px 0 10px 0">Thông tin cá nhân</a>
                         </div>
-                        <div class="single-info icon-link">
-                            <i class="fa fa-file-invoice-dollar"></i><a href="my-order.jsp" class="link-dark">Đơn hàng của tôi</a>
+                        <div class="single-info" style="display: flex">
+                            <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>
+                            <a href="my-order.jsp" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
                         </div>
-                        <div class="single-info icon-link">
-                            <i class="fa fa-sign-out"></i><a href="logout" class="link-dark">Đăng xuất</a>
+                        <div class="single-info" style="display: flex">
+                            <i class="fa fa-sign-out" style="float: left; background: none; color: black"></i>
+                            <a href="logout" style="float: right; margin: 10px 0 10px 0">Đăng xuất</a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +91,7 @@
                         <div class="title">
                             <h3>THÔNG TIN CÁ NHÂN</h3>
                         </div>
-                        <form class="form" action="my-profile" method="post">
+                        <form class="form" action="update-profile" method="post">
                             <div class="row">
                                 <c:if test="${sessionScope.auth != null}">
                                     <div class="col-lg-6 col-12">
