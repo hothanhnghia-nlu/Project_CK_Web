@@ -136,7 +136,6 @@
                 <li><a href="list-product?idCat=DH011">Laptop Đồ Họa <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
                         <li><a href="list-product?idCat=DH011&idVendor=001">Dell</a></li>
-                        <li><a href="list-product?idCat=DH011&idVendor=003">Lenovo</a></li>
                         <li><a href="list-product?idCat=DH011&idVendor=004">HP</a></li>
                     </ul>
                 </li>
@@ -148,6 +147,7 @@
                         <li><a href="list-product?idCat=VP012&idVendor=004">HP</a></li>
                         <li><a href="list-product?idCat=VP012&idVendor=005">Asus</a></li>
                         <li><a href="list-product?idCat=VP012&idVendor=006">Acer</a></li>
+                        <li><a href="list-product?idCat=VP012&idVendor=008">Samsung</a></li>
                     </ul>
                 </li>
                 <li><a href="list-product?idCat=MB013">Macbook <i class="fa fa-angle-down"></i></a>

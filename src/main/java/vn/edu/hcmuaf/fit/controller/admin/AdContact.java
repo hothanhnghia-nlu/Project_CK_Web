@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.controller;
+package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.service.CommentService;
 import vn.edu.hcmuaf.fit.service.ContactService;
@@ -10,20 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Comment", value = "/comment")
-public class Comment extends HttpServlet {
+@WebServlet(name = "AcContact", value = "/admin/contacts")
+public class AdContact extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String subject = request.getParameter("subject");
-        String content = request.getParameter("content");
-        int rating = Integer.parseInt(request.getParameter("rating"));
-
-        int id = CommentService.getInstance().getNewID() + 1;
-        CommentService.getInstance().addCmt(id, name, email, subject, content, rating);
-        response.sendRedirect("detail");
+//        OrderService.getInstance().deleteOrder(id);
+//        OrderService.getInstance().deleteAll();
+        String id = request.getParameter("id");
+        if(id!=null){
+            ContactService.getInstances().delete(id);
+        }
+        request.setAttribute("contactList", ContactService.getInstances().selectAll());
+        request.getRequestDispatcher("contact.jsp").forward(request,response);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class CommentService {
     }
 
     // Add new comment
-    public void addCmt(String id, String name, String email, String productID, String content, int rating) {
+    public void addCmt(int id, String name, String email, String productID, String content, int rating) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO comments VALUES (?, ?, ?, ?, ?, ?, NOW())")
                         .bind(0, id)
