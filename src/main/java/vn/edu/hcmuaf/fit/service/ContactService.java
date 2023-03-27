@@ -13,7 +13,7 @@ public class ContactService {
     }
 
     // Add a new contact
-    public void insert(String id, String fullName, String phone, String email, String subject, String content) {
+    public void insert(int id, String fullName, String phone, String email, String subject, String content) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO contacts VALUES (?, ?, ?, ?, ?, ?, NOW())")
                         .bind(0, id)
@@ -35,7 +35,7 @@ public class ContactService {
                         .collect(Collectors.toList())
         );
         for (int i = 0; i < contacts.size(); i++) {
-            return Integer.parseInt(contacts.get(i).getFeedbackID());
+            return contacts.get(i).getContactID();
         }
         return 0;
     }
@@ -61,9 +61,9 @@ public class ContactService {
     }
 
     public static void main(String[] args) {
-        String id = ""+ContactService.getInstances().getNewID();
+        int id = ContactService.getInstances().getNewID() + 1;
         System.out.println(id);
-//        ContactService.getInstances().insert("2","aaa","012021","fasdghaf@gmail.com","hfhhf","abcdef");
+//        ContactService.getInstances().insert(id,"aaa","012021","fasdghaf@gmail.com","hfhhf","abcdef");
 //        ContactService.getInstances().insert(id,"s","555","sss@gmail.com","sds","ádasd");
     }
 }

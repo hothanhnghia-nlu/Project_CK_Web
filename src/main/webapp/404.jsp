@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,7 @@
                     <h1 class="heading">404</h1>
                     <h2 class="title">Oops! Trang không tồn tại!</h2>
                     <p>Chúng tôi không thể tìm thấy trang mà bạn đang tìm kiếm</p>
-                    <a class="button" href="index.jsp">Về trang chủ</a>
+                    <a class="button" href="home">Về trang chủ</a>
                 </div>
 
             </div>

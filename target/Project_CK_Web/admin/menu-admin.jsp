@@ -31,7 +31,12 @@
                     <li><a href="table_account"><i class="fa fa-user-edit"></i> Quản lý tài khoản</a></li>
                     <li><a href="table_user"><i class="fa fa-users"></i> Quản lý khách hàng</a></li>
                     <li><a href="product-list"><i class="fa fa-table"></i> Quản lý sản phẩm</a></li>
-                    <li><a href="comment"><i class="fa fa-sticky-note"></i> Quản lý đánh giá</a></li>
+                    <li><a><i class="fa fa-sticky-note"></i> Quản lý bình luận <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="comment">Đánh giá sản phẩm</a></li>
+                            <li><a href="contacts">Liên hệ</a></li>
+                        </ul>
+                    </li>
                     <li><a href="order-list"><i class="fa fa-cart-shopping"></i> Quản lý đơn hàng</a></li>
                 </ul>
             </div>

@@ -55,6 +55,7 @@
 							<div class="col-md-12">
 								<ul class="breadcrumb-tree">
 									<li><a href="home">Trang chủ</a></li>
+									<li><a href="Category?cateID=${c.categoryID}">${c.name}</a></li>
 									<li class="active"><a href="#"><%=p.getName()%></a></li>
 								</ul>
 							</div>
@@ -183,7 +184,7 @@
 												<div class="col-md-12">
 													<h5>Thông Số Kỹ Thuật</h5>
 													<table>
-														<%=p.getDiscription()%>
+														<%=p.getDescription()%>
 													</table>
 												</div>
 											</div>
@@ -408,7 +409,7 @@
 										</div>
 									</div>
 									<div class="product-body">
-										<p class="product-category"><%=a.getBrand()%>
+										<p class="product-category"><%=a.getVendor()%>
 										</p>
 										<h3 class="product-name"><a href="detail?pid=<%=a.getProductID()%>"><%=a.getName()%>
 										</a></h3>

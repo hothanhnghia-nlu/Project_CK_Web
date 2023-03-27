@@ -24,7 +24,7 @@ public class Contact extends HttpServlet {
         String subject = request.getParameter("subject");
         String content = request.getParameter("content");
 
-        String id = ""+(ContactService.getInstances().getNewID()+1);
+        int id = ContactService.getInstances().getNewID() + 1;
         ContactService.getInstances().insert(id,name, phone, email, subject, content);
         response.sendRedirect("home");
     }
