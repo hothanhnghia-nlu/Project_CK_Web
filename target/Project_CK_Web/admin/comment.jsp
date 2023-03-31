@@ -79,23 +79,25 @@
                                                 <tr>
                                                     <th>STT</th>
                                                     <th>Tên khách hàng</th>
-                                                    <th>SĐT</th>
                                                     <th>Email</th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Nội dung</th>
+                                                    <th>Xếp hạng</th>
+                                                    <th>Ngày tạo</th>
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${commentList}" var="x" varStatus="STT">
+                                                <c:forEach items="${commentList}" var="x">
 
                                                 <tr>
-                                                    <td>${STT.index+1}</td>
+                                                    <td>${x.cmtID}</td>
                                                     <td>${x.full_name}</td>
-                                                    <td>${x.phone_number}</td>
                                                     <td>${x.email}</td>
                                                     <td>${x.subject_name}</td>
                                                     <td>${x.content}</td>
+                                                    <td>${x.rating}</td>
+                                                    <td>${x.createDate}</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
                                                             <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="comment?id=${x.feedbackID}"><i

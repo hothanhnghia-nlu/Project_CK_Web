@@ -59,11 +59,4 @@ public class ContactService {
         );
         return contacts;
     }
-
-    public static void main(String[] args) {
-        int id = ContactService.getInstances().getNewID() + 1;
-        System.out.println(id);
-//        ContactService.getInstances().insert(id,"aaa","012021","fasdghaf@gmail.com","hfhhf","abcdef");
-//        ContactService.getInstances().insert(id,"s","555","sss@gmail.com","sds","ádasd");
-    }
 }

@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.controller.admin;
 
-import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.bean.User;
-import vn.edu.hcmuaf.fit.service.CategoryService;
-import vn.edu.hcmuaf.fit.service.ProductService;
 import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
@@ -12,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdAccount", value = "/admin/table_account")
+@WebServlet(name = "AdAccount", value = "/admin/accounts")
 public class AdAccount extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
