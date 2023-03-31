@@ -25,7 +25,7 @@ public class Home extends HttpServlet {
         if(name!=null)
             response.sendRedirect("/Project_CK_Web/Search?namespace="+name);
 //            response.sendRedirect("/Project_CK_Web_war/Search?namespace="+name);
-        else  request.getRequestDispatcher("index.jsp").forward(request, response);
+        else  request.getRequestDispatcher("home.jsp").forward(request, response);
 
     }
 

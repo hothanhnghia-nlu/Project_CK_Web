@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Contact extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("contact.jsp").forward(request,response);
+        request.getRequestDispatcher("contacts.jsp").forward(request,response);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Contact extends HttpServlet {
         String content = request.getParameter("content");
 
         int id = ContactService.getInstances().getNewID() + 1;
-        ContactService.getInstances().insert(id,name, phone, email, subject, content);
+        ContactService.getInstances().insert(id, name, phone, email, subject, content);
         response.sendRedirect("home");
     }
 }

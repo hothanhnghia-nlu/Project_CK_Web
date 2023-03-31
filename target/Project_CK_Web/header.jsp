@@ -43,7 +43,7 @@
 
                             <!-- Normally login -->
                             <c:if test="${sessionScope.auth != null}">
-                                <a href="my-profile.jsp" class="dropdown" style="margin-right: 20px">
+                                <a href="my-profile" class="dropdown" style="margin-right: 20px">
                                     <i class="fa fa-user" style="margin-left: -30px"></i>
                                     <span style="margin-left: -30px">${sessionScope.auth.fullName}</span>
                                 </a>
@@ -51,7 +51,7 @@
 
                             <!-- Google login -->
                             <c:if test="${sessionScope.oAuth != null}">
-                                <a href="my-profile.jsp" class="dropdown" style="margin-right: 20px">
+                                <a href="my-profile" class="dropdown" style="margin-right: 20px">
                                     <i class="fa fa-user" style="margin-left: -30px"></i>
                                     <span style="margin-left: -30px">${sessionScope.oAuth.name}</span>
                                 </a>
@@ -81,7 +81,7 @@
                         <!-- Cart -->
                         <div>
                             <c:if test="${cart.quantity == null}">
-                                <a href="blank.jsp">
+                                <a href="blank-cart">
                                     <i  class="fa fa-shopping-cart"></i>
                                     <span>Giỏ hàng</span>
                                     <div class="qty">0</div>
