@@ -25,6 +25,19 @@ public class Contact implements Serializable {
         this.createDate = createDate;
     }
 
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactID=" + contactID +
+                ", fullName='" + fullName + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", email='" + email + '\'' +
+                ", subject_name='" + subject_name + '\'' +
+                ", content='" + content + '\'' +
+                ", createDate='" + createDate + '\'' +
+                '}';
+    }
+
     public int getContactID() {
         return contactID;
     }

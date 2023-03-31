@@ -42,13 +42,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script>
-        $(document).ready(function() {
-
-            $('#example').dataTable({}); // dòng này để nhúng bảng biểu thành dạng bảng được phân trang
-
-        } );
-    </script>
 </head>
 <body>
     <!-- HEADER -->
@@ -67,18 +60,45 @@
                     <div class="aside">
                         <h3 class="aside-title">Danh mục</h3>
                         <div class="checkbox-filter">
-                            <% List<Category> listCate = (List<Category>) request.getAttribute("listCate");
-                                for (Category p : listCate) {%>
                             <div class="input-checkbox">
-                                <input type="checkbox" id="category-<%=p.getCategoryID()%>" name="cateID"
-                                       value="<%=p.getCategoryID()%>">
-                                <label for="category-<%=p.getCategoryID()%>">
-                                    <span></span>
-                                    <%=p.getName()%>
-                                    <%--												<small>(120)</small>--%>
-                                </label>
+                                <a href="list-product?idCat=GM010">
+                                    <input type="checkbox" id="category-1">
+                                    <label for="category-1">
+                                        <span></span>
+                                        Laptop Gaming
+                                    </label>
+                                </a>
                             </div>
-                            <%}%>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idCat=DH011">
+                                    <input type="checkbox" id="category-2">
+                                    <label for="category-2">
+                                        <span></span>
+                                        Laptop Đồ Họa
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idCat=VP012">
+                                    <input type="checkbox" id="category-3">
+                                    <label for="category-3">
+                                        <span></span>
+                                        Laptop Văn Phòng
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idCat=MB013">
+                                    <input type="checkbox" id="category-4">
+                                    <label for="category-4">
+                                        <span></span>
+                                        Macbook
+                                    </label>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <!-- /aside Widget -->
@@ -87,19 +107,85 @@
                     <div class="aside">
                         <h3 class="aside-title">Hãng sản xuất</h3>
                         <div class="checkbox-filter">
-                            <%
-                                List<Vendor> lists = (List<Vendor>) request.getAttribute("listVendor");
-                                for (Vendor v : lists) {
-                            %>
                             <div class="input-checkbox">
-                                <input type="checkbox" id="brand-<%=v.getName()%>">
-                                <label for="brand-<%=v.getName()%>">
-                                    <span></span>
-                                    <%=v.getName()%>
-                                    <%--												<small>(578)</small>--%>
-                                </label>
+                                <a href="list-product?idVendor=001">
+                                    <input type="checkbox" id="brand-1">
+                                    <label for="brand-1">
+                                        <span></span>
+                                        Dell
+                                    </label>
+                                </a>
                             </div>
-                            <%}%>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=005">
+                                    <input type="checkbox" id="brand-2">
+                                    <label for="brand-2">
+                                        <span></span>
+                                        Asus
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=006">
+                                    <input type="checkbox" id="brand-3">
+                                    <label for="brand-3">
+                                        <span></span>
+                                        Acer
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=003">
+                                    <input type="checkbox" id="brand-4">
+                                    <label for="brand-4">
+                                        <span></span>
+                                        Lenovo
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=004">
+                                    <input type="checkbox" id="brand-5">
+                                    <label for="brand-5">
+                                        <span></span>
+                                        HP
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=007">
+                                    <input type="checkbox" id="brand-6">
+                                    <label for="brand-6">
+                                        <span></span>
+                                        Apple
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=002">
+                                    <input type="checkbox" id="brand-7">
+                                    <label for="brand-7">
+                                        <span></span>
+                                        MSI
+                                    </label>
+                                </a>
+                            </div>
+
+                            <div class="input-checkbox">
+                                <a href="list-product?idVendor=008">
+                                    <input type="checkbox" id="brand-8">
+                                    <label for="brand-8">
+                                        <span></span>
+                                        Samsung
+                                    </label>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <!-- /aside Widget -->
@@ -234,19 +320,6 @@
 
                     </div>
                     <!-- /store products -->
-
-                    <!-- store bottom filter -->
-<%--                     <div class="store-filter clearfix">--%>
-<%--                        <span class="store-qty">Showing 20-100 products</span>--%>
-<%--                        <ul class="store-pagination">--%>
-<%--                            <li class="active">1</li>--%>
-<%--                            <li><a href="#">2</a></li>--%>
-<%--                            <li><a href="#">3</a></li>--%>
-<%--                            <li><a href="#">4</a></li>--%>
-<%--                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-                    <!-- /store bottom filter -->
                 </div>
                 <!-- /STORE -->
             </div>

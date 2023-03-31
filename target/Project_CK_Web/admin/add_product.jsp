@@ -62,64 +62,69 @@
                         </div>
                         <div class="x_content">
                             <br />
-                            <form id="frm" data-parsley-validate class="form-horizontal form-label-left"  method="post">
-                               <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tên sản phẩm
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="first-name" class="form-control" name="namep" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="control-label col-md-3 col-sm-3 label-align">Danh Mục</label>
-                                    <div class="col-md-9 col-sm-9 ">
-                                        <%List<Category> cate = (List<Category>) request.getAttribute("cate");%>
-                                        <select class="col-form-label col-md-3 col-sm-3 form-control" tabindex="0" name="id_cate">
-                                            <option></option>
-                                            <% for(Category c : cate){%>
-                                            <option value="<%=c.getCategoryID()%>" ><%=c.getName()%></option>
-                                            <%}%>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Số Lượng</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input for="middle-name" class="form-control" type="number" name="quantity" value="">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Giá</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input for="middle-name" class="form-control" type="number" name="price" value="">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Giảm giá</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="middle-name" class="form-control" type="number" name="discount" value="">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 label-align">Thông số</label>
-                                    <div class="col-md-9 col-sm-9 ">
-                                        <textarea class="resizable_textarea form-control" style="height: 300px;" name="discription" placeholder="..."></textarea>                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 label-align">Chọn ảnh</label>
-                                    <div class="col-md-9 col-sm-9 ">
-                                        <input type="file"id="avatar" name="img" accept="image/png, image/jpeg">
-                                    </div>
-                                </div>
+<%--                            <form id="frm" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data"  method="post">--%>
+<%--                               <div class="item form-group">--%>
+<%--                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tên sản phẩm--%>
+<%--                                    </label>--%>
+<%--                                    <div class="col-md-6 col-sm-6 ">--%>
+<%--                                        <input type="text" id="first-name" class="form-control" name="namep" value="">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="form-group row">--%>
+<%--                                    <label class="control-label col-md-3 col-sm-3 label-align">Danh Mục</label>--%>
+<%--                                    <div class="col-md-9 col-sm-9 ">--%>
+<%--                                        <%List<Category> cate = (List<Category>) request.getAttribute("cate");%>--%>
+<%--                                        <select class="col-form-label col-md-3 col-sm-3 form-control" tabindex="0" name="id_cate">--%>
+<%--                                            <option></option>--%>
+<%--                                            <% for(Category c : cate){%>--%>
+<%--                                            <option value="<%=c.getCategoryID()%>" ><%=c.getName()%></option>--%>
+<%--                                            <%}%>--%>
+<%--                                        </select>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="item form-group">--%>
+<%--                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Số Lượng</label>--%>
+<%--                                    <div class="col-md-6 col-sm-6 ">--%>
+<%--                                        <input for="middle-name" class="form-control" type="number" name="quantity" value="">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="item form-group">--%>
+<%--                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Giá</label>--%>
+<%--                                    <div class="col-md-6 col-sm-6 ">--%>
+<%--                                        <input for="middle-name" class="form-control" type="number" name="price" value="">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="item form-group">--%>
+<%--                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Giảm giá</label>--%>
+<%--                                    <div class="col-md-6 col-sm-6 ">--%>
+<%--                                        <input id="middle-name" class="form-control" type="number" name="discount" value="">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="item form-group">--%>
+<%--                                    <label class="control-label col-md-3 col-sm-3 label-align">Thông số</label>--%>
+<%--                                    <div class="col-md-9 col-sm-9 ">--%>
+<%--                                        <textarea class="resizable_textarea form-control" style="height: 300px;" name="discription" placeholder="..."></textarea>                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="item form-group">--%>
+<%--                                    <label class="control-label col-md-3 col-sm-3 label-align">Chọn ảnh</label>--%>
+<%--                                    <div class="col-md-9 col-sm-9 ">--%>
+<%--                                        <input type="file"id="avatar" name="img" accept="image/png, image/jpeg">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
 
-                                <div class="ln_solid"></div>
-                                <div class="item form-group">
-                                    <div class="col-md-6 col-sm-6 offset-md-3">
-                                        <button class="btn btn-primary" type="reset">Huỷ</button>
-                                        <input type="submit" class="btn btn-success" value="Submit">
-                                    </div>
-                                </div>
+<%--                                <div class="ln_solid"></div>--%>
+<%--                                <div class="item form-group">--%>
+<%--                                    <div class="col-md-6 col-sm-6 offset-md-3">--%>
+<%--                                        <button class="btn btn-primary" type="reset">Huỷ</button>--%>
+<%--                                        <input type="submit" class="btn btn-success" value="Submit">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
 
+<%--                            </form>--%>
+
+                            <form method="post"  enctype="multipart/form-data">
+                                Select file to upload: <input type="file" name="file" size="60" /><br /><br />
+                                <input type="submit" value="Upload" />
                             </form>
                         </div>
                     </div>

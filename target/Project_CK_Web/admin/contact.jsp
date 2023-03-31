@@ -1,7 +1,3 @@
-<%@ page import="java.text.NumberFormat" %>
-<%@ page import="java.util.Locale" %>
-<%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -14,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <title>Quản lý sản phẩm | Quản trị Admin</title>
+      <title>Quản lý liên hệ | Quản trị Admin</title>
 
     <!-- Bootstrap -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -45,7 +41,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Quản lý sản phẩm</h3>
+                        <h3>Quản lý liên hệ</h3>
                     </div>
 
                     <div class="title_right">
@@ -60,16 +56,16 @@
                         <div class="x_panel">
                             <div class="x_title">
                                 <div class="row element-button">
-                                    <div class="pl-3">
-                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"
-                                           style="border: 2px solid #bdc3c7"><i
-                                                class="fas fa-print"></i> In dữ liệu</a>
-                                    </div>
-                                    <div class="pl-3">
-                                        <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"
-                                            style="border: 2px solid #bdc3c7" href="new_product"><i
-                                                class="fas fa-plus"></i> Tạo mới sản phẩm</a>
-                                    </div>
+<%--                                    <div class="pl-3">--%>
+<%--                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"--%>
+<%--                                           style="border: 2px solid #bdc3c7"><i--%>
+<%--                                                class="fas fa-print"></i> In dữ liệu</a>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="pl-3">--%>
+<%--                                        <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"--%>
+<%--                                           onclick="myApp.deleteTable()" style="border: 2px solid #bdc3c7"><i--%>
+<%--                                                class="fas fa-eraser"></i> Xóa tất cả</a>--%>
+<%--                                    </div>--%>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -80,43 +76,36 @@
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th>STT</th>
+                                                    <th>Tên khách hàng</th>
+                                                    <th>SĐT</th>
+                                                    <th>Email</th>
                                                     <th>Tên sản phẩm</th>
-                                                    <th>Ảnh</th>
-                                                    <th>Số Lượng</th>
-                                                    <th>Tình trạng</th>
-                                                    <th>Đơn giá</th>
-                                                    <th>Danh mục</th>
+                                                    <th>Nội dung</th>
+                                                    <th>Ngày tạo</th>
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <%List<Product> list = (List<Product>) request.getAttribute("proList");
-                                                    for (Product p : list) {
-                                                %>
+                                                <c:forEach items="${contactList}" var="x">
+
                                                 <tr>
-                                                    <td><%=p.getProductID()%></td>
-                                                    <td><%=p.getName()%></td>
-                                                    <td><img width="100px" src=".<%=p.getImage()%>" alt=""></td>
-                                                    <td class="text-center"><%=p.getQuantity()%></td>
-                                                    <% boolean check = p.getQuantity()==0?false:true;
-                                                        if(check==true){%>
-                                                    <td><span class="badge bg-green">Còn hàng</span></td>
-                                                    <%} else {%>
-                                                    <td><span class="badge bg-danger ">Hết hàng</span></td>
-                                                    <%}%>
-                                                    <td><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></td>
-                                                    <td><%=p.getVendor()%></td>
+                                                    <td>${x.contactID}</td>
+                                                    <td>${x.fullName}</td>
+                                                    <td>${x.phone}</td>
+                                                    <td>${x.email}</td>
+                                                    <td>${x.subject}</td>
+                                                    <td>${x.content}</td>
+                                                    <td>${x.createDate}</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-list?id=<%=p.getProductID()%>">
-                                                                <i class="fas fa-trash-alt"></i></a>
-                                                            <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
-                                                                    class="fas fa-edit"></i></a>
+                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="contacts?id=${x.contactID}"><i
+                                                                    class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <%}%>
+                                                </c:forEach>
+
                                                 </tbody>
                                             </table>
                                         </div>
