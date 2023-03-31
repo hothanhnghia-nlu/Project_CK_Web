@@ -6,23 +6,36 @@ public class Contact implements Serializable {
     private static final long serialVersionUID = 1L;
     private int contactID;
     private String fullName;
-    private String phone;
+    private String phone_number;
     private String email;
-    private String subject;
+    private String subject_name;
     private String content;
     private String createDate;
 
     public Contact() {
     }
 
-    public Contact(int contactID, String fullName, String phone, String email, String subject, String content, String createDate) {
+    public Contact(int contactID, String fullName, String phone_number, String email, String subject_name, String content, String createDate) {
         this.contactID = contactID;
         this.fullName = fullName;
-        this.phone = phone;
+        this.phone_number = phone_number;
         this.email = email;
-        this.subject = subject;
+        this.subject_name = subject_name;
         this.content = content;
         this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "contactID=" + contactID +
+                ", fullName='" + fullName + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", email='" + email + '\'' +
+                ", subject_name='" + subject_name + '\'' +
+                ", content='" + content + '\'' +
+                ", createDate='" + createDate + '\'' +
+                '}';
     }
 
     public int getContactID() {
@@ -41,12 +54,12 @@ public class Contact implements Serializable {
         this.fullName = fullName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhone_number() {
+        return phone_number;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getEmail() {
@@ -57,12 +70,12 @@ public class Contact implements Serializable {
         this.email = email;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getSubject_name() {
+        return subject_name;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setSubject_name(String subject_name) {
+        this.subject_name = subject_name;
     }
 
     public String getContent() {
@@ -79,18 +92,5 @@ public class Contact implements Serializable {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "contactID=" + contactID +
-                ", fullName='" + fullName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", subject='" + subject + '\'' +
-                ", content='" + content + '\'' +
-                ", createDate='" + createDate + '\'' +
-                '}';
     }
 }

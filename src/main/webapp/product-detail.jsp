@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.Image" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -55,7 +56,7 @@
 							<div class="col-md-12">
 								<ul class="breadcrumb-tree">
 									<li><a href="home">Trang chủ</a></li>
-									<li><a href="Category?cateID=${c.categoryID}">${c.name}</a></li>
+									<li><a href="Category?cateID=<%=p.getCat_id()%>"><%=p.getCat_id()%></a></li>
 									<li class="active"><a href="#"><%=p.getName()%></a></li>
 								</ul>
 							</div>
@@ -75,21 +76,11 @@
 							<!-- Product main img -->
 							<div class="col-md-5 col-md-push-2">
 								<div id="product-main-img">
+									<% for (String i: p.getImage()) {%>
 									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Pro M2.jpg" alt="">
+										<img src="<%=i%>" alt="">
 									</div>
-
-									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
-									</div>
-
-									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Air M2.jpg" alt="">
-									</div>
-
-									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Pro M1.jpg" alt="">
-									</div>
+									<%} %>
 								</div>
 							</div>
 							<!-- /Product main img -->
@@ -97,21 +88,12 @@
 							<!-- Product thumb imgs -->
 							<div class="col-md-2  col-md-pull-5">
 								<div id="product-imgs">
+									<% for (String i: p.getImage()) {%>
 									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Pro M2.jpg" alt="">
+										<img src="<%=i%>" alt="">
 									</div>
+									<%} %>
 
-									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Air M2.jpg" alt="">
-									</div>
-
-									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Air M1.jpg" alt="">
-									</div>
-
-									<div class="product-preview">
-										<img src="assets/img/product/mac_dohoa/Macbook Pro M1.jpg" alt="">
-									</div>
 								</div>
 							</div>
 							<!-- /Product thumb imgs -->
@@ -133,15 +115,10 @@
 										<a class="review-link" href="#">10 đánh giá | Viết đánh giá của bạn</a>
 									</div>
 									<div>
-										<% boolean check = p.getDiscount()!=0 ? true :false;%>
-										<% if(check==true){%>
-										<h3 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getDiscount())%></h3>
-										<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></del>
-										<%} else {%>
-										<h3 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></h3>
-										<br>
-										<%}%>
-										<% check = p.getQuantity()==0 ? true :false;%>
+
+										<h3 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></h3>
+
+										<% boolean  check = p.getQuantity()==0 ? true :false;%>
 										<% if(check==true){%>
 										<span class="product-unavailable">Hết hàng</span>
 										<%}%>
@@ -169,16 +146,19 @@
 							<div class="col-md-12">
 								<div id="product-tab">
 									<!-- product tab nav -->
-									<ul class="tab-nav">
+									<hr>
+									<ul class="nav tab-nav">
 <%--										<li class="active"><a data-toggle="tab" href="#tab1">MÔ TẢ</a></li>--%>
-										<li><a data-toggle="tab" href="#tab2">THÔNG SỐ KỸ THUẬT</a></li>
-										<li><a data-toggle="tab" href="#tab3">ĐÁNH GIÁ</a></li>
+										<li ><a data-toggle="tab" href="#tab1">THÔNG SỐ KỸ THUẬT</a></li>
+										<li><a data-toggle="tab" href="#tab2">ĐÁNH GIÁ</a></li>
+
 									</ul>
 									<!-- /product tab nav -->
 
 									<!-- product tab content -->
 									<div class="tab-content">
-										<!-- tab1  -->
+
+										<!-- tab2  -->
 										<div id="tab1" class="tab-pane fade in active">
 											<div class="row">
 												<div class="col-md-12">
@@ -189,10 +169,10 @@
 												</div>
 											</div>
 										</div>
-										<!-- /tab1  -->
+										<!-- /tab2  -->
 
 										<!-- tab3  -->
-										<div id="tab3" class="tab-pane fade in">
+										<div id="tab2" class="tab-pane fade in">
 											<div class="row">
 												<!-- Rating -->
 												<div class="col-md-3">
@@ -397,13 +377,10 @@
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
 									<div class="product-img">
-										<img src="<%=a.getImage()%>" alt="">
+										<img src="<%=a.getImage().get(0)%>" alt="">
 										<div class="product-label">
 											<!-- <span class="sale">-30%</span> -->
-											<% check = a.getDiscount()!=0 ? true :false;
-												if(check==true){%>
-											<span class="sale">-<%=(int)((1.0-(double)a.getDiscount()/(double)a.getPrice())*100)%>%</span>
-											<%}%>
+
 											<span class="new">NEW</span>
 
 										</div>
@@ -414,13 +391,9 @@
 										<h3 class="product-name"><a href="detail?pid=<%=a.getProductID()%>"><%=a.getName()%>
 										</a></h3>
 
-										<% if(check==true){%>
-										<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getDiscount())%></h4>
-										<del class="product-old-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getPrice())%></del>
-										<%} else {%>
-										<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getPrice())%></h4>
-										<br>
-										<%}%>
+
+										<h4 class="product-price"><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(a.getOut_price())%></h4>
+
 
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
@@ -463,7 +436,6 @@
 					<i class="fa fa-arrow-up"></i>
 				</div>
 				<!--/BACKTOP-->
-
 	<!-- jQuery Plugins -->
 	<script src="assets/js/jquery-3.6.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
@@ -475,5 +447,6 @@
 	<script src="assets/js/backtop.js"></script>
 	<script src="assets/js/validation.js"></script>
 	<script src="assets/js/minPlus.js"></script>
+
 </body>
 </html>

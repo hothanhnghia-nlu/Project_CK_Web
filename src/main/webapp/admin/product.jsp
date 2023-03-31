@@ -105,8 +105,8 @@
                                                     <%} else {%>
                                                     <td><span class="badge bg-danger ">Hết hàng</span></td>
                                                     <%}%>
-                                                    <td><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getPrice())%></td>
-                                                    <td><%=p.getBrand()%></td>
+                                                    <td><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></td>
+                                                    <td><%=p.getVendor()%></td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
                                                             <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-list?id=<%=p.getProductID()%>">
