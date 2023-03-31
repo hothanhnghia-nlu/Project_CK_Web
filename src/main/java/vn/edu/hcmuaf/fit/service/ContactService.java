@@ -65,5 +65,6 @@ public class ContactService {
         System.out.println(id);
 //        ContactService.getInstances().insert(id,"aaa","012021","fasdghaf@gmail.com","hfhhf","abcdef");
 //        ContactService.getInstances().insert(id,"s","555","sss@gmail.com","sds","ádasd");
+        System.out.println(ContactService.getInstances().selectAll());
     }
 }

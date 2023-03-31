@@ -94,6 +94,7 @@
                         <form class="form" action="update-profile" method="post">
                             <div class="row">
                                 <c:if test="${sessionScope.auth != null}">
+
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Họ và tên<span>*</span></label>
