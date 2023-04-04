@@ -324,7 +324,6 @@
 																<input class="input" type="text" name="name" value="${sessionScope.oAuth.name}">
 																<input class="input" type="email" name="email" value="${sessionScope.oAuth.email}">
 															</c:if>
-
 															<textarea class="input" name="content" placeholder="Nhập nội dung đánh giá của bạn về sản phẩm này"></textarea>
 															<div class="input-rating">
 																<span>Đánh giá của bạn về sản phẩm: </span>

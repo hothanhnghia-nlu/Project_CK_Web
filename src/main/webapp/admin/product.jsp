@@ -80,7 +80,7 @@
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th>Stt</th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Ảnh</th>
                                                     <th>Số Lượng</th>
@@ -97,7 +97,7 @@
                                                 <tr>
                                                     <td><%=p.getProductID()%></td>
                                                     <td><%=p.getName()%></td>
-                                                    <td><img width="100px" src=".<%=p.getImage()%>" alt=""></td>
+                                                    <td><img width="100px" src=".<%=p.getImage().get(0)%>" alt=""></td>
                                                     <td class="text-center"><%=p.getQuantity()%></td>
                                                     <% boolean check = p.getQuantity()==0?false:true;
                                                         if(check==true){%>
@@ -109,7 +109,7 @@
                                                     <td><%=p.getVendor()%></td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-list?id=<%=p.getProductID()%>">
+                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-soft-delete?id=<%=p.getProductID()%>">
                                                                 <i class="fas fa-trash-alt"></i></a>
                                                             <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
                                                                     class="fas fa-edit"></i></a>
