@@ -14,13 +14,13 @@ public class CommentService {
     }
 
     // Add new comment
-    public void addCmt(int id, String name, String email, String productID, String content, int rating) {
+    public void addCmt(int id, String name, String email, String productName, String content, int rating) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO comments VALUES (?, ?, ?, ?, ?, ?, NOW())")
                         .bind(0, id)
                         .bind(1, name)
                         .bind(2, email)
-                        .bind(3, productID)
+                        .bind(3, productName)
                         .bind(4, content)
                         .bind(5, rating)
                         .execute()
@@ -29,14 +29,14 @@ public class CommentService {
 
     // Get a new id
     public int getNewID() {
-        List<Comment> contacts = JDBIConnector.get().withHandle(handle ->
+        List<Comment> comments = JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT * FROM comments order by cmtID DESC Limit 1")
                         .mapToBean(Comment.class)
                         .stream()
                         .collect(Collectors.toList())
         );
-        for (int i = 0; i < contacts.size(); i++) {
-            return Integer.parseInt(contacts.get(i).getCmtID());
+        for (int i = 0; i < comments.size(); i++) {
+            return comments.get(i).getCmtID();
         }
         return 0;
     }

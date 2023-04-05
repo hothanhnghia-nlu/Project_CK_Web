@@ -4,29 +4,32 @@ import java.io.Serializable;
 
 public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String cmtID;
+    private int cmtID;
     private String full_name;
     private String email;
-    private String product_id;
+    private String product_name;
     private String content;
     private int rating;
     private String createDate;
 
-    public Comment(String cmtID, String full_name, String email, String product_id, String content, int rating, String createDate) {
+    public Comment() {
+    }
+
+    public Comment(int cmtID, String full_name, String email, String product_name, String content, int rating, String createDate) {
         this.cmtID = cmtID;
         this.full_name = full_name;
         this.email = email;
-        this.product_id = product_id;
+        this.product_name = product_name;
         this.content = content;
         this.rating = rating;
         this.createDate = createDate;
     }
 
-    public String getCmtID() {
+    public int getCmtID() {
         return cmtID;
     }
 
-    public void setCmtID(String cmtID) {
+    public void setCmtID(int cmtID) {
         this.cmtID = cmtID;
     }
 
@@ -46,20 +49,12 @@ public class Comment implements Serializable {
         this.email = email;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getProduct_name() {
+        return product_name;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 
     public String getContent() {
@@ -68,6 +63,14 @@ public class Comment implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public String getCreateDate() {

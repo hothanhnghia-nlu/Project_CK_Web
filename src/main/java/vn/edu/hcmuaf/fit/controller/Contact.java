@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Contact extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("contacts.jsp").forward(request,response);
+        request.getRequestDispatcher("contact-us.jsp").forward(request,response);
     }
 
     @Override

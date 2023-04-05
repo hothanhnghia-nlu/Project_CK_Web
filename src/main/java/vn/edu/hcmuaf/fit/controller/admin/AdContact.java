@@ -19,7 +19,7 @@ public class AdContact extends HttpServlet {
             ContactService.getInstances().delete(id);
         }
         request.setAttribute("contactList", ContactService.getInstances().selectAll());
-        request.getRequestDispatcher("contacts.jsp").forward(request,response);
+        request.getRequestDispatcher("contact-us.jsp").forward(request,response);
     }
 
     @Override

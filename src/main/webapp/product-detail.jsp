@@ -56,8 +56,7 @@
 							<div class="col-md-12">
 								<ul class="breadcrumb-tree">
 									<li><a href="home">Trang chủ</a></li>
-									<li><a href="Category?cateID=<%=p.getCat_id()%>"><%=p.getCat_id()%></a></li>
-									<li class="active"><a href="#"><%=p.getName()%></a></li>
+									<li class="active"><%=p.getName()%></li>
 								</ul>
 							</div>
 						</div>
@@ -146,12 +145,9 @@
 							<div class="col-md-12">
 								<div id="product-tab">
 									<!-- product tab nav -->
-									<hr>
-									<ul class="nav tab-nav">
-<%--										<li class="active"><a data-toggle="tab" href="#tab1">MÔ TẢ</a></li>--%>
-										<li ><a data-toggle="tab" href="#tab1">THÔNG SỐ KỸ THUẬT</a></li>
+									<ul class="tab-nav">
+										<li class="active"><a data-toggle="tab" href="#tab1">THÔNG SỐ KỸ THUẬT</a></li>
 										<li><a data-toggle="tab" href="#tab2">ĐÁNH GIÁ</a></li>
-
 									</ul>
 									<!-- /product tab nav -->
 
@@ -278,22 +274,6 @@
 																	<p>Dùng ok trong tầm giá</p>
 																</div>
 															</li>
-															<li>
-																<div class="review-heading">
-																	<h5 class="name">Long</h5>
-																	<p class="date">1 tuần trước</p>
-																	<div class="review-rating">
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star-o empty"></i>
-																	</div>
-																</div>
-																<div class="review-body">
-																	<p>Máy đẹp, phù hợp cho các tác vụ nặng</p>
-																</div>
-															</li>
 														</ul>
 														<ul class="reviews-pagination">
 															<li class="active">1</li>
@@ -325,6 +305,7 @@
 																<input class="input" type="email" name="email" value="${sessionScope.oAuth.email}">
 															</c:if>
 
+															<input type="text" name="productName" value="<%= p.getName() %>" hidden="hidden">
 															<textarea class="input" name="content" placeholder="Nhập nội dung đánh giá của bạn về sản phẩm này"></textarea>
 															<div class="input-rating">
 																<span>Đánh giá của bạn về sản phẩm: </span>
@@ -439,7 +420,7 @@
 	<!-- jQuery Plugins -->
 	<script src="assets/js/jquery-3.6.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 	<script src="assets/js/slick.min.js"></script>
 	<script src="assets/js/nouislider.min.js"></script>
 	<script src="assets/js/jquery.zoom.min.js"></script>

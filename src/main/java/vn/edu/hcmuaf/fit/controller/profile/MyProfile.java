@@ -12,7 +12,7 @@ public class MyProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserService.getInstances().listALlUser();
-        request.getRequestDispatcher("my-profile.jsp").forward(request,response);
+        response.sendRedirect("my-profile.jsp");
     }
 
     @Override

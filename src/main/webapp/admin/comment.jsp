@@ -94,13 +94,13 @@
                                                     <td>${x.cmtID}</td>
                                                     <td>${x.full_name}</td>
                                                     <td>${x.email}</td>
-                                                    <td>${x.subject_name}</td>
+                                                    <td>${x.product_name}</td>
                                                     <td>${x.content}</td>
                                                     <td>${x.rating}</td>
                                                     <td>${x.createDate}</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="comment?id=${x.feedbackID}"><i
+                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="comment?id=${x.cmtID}"><i
                                                                     class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>

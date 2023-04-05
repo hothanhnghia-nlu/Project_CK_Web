@@ -17,13 +17,13 @@ public class Comment extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String subject = request.getParameter("subject");
+        String pName = request.getParameter("productName");
         String content = request.getParameter("content");
         int rating = Integer.parseInt(request.getParameter("rating"));
 
         int id = CommentService.getInstance().getNewID() + 1;
-        CommentService.getInstance().addCmt(id, name, email, subject, content, rating);
-        response.sendRedirect("detail");
+        CommentService.getInstance().addCmt(id, name, email, pName, content, rating);
+        response.sendRedirect("home");
     }
 
     @Override

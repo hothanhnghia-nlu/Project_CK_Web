@@ -99,7 +99,7 @@
 <%--                            <button type="button" class="btnSocialloginFB">Facebook</button>--%>
 <%--                        </a>--%>
 
-                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Project_CK_Web/login-google&response_type=code
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Project_CK_Web_war/login-google&response_type=code
                                 &client_id=136400597387-ljfp47fjs5fjc9hdnuj2ee70kim3qfu1.apps.googleusercontent.com&approval_prompt=force" style="color: #FFFFFF">
                             <button type="button" class="btnSociallogingg">Google+</button>
                         </a>
