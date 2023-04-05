@@ -85,7 +85,7 @@ CREATE TABLE `images`  (
   `status` tinyint NULL DEFAULT NULL,
   PRIMARY KEY (`imageID`) USING BTREE,
   INDEX `product_id`(`product_id` ASC) USING BTREE,
-  CONSTRAINT `images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`productID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`productID`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -377,9 +377,8 @@ CREATE TABLE `prices`  (
   `quanity` int NULL DEFAULT NULL,
   `import_date` datetime NULL DEFAULT NULL,
   INDEX `product_id`(`product_id` ASC) USING BTREE,
-  CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`productID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`productID`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
-
 -- ----------------------------
 -- Records of prices
 -- ----------------------------

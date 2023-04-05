@@ -19,12 +19,23 @@ public class ProductService {
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as vendor, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
                             "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
-                            "WHERE products.`status`=0 and vendors.`status`=0 \n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0 and products.deleteAt=0 \n" +
                             "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`")
                     .mapToBean(Product.class)
                     .stream().collect(Collectors.toList());
         });
        return ImagesService.getInstance().getImgForProducts(pro);
+    }
+    public List<Product> listDeleteProduct (){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as vendor, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and vendors.`status`=0 and products.deleteAt!=0 \n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`")
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return ImagesService.getInstance().getImgForProducts(pro);
     }
     public List<Product> getTopNewProduct (int n){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
@@ -135,7 +146,15 @@ public class ProductService {
                         .execute()
         );
     }
-
+    public void deleteSoftProduct(String Id) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE products\n" +
+                                "SET deleteAt = NOW()\n" +
+                                "WHERE productID = ?")
+                        .bind(0, Id)
+                        .execute()
+        );
+    }
     public void setProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("UPDATE products SET cat_id=?  ,`name` = ? , brand = ?, image= ?, discription=?, quantity=?,price=?,discount=?  WHERE productID = ?")
