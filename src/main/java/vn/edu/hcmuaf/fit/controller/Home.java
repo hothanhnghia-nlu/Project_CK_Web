@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.service.CategoryService;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
@@ -8,7 +7,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "Home", value = "/home")
 public class Home extends HttpServlet {
@@ -23,8 +21,7 @@ public class Home extends HttpServlet {
         //chuyen huong trang tim kiem
         String name = request.getParameter("namespace");
         if(name!=null)
-            response.sendRedirect("/Project_CK_Web/Search?namespace="+name);
-//            response.sendRedirect("/Project_CK_Web_war/Search?namespace="+name);
+            response.sendRedirect("/Project_CK_Web_war/Search?namespace="+name);
         else  request.getRequestDispatcher("home.jsp").forward(request, response);
 
     }
