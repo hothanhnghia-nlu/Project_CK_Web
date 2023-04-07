@@ -72,7 +72,7 @@
 						<div class="footer">
 							<h3 class="footer-title">DỊCH VỤ</h3>
 							<ul class="footer-links">
-								<li><a href="#">Tài khoản</a></li>
+								<li><a href="my-profile">Tài khoản</a></li>
 								<li><a href="cart.jsp">Giỏ hàng</a></li>
 								<li><a href="#">Yêu thích</a></li>
 								<li><a href="#">Hỗ trợ</a></li>
