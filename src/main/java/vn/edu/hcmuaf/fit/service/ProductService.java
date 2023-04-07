@@ -188,7 +188,7 @@ public class ProductService {
     }
     public Product get(String id) {
         return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,`vendor_id`, products.`status`, `deleteAt` FROM  products WHERE productID = ?")
+            return handle.createQuery("SELECT productID,cat_id,`name`,description,vendor_id,`status`,deleteAt, prices.out_price  FROM  products JOIN prices ON products.productID = prices.product_id WHERE productID = ?")
                     .bind(0,id)
                     .mapToBean(Product.class).findFirst().orElse(null);
         });

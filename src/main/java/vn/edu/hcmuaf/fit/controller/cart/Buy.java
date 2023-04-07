@@ -23,7 +23,7 @@ public class Buy extends HttpServlet {
         vn.edu.hcmuaf.fit.bean.Cart cart = Cart.getCart(session);
         cart.put(p);
         cart.commit(session);
-        response.sendRedirect("/Project_CK_Web/cart.jsp");
+        response.sendRedirect("/Project_CK_Web_war/cart.jsp");
     }
 
     @Override
