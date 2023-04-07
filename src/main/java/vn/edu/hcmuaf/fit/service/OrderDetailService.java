@@ -15,7 +15,7 @@ public class OrderDetailService {
 
     public List<OrderDetail> getAllOrderDetail() {
         List<OrderDetail> orders = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT order_id, product_id, `name`,order_detail.quantity, order_detail.price , order_detail.total FROM order_detail INNER JOIN product oN product.productID = order_detail.product_id")
+                handle.createQuery("SELECT order_id, product_id, `name`,order_details.quantity, order_details.price , order_details.total FROM order_details INNER JOIN products ON products.productID = order_details.product_id")
                         .mapToBean(OrderDetail.class)
                         .stream()
                         .collect(Collectors.toList())
@@ -24,7 +24,7 @@ public class OrderDetailService {
     }
     public List<OrderDetail> getOrderDetailByID(String id) {
         List<OrderDetail> orders = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT order_id, product_id, `name`,order_detail.quantity, order_detail.price , order_detail.total FROM order_detail INNER JOIN product oN product.productID = order_detail.product_id WHERE order_id = ?")
+                handle.createQuery("SELECT order_id, product_id, `name`,order_details.quantity, order_details.price , order_details.total FROM order_details INNER JOIN products ON products.productID = order_details.product_id WHERE order_id = ?")
                         .bind(0,id)
                         .mapToBean(OrderDetail.class)
                         .stream()
@@ -35,7 +35,7 @@ public class OrderDetailService {
 
     public void deleteOrderDetail(int orderId) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("DELETE FROM order_detail WHERE order_id = ?")
+                handle.createUpdate("DELETE FROM order_details WHERE order_id = ?")
                         .bind(0, orderId)
                         .execute()
         );

@@ -32,6 +32,6 @@ public class AdAccount extends HttpServlet {
         if (role!=null){
             UserService.getInstances().updateID(Integer.parseInt(id), Integer.parseInt(role));
         }
-        response.sendRedirect("table_account");
+        response.sendRedirect("accounts");
     }
 }
