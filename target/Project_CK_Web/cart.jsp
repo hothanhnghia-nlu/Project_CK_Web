@@ -129,33 +129,25 @@
                                 <tbody class="cart-item">
                                 <c:forEach items="${list}" var="p">
                                     <tr>
-                                        <td><img src="${p.image}"></td>
+                                        <td><img src="${p.image.get(0)}" alt=""></td>
                                         <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p>
                                         </td>
-                                        <c:if test="${p.discount == 0}">
-                                            <td style="width: 175px; text-align: center"><fmt:formatNumber
-                                                    value="${p.price}" type="currency"/></td>
-                                        </c:if>
-                                        <c:if test="${p.discount != 0}">
-                                            <td style="width: 175px; text-align: center"><fmt:formatNumber
-                                                    value="${p.discount}" type="currency"/></td>
-                                        </c:if>
+
+
+                                        <td style="width: 175px; text-align: center"><fmt:formatNumber
+                                                value="${p.out_price}" type="currency"/></td>
+
                                         <td style="width: 100px;outline: none"><input class="amount" min="1"
                                                                                       type="number"
                                                                                       name="${p.productID}"
                                                                                       value="${p.quantity}"
                                                                                       style="width: 85px;height: 40px;text-align: center">
                                         </td>
-                                        <c:if test="${p.discount == 0}">
-                                            <td class="price" data-value="${p.price}" style="width: 175px">
-                                                <fmt:formatNumber
-                                                        value="${p.price * p.quantity}" type="currency"/></td>
-                                        </c:if>
-                                        <c:if test="${p.discount != 0}">
-                                            <td class="price" data-value="${p.discount}" style="width: 175px">
-                                                <fmt:formatNumber value="${p.discount * p.quantity}"
-                                                                  type="currency"/></td>
-                                        </c:if>
+
+                                        <td class="price" data-value="${p.out_price}" style="width: 175px">
+                                            <fmt:formatNumber value="${p.out_price * p.quantity}"
+                                                              type="currency"/></td>
+
                                         <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
                                                 class="fa fa-trash"></i></a></td>
                                     </tr>

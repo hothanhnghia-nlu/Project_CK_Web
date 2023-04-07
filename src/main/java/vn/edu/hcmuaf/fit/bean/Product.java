@@ -45,6 +45,9 @@ public class Product implements Serializable {
         this.deleteAt = deleteAt;
     }
 
+    public String getKey(){
+        return productID;
+    }
     public String getProductID() {
         return productID;
     }

@@ -25,7 +25,7 @@ public class Cart extends HttpServlet {
         request.setAttribute("check",checkList);
         request.setAttribute("total",total);
         request.setAttribute("listCate", listCate);
-        request.getRequestDispatcher("/Project_CK_Web/cart.jsp").forward(request,response);
+        request.getRequestDispatcher("/Project_CK_Web_war/cart.jsp").forward(request,response);
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
     }
 

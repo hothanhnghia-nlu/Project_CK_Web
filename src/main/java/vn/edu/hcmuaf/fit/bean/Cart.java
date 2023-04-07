@@ -27,13 +27,9 @@ public class Cart implements Serializable {
 
     public double getTotalMoney() {
         double sum = 0;
-//        for (Product p : listProduct.values()) {
-//            if(p.getDiscount() == 0) {
-//                sum += p.getPrice() * p.getQuantity();
-//            }else{
-//                sum += p.getDiscount() * p.getQuantity();
-//            }
-//        }
+        for (Product p : listProduct.values()) {
+            sum += (p.getOut_price() * p.getQuantity());
+        }
         return sum;
     }
 
@@ -53,36 +49,36 @@ public class Cart implements Serializable {
         this.customer = customer;
     }
     public void put(Product product){
-//        String key = product.getKey();
-//        if (listProduct.containsKey(key)){
-//            Product p = listProduct.get(key);
-//            p.setQuantity(p.getQuantity()+1);
-//        }else{
-//            listProduct.put(key, product);
-//            Product p = listProduct.get(key);
-//            p.setQuantity(1);
-//        }
+        String key = product.getKey();
+        if (listProduct.containsKey(key)){
+            Product p = listProduct.get(key);
+            p.setQuantity(p.getQuantity()+1);
+        }else{
+            listProduct.put(key, product);
+            Product p = listProduct.get(key);
+            p.setQuantity(1);
+        }
         updateTotalMoneyAnQuatity();
     }
     public void update(String key, int quantity){
-//        if(listProduct.containsKey(key)){
-//            Product p = listProduct.get(key);
-//            p.setQuantity(quantity);
-//        }
+        if(listProduct.containsKey(key)){
+            Product p = listProduct.get(key);
+            p.setQuantity(quantity);
+        }
         updateTotalMoneyAnQuatity();
 
     }
     public void remove(String key){
-            listProduct.remove(key);
-            updateTotalMoneyAnQuatity();
+        listProduct.remove(key);
+        updateTotalMoneyAnQuatity();
     }
     private void updateTotalMoneyAnQuatity(){
         totalMoney = 0;
         quantity = 0;
-//        for (Product p: listProduct.values()) {
-//            totalMoney += p.getQuantity() * p.getPrice();
-//            quantity += p.getQuantity();
-//        }
+        for (Product p: listProduct.values()) {
+            totalMoney += p.getQuantity() * p.getOut_price();
+            quantity += p.getQuantity();
+        }
     }
     public static Cart getCart(HttpSession session) {
         return session.getAttribute("cart") == null ? new Cart() : (Cart) session.getAttribute("cart");
