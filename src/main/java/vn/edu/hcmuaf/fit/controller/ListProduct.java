@@ -30,6 +30,7 @@ public class ListProduct extends HttpServlet {
         }
         request.setAttribute("list", list);
         request.setAttribute("listNew", pro.getTopNewProduct(3));
+        request.setAttribute("listSeller", pro.getTopSeller(3));
         request.setAttribute("listCate", cat.listAllCategory());
         request.setAttribute("listVendor", VendorsService.getInstance().getVendors());
 

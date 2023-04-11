@@ -212,10 +212,10 @@
 
                     <!-- aside Widget -->
                     <div class="aside">
-                        <h3 class="aside-title">Mới nhất</h3>
+                        <h3 class="aside-title">Bán chạy nhất</h3>
                         <%
-                            List<Product> listNew = (List<Product>) request.getAttribute("listNew");
-                            for (Product p : listNew) {
+                            List<Product> listSeller = (List<Product>) request.getAttribute("listSeller");
+                            for (Product p : listSeller) {
                         %>
                         <div class="product-widget">
                             <div class="product-img">
