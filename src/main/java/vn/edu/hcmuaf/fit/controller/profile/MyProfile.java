@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller.profile;
 
+import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
@@ -11,8 +12,15 @@ import java.io.IOException;
 public class MyProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService.getInstances().listALlUser();
-        response.sendRedirect("my-profile.jsp");
+        HttpSession session = request.getSession();
+        User auth = (User) session.getAttribute("auth");
+
+        if (auth == null) {
+            response.sendRedirect("page-not-found");
+        } else {
+            UserService.getInstances().listALlUser();
+            request.getRequestDispatcher("my-profile.jsp").forward(request,response);
+        }
     }
 
     @Override

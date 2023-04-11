@@ -67,7 +67,7 @@ public class OrderService {
     }
     public void addOrderDetails(String id,String productID, int quantity, double price) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO order_detail (order_id, product_id, quantity, price, total)  VALUES (?,?, ?, ?, ?)")
+                handle.createUpdate("INSERT INTO order_details (order_id, product_id, quantity, price, total)  VALUES (?,?, ?, ?, ?)")
                         .bind(0, id)
                         .bind(1, productID)
                         .bind(2, quantity)
