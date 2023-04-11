@@ -129,7 +129,7 @@
                                 <tbody class="cart-item">
                                 <c:forEach items="${list}" var="p">
                                     <tr>
-                                        <td><img src="${p.image.get(0)}" alt=""></td>
+                                        <td><img src="${p.getImage().get(0)}" alt=""></td>
                                         <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p>
                                         </td>
 

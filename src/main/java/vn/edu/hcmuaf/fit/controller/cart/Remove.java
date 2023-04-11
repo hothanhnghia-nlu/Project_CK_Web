@@ -14,7 +14,7 @@ public class Remove extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("pid");
-        Product p = ProductService.getInstance().get(id);
+        Product p = ProductService.getInstance().getProductByID(id);
         if (p==null || id == null){
             response.sendRedirect("");
             return;
