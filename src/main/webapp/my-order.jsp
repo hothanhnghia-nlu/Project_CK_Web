@@ -79,6 +79,10 @@
                                 <a href="my-order.jsp" class="link-dark active" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
                             </div>
                             <div class="single-info" style="display: flex">
+                                <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>
+                                <a href="change-password" style="float: right; margin: 10px 0 10px 0">Đổi mật khẩu</a>
+                            </div>
+                            <div class="single-info" style="display: flex">
                                 <i class="fa fa-sign-out" style="float: left; background: none; color: black"></i>
                                 <a href="logout" style="float: right; margin: 10px 0 10px 0">Đăng xuất</a>
                             </div>
