@@ -29,7 +29,6 @@ public class ListProduct extends HttpServlet {
         }else list = pro.getProductByCat_Id_And_Vendor(idCat,idVendor);
         }
         request.setAttribute("list", list);
-        request.setAttribute("listNew", pro.getTopNewProduct(3));
         request.setAttribute("listSeller", pro.getTopSeller(3));
         request.setAttribute("listCate", cat.listAllCategory());
         request.setAttribute("listVendor", VendorsService.getInstance().getVendors());
@@ -37,7 +36,7 @@ public class ListProduct extends HttpServlet {
         //chuyen huong trang tim kiem
         String name = request.getParameter("namespace");
         if(name!=null)
-        response.sendRedirect("/Project_CK_Web/Search?namespace="+name);
+        response.sendRedirect("Search?namespace="+name);
         else request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 

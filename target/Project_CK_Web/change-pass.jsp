@@ -64,7 +64,16 @@
                         <h3 style="font-weight: 400; color: black">THAY ĐỔI MẬT KHẨU</h3>
                     </div>
                     <div class="signin-container">
-                        <form action="#" name="frm-login" method="post">
+                        <form action="update-password" name="frm-login" method="post">
+                            <%
+                                if (error != null) {
+                            %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= error %>
+                            </div>
+                            <%
+                                }
+                            %>
                             <p class="form-row">
                                 <label for="fid-pass"><strong>Mật khẩu cũ </strong><span class="requite">*</span></label>
                                 <input type="password" id="fid-pass" name="password" value="" placeholder="Nhập mật khẩu cũ" class="txt-input" required>

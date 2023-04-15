@@ -14,8 +14,8 @@ public class Log implements Serializable {
     private Date creatAt;
     private int status;
 
-    static Map<Integer, String> levelMapping = new HashMap<>();
-    static {
+    public Map<Integer, String> levelMapping = new HashMap<>();
+    {
         levelMapping.put(0, "INFO");
         levelMapping.put(1, "ALERT");
         levelMapping.put(2, "WARNING");
