@@ -48,7 +48,6 @@ public class UserService {
         }
         return false;
     }
-
     // Register a new account
     public void register(String id, String fullName, String email, String phone, String username, String password) {
         JDBIConnector.get().withHandle(handle ->
@@ -99,9 +98,9 @@ public class UserService {
     }
 
     // Get user email
-    public String getUserEmail() {
+        public String getUserEmail() {
         List<User> users = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT email FROM users")
+                handle.createQuery("SELECT email FROM users ")
                         .mapToBean(User.class)
                         .stream()
                         .collect(Collectors.toList())

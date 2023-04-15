@@ -1,16 +1,15 @@
 package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.bean.Product;
+import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.CategoryService;
+import vn.edu.hcmuaf.fit.service.LogService;
 import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ import java.util.ArrayList;
         maxFileSize = 1024 * 1024 * 50, // 50MB
         maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class AddProduct extends HttpServlet {
+    String name = "AddProduct";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -49,6 +49,10 @@ public class AddProduct extends HttpServlet {
             a.add(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
         }
         response.getWriter().println(a + System.getProperty("user.dir"));
+        //log
+        HttpSession session = request.getSession(true);
+        User user = (User) session.getAttribute("auth");
+        LogService.getInstances().addLog("1", user.getId(),name,"add log");
 
 //        Product product;
 //        if (name!= null && id_cate!= null && quantity != null && price != null && discription != null){

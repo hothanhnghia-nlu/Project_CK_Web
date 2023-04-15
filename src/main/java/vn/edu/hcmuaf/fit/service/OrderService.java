@@ -76,4 +76,8 @@ public class OrderService {
                         .execute()
         );
     }
+
+    public static void main(String[] args) {
+        System.out.print("a"+ OrderService.getInstance().getAllOrder());
+    }
 }
