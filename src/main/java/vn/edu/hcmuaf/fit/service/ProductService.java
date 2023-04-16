@@ -218,7 +218,7 @@ public class ProductService {
     public static void main(String[] args) {
         ProductService a = new ProductService();
         ImagesService i = new ImagesService();
-        System.out.println(a.getProductByID("029"));
+        System.out.println(a.getProductByName("dell"));
 
     }
 

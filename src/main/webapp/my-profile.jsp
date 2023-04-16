@@ -114,7 +114,7 @@
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Email<span>*</span></label>
-                                            <input name="email" type="email" value="${sessionScope.auth.email}" style="background: #f1f0f1; border-color: #e6e2f5" disabled required>
+                                            <input name="email" type="email" name="email" value="${sessionScope.auth.email}" style="background: #f1f0f1; border-color: #e6e2f5" disabled required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">
