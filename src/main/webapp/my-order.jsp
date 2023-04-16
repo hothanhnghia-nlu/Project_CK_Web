@@ -1,3 +1,8 @@
+<%@ page import="vn.edu.hcmuaf.fit.bean.Order" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.OrderDetail" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -76,7 +81,7 @@
                             </div>
                             <div class="single-info" style="display: flex">
                                 <i class="fa fa-file-invoice-dollar active" style="float: left; background: none; color: black"></i>
-                                <a href="my-order.jsp" class="link-dark active" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
+                                <a href="update-order" class="link-dark active" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
                             </div>
                             <div class="single-info" style="display: flex">
                                 <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>
@@ -93,18 +98,39 @@
                         <ul class="nav nav-tabs navbar-default">
                             <li class="active"><a data-toggle="tab" href="#all-order">Tất cả đơn</a></li>
                             <li><a data-toggle="tab" href="#waiting">Đang xử lý</a></li>
-                            <li><a data-toggle="tab" href="#tranforming">Đang vận chuyển</a></li>
+                            <li><a data-toggle="tab" href="#transforming">Đang vận chuyển</a></li>
                             <li><a data-toggle="tab" href="#deliveried">Đã giao</a></li>
                             <li><a data-toggle="tab" href="#canceled">Đã hủy</a></li>
                         </ul>
+
                         <div class="tab-content">
+                            <%
+                                List<Order> orderList = (List<Order>) request.getAttribute("orderList");
+                                List<OrderDetail> odList = (List<OrderDetail>) request.getAttribute("orderDetailList");
+                                for (Order o : orderList) {
+                                    for (OrderDetail od : odList) {
+                            %>
                             <div id="all-order" class="tab-pane fade in active">
                                 <div class="order-list">
                                     <div class="orders">
                                         <div class="delivery-success">
                                             <label>
-                                                <i class="fa fa-truck"></i>
-                                                Giao hàng thành công
+                                                <c:if test="<%=o.getStatus() == 0 %>">
+                                                    <i class="fa fa-truck"></i>
+                                                    Đang xử lý
+                                                </c:if>
+                                                <c:if test="<%=o.getStatus() == 1 %>">
+                                                    <i class="fa fa-truck"></i>
+                                                    Đang vận chuyển
+                                                </c:if>
+                                                <c:if test="<%=o.getStatus() == 2 %>">
+                                                    <i class="fa fa-truck"></i>
+                                                    Giao hàng thành công
+                                                </c:if>
+                                                <c:if test="<%=o.getStatus() == 3 %>">
+                                                    <i class="fa fa-truck"></i>
+                                                    Đã hủy
+                                                </c:if>
                                             </label>
                                         </div>
 
@@ -112,142 +138,26 @@
                                             <div class="product-info">
                                                 <img src="assets/img/dell.png"/>
                                                 <div class="product-name">
-                                                    <p>Macbook Pro M2 2022</p>
-                                                    <span>Số lượng: 1</span>
+                                                    <p><%=od.getName()%></p>
+                                                    <span>Số lượng: <%=od.getQuantity()%></span>
                                                 </div>
                                                 <div class="product-price">
-                                                    <span>38.990.000đ</span>
+                                                    <span><span><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(od.getPrice())%></span>
                                                 </div>
                                             </div>
 
                                             <div class="total">
-                                                <label>Tổng tiền: <span>38.990.000đ</span></label>
+                                                <label>Tổng tiền: <span><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(od.getTotal())%></span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <%}
+                            }%>
 
-                            <div id="waiting" class="tab-pane fade">
-                                <div class="order-list">
-                                    <div class="orders">
-                                        <div class="delivery-success">
-                                            <label>
-                                                <i class="fa fa-truck"></i>
-                                                Giao hàng thành công
-                                            </label>
-                                        </div>
-
-                                        <div class="detail">
-                                            <div class="product-info">
-                                                <img src="assets/img/dell.png"/>
-                                                <div class="product-name">
-                                                    <p>Macbook Pro M2 2022</p>
-                                                    <span>Số lượng: 1</span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>38.990.000đ</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="total">
-                                                <label>Tổng tiền: <span>38.990.000đ</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="tranforming" class="tab-pane fade">
-                                <div class="order-list">
-                                    <div class="orders">
-                                        <div class="delivery-success">
-                                            <label>
-                                                <i class="fa fa-truck"></i>
-                                                Giao hàng thành công
-                                            </label>
-                                        </div>
-
-                                        <div class="detail">
-                                            <div class="product-info">
-                                                <img src="assets/img/dell.png"/>
-                                                <div class="product-name">
-                                                    <p>Macbook Pro M2 2022</p>
-                                                    <span>Số lượng: 1</span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>38.990.000đ</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="total">
-                                                <label>Tổng tiền: <span>38.990.000đ</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="deliveried" class="tab-pane fade">
-                                <div class="order-list">
-                                    <div class="orders">
-                                        <div class="delivery-success">
-                                            <label>
-                                                <i class="fa fa-truck"></i>
-                                                Giao hàng thành công
-                                            </label>
-                                        </div>
-
-                                        <div class="detail">
-                                            <div class="product-info">
-                                                <img src="assets/img/dell.png"/>
-                                                <div class="product-name">
-                                                    <p>Macbook Pro M2 2022</p>
-                                                    <span>Số lượng: 1</span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>38.990.000đ</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="total">
-                                                <label>Tổng tiền: <span>38.990.000đ</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="canceled" class="tab-pane fade">
-                                <div class="order-list">
-                                    <div class="orders">
-                                        <div class="delivery-success">
-                                            <label>
-                                                <i class="fa fa-truck"></i>
-                                                Giao hàng thành công
-                                            </label>
-                                        </div>
-
-                                        <div class="detail">
-                                            <div class="product-info">
-                                                <img src="assets/img/dell.png"/>
-                                                <div class="product-name">
-                                                    <p>Macbook Pro M2 2022</p>
-                                                    <span>Số lượng: 1</span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span>38.990.000đ</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="total">
-                                                <label>Tổng tiền: <span>38.990.000đ</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+
                     </div>
                 </div>
                 <!-- /row -->

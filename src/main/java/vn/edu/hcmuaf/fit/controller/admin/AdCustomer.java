@@ -14,12 +14,19 @@ public class AdCustomer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        if (id != null){
-            UserService.getInstances().deleteUser(id);
+        HttpSession session = request.getSession();
+        User auth = (User) session.getAttribute("auth");
+
+        if (auth == null || !auth.checkRole(1)) {
+            response.sendRedirect("not-found");
+        } else {
+            if (id != null) {
+                UserService.getInstances().deleteUser(id);
+            }
+            List<User> userList = UserService.getInstances().listALlUser();
+            request.setAttribute("userList", userList);
+            request.getRequestDispatcher("table_user.jsp").forward(request, response);
         }
-        List<User> userList = UserService.getInstances().listALlUser();
-        request.setAttribute("userList",userList);
-        request.getRequestDispatcher("table_user.jsp").forward(request,response);
     }
 
     @Override
