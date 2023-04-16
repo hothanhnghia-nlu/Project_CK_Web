@@ -78,7 +78,7 @@
                         </div>
                         <div class="single-info" style="display: flex">
                             <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>
-                            <a href="my-order.jsp" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
+                            <a href="update-order" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
                         </div>
                         <div class="single-info" style="display: flex">
                             <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>

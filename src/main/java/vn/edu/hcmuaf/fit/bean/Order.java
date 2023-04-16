@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String orderId;
+    private int orderId;
     private String fullName;
     private String phoneNumber;
     private String address;
     private String note;
     private String orderDate;
     private String payment;
-    private String status;
+    private int status;
 
     public Order() {
     }
 
-    public Order(String orderId, String fullName, String phoneNumber, String address, String note, String orderDate, String payment, String status) {
+    public Order(int orderId, String fullName, String phoneNumber, String address, String note, String orderDate, String payment, int status) {
         this.orderId = orderId;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -27,11 +27,11 @@ public class Order implements Serializable {
         this.status = status;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -83,23 +83,11 @@ public class Order implements Serializable {
         this.payment = payment;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "orderId= " + orderId + '\'' +
-                ", fullName= " + fullName + '\'' +
-                ", phoneNumber= " + phoneNumber + '\'' +
-                ", address= " + address +
-                ", note= " + note +
-                ", orderDate= " + orderDate +
-                ", status= " + status + '\'' +
-                '}';
     }
 }

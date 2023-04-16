@@ -4,18 +4,17 @@ import java.io.Serializable;
 
 public class OrderDetail implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String order_id;
+    private int order_id;
     private String product_id;
     private String name;
     private int quantity;
     private int price;
     private int total;
 
-
     public OrderDetail() {
     }
 
-    public OrderDetail(String order_id, String product_id, String name, int quantity, int price, int total) {
+    public OrderDetail(int order_id, String product_id, String name, int quantity, int price, int total) {
         this.order_id = order_id;
         this.product_id = product_id;
         this.name = name;
@@ -24,23 +23,11 @@ public class OrderDetail implements Serializable {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "order_id='" + order_id + '\'' +
-                ", product_id='" + product_id + '\'' +
-                ", name='" + name + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", total=" + total +
-                '}';
-    }
-
-    public String getOrder_id() {
+    public int getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(String order_id) {
+    public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
 

@@ -31,7 +31,7 @@ public class Checkout extends HttpServlet {
         String note = request.getParameter("note");
         String payment = request.getParameter("payment");
 
-        String id = ""+(OrderService.getInstance().getNewID()+1);
+        int id = OrderService.getInstance().getNewID() + 1;
         OrderService.getInstance().addOrder(id,name,phone,email,address,note, payment);
         for (Product p: list){
             double price = p.getOut_price();
