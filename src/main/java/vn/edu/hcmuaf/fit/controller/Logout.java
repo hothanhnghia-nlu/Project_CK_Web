@@ -15,7 +15,8 @@ public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
-        LogService.getInstances().addLog("1", user.getId(),name,user.getUsername()+" Log Out");
+        int log_id = LogService.getInstances().getNewID() + 1;
+        LogService.getInstances().addLog(log_id,"1", user.getId(),name,user.getUsername()+" Log Out");
 
         session.removeAttribute("auth");
         session.removeAttribute("oAuth");

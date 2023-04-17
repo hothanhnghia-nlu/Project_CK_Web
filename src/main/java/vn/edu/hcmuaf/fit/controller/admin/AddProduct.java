@@ -52,7 +52,8 @@ public class AddProduct extends HttpServlet {
         //log
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
-        LogService.getInstances().addLog("1", user.getId(),name,"add log");
+        int log_id = LogService.getInstances().getNewID() + 1;
+        LogService.getInstances().addLog(log_id,"1", user.getId(),name,"add log");
 
 //        Product product;
 //        if (name!= null && id_cate!= null && quantity != null && price != null && discription != null){
