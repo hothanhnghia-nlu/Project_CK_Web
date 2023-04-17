@@ -29,7 +29,8 @@ public class Comment extends HttpServlet {
         CommentService.getInstance().addCmt(id, name, email, pName, content, rating);
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
-        LogService.getInstances().addLog("1", (user==null?0:user.getId()),nameLog,"id= "+id + " | name= "+name+ " | email = " +email+" | Product name ="+ pName+" | content = " +content+" | rating = "+rating);
+        int log_id = LogService.getInstances().getNewID() + 1;
+        LogService.getInstances().addLog(log_id,"1", (user==null?0:user.getId()),nameLog,"id= "+id + " | name= "+name+ " | email = " +email+" | Product name ="+ pName+" | content = " +content+" | rating = "+rating);
 
         response.sendRedirect("home");
     }

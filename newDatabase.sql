@@ -318,10 +318,9 @@ CREATE TABLE `logs`  (
   `src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `create_at` datetime NOT NULL,
-  `status` tinyint NOT NULL,
+  `status` tinyint NOT NULL DEFAULT 0,
   PRIMARY KEY (`logID`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `user_id`(`user_id` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
