@@ -4,6 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%
+    String error = (String) request.getAttribute("error");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +54,25 @@
     <%--    </script>--%>
 </head>
 <body>
+
+<%--<%--%>
+<%--    String message = (String) request.getAttribute("message");--%>
+<%--    if (message != null) { %>--%>
+<%--<script>--%>
+<%--    alert("<%= message %>");--%>
+<%--</script>--%>
+<%--<% } else { %>--%>
+<%--<script>--%>
+<%--    alert("Không có thông báo cảnh báo");--%>
+<%--</script>--%>
+<%--<% } %>--%>
+<%--<c:if test="${not empty message}">--%>
+<%--    <script>--%>
+<%--        alert("${message}");--%>
+<%--    </script>--%>
+<%--</c:if>--%>
+
+
 <!-- HEADER -->
 <jsp:include page="header.jsp"/>
 <!-- /HEADER -->
@@ -115,6 +137,15 @@
                         <div class="col-12">
                             <!-- Shopping Summery -->
 
+
+                            <%if (error != null) {
+                            %>
+                            <div class="alert alert-danger" role="alert" style="width: 230px">
+                                <%= error %>
+                            </div>
+                            <%
+                                }
+                            %>
                             <table class="table shopping-summery">
                                 <thead>
                                 <tr class="main-hading">
@@ -172,6 +203,7 @@
                         <div>
                             <a href="home" class="btn primary-btn" style="border-radius: 5px">Tiếp tục mua sắm</a>
                             <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">
+
                             <a href="checkout.jsp" class="btn primary-btn" style="border-radius: 5px">Thanh toán</a>
                         </div>
                     </div>
@@ -195,7 +227,6 @@
 <script src="assets/js/nouislider.min.js"></script>
 <script src="assets/js/jquery.zoom.min.js"></script>
 <script src="assets/js/main.js"></script>
-
 <!-- Nice Select JS -->z`
 <script src="assets/js/nicesellect.js"></script>
 </body>

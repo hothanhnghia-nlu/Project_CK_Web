@@ -186,6 +186,27 @@ public class ProductService {
 
         );
     }
+    public void updateProduct( String productID, int quanity){
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE prices SET quanity = ? WHERE product_id = (SELECT productID FROM products WHERE productID = ?);")
+                        .bind(1,productID)
+                        .bind(0,quanity)
+                        .execute()
+        );
+    }
+    public int getQuantityProduct(String productID){
+        int result = 0;
+        List<Integer> quantities = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT quanity FROM prices INNER JOIN products ON prices.product_id = products.productID WHERE productID = ?")
+                        .bind(0, productID)
+                        .mapTo(Integer.class)
+                        .list()
+        );
+        if (!quantities.isEmpty()) {
+            result = quantities.get(0);
+        }
+        return result;
+    }
 //    public Product get(String id) {
 //        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
 //            return handle.createQuery("SELECT productID,cat_id,`name`,description,vendor_id,`status`,deleteAt, prices.out_price  FROM  products JOIN prices ON products.productID = prices.product_id WHERE productID = ?")
@@ -214,11 +235,12 @@ public class ProductService {
         p.setDescription(resut);
         return p;
     }
-
     public static void main(String[] args) {
         ProductService a = new ProductService();
         ImagesService i = new ImagesService();
-        System.out.println(a.getProductByName("dell"));
+//        System.out.println(a.getProductByID("029"));
+//        a.updateProduct("001",130);
+        System.out.println(a.getQuantityProduct("001"));
 
     }
 
