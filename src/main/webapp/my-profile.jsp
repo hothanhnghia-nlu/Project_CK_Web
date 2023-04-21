@@ -78,7 +78,7 @@
                         </div>
                         <div class="single-info" style="display: flex">
                             <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>
-                            <a href="my-order.jsp" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
+                            <a href="update-order" style="float: right; margin: 10px 0 10px 0">Đơn hàng của tôi</a>
                         </div>
                         <div class="single-info" style="display: flex">
                             <i class="fa fa-file-invoice-dollar" style="float: left; background: none; color: black"></i>
@@ -114,7 +114,7 @@
                                     <div class="col-lg-6 col-12">
                                         <div class="form-group">
                                             <label>Email<span>*</span></label>
-                                            <input name="email" type="email" value="${sessionScope.auth.email}" style="background: #f1f0f1; border-color: #e6e2f5" disabled required>
+                                            <input name="email" type="email" name="email" value="${sessionScope.auth.email}" style="background: #f1f0f1; border-color: #e6e2f5" disabled required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-12">

@@ -318,10 +318,9 @@ CREATE TABLE `logs`  (
   `src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `create_at` datetime NOT NULL,
-  `status` tinyint NOT NULL,
+  `status` tinyint NOT NULL DEFAULT 0,
   PRIMARY KEY (`logID`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `user_id`(`user_id` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -333,25 +332,78 @@ CREATE TABLE `logs`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE `order_details`  (
-  `order_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_id` int(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` tinyint NULL DEFAULT NULL,
   `price` decimal(10, 1) NULL DEFAULT NULL,
   `total` decimal(65, 1) NULL DEFAULT NULL,
-  INDEX `order_id`(`order_id` ASC) USING BTREE,
-  CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`orderID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `order_id`(`order_id` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of order_details
 -- ----------------------------
+INSERT INTO `order_details` VALUES (1, '044', 1, 64990000.0, 64990000.0);
+INSERT INTO `order_details` VALUES (1, '071', 2, 64490000.0, 128980000.0);
+INSERT INTO `order_details` VALUES (1, '063', 4, 16500000.0, 66000000.0);
+INSERT INTO `order_details` VALUES (2, '005', 1, 20990000.0, 20990000.0);
+INSERT INTO `order_details` VALUES (3, '046', 1, 59990000.0, 59990000.0);
+INSERT INTO `order_details` VALUES (3, '060', 1, 23500000.0, 23500000.0);
+INSERT INTO `order_details` VALUES (4, '062', 2, 52990000.0, 105980000.0);
+INSERT INTO `order_details` VALUES (5, '069', 10, 33990000.0, 339900000.0);
+INSERT INTO `order_details` VALUES (6, '003', 3, 21890000.0, 65670000.0);
+INSERT INTO `order_details` VALUES (7, '035', 1, 14990000.0, 14990000.0);
+INSERT INTO `order_details` VALUES (8, '040', 5, 18490000.0, 92450000.0);
+INSERT INTO `order_details` VALUES (9, '064', 1, 16300000.0, 16300000.0);
+INSERT INTO `order_details` VALUES (10, '024', 2, 19990000.0, 39980000.0);
+INSERT INTO `order_details` VALUES (10, '023', 1, 29990000.0, 29990000.0);
+INSERT INTO `order_details` VALUES (10, '004', 1, 26890000.0, 26890000.0);
+INSERT INTO `order_details` VALUES (11, '023', 2, 29990000.0, 59980000.0);
+INSERT INTO `order_details` VALUES (12, '065', 1, 33490000.0, 33490000.0);
+INSERT INTO `order_details` VALUES (13, '034', 1, 23490000.0, 23490000.0);
+INSERT INTO `order_details` VALUES (13, '006', 1, 22490000.0, 22490000.0);
+INSERT INTO `order_details` VALUES (14, '014', 7, 10990000.0, 76930000.0);
+INSERT INTO `order_details` VALUES (15, '027', 1, 17490000.0, 17490000.0);
+INSERT INTO `order_details` VALUES (16, '021', 1, 13990000.0, 13990000.0);
+INSERT INTO `order_details` VALUES (17, '011', 1, 22990000.0, 22990000.0);
+INSERT INTO `order_details` VALUES (17, '025', 1, 18990000.0, 18990000.0);
+INSERT INTO `order_details` VALUES (18, '067', 1, 32990000.0, 32990000.0);
+INSERT INTO `order_details` VALUES (19, '056', 3, 20490000.0, 61470000.0);
+INSERT INTO `order_details` VALUES (20, '023', 1, 29990000.0, 29990000.0);
+INSERT INTO `order_details` VALUES (21, '052', 1, 29190000.0, 29190000.0);
+INSERT INTO `order_details` VALUES (22, '064', 3, 16300000.0, 48900000.0);
+INSERT INTO `order_details` VALUES (23, '037', 10, 22190000.0, 221900000.0);
+INSERT INTO `order_details` VALUES (24, '015', 1, 12890000.0, 12890000.0);
+INSERT INTO `order_details` VALUES (25, '072', 1, 45990000.0, 45990000.0);
+INSERT INTO `order_details` VALUES (26, '020', 3, 16990000.0, 50970000.0);
+INSERT INTO `order_details` VALUES (27, '035', 1, 14990000.0, 14990000.0);
+INSERT INTO `order_details` VALUES (27, '063', 10, 16500000.0, 165000000.0);
+INSERT INTO `order_details` VALUES (28, '066', 1, 33490000.0, 33490000.0);
+INSERT INTO `order_details` VALUES (28, '058', 2, 17500000.0, 35000000.0);
+INSERT INTO `order_details` VALUES (28, '003', 1, 21890000.0, 21890000.0);
+INSERT INTO `order_details` VALUES (28, '016', 2, 15900000.0, 31800000.0);
+INSERT INTO `order_details` VALUES (28, '030', 4, 26190000.0, 104760000.0);
+INSERT INTO `order_details` VALUES (28, '064', 1, 16300000.0, 16300000.0);
+INSERT INTO `order_details` VALUES (29, '063', 1, 16500000.0, 16500000.0);
+INSERT INTO `order_details` VALUES (29, '053', 1, 27990000.0, 27990000.0);
+INSERT INTO `order_details` VALUES (30, '045', 1, 61990000.0, 61990000.0);
+INSERT INTO `order_details` VALUES (30, '035', 1, 14990000.0, 14990000.0);
+INSERT INTO `order_details` VALUES (30, '069', 4, 33990000.0, 135960000.0);
+INSERT INTO `order_details` VALUES (30, '018', 1, 20890000.0, 20890000.0);
+INSERT INTO `order_details` VALUES (31, '013', 5, 23990000.0, 119950000.0);
+INSERT INTO `order_details` VALUES (31, '005', 1, 20990000.0, 20990000.0);
+INSERT INTO `order_details` VALUES (31, '070', 1, 52490000.0, 52490000.0);
+INSERT INTO `order_details` VALUES (31, '071', 1, 64490000.0, 64490000.0);
+INSERT INTO `order_details` VALUES (31, '050', 1, 34690000.0, 34690000.0);
+INSERT INTO `order_details` VALUES (32, '036', 1, 24990000.0, 24990000.0);
+INSERT INTO `order_details` VALUES (32, '008', 1, 24890000.0, 24890000.0);
 
 -- ----------------------------
 -- Table structure for orders
 -- ----------------------------
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`  (
-  `orderID` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `orderID` int(11) NOT NULL,
   `full_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `phone_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -366,6 +418,38 @@ CREATE TABLE `orders`  (
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
+INSERT INTO `orders` VALUES (1, 'Hồ Thanh Nghĩa', '0987654321', '20130333@st.hcmuaf.edu.vn', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-13 22:40:47', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (2, 'Bùi Quốc Long', '0878423951', '20130314@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', 'Giao trước 17h', '2023-04-13 22:42:09', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (3, 'Diệp Chấn Phong', '0123456789', '20130364@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-13 23:06:57', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (4, 'Vũ Nguyễn Hải Đăng', '0155241001', 'vnhdang@vus.edu.vn', 'Trị An, H. Vĩnh Cửu, T. Đồng Nai', '', '2023-04-13 23:08:22', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (5, 'Lê Nguyệt Minh', '0230300636', 'minhleecycling@fpt.com.vn', 'Sư Vạn Hạnh, Q.10, TP.HCM', 'In hóa đơn đỏ cho công ty', '2023-04-13 23:10:11', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (6, 'Nguyễn Thúc Thùy Tiên', '0755891860', 'tienntt@gmail.com', 'Phú Mỹ Hưng, Q.7, TP.HCM', '', '2023-04-13 23:11:18', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (7, 'Trương Gia Tuệ', '0948055625', 'tuetruong@tma.vn', 'Thành phố Tân Uyên, Tỉnh Bình Dương', 'Giao trước 8h', '2023-04-13 23:12:15', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (8, 'Đỗ Hậu Hoàng', '0801869407', 'hoanghaudo@microsoft.com', 'Thành phố Dĩ An, Tỉnh Bình Dương', '', '2023-04-13 23:13:09', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (9, 'Trịnh Đức Tâm', '0969788123', 'tamtrinh22@yahoo.com', '35/8 Nguyễn Huệ, P.Bến Nghé, Q.1, TP.HCM', '', '2023-04-13 23:13:58', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (10, 'Hồ Thanh Nghĩa', '0987654321', '20130333@st.hcmuaf.edu.vn', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-13 23:32:59', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (11, 'Bùi Quốc Long', '0878423951', '20130314@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-13 23:33:43', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (12, 'Bùi Quốc Long', '0878423951', '20130314@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-13 23:34:01', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (13, 'Diệp Chấn Phong', '0123456789', '20130364@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-13 23:34:51', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (14, 'Diệp Chấn Phong', '0123456789', '20130364@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-13 23:35:17', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (15, 'Phương Huyền Minh Trang', '0876944765', 'changchang@gmail.com', 'Bãi Sau, TP. Vũng Tàu, T. Bà Rịa - Vũng Tàu', '', '2023-04-13 23:36:57', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (16, 'Đoàn Thị Mỹ Dung', '0401401537', 'dungdtm@outlook.com', 'Huyện Long Thành, Tỉnh Đồng Nai', '', '2023-04-13 23:42:23', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (17, 'Đoàn Thị Mỹ Dung', '0401401537', 'dungdtm@outlook.com', 'Huyện Long Thành, Tỉnh Đồng Nai', '', '2023-04-13 23:46:29', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (18, 'Đoàn Thị Mỹ Dung', '0401401537', 'dungdtm@outlook.com', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-13 23:46:56', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (19, 'Nguyễn Thúc Thùy Tiên', '0755891860', 'tienntt@gmail.com', 'Phú Mỹ Hưng, Q.7, TP.HCM', 'In hóa đơn đỏ', '2023-04-13 23:48:16', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (20, 'Nguyễn Thúc Thùy Tiên', '0755891860', 'tienntt@gmail.com', 'Phú Mỹ Hưng, Q.7, TP.HCM', '', '2023-04-13 23:48:47', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (21, 'Hồ Thanh Nghĩa', '0987654321', '20130333@st.hcmuaf.edu.vn', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-13 23:50:01', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (22, 'Hồ Thanh Nghĩa', '0987654321', '20130333@st.hcmuaf.edu.vn', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-13 23:50:17', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (23, 'Hồ Thanh Nghĩa', '0987654321', '20130333@st.hcmuaf.edu.vn', 'Phú Mỹ Hưng, Q.7, TP.HCM', '', '2023-04-13 23:50:39', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (24, 'Trần Hoàng Bảo Hân', '0637073967', 'hantran2007@gmail.com', 'Huyện Châu Thành, Tỉnh Bà Rịa - Vũng Tàu', '', '2023-04-13 23:55:36', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (25, 'Trần Hoàng Bảo Hân', '0637073967', 'hantran2007@gmail.com', 'Huyện Châu Thành, Tỉnh Bà Rịa - Vũng Tàu', '', '2023-04-13 23:55:53', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (26, 'Trần Hoàng Bảo Hân', '0637073967', 'hantran2007@gmail.com', 'Huyện Châu Thành, Tỉnh Bà Rịa - Vũng Tàu', '', '2023-04-13 23:56:13', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (27, 'Đỗ Hùng Dũng', '0670129725', 'hungdungdo@gmail.com', 'Đ. Điện Biên Phủ, P.22, Q. Bình Thạnh, TP.HCM', '', '2023-04-14 10:51:18', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (28, 'Nguyễn Phúc Hải', '0374858979', 'haiphuc333@outlook.com', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-14 10:59:00', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (29, 'Nguyễn Phúc Hải', '0374858979', 'haiphuc333@outlook.com', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-14 10:59:46', 'Tiền mặt', 0);
+INSERT INTO `orders` VALUES (30, 'Nguyễn Phúc Hải', '0374858979', 'haiphuc333@outlook.com', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '', '2023-04-14 11:00:32', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (31, 'Đỗ Hùng Dũng', '0670129725', 'hungdungdo@outlook.com', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', 'In hóa đơn đỏ', '2023-04-14 11:04:09', 'Chuyển khoản', 0);
+INSERT INTO `orders` VALUES (32, 'Đỗ Hùng Dũng', '0670129725', 'hungdungdo@outlook.com', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '', '2023-04-14 11:05:24', 'Tiền mặt', 0);
 
 -- ----------------------------
 -- Table structure for prices
@@ -571,6 +655,18 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES (1, 'Hồ Thanh Nghĩa', '20130333@st.hcmuaf.edu.vn', '0987654321', 'Thành phố Biên Hòa, Tỉnh Đồng Nai', '2002-05-10', 'nghia', '/MXwDW4kegBvP4LpvcpmLdBmpoaEpd6fNS9YuuSpVdY=', 1);
+INSERT INTO `users` VALUES (2, 'Bùi Quốc Long', '20130314@st.hcmuaf.edu.vn', '0878423951', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '2003-11-24', 'long', 'unyrS9T5mfrRigLSJcZwhVZRVv/fMi+JPUsis2z0A9c=', 0);
+INSERT INTO `users` VALUES (3, 'Diệp Chấn Phong', '20130364@st.hcmuaf.edu.vn', '0123456789', 'KP.6, P. Linh Trung, TP. Thủ Đức, TP.HCM', '1999-02-20', 'phong', '2T1471GsMSG1Xt8kZ9m8lPwt7taM/RUHQcdIZ4MnlDw=', 1);
+INSERT INTO `users` VALUES (4, 'Trịnh Đức Tâm', 'tamtrinh22@yahoo.com', '0969788123', '35/8 Nguyễn Huệ, P.Bến Nghé, Q.1, TP.HCM', '1983-07-21', 'tam22', 'ReKmONNkUuhptjog3OjU2iHTfq5T9PV5iB4clJTONyk=', 0);
+INSERT INTO `users` VALUES (5, 'Đoàn Thị Mỹ Dung', 'dungdtm@outlook.com', '0401401537', 'Huyện Long Thành, Tỉnh Đồng Nai', '1974-11-28', 'mydung35', '2O0menAj+0IuA7CgosuHugl5gjYf2lP+dQ6wc4kXkFs=', 0);
+INSERT INTO `users` VALUES (6, 'Đỗ Hậu Hoàng', 'hoanghaudo@microsoft.com', '0801869407', 'Thành phố Dĩ An, Tỉnh Bình Dương', '2003-04-11', 'hauhoang', 'YauN2PD+iJGODwvPAQ4q/NDzBHfnooQfvKCXGf/dTd0=', 0);
+INSERT INTO `users` VALUES (7, 'Trương Gia Tuệ', 'tuetruong@tma.vn', '0948055625', 'Thành phố Tân Uyên, Tỉnh Bình Dương', '1998-12-06', 'tuetruong111', '59LF/s8wJlMSjcyU/lp+SqdYrUp3zNe0KRAVCeDRmms=', 0);
+INSERT INTO `users` VALUES (8, 'Nguyễn Thúc Thùy Tiên', 'tienntt@gmail.com', '0755891860', 'Phú Mỹ Hưng, Q.7, TP.HCM', '1998-08-12', 'misstien', 'wlGF2KiLBUMmOd9aI9FMyAZPY35mkULxNl8riCNKhrM=', 0);
+INSERT INTO `users` VALUES (9, 'Lê Nguyệt Minh', 'minhleecycling@fpt.com.vn', '0230300636', 'Sư Vạn Hạnh, Q.10, TP.HCM', '1986-09-02', 'minhlee35', 'iAfHhx2tBCDL5t/IepybFRVQd+kVFBwfGmGjT1WZouk=', 0);
+INSERT INTO `users` VALUES (10, 'Vũ Nguyễn Hải Đăng', 'vnhdang@vus.edu.vn', '0155241001', 'Trị An, H. Vĩnh Cửu, T. Đồng Nai', '2000-01-25', 'haidang68', 'yaE65RjVff2c7Spe1JllscbDCQTn/fK8FYITPS4Sak8=', 0);
+INSERT INTO `users` VALUES (11, 'Phương Huyền Minh Trang', 'changchang@gmail.com', '0876944765', 'Bãi Sau, TP. Vũng Tàu, T. Bà Rịa - Vũng Tàu', '2002-12-25', 'changchang', 'I5ktFiAYx/dfXjGg90pWyxwFLu1bXts9uWEm1EpMUu0=', 0);
+INSERT INTO `users` VALUES (12, 'Trần Hoàng Bảo Hân', 'hantran2007@gmail.com', '0637073967', 'Huyện Châu Thành, Tỉnh Bà Rịa - Vũng Tàu', '2007-06-20', 'hanhancute', 't0wrBUzUrJqwlH3Ava6NeYkY6tfix7ZdrDPSDIP+uzE=', 0);
 
 -- ----------------------------
 -- Table structure for vendors

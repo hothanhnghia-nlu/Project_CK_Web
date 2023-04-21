@@ -22,7 +22,7 @@ public class OrderDetailService {
         );
         return orders;
     }
-    public List<OrderDetail> getOrderDetailByID(String id) {
+    public List<OrderDetail> getOrderDetailByID(int id) {
         List<OrderDetail> orders = JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT order_id, product_id, `name`,order_details.quantity, order_details.price , order_details.total FROM order_details INNER JOIN products ON products.productID = order_details.product_id WHERE order_id = ?")
                         .bind(0,id)

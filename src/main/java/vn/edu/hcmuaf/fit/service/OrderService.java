@@ -21,6 +21,16 @@ public class OrderService {
         );
         return orders;
     }
+    public List<Order> getOrderByEmail(String email) {
+        List<Order> orders = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT o.orderID, o.full_name, o.email, o.payment FROM orders o, users u WHERE o.email = u.email AND u.email = ?")
+                        .bind(0, email)
+                        .mapToBean(Order.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return orders;
+    }
     public int getNewID() {
         List<Order> orders = JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT * FROM orders order by orderID DESC Limit 1")
@@ -32,7 +42,24 @@ public class OrderService {
         Order order = new Order();
         for (int i = 0; i < orders.size(); i++) {
             order = orders.get(i);
-            newID = Integer.parseInt(order.getOrderId());
+            newID = order.getOrderId();
+        }
+        return newID;
+    }
+
+    public int getOrderId(String email) {
+        List<Order> orders = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT o.orderID FROM orders o, users u WHERE o.email = u.email AND u.email = ?")
+                        .bind(0, email)
+                        .mapToBean(Order.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        int newID = 0;
+        Order order = new Order();
+        for (int i = 0; i < orders.size(); i++) {
+            order = orders.get(i);
+            newID = order.getOrderId();
         }
         return newID;
     }
@@ -52,7 +79,7 @@ public class OrderService {
         );
     }
 
-    public void addOrder(String id,String fullName, String phone, String email, String address, String note, String payment) {
+    public void addOrder(int id,String fullName, String phone, String email, String address, String note, String payment) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO orders (orderID, full_name, phone_number, email, address, note, order_date, payment)  VALUES (?,?, ?, ?, ?, ?, NOW(), ?)")
                         .bind(0, id)
@@ -65,7 +92,7 @@ public class OrderService {
                         .execute()
         );
     }
-    public void addOrderDetails(String id,String productID, int quantity, double price) {
+    public void addOrderDetails(int id, String productID, int quantity, double price) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO order_details (order_id, product_id, quantity, price, total)  VALUES (?,?, ?, ?, ?)")
                         .bind(0, id)
@@ -73,6 +100,15 @@ public class OrderService {
                         .bind(2, quantity)
                         .bind(3, price)
                         .bind(4, quantity * price)
+                        .execute()
+        );
+    }
+
+    public void updateID(int id, int status) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE orders SET status = ? WHERE orderID = ?")
+                        .bind(0, status)
+                        .bind(1, id)
                         .execute()
         );
     }
