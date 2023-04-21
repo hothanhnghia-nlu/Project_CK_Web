@@ -116,7 +116,7 @@
                                                     </td>
                                                         <td>
                                                             <div class="btn-group ml-auto">
-                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="table_account?id=${u.id}"><i
+                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="accounts?id=${u.id}"><i
                                                                         class="fas fa-trash-alt"></i></a>
                                                                 <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
                                                                         class="fas fa-rotate"></i></button>

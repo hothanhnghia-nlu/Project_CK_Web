@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.fit.controller;
 import vn.edu.hcmuaf.fit.bean.Cart;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.service.OrderService;
+import vn.edu.hcmuaf.fit.service.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -35,7 +36,10 @@ public class Checkout extends HttpServlet {
         OrderService.getInstance().addOrder(id,name,phone,email,address,note, payment);
         for (Product p: list){
             double price = p.getOut_price();
+            int sumquantity = ProductService.getInstance().getQuantityProduct(p.getProductID());
             OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),price);
+            int newquantity = sumquantity - p.getQuantity();
+            ProductService.getInstance().updateProduct(p.getProductID(), newquantity);
         }
         session.removeAttribute("cart");
         response.sendRedirect("success.jsp");
