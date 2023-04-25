@@ -26,7 +26,7 @@ public class Signup extends HttpServlet {
         //log
         if (!password.equals(rePass)) {
             request.setAttribute("error", "Mật khẩu xác nhận không đúng!");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
+            request.getRequestDispatcher("sign-up").forward(request, response);
         } else {
             boolean accountExist = UserService.getInstances().checkAccountExist(username);
             boolean emailExist = UserService.getInstances().checkEmailExist(email);
@@ -35,11 +35,11 @@ public class Signup extends HttpServlet {
                 String id = "" + (UserService.getInstances().getNewID() + 1);
                 UserService.getInstances().register(id, name, email, phone, username, password);
                 LogService.getInstances().addLog(log_id,"1", Integer.parseInt(id),"Signup success","id= "+id+" username= "+username);
-                response.sendRedirect("success-signup.jsp");
+                response.sendRedirect("success-signup");
             } else {
                 LogService.getInstances().addLog(log_id,"1", 0,"Signup wrong","name= "+name+"email= "+email+"phone= "+phone+ "username= "+username);
                 request.setAttribute("error", "Tài khoản đã tồn tại!");
-                request.getRequestDispatcher("signup.jsp").forward(request, response);
+                request.getRequestDispatcher("sign-up").forward(request, response);
             }
         }
     }

@@ -82,7 +82,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 10px">
-                <a href="forgot-password.jsp" style="color: #2b80dd">Gửi lại mã?</a>
+                <a href="forgot-pass" style="color: #2b80dd">Gửi lại mã?</a>
             </div>
 
             <div class="input-field button" id="dangnhap">

@@ -22,7 +22,7 @@ public class ForgotPassword extends HttpServlet {
 
         if (!emailExist) {
             request.setAttribute("error", "Email không tồn tại! Vui lòng nhập lại email!");
-            request.getRequestDispatcher("forgot-password.jsp").forward(request,response);
+            request.getRequestDispatcher("forgot-pass").forward(request,response);
         } else {
             Random rand = new Random();
             otpValue = rand.nextInt(999999);

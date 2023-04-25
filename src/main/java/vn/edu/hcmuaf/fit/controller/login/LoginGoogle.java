@@ -16,7 +16,7 @@ public class LoginGoogle extends HttpServlet {
 
         if (code == null || code.isEmpty()) {
             request.setAttribute("error", "Đăng nhập thất bại!");
-            request.getRequestDispatcher("login.jsp").forward(request,response);
+            request.getRequestDispatcher("log-in").forward(request,response);
         } else {
             String accessToken = GoogleUtils.getToken(code);
             UserGoogle userGoogle = GoogleUtils.getUserInfo(accessToken);

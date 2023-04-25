@@ -22,10 +22,10 @@ public class NewPassword extends HttpServlet {
             if (newPassword != null && rePassword != null && newPassword.equals(rePassword)) {
                 newPassword = UserService.getInstances().hashPassword(newPassword);
                 UserService.getInstances().updatePassword(email, newPassword);
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("log-in");
             } else {
                 request.setAttribute("error", "Mật khẩu xác nhận không đúng!");
-                request.getRequestDispatcher("new-password.jsp").forward(request, response);
+                request.getRequestDispatcher("new-pass").forward(request, response);
             }
         }
     }

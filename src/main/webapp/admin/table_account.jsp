@@ -57,21 +57,6 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
-                            <div class="x_title">
-                                <div class="row element-button">
-                                    <div class="pl-3">
-                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"
-                                           style="border: 2px solid #bdc3c7"><i
-                                                class="fas fa-print"></i> In dữ liệu</a>
-                                    </div>
-                                    <!-- <div class="pl-3">
-                                      <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"
-                                         onclick="myApp.deleteTable()" style="border: 2px solid #bdc3c7"><i
-                                              class="fas fa-eraser"></i> Xóa tất cả</a>
-                                    </div> -->
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -92,46 +77,48 @@
                                                     List<User> userList = UserService.getInstances().listALlUser();
                                                     request.setAttribute("userList",userList);
                                                 %>
-                                                    <c:forEach items="${userList}" var="u">
+                                                <c:forEach items="${userList}" var="u">
 
-                                                <tr>
-                                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
-                                                        <input type="hidden" name="id" value="${u.id}" />
-                                                    <td>${u.id}</td>
-                                                    <td>${u.fullName}</td>
-                                                    <td>${u.username}</td>
-                                                    <td>${u.email}</td>
-                                                    <td>
-                                                        <select style="width: 80px;" tabindex="0" name="role">
-                                                            <c:if test="${u.role == 0}">
-                                                                <option value="${u.role}">User</option>
-                                                            </c:if>
-                                                            <c:if test ="${u.role == 1}">
-                                                                <option value="${u.role}">Admin</option>
-                                                            </c:if>
-                                                            <option value="0" >User</option>
-                                                            <option value="1" >Admin</option>
-                                                        </select>
+                                                    <tr>
+                                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
+                                                            <input type="hidden" name="id" value="${u.id}" />
+                                                            <td>${u.id}</td>
+                                                            <td>${u.fullName}</td>
+                                                            <td>${u.username}</td>
+                                                            <td>${u.email}</td>
+                                                            <td>
+                                                                <select style="width: 80px;" tabindex="0" name="role">
+                                                                    <c:if test="${u.role == 0}">
+                                                                        <option value="${u.role}">User</option>
+                                                                    </c:if>
+                                                                    <c:if test ="${u.role == 1}">
+                                                                        <option value="${u.role}">Admin</option>
+                                                                    </c:if>
+                                                                    <option value="0" >User</option>
+                                                                    <option value="1" >Admin</option>
+                                                                </select>
 
-                                                    </td>
-                                                        <td>
-                                                            <div class="btn-group ml-auto">
-                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="accounts?id=${u.id}"><i
-                                                                        class="fas fa-trash-alt"></i></a>
-                                                                <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
-                                                                        class="fas fa-rotate"></i></button>
-                                                            </div>
-                                                    </td>
-                                                    </form>
-                                                </tr>
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group ml-auto">
+                                                                    <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="accounts?id=${u.id}"><i
+                                                                            class="fas fa-trash-alt"></i></a>
+                                                                    <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
+                                                                            class="fas fa-rotate"></i></button>
+                                                                </div>
+                                                            </td>
+                                                        </form>
+                                                    </tr>
 
-                                                    </c:forEach>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
                         </div>
                     </div>
                 </div>

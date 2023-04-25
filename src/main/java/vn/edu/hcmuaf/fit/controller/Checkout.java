@@ -42,6 +42,6 @@ public class Checkout extends HttpServlet {
             ProductService.getInstance().updateProduct(p.getProductID(), newquantity);
         }
         session.removeAttribute("cart");
-        response.sendRedirect("success.jsp");
+        response.sendRedirect("order-success");
     }
 }

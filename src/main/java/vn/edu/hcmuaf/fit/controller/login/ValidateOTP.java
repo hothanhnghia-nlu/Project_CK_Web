@@ -15,10 +15,10 @@ public class ValidateOTP extends HttpServlet {
 
         if (value == otp) {
             request.setAttribute("email", request.getParameter("email"));
-            response.sendRedirect("new-password.jsp");
+            response.sendRedirect("new-pass");
         } else {
             request.setAttribute("message", "Mã OTP không đúng!");
-            request.getRequestDispatcher("enterOTP.jsp").forward(request,response);
+            request.getRequestDispatcher("enter-OTP").forward(request,response);
         }
     }
 

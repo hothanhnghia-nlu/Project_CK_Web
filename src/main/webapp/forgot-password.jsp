@@ -70,7 +70,7 @@
                         <input class="input" name="email" type="email" placeholder="Nhập email của bạn" required>
                         <input class="submit-btn" type="submit" value="Lấy lại mật khẩu">
                     </form>
-                    <a href="login.jsp">Quay lại</a>
+                    <a href="log-in">Quay lại</a>
                 </div>
             </div>
         </div>

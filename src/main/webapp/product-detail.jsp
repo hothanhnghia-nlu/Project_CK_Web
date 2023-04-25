@@ -135,7 +135,7 @@
 										</ul>
 									</div>
 									<div class="add-to-cart">
-										<a href="cart/buy?pid=<%=p.getProductID()%>"  class="primary-btn">Mua ngay</a>
+										<a href="buy?pid=<%=p.getProductID()%>"  class="primary-btn">Mua ngay</a>
 									</div>
 								</div>
 							</div>

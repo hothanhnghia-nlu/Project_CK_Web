@@ -61,7 +61,7 @@
                 <div class="col-md-7 col-lg-6 col-md-offset-3">
                     <div style="text-align: center; margin-top: 40px">
                         <h3 style="font-weight: 400; color: black">ĐĂNG KÝ TÀI KHOẢN</h3>
-                        <p>Bạn đã có tài khoản? <a href="login.jsp" style="color: #2b80dd">Đăng nhập ngay</a></p>
+                        <p>Bạn đã có tài khoản? <a href="log-in" style="color: #2b80dd">Đăng nhập ngay</a></p>
                     </div>
                     <div class="signin-container">
                         <form action="signup" name="frm-login" method="post">
