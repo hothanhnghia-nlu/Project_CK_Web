@@ -11,7 +11,7 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <a href="home" class="logo">
+                        <a href="../home" class="logo">
                             <img src="../assets/img/logo.png" alt="">
                         </a>
                     </div>
@@ -122,38 +122,38 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="home">Trang chủ</a></li>
-                <li><a href="list-product?idCat=GM010">Latop Gaming <i class="fa fa-angle-down"></i></a>
+                <li class="active"><a href="../home">Trang chủ</a></li>
+                <li><a href="../list-product?idCat=GM010">Latop Gaming <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="list-product?idCat=GM010&idVendor=002">MSI</a></li>
-                        <li><a href="list-product?idCat=GM010&idVendor=001">Dell</a></li>
-                        <li><a href="list-product?idCat=GM010&idVendor=003">Lenovo</a></li>
-                        <li><a href="list-product?idCat=GM010&idVendor=004">HP</a></li>
-                        <li><a href="list-product?idCat=GM010&idVendor=005">Asus</a></li>
-                        <li><a href="list-product?idCat=GM010&idVendor=006">Acer</a></li>
+                        <li><a href="../list-product?idCat=GM010&idVendor=002">MSI</a></li>
+                        <li><a href="../list-product?idCat=GM010&idVendor=001">Dell</a></li>
+                        <li><a href="../list-product?idCat=GM010&idVendor=003">Lenovo</a></li>
+                        <li><a href="../list-product?idCat=GM010&idVendor=004">HP</a></li>
+                        <li><a href="../list-product?idCat=GM010&idVendor=005">Asus</a></li>
+                        <li><a href="../list-product?idCat=GM010&idVendor=006">Acer</a></li>
                     </ul>
                 </li>
-                <li><a href="list-product?idCat=DH011">Laptop Đồ Họa <i class="fa fa-angle-down"></i></a>
+                <li><a href="../list-product?idCat=DH011">Laptop Đồ Họa <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="list-product?idCat=DH011&idVendor=001">Dell</a></li>
-                        <li><a href="list-product?idCat=DH011&idVendor=004">HP</a></li>
+                        <li><a href="../list-product?idCat=DH011&idVendor=001">Dell</a></li>
+                        <li><a href="../list-product?idCat=DH011&idVendor=004">HP</a></li>
                     </ul>
                 </li>
-                <li><a href="list-product?idCat=VP012">Laptop Văn Phòng <i class="fa fa-angle-down"></i></a>
+                <li><a href="../list-product?idCat=VP012">Laptop Văn Phòng <i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="list-product?idCat=VP012&idVendor=002">MSI</a></li>
-                        <li><a href="list-product?idCat=VP012&idVendor=001">Dell</a></li>
-                        <li><a href="list-product?idCat=VP012&idVendor=003">Lenovo</a></li>
-                        <li><a href="list-product?idCat=VP012&idVendor=004">HP</a></li>
-                        <li><a href="list-product?idCat=VP012&idVendor=005">Asus</a></li>
-                        <li><a href="list-product?idCat=VP012&idVendor=006">Acer</a></li>
-                        <li><a href="list-product?idCat=VP012&idVendor=008">Samsung</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=002">MSI</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=001">Dell</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=003">Lenovo</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=004">HP</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=005">Asus</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=006">Acer</a></li>
+                        <li><a href="../list-product?idCat=VP012&idVendor=008">Samsung</a></li>
                     </ul>
                 </li>
-                <li><a href="list-product?idCat=MB013">Macbook <i class="fa fa-angle-down"></i></a>
+                <li><a href="../list-product?idCat=MB013">Macbook <i class="fa fa-angle-down"></i></a>
                 </li>
 
-                <li><a href="contact.jsp">Liên hệ</a></li>
+                <li><a href="../contact.jsp">Liên hệ</a></li>
             </ul>
             <!-- /NAV -->
         </div>
