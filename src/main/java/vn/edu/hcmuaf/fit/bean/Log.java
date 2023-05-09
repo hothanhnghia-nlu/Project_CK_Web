@@ -11,7 +11,7 @@ public class Log implements Serializable {
     private int userID;
     private String src;
     private String content;
-    private Date creatAt;
+    private String createAt;
     private int status;
 
     public Map<Integer, String> levelMapping = new HashMap<>();
@@ -25,13 +25,13 @@ public class Log implements Serializable {
     public Log() {
     }
 
-    public Log(int logID, int level, int userID, String src, String content, Date creatAt, int status) {
+    public Log(int logID, int level, int userID, String src, String content, String createAt, int status) {
         this.logID = logID;
         this.level = level;
         this.userID = userID;
         this.src = src;
         this.content = content;
-        this.creatAt = creatAt;
+        this.createAt = createAt;
         this.status = status;
     }
 
@@ -75,12 +75,12 @@ public class Log implements Serializable {
         this.content = content;
     }
 
-    public Date getCreatAt() {
-        return creatAt;
+    public String getCreateAt() {
+        return createAt;
     }
 
-    public void setCreatAt(Date creatAt) {
-        this.creatAt = creatAt;
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
     }
 
     public int getStatus() {

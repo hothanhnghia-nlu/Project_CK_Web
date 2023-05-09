@@ -17,13 +17,13 @@ public class ValidateOTP extends HttpServlet {
 
         if (value == otp) {
             request.setAttribute("email", request.getParameter("email"));
-            response.sendRedirect("new-password.jsp");
+            response.sendRedirect("new-pass");
         } else {
 //            int log_id = LogService.getInstances().getNewID() + 1;
 //            LogService.getInstances().addLog(log_id,"1", (user ==null?0: user.getId()),nameLog,"User ID " + user.getId()+" new password");
 //
             request.setAttribute("message", "Mã OTP không đúng!");
-            request.getRequestDispatcher("enterOTP.jsp").forward(request,response);
+            request.getRequestDispatcher("enter-OTP").forward(request,response);
         }
     }
 

@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <title>Quản lý liên hệ | Quản trị Admin</title>
+    <title>Quản lý nhật ký | Quản trị Admin</title>
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -42,7 +42,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Quản lý liên hệ</h3>
+                        <h3>Quản lý nhật ký</h3>
                     </div>
 
                     <div class="title_right">
@@ -63,33 +63,32 @@
                                                 <thead>
                                                 <tr>
                                                     <th>STT</th>
-                                                    <th>Tên khách hàng</th>
-                                                    <th>SĐT</th>
-                                                    <th>Email</th>
-                                                    <th>Tên sản phẩm</th>
+                                                    <th>Cấp độ</th>
+                                                    <th>Mã tài khoản</th>
+                                                    <th>Nguồn</th>
                                                     <th>Nội dung</th>
                                                     <th>Ngày tạo</th>
+                                                    <th>Trạng thái</th>
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${contactList}" var="x">
+                                                <c:forEach items="${logList}" var="x">
 
-                                                <tr>
-                                                    <td>${x.contactID}</td>
-                                                    <td>${x.fullName}</td>
-                                                    <td>${x.phone_number}</td>
-                                                    <td>${x.email}</td>
-                                                    <td>${x.subject_name}</td>
-                                                    <td>${x.content}</td>
-                                                    <td>${x.createDate}</td>
-                                                    <td>
-                                                        <div class="btn-group ml-auto">
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="contacts?id=${x.contactID}"><i
-                                                                    class="fas fa-trash-alt"></i></a>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                    <tr>
+                                                        <td>${x.logID}</td>
+                                                        <td>${x.level}</td>
+                                                        <td>${x.userID}</td>
+                                                        <td>${x.src}</td>
+                                                        <td>${x.content}</td>
+                                                        <td>${x.createAt}</td>
+                                                        <td>${x.status}</td>
+                                                        <td>
+                                                            <div class="btn-group ml-auto">
+                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="logs?id=${x.logID}"><i class="fas fa-trash-alt"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </c:forEach>
 
                                                 </tbody>
@@ -98,6 +97,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
                         </div>
                     </div>
                 </div>
@@ -132,6 +133,7 @@
     <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="../assets/js/custom.min.js"></script>
 

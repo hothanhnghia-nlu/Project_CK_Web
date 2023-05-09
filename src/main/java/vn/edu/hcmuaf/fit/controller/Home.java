@@ -15,9 +15,9 @@ public class Home extends HttpServlet {
         ProductService pro = new ProductService();
         CategoryService cat = new CategoryService();
 
-        request.setAttribute("listTop", pro.getTopProduct(10));
-        request.setAttribute("listSeller", pro.getTopSeller(10));
-        request.setAttribute("listNew", pro.getTopNewProduct(10));
+        request.setAttribute("listTop", pro.getTopProduct(20));
+        request.setAttribute("listSeller", pro.getTopSeller(20));
+        request.setAttribute("listNew", pro.getTopNewProduct(20));
         //chuyen huong trang tim kiem
         String name = request.getParameter("namespace");
         if(name!=null)

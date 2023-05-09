@@ -32,7 +32,7 @@ public class UpdateCart extends HttpServlet {
             }
 
         }
-        response.sendRedirect("cart.jsp");
+        response.sendRedirect("shopping-cart");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,12 +40,13 @@ public class UpdateCart extends HttpServlet {
         if (cart != null) {
             Map<String, String[]> parameterMap = request.getParameterMap();
             boolean hasError = false; // biến cờ để kiểm tra lỗi
+
             for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
                 String productId = entry.getKey();
                 int quantity = Integer.parseInt(entry.getValue()[0]);
 
-                int sumquantity = ProductService.getInstance().getQuantityProduct(productId);
-                if (quantity > sumquantity) {
+                int sumQuantity = ProductService.getInstance().getQuantityProduct(productId);
+                if (quantity > sumQuantity) {
                     request.setAttribute("error", "Số lượng sản phẩm không đủ");
                     hasError = true; // đặt biến cờ khi có lỗi
                 } else {

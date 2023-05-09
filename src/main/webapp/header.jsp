@@ -35,7 +35,7 @@
                         <!-- Account -->
                         <div style="list-style: none; display: flex">
                             <c:if test="${sessionScope.auth == null && sessionScope.oAuth == null}">
-                                <a href="login.jsp">
+                                <a href="log-in">
                                     <i class="fa fa-user"></i>
                                     <span>Đăng nhập</span>
                                 </a>
@@ -89,7 +89,7 @@
                             </c:if>
 
                             <c:if test="${cart.quantity != null}">
-                                <a href="cart.jsp">
+                                <a href="shopping-cart">
                                     <i  class="fa fa-shopping-cart"></i>
                                     <span>Giỏ hàng</span>
                                     <c:if test="${cart.quantity != null}">
@@ -153,7 +153,7 @@
                 <li><a href="list-product?idCat=MB013">Macbook <i class="fa fa-angle-down"></i></a>
                 </li>
 
-                <li><a href="contact.jsp">Liên hệ</a></li>
+                <li><a href="contact-us">Liên hệ</a></li>
             </ul>
             <!-- /NAV -->
         </div>

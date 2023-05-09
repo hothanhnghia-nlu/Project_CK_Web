@@ -57,21 +57,6 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
-                            <div class="x_title">
-                                <div class="row element-button">
-                                    <div class="pl-3">
-                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"
-                                           style="border: 2px solid #bdc3c7"><i
-                                                class="fas fa-print"></i> In dữ liệu</a>
-                                    </div>
-                                    <!-- <div class="pl-3">
-                                      <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"
-                                         onclick="myApp.deleteTable()" style="border: 2px solid #bdc3c7"><i
-                                              class="fas fa-eraser"></i> Xóa tất cả</a>
-                                    </div> -->
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -128,6 +113,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
                         </div>
                     </div>
                 </div>

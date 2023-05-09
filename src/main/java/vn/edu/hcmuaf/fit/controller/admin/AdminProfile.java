@@ -1,23 +1,26 @@
-package vn.edu.hcmuaf.fit.controller.login;
+package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.bean.User;
+import vn.edu.hcmuaf.fit.bean.UserGoogle;
+import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ChangePassword", value = "/change-password")
-public class ChangePassword extends HttpServlet {
+@WebServlet(name = "AdminProfile", value = "/admin/profile")
+public class AdminProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
 
-        if (auth == null) {
-            response.sendRedirect("page-not-found");
+        if (auth == null || !auth.checkRole(1)) {
+            response.sendRedirect("not-found");
         } else {
-            request.getRequestDispatcher("change-pass.jsp").forward(request, response);
+            UserService.getInstances().listALlUser();
+            request.getRequestDispatcher("ad_profile.jsp").forward(request,response);
         }
     }
 

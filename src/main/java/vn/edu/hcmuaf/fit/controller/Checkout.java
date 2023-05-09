@@ -1,6 +1,5 @@
 package vn.edu.hcmuaf.fit.controller;
 
-import vn.edu.hcmuaf.fit.bean.Cart;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.service.OrderService;
 import vn.edu.hcmuaf.fit.service.ProductService;
@@ -10,7 +9,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 
 @WebServlet(name = "Checkout", value = "/checkout")
 public class Checkout extends HttpServlet {
@@ -42,6 +40,6 @@ public class Checkout extends HttpServlet {
             ProductService.getInstance().updateProduct(p.getProductID(), newquantity);
         }
         session.removeAttribute("cart");
-        response.sendRedirect("success.jsp");
+        response.sendRedirect("order-success");
     }
 }

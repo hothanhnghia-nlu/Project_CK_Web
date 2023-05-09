@@ -14,23 +14,24 @@ public class UpdatePassword extends HttpServlet {
     String nameLog = "UpdatePassword";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String password = request.getParameter("password");
+        password = UserService.getInstances().hashPassword(password);
         String newPass = request.getParameter("new-pass");
         String rePass = request.getParameter("repass");
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
 
-        if (newPass.equals(rePass)) {
+        if (password.equals(auth.getPassword()) && newPass.equals(rePass)) {
             newPass = UserService.getInstances().hashPassword(newPass);
             UserService.getInstances().updatePassword(auth.getEmail(), newPass);
 
             int log_id = LogService.getInstances().getNewID() + 1;
             LogService.getInstances().addLog(log_id,"1", (auth ==null?0: auth.getId()),nameLog,"User ID " + auth.getId()+"Update Password");
-
             session.removeAttribute("auth");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("log-in");
         } else {
             request.setAttribute("error", "Mật khẩu không đúng!");
-            request.getRequestDispatcher("change-pass.jsp").forward(request, response);
+            request.getRequestDispatcher("change-password").forward(request, response);
         }
     }
 

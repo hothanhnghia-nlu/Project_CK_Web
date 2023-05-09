@@ -78,8 +78,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/home"><i class="fa fa-home"></i> Trang mua hàng</a>
-                        <a class="dropdown-item" href="admin-profile"><i class="fa-regular fa-user"></i> Profile</a>
-                        <a class="dropdown-item" href="javascript:;"><i class="fa fa-cog"></i> Cài đặt</a>
+                        <a class="dropdown-item" href="profile"><i class="fa fa-user"></i> Profile</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
                     </div>
                 </li>

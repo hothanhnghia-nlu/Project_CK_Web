@@ -1,19 +1,19 @@
-package vn.edu.hcmuaf.fit.controller.login;
+package vn.edu.hcmuaf.fit.view;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "EnterOTP", value = "/enter-OTP")
-public class EnterOTP extends HttpServlet {
+@WebServlet(name = "SuccessView", value = "/order-success")
+public class SuccessView extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("enterOTP.jsp").forward(request,response);
+        request.getRequestDispatcher("success.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+        doGet(request,response);
     }
 }

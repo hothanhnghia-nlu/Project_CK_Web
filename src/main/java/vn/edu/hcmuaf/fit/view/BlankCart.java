@@ -1,4 +1,4 @@
-package vn.edu.hcmuaf.fit.controller.cart;
+package vn.edu.hcmuaf.fit.view;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

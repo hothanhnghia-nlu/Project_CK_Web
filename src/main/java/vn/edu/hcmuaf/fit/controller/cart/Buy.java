@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "Buy", value = "/cart/buy")
+@WebServlet(name = "Buy", value = "/buy")
 public class Buy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class Buy extends HttpServlet {
         vn.edu.hcmuaf.fit.bean.Cart cart = Cart.getCart(session);
         cart.put(p);
         cart.commit(session);
-        response.sendRedirect("/Project_CK_Web_war/cart.jsp");
+        response.sendRedirect("shopping-cart");
     }
 
     @Override
