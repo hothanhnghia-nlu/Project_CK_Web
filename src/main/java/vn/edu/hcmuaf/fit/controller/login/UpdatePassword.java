@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @WebServlet(name = "UpdatePassword", value = "/update-password")
 public class UpdatePassword extends HttpServlet {
+    String nameLog = "UpdatePassword";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String password = request.getParameter("password");
@@ -19,13 +20,13 @@ public class UpdatePassword extends HttpServlet {
         String rePass = request.getParameter("repass");
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
-        User email = (User) session.getAttribute("auth");
-        int log_id = LogService.getInstances().getNewID() + 1;
 
         if (password.equals(auth.getPassword()) && newPass.equals(rePass)) {
             newPass = UserService.getInstances().hashPassword(newPass);
-            UserService.getInstances().updatePassword(email.getEmail(), newPass);
-            LogService.getInstances().addLog(log_id,"1", auth.getId(),"change password success", "Username= " + auth.getUsername());
+            UserService.getInstances().updatePassword(auth.getEmail(), newPass);
+
+            int log_id = LogService.getInstances().getNewID() + 1;
+            LogService.getInstances().addLog(log_id,"1", (auth ==null?0: auth.getId()),nameLog,"User ID " + auth.getId()+"Update Password");
             session.removeAttribute("auth");
             response.sendRedirect("log-in");
         } else {

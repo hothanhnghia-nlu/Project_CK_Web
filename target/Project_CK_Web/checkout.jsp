@@ -208,8 +208,8 @@
 						<div class="order-products">
 							<c:forEach items="${list}" var="p">
 								<div class="order-col">
-									<div>${p.quantity}x ${p.name}</div>
-									<div><fmt:formatNumber value="${total}" type="currency"/></div>
+									<div>${p.quantity} x ${p.name}</div>
+									<div><fmt:formatNumber value="${p.out_price * p.quantity}" type="currency"/></div>
 								</div>
 							</c:forEach>
 						</div>

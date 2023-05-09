@@ -77,40 +77,36 @@
                                                     List<User> userList = UserService.getInstances().listALlUser();
                                                     request.setAttribute("userList",userList);
                                                 %>
-                                                <c:forEach items="${userList}" var="u">
+                                                    <c:forEach items="${userList}" var="u">
 
-                                                    <tr>
-                                                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
-                                                            <input type="hidden" name="id" value="${u.id}" />
-                                                            <td>${u.id}</td>
-                                                            <td>${u.fullName}</td>
-                                                            <td>${u.username}</td>
-                                                            <td>${u.email}</td>
-                                                            <td>
-                                                                <select style="width: 80px;" tabindex="0" name="role">
-                                                                    <c:if test="${u.role == 0}">
-                                                                        <option value="${u.role}">User</option>
-                                                                    </c:if>
-                                                                    <c:if test ="${u.role == 1}">
-                                                                        <option value="${u.role}">Admin</option>
-                                                                    </c:if>
-                                                                    <option value="0" >User</option>
-                                                                    <option value="1" >Admin</option>
-                                                                </select>
+                                                <tr>
+                                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
+                                                        <input type="hidden" name="id" value="${u.id}" />
+                                                    <td>${u.id}</td>
+                                                    <td>${u.fullName}</td>
+                                                    <td>${u.username}</td>
+                                                    <td>${u.email}</td>
+                                                    <td>
+                                                        <select style="width: 80px;" tabindex="0" name="role">
+                                                            <option value="0" <c:if test="${u.role == 0}">selected="selected"</c:if> >User</option>
+                                                            <option value="1" <c:if test="${u.role == 1}">selected="selected"</c:if> >Nhân viên</option>
+                                                            <option value="2" <c:if test="${u.role == 2}">selected="selected"</c:if>>Quản lý</option>
+                                                            <option value="3" <c:if test="${u.role == 3}">selected="selected"</c:if>>Admin</option>
+                                                        </select>
 
-                                                            </td>
-                                                            <td>
-                                                                <div class="btn-group ml-auto">
-                                                                    <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="accounts?id=${u.id}"><i
-                                                                            class="fas fa-trash-alt"></i></a>
-                                                                    <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
-                                                                            class="fas fa-rotate"></i></button>
-                                                                </div>
-                                                            </td>
-                                                        </form>
-                                                    </tr>
+                                                    </td>
+                                                        <td>
+                                                            <div class="btn-group ml-auto">
+                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="accounts?id=${u.id}"><i
+                                                                        class="fas fa-trash-alt"></i></a>
+                                                                <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
+                                                                        class="fas fa-rotate"></i></button>
+                                                            </div>
+                                                    </td>
+                                                    </form>
+                                                </tr>
 
-                                                </c:forEach>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>

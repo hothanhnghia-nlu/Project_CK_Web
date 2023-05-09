@@ -39,7 +39,8 @@ public class UpdateCart extends HttpServlet {
         Cart cart = (Cart) request.getSession().getAttribute("cart");
         if (cart != null) {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            boolean hasError = false;
+            boolean hasError = false; // biến cờ để kiểm tra lỗi
+
             for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
                 String productId = entry.getKey();
                 int quantity = Integer.parseInt(entry.getValue()[0]);
@@ -47,16 +48,17 @@ public class UpdateCart extends HttpServlet {
                 int sumQuantity = ProductService.getInstance().getQuantityProduct(productId);
                 if (quantity > sumQuantity) {
                     request.setAttribute("error", "Số lượng sản phẩm không đủ");
-                    hasError = true;
+                    hasError = true; // đặt biến cờ khi có lỗi
                 } else {
                     cart.update(productId, quantity);
                 }
             }
             if (hasError) {
-                request.getRequestDispatcher("shopping-cart").forward(request,response);
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
             } else {
-                response.sendRedirect("shopping-cart");
+                response.sendRedirect("cart.jsp");
             }
         }
+
     }
 }

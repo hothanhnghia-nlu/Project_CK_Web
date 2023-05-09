@@ -5,7 +5,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>--%>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -58,20 +57,25 @@
 						<li data-target="#ad-banner" data-slide-to="0" class="active"></li>
 						<li data-target="#ad-banner" data-slide-to="1"></li>
 						<li data-target="#ad-banner" data-slide-to="2"></li>
+						<li data-target="#ad-banner" data-slide-to="3"></li>
 					</ol>
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
+						<div class="item active">
+							<a href="#"><img src="assets/img/banner 3.jpg" alt="Ưu đãi laptop"></a>
+						</div>
+
+						<div class="item">
+							<a href="#"><img src="assets/img/banner 7.jpg" alt="Laptop Lenovo"></a>
+						</div>
+
 						<div class="item">
 							<a href="#"><img src="assets/img/banner 6.jpg" alt="Khai xuân laptop"></a>
 						</div>
 
 						<div class="item">
-							<a href="#"><img src="assets/img/banner 6.jpg" alt="Sale laptop Noel"></a>
-						</div>
-
-						<div class="item active">
-							<a href="#"><img src="assets/img/banner 3.jpg" alt="Ưu đãi laptop"></a>
+							<a href="#"><img src="assets/img/banner 2.jpg" alt="Sale laptop Noel"></a>
 						</div>
 					</div>
 
