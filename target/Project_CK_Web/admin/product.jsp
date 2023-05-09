@@ -109,6 +109,8 @@
                                                     <td><%=p.getVendor()%></td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
+                                                            <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
+                                                                    class="fas fa-edit"></i></a>
                                                             <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-soft-delete?id=<%=p.getProductID()%>">
                                                                 <i class="fas fa-trash-alt"></i></a>
                                                             <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
