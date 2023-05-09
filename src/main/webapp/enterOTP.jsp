@@ -41,6 +41,16 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        li {
+            display: inline-block;
+            list-style-type: none;
+        }
+
+        li span {
+            display: block;
+        }
+    </style>
 
 </head>
 <body>
@@ -69,6 +79,10 @@
             <div class="input-field">
                 <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP" required>
                 <i class="fa fa-mail-forward"></i>
+            </div>
+
+            <div style="text-align: center; margin-top: 10px">
+                <a href="forgot-password.jsp" style="color: #2b80dd">Gửi lại mã?</a>
             </div>
 
             <div class="input-field button" id="dangnhap">

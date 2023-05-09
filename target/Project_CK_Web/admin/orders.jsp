@@ -16,7 +16,7 @@
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../assets/fonts/css/all.css" rel="stylesheet">
-    
+
     <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.css" rel="stylesheet">
     <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.css" rel="stylesheet">
@@ -88,6 +88,8 @@
                           <tbody>
                           <c:forEach items="${orderList}" var="x" varStatus="STT">
                             <tr>
+                              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
+                                  <input type="hidden" name="id" value="${x.orderId}" />
                               <td>${x.orderId}</td>
                               <td>${x.fullName}</td>
                               <td>${x.phoneNumber}</td>
@@ -95,31 +97,38 @@
                               <td>${x.note}</td>
                               <td>${x.orderDate}</td>
                               <td>${x.payment}</td>
-                              <td style="color: #FFF; font-size: 17px">
-                                  <c:if test="${x.status == 'Đang xử lý'}">
-                                      <span class="badge bg-warning">${x.status}</span>
-                                  </c:if>
-                                  <c:if test="${x.status == 'Chờ thanh toán'}">
-                                      <span class="badge bg-info">${x.status}</span>
-                                  </c:if>
-                                  <c:if test="${x.status == 'Đang giao hàng'}">
-                                      <span class="badge bg-warning">${x.status}</span>
-                                  </c:if>
-                                  <c:if test="${x.status == 'Hoàn thành'}">
-                                      <span class="badge bg-success">${x.status}</span>
-                                  </c:if>
-                                  <c:if test="${x.status == 'Đã hủy'}">
-                                      <span class="badge bg-danger">${x.status}</span>
-                                  </c:if>
+                              <td style="color: #FFF">
+                                  <select tabindex="0" name="status">
+                                      <c:if test="${x.status == 0}">
+                                          <option value="${x.status}" class="badge bg-warning">Đang xử lý</option>
+                                      </c:if>
+                                      <c:if test="${x.status == 1}">
+                                        <option value="${x.status}" class="badge bg-primary" style="color: white">Đang vận chuyển</option>
+                                      </c:if>
+                                      <c:if test="${x.status == 2}">
+                                        <option value="${x.status}" class="badge bg-success" style="color: white">Đã giao</option>
+                                      </c:if>
+                                      <c:if test="${x.status == 3}">
+                                        <option value="${x.status}" class="badge bg-danger" style="color: white">Đã hủy</option>
+                                      </c:if>
+                                      <option value="0">Đang xử lý</option>
+                                      <option value="1">Đang vận chuyển</option>
+                                      <option value="2">Đã giao</option>
+                                      <option value="3" >Đã hủy</option>
+                                  </select>
                               </td>
+
                               <td>
                                 <div class="btn-group ml-auto">
                                   <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list?id=${x.orderId}" title="Xóa"><i
                                           class="fas fa-trash-alt"></i></a>
                                   <a class="btn btn-primary btn-sm edit" type="button" href="order-detail?id=${x.orderId}" title="Xem"><i
                                           class="fas fa-eye"></i></a>
+                                  <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" style="margin-left: 8px"><i
+                                            class="fas fa-rotate"></i></button>
                                 </div>
                               </td>
+                              </form>
                             </tr>
                           </c:forEach>
                           </tbody>

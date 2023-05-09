@@ -332,7 +332,7 @@ CREATE TABLE `logs`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `order_details`;
 CREATE TABLE `order_details`  (
-  `order_id` int(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_id` int(11) NOT NULL,
   `product_id` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` tinyint NULL DEFAULT NULL,
   `price` decimal(10, 1) NULL DEFAULT NULL,

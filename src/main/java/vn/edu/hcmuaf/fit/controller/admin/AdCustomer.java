@@ -17,7 +17,7 @@ public class AdCustomer extends HttpServlet {
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
 
-        if (auth == null || !auth.checkRole(1)) {
+        if (auth == null || !auth.checkRole(2)) {
             response.sendRedirect("not-found");
         } else {
             if (id != null) {

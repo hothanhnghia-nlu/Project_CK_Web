@@ -103,14 +103,10 @@
                                                     <td>${u.email}</td>
                                                     <td>
                                                         <select style="width: 80px;" tabindex="0" name="role">
-                                                            <c:if test="${u.role == 0}">
-                                                                <option value="${u.role}">User</option>
-                                                            </c:if>
-                                                            <c:if test ="${u.role == 1}">
-                                                                <option value="${u.role}">Admin</option>
-                                                            </c:if>
-                                                            <option value="0" >User</option>
-                                                            <option value="1" >Admin</option>
+                                                            <option value="0" <c:if test="${u.role == 0}">selected="selected"</c:if> >User</option>
+                                                            <option value="1" <c:if test="${u.role == 1}">selected="selected"</c:if> >Nhân viên</option>
+                                                            <option value="2" <c:if test="${u.role == 2}">selected="selected"</c:if>>Quản lý</option>
+                                                            <option value="3" <c:if test="${u.role == 3}">selected="selected"</c:if>>Admin</option>
                                                         </select>
 
                                                     </td>

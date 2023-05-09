@@ -65,7 +65,7 @@
                             <br />
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
                                 <input type="hidden" name="idPro" value="<%=p.getProductID() %>" />
-                                <input type="hidden" name="image" value="<%=p.getImage() %>" />
+                                <input type="hidden" name="image" value="<%=p.getImage().get(0) %>" />
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Tên sản Phẩm
                                     </label>
@@ -94,19 +94,13 @@
                                 <div class="item form-group">
                                     <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Giá</label>
                                     <div class="col-md-6 col-sm-6 ">
-                                        <input for="middle-name" class="form-control" required="required" type="number" name="price" value="<%=p.getPrice()%>">
-                                    </div>
-                                </div>
-                                <div class="item form-group">
-                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Giảm giá</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="middle-name" class="form-control" type="number" name="discount" value="<%=p.getDiscount()%>">
+                                        <input id="middle-name" class="form-control" required="required" type="number" name="price" value="<%=p.getOut_price()%>">
                                     </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 label-align">Thông số</label>
                                     <div class="col-md-9 col-sm-9 ">
-                                        <textarea class="resizable_textarea form-control" style="height: 300px;" name="discription" required="required" placeholder="..."><%=p.getDiscription()%></textarea>                                    </div>
+                                        <textarea class="resizable_textarea form-control" style="height: 300px;" name="discription" required="required" placeholder="..."><%=p.getDescription()%></textarea>                                    </div>
                                 </div>
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 label-align">Chọn ảnh</label>
