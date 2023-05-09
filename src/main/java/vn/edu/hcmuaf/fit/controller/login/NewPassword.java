@@ -32,6 +32,7 @@ public class NewPassword extends HttpServlet {
             LogService.getInstances().addLog(log_id,"1", (user ==null?0: user.getId()),nameLog,"User ID " + user.getId()+" Wrong confirmation password");
             request.setAttribute("error", "Mật khẩu xác nhận không đúng!");
             request.getRequestDispatcher("new-password.jsp").forward(request,response);
+
         }
     }
 

@@ -35,7 +35,7 @@ public class ForgotPassword extends HttpServlet {
             request.setAttribute("message", "Mã OTP đã được gửi đến email của bạn");
             session.setAttribute("otp", otpValue);
             session.setAttribute("email", email);
-            request.getRequestDispatcher("enterOTP.jsp").forward(request,response);
+            response.sendRedirect("enter-OTP");
         }
     }
 
