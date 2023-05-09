@@ -4,10 +4,12 @@ import vn.edu.hcmuaf.fit.bean.Brand;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
+
 
 public class ProductService {
 
@@ -226,9 +228,6 @@ public class ProductService {
     }
 
     public static void main(String[] args) {
-        ProductService a = new ProductService();
-        ImagesService i = new ImagesService();
-        System.out.println(a.getProductByName("dell"));
 
     }
 

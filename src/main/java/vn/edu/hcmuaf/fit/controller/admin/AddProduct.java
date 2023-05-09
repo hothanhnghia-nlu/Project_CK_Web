@@ -30,16 +30,15 @@ public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-//        ProductService pro = new ProductService();
-//        String id = "0"+String.valueOf(Integer.parseInt(pro.getTopNewProduct(5).get(0).getProductID())+1);
-//        String name = request.getParameter("namep");
-//        String id_cate = request.getParameter("id_cate");
-//        String quantity = request.getParameter("quantity");
-//        String price = request.getParameter("price");
-//        String discount = request.getParameter("discount");
-//        String discription = request.getParameter("discription");
-//        String img = request.getParameter("img");
-
+        ProductService pro = new ProductService();
+        String id = "0"+String.valueOf(Integer.parseInt(pro.getTopNewProduct(5).get(0).getProductID())+1);
+        String name = request.getParameter("namep");
+        String id_cate = request.getParameter("id_cate");
+        String quantity = request.getParameter("quantity");
+        String price = request.getParameter("price");
+        String discount = request.getParameter("discount");
+        String discription = request.getParameter("discription");
+        String img = request.getParameter("img");
         ArrayList<String> a = new ArrayList<>();
         for (Part part : request.getParts()) {
             String fileName = extractFileName(part);
@@ -48,19 +47,20 @@ public class AddProduct extends HttpServlet {
             part.write(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
             a.add(this.getFolderUpload().getAbsolutePath() + File.separator + fileName);
         }
-        response.getWriter().println(a + System.getProperty("user.dir"));
+        response.getWriter().println(a);
         //log
+
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
         int log_id = LogService.getInstances().getNewID() + 1;
         LogService.getInstances().addLog(log_id,"1", user.getId(),name,"add log");
 
-//        Product product;
-//        if (name!= null && id_cate!= null && quantity != null && price != null && discription != null){
-//            String namecate = CategoryService.getInstance().getNameByID(id_cate);
-//            ProductService.getInstance().addProduct(id,id_cate,name,namecate,img,discription,Integer.parseInt(quantity),Integer.parseInt(price),Integer.parseInt(discount));
-//        }
-//        response.sendRedirect("/Project_CK_Web_war/admin/product?id="+id);
+        Product product;
+        if (name!= null && id_cate!= null && quantity != null && price != null && discription != null){
+            String namecate = CategoryService.getInstance().getNameByID(id_cate);
+            ProductService.getInstance().addProduct(id,id_cate,name,namecate,img,discription,Integer.parseInt(quantity),Integer.parseInt(price),Integer.parseInt(discount));
+        }
+        response.sendRedirect("/Project_CK_Web_war/admin/product?id="+id);
 
     }
         private String extractFileName(Part part) {
@@ -74,7 +74,7 @@ public class AddProduct extends HttpServlet {
         return "";
     }
     public File getFolderUpload() {
-        File folderUpload = new File( "../assets/img/Uploads");
+        File folderUpload = new File( "img/Uploads");
         if (!folderUpload.exists()) {
             folderUpload.mkdirs();
         }
