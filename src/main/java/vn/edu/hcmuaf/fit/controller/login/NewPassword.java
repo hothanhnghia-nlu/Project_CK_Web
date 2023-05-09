@@ -1,5 +1,7 @@
 package vn.edu.hcmuaf.fit.controller.login;
 
+import vn.edu.hcmuaf.fit.bean.User;
+import vn.edu.hcmuaf.fit.service.LogService;
 import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
@@ -15,6 +17,7 @@ public class NewPassword extends HttpServlet {
         String newPassword = request.getParameter("newPass");
         String rePassword = request.getParameter("rePass");
         String email = (String) session.getAttribute("email");
+        int log_id = LogService.getInstances().getNewID() + 1;
 
         if (email == null) {
             response.sendRedirect("page-not-found");
@@ -22,6 +25,7 @@ public class NewPassword extends HttpServlet {
             if (newPassword != null && rePassword != null && newPassword.equals(rePassword)) {
                 newPassword = UserService.getInstances().hashPassword(newPassword);
                 UserService.getInstances().updatePassword(email, newPassword);
+                LogService.getInstances().addLog(log_id,"1", 0,"change password success", "email= " + email);
                 response.sendRedirect("log-in");
             } else {
                 request.setAttribute("error", "Mật khẩu xác nhận không đúng!");

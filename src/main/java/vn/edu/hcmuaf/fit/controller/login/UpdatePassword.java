@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller.login;
 
 import vn.edu.hcmuaf.fit.bean.User;
+import vn.edu.hcmuaf.fit.service.LogService;
 import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
@@ -12,15 +13,19 @@ import java.io.IOException;
 public class UpdatePassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String password = request.getParameter("password");
+        password = UserService.getInstances().hashPassword(password);
         String newPass = request.getParameter("new-pass");
         String rePass = request.getParameter("repass");
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
         User email = (User) session.getAttribute("auth");
+        int log_id = LogService.getInstances().getNewID() + 1;
 
-        if (newPass.equals(rePass)) {
+        if (password.equals(auth.getPassword()) && newPass.equals(rePass)) {
             newPass = UserService.getInstances().hashPassword(newPass);
             UserService.getInstances().updatePassword(email.getEmail(), newPass);
+            LogService.getInstances().addLog(log_id,"1", auth.getId(),"change password success", "Username= " + auth.getUsername());
             session.removeAttribute("auth");
             response.sendRedirect("log-in");
         } else {
