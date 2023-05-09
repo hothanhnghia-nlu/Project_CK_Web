@@ -35,37 +35,11 @@ public class UpdateCart extends HttpServlet {
         response.sendRedirect("cart.jsp");
     }
 
-    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        Enumeration<String> names = request.getParameterNames();
-//        while (names.hasMoreElements()){
-//            String name = names.nextElement();
-//            int quantity = Integer.parseInt(request.getParameter(name));
-//
-//            HttpSession seesion = request.getSession();
-//            Cart cart = (Cart) seesion.getAttribute("cart");
-//
-//            if (cart!= null){
-//                Collection<Product> list = cart.getListProduct();
-//                for (Product p: list){
-//                    int sumquantity = ProductService.getInstance().getQuantityProduct(p.getProductID());
-//                    if(quantity > sumquantity){
-//                        String message = "Số lượng sản phẩm không đủ";
-//                        request.setAttribute("message", message);
-//
-//                    }else {
-//                        cart.update(name,quantity);
-//                    }
-//                }
-//
-//            }
-//        }
-//        response.sendRedirect("cart.jsp");
-//    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cart cart = (Cart) request.getSession().getAttribute("cart");
         if (cart != null) {
             Map<String, String[]> parameterMap = request.getParameterMap();
+            boolean hasError = false; // biến cờ để kiểm tra lỗi
             for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
                 String productId = entry.getKey();
                 int quantity = Integer.parseInt(entry.getValue()[0]);
@@ -73,12 +47,17 @@ public class UpdateCart extends HttpServlet {
                 int sumquantity = ProductService.getInstance().getQuantityProduct(productId);
                 if (quantity > sumquantity) {
                     request.setAttribute("error", "Số lượng sản phẩm không đủ");
-                    request.getRequestDispatcher("cart.jsp").forward(request, response);
+                    hasError = true; // đặt biến cờ khi có lỗi
                 } else {
                     cart.update(productId, quantity);
-                    response.sendRedirect("cart.jsp");
                 }
             }
+            if (hasError) {
+                request.getRequestDispatcher("cart.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("cart.jsp");
+            }
         }
+
     }
 }
