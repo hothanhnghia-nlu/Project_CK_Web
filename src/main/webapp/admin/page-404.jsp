@@ -55,7 +55,7 @@
                     <h1 class="heading">404</h1>
                     <h2 class="title">Oops! Trang không tồn tại!</h2>
                     <p>Chúng tôi không thể tìm thấy trang mà bạn đang tìm kiếm</p>
-                    <a class="button" href="home">Về trang chủ</a>
+                    <a class="button" href="../home">Về trang chủ</a>
                 </div>
 
             </div>
