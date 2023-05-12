@@ -28,6 +28,6 @@ public class CategoryService {
                     .mapToBean(Category.class)
                     .stream().collect(Collectors.toList());
         });
-        return cate.get(0).getName();
+        return cate.get(0).getCategoryID();
     }
 }

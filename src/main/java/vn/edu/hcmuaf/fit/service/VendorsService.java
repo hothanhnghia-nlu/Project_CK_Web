@@ -25,7 +25,15 @@ public class VendorsService {
         );
        return list;
     }
-
+    public String getVendorsID (){
+        List<Vendor> list = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT `vendorID`,`name`,`status` FROM vendors")
+                        .mapToBean(Vendor.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return list.get(0).getVendorID();
+    }
 
     public static void main(String[] args) {
     }
