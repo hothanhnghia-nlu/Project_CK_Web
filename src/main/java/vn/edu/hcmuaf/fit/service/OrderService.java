@@ -2,6 +2,7 @@ package vn.edu.hcmuaf.fit.service;
 
 import vn.edu.hcmuaf.fit.bean.Order;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
+import vn.edu.hcmuaf.fit.service.API_LOGISTIC.Transport;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -104,11 +105,79 @@ public class OrderService {
         );
     }
 
-    public void updateID(int id, int status) {
+    public void updateStatus(int id, int status) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("UPDATE orders SET status = ? WHERE orderID = ?")
                         .bind(0, status)
                         .bind(1, id)
+                        .execute()
+        );
+    }
+
+    public void addTransport(Transport transport) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("INSERT INTO transports (transID, order_id, created_at, lead_time) VALUES (?, ?, ?, ?)")
+                        .bind(0, transport.getId())
+                        .bind(1, transport.getOrder().getOrderId())
+                        .bind(2, transport.getCreateAt())
+                        .bind(3, transport.getLeadTime())
+                        .execute()
+        );
+    }
+
+    public String getNewTransID() {
+        List<Transport> transports = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM orders order by orderID DESC Limit 1")
+                        .mapToBean(Transport.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        String newID = "";
+        Transport transport = new Transport();
+        for (int i = 0; i < transports.size(); i++) {
+            transport = transports.get(i);
+            newID = transport.getId();
+        }
+        return newID;
+    }
+
+    public int getNumTrans(int id) {
+        List<Transport> transports = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM transports WHERE order_id =\" + id")
+                        .bind(0, id)
+                        .mapToBean(Transport.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        int num = 0;
+        Transport transport = new Transport();
+        for (int i = 0; i < transports.size(); i++) {
+            transport = transports.get(i);
+            num = transport.getOrder().getOrderId();
+        }
+        return num;
+    }
+
+    public Transport getTransportId(int id) {
+        List<Transport> transports = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT transID, order_id, created_at, lead_time FROM transports WHERE order_id =\" + i")
+                        .mapToBean(Transport.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        Transport transport = new Transport();
+        Order order = new Order();
+        for (int i = 0; i < transports.size(); i++) {
+            order.setOrderId(id);
+            transport = transports.get(i);
+        }
+        return transport;
+    }
+
+    public void updateOrderStatusByTransportLeadTime() {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE orders SET status = 2 WHERE orderID IN " +
+                                "(SELECT order_id FROM transports WHERE DATEDIFF(NOW(), STR_TO_DATE(lead_time, '%d/%m/%Y')) >= 0) AND status != 2")
                         .execute()
         );
     }

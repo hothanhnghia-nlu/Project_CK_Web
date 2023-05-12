@@ -39,7 +39,11 @@ public class Login extends HttpServlet {
         } else {
             session.setAttribute("auth", user);
             LogService.getInstances().addLog(log_id, "1", user.getId(), "login success", "Username= " + username);
-            response.sendRedirect("home");
+            if (user.checkRole(3)) {
+                response.sendRedirect("admin/ad_statistic.jsp");
+            } else {
+                response.sendRedirect("home");
+            }
             session.setAttribute("loginAttempts", 0);
         }
     }

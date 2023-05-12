@@ -667,6 +667,7 @@ INSERT INTO `users` VALUES (9, 'Lê Nguyệt Minh', 'minhleecycling@fpt.com.vn',
 INSERT INTO `users` VALUES (10, 'Vũ Nguyễn Hải Đăng', 'vnhdang@vus.edu.vn', '0155241001', 'Trị An, H. Vĩnh Cửu, T. Đồng Nai', '2000-01-25', 'haidang68', 'yaE65RjVff2c7Spe1JllscbDCQTn/fK8FYITPS4Sak8=', 0);
 INSERT INTO `users` VALUES (11, 'Phương Huyền Minh Trang', 'changchang@gmail.com', '0876944765', 'Bãi Sau, TP. Vũng Tàu, T. Bà Rịa - Vũng Tàu', '2002-12-25', 'changchang', 'I5ktFiAYx/dfXjGg90pWyxwFLu1bXts9uWEm1EpMUu0=', 0);
 INSERT INTO `users` VALUES (12, 'Trần Hoàng Bảo Hân', 'hantran2007@gmail.com', '0637073967', 'Huyện Châu Thành, Tỉnh Bà Rịa - Vũng Tàu', '2007-06-20', 'hanhancute', 't0wrBUzUrJqwlH3Ava6NeYkY6tfix7ZdrDPSDIP+uzE=', 0);
+INSERT INTO `users` VALUES (13, 'Administrator', '', '', '', '', 'admin', 'Wb8IecReL1FTMch7UtATDMZSjNpikIGA6ocXXQ+4Pn0=', 3);
 
 -- ----------------------------
 -- Table structure for vendors
@@ -690,5 +691,23 @@ INSERT INTO `vendors` VALUES ('005', 'Asus', 0);
 INSERT INTO `vendors` VALUES ('006', 'Acer', 0);
 INSERT INTO `vendors` VALUES ('007', 'Apple', 0);
 INSERT INTO `vendors` VALUES ('008', 'SamSung', 0);
+
+-- ----------------------------
+-- Table structure for transports
+-- ----------------------------
+DROP TABLE IF EXISTS `transports`;
+CREATE TABLE `transports`  (
+`transID` char(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+`order_id` int(11) NOT NULL,
+`create_at` datetime NULL DEFAULT NULL,
+`lead_time` datetime NULL DEFAULT NULL,
+PRIMARY KEY (`transID`) USING BTREE,
+INDEX `order_id`(`order_id` ASC) USING BTREE,
+CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`orderID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of transports
+-- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -2,9 +2,9 @@ package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.bean.Order;
 import vn.edu.hcmuaf.fit.bean.User;
+import vn.edu.hcmuaf.fit.service.API_LOGISTIC.Transport;
 import vn.edu.hcmuaf.fit.service.OrderDetailService;
 import vn.edu.hcmuaf.fit.service.OrderService;
-import vn.edu.hcmuaf.fit.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,28 +20,37 @@ public class AdOrders extends HttpServlet {
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
 
-        if (auth == null || !auth.checkRole(1)) {
-            response.sendRedirect("not-found");
-        } else {
+//        if (auth == null || !auth.checkRole(1)) {
+//            response.sendRedirect("not-found");
+//        } else {
             if (id != null) {
                 OrderService.getInstance().deleteOrder(Integer.parseInt(id));
                 OrderDetailService.getInstance().deleteOrderDetail(Integer.parseInt(id));
+                OrderService.getInstance().updateOrderStatusByTransportLeadTime();
+                Transport transport = OrderService.getInstance().getTransportId(Integer.parseInt(id));
+                if (transport != null){
+                    request.setAttribute("transport", transport);
+                } else {
+                    String transId = OrderService.getInstance().getNewTransID();
+                    Transport transport1 = new Transport(transId, new Order(), Transport.WAITING, Transport.WAITING);
+                    request.setAttribute("transport", transport1);
+                }
             }
             List<Order> orderList = OrderService.getInstance().getAllOrder();
             request.setAttribute("orderList", orderList);
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
-    }
+//    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String status = request.getParameter("status");
-        String id = request.getParameter("id");
-
-        if (status != null){
-            OrderService.getInstance().updateID(Integer.parseInt(id), Integer.parseInt(status));
-        }
-        response.sendRedirect("order-list");
+//        request.setCharacterEncoding("UTF-8");
+//        String status = request.getParameter("status");
+//        String id = request.getParameter("id");
+//
+//        if (status != null){
+//            OrderService.getInstance().updateStatus(Integer.parseInt(id), Integer.parseInt(status));
+//        }
+//        response.sendRedirect("order-list");
     }
 }
