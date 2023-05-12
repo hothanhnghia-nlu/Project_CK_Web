@@ -112,4 +112,13 @@ public class OrderService {
                         .execute()
         );
     }
+    public List<Order> getTop5Order(){
+        List<Order> oder = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM orders ORDER BY orders.order_date DESC LIMIT 5")
+                        .mapToBean(Order.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return oder;
+    }
 }
