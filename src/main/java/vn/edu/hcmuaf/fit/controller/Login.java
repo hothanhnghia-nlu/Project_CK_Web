@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.LogService;
 import vn.edu.hcmuaf.fit.service.UserService;
@@ -27,18 +28,18 @@ public class Login extends HttpServlet {
             if (loginAttempts == null) {
                 session.setAttribute("loginAttempts", 0);
             } else if (loginAttempts >= 3) { // case 2: login attempts >= 3
-                LogService.getInstances().addLog(log_id, "2", 0, "account blocked", "Username= " + username);
+                LogService.getInstances().addLog(log_id, Log.DANGER, 0, "account blocked", "Username= " + username);
                 request.setAttribute("error", "Tài khoản tạm thời bị khóa. Vui lòng đăng nhập lại sau!");
                 request.getRequestDispatcher("login.jsp").forward(request,response);
             } else {
                 session.setAttribute("loginAttempts", loginAttempts + 1);
             }
-            LogService.getInstances().addLog(log_id, "2", 0, "login false", "Username= " + username);
+            LogService.getInstances().addLog(log_id, Log.WARNING, 0, "login false", "Username= " + username);
             request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng!");
             request.getRequestDispatcher("log-in").forward(request, response);
         } else {
             session.setAttribute("auth", user);
-            LogService.getInstances().addLog(log_id, "1", user.getId(), "login success", "Username= " + username);
+            LogService.getInstances().addLog(log_id, Log.INFO, user.getId(), "login success", "Username= " + username);
             if (user.checkRole(3)) {
                 response.sendRedirect("admin/ad_statistic.jsp");
             } else {

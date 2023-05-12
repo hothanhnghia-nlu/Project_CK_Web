@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.ContactService;
 import vn.edu.hcmuaf.fit.service.LogService;
@@ -34,10 +35,10 @@ public class Signup extends HttpServlet {
                 password = UserService.getInstances().hashPassword(password);
                 String id = "" + (UserService.getInstances().getNewID() + 1);
                 UserService.getInstances().register(id, name, email, phone, username, password);
-                LogService.getInstances().addLog(log_id,"1", Integer.parseInt(id),"Signup success","id= "+id+" username= "+username);
+                LogService.getInstances().addLog(log_id, Log.INFO, Integer.parseInt(id),"Signup success","id= "+id+" username= "+username);
                 response.sendRedirect("success-signup");
             } else {
-                LogService.getInstances().addLog(log_id,"1", 0,"Signup wrong","name= "+name+"email= "+email+"phone= "+phone+ "username= "+username);
+                LogService.getInstances().addLog(log_id, Log.ALERT, 0,"Signup wrong","name= "+name+"email= "+email+"phone= "+phone+ "username= "+username);
                 request.setAttribute("error", "Tài khoản đã tồn tại!");
                 request.getRequestDispatcher("sign-up").forward(request, response);
             }

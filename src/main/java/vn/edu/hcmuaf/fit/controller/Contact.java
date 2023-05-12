@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.ContactService;
 import vn.edu.hcmuaf.fit.service.LogService;
@@ -33,7 +34,7 @@ public class Contact extends HttpServlet {
         ContactService.getInstances().insert(id, name, phone, email, subject, content);
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
-        LogService.getInstances().addLog(log_id, "1", (user == null ? 0 : user.getId()),
+        LogService.getInstances().addLog(log_id, Log.INFO, (user == null ? 0 : user.getId()),
                 nameLog, "id = " + id + " | name =" + name + " | phone = "
                         + phone + " | email = " + email + " | subject = " + subject + " | content = " + content);
 

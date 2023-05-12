@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller.login;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.LogService;
 import vn.edu.hcmuaf.fit.service.UserService;
@@ -26,7 +27,7 @@ public class UpdatePassword extends HttpServlet {
             UserService.getInstances().updatePassword(auth.getEmail(), newPass);
 
             int log_id = LogService.getInstances().getNewID() + 1;
-            LogService.getInstances().addLog(log_id,"1", (auth ==null?0: auth.getId()),nameLog,"User ID " + auth.getId()+"Update Password");
+            LogService.getInstances().addLog(log_id, Log.ALERT, (auth ==null?0: auth.getId()),nameLog,"User ID " + auth.getId()+"Update Password");
             session.removeAttribute("auth");
             response.sendRedirect("log-in");
         } else {

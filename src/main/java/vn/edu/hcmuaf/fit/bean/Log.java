@@ -22,6 +22,11 @@ public class Log implements Serializable {
         levelMapping.put(3, "DANGER");
     }
 
+    public static int INFO = 0;
+    public static int ALERT = 1;
+    public static int WARNING = 2;
+    public static int DANGER = 3;
+
     public Log() {
     }
 

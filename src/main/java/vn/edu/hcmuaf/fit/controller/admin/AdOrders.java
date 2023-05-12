@@ -20,9 +20,9 @@ public class AdOrders extends HttpServlet {
         HttpSession session = request.getSession();
         User auth = (User) session.getAttribute("auth");
 
-//        if (auth == null || !auth.checkRole(1)) {
-//            response.sendRedirect("not-found");
-//        } else {
+        if (auth == null || !auth.checkRole(1)) {
+            response.sendRedirect("not-found");
+        } else {
             if (id != null) {
                 OrderService.getInstance().deleteOrder(Integer.parseInt(id));
                 OrderDetailService.getInstance().deleteOrderDetail(Integer.parseInt(id));
@@ -40,7 +40,7 @@ public class AdOrders extends HttpServlet {
             request.setAttribute("orderList", orderList);
             request.getRequestDispatcher("orders.jsp").forward(request, response);
         }
-//    }
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

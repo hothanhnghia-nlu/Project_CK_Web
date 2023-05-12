@@ -53,10 +53,15 @@
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.auth.role > 0}">
-                        <li><a href="order-list"><i class="fa fa-cart-shopping"></i> Quản lý đơn hàng</a></li>
-                        <ul class="nav child_menu">
-                            <li><a href="check-order"><i class="fa fa-list"></i> Duyệt đơn hàng</a></li>
-                        </ul>
+                        <li><a><i class="fa fa-cart-shopping"></i> Quản lý đơn hàng <span class="fa fa-chevron-down"></span></a>
+                            <ul class="nav child_menu">
+                                <li><a href="order-list"><i class="fa fa-list-alt"></i> Danh sách đơn hàng</a></li>
+                                <li><a href="check-order"><i class="fa fa-check-circle"></i> Duyệt đơn hàng</a></li>
+                            </ul>
+                        </li>
+                    </c:if>
+                    <c:if test="${sessionScope.auth.role == 3}">
+                        <li><a href="logs"><i class="fa fa-history"></i> Quản lý nhật ký</a></li>
                     </c:if>
                     <li> <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
                 </ul>
@@ -80,9 +85,15 @@
                         <img src="../assets/img/avatar.png" alt="">${sessionScope.auth.fullName}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/home"><i class="fa fa-home"></i> Trang mua hàng</a>
-                        <a class="dropdown-item" href="profile"><i class="fa fa-user"></i> Profile</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                        <c:if test="${sessionScope.auth.role == 1 || sessionScope.auth.role == 2}">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/home"><i class="fa fa-home"></i> Trang mua hàng</a>
+                            <a class="dropdown-item" href="profile"><i class="fa fa-user"></i> Trang cá nhân</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                        </c:if>
+                        <c:if test="${sessionScope.auth.role == 3}">
+                            <a class="dropdown-item" href="profile"><i class="fa fa-user"></i> Trang cá nhân</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                        </c:if>
                     </div>
                 </li>
             </ul>

@@ -13,9 +13,9 @@ public class LogService {
     }
 
     // Add a new log
-    public void addLog(int id, String level, int userId, String src, String content) {
+    public void addLog(int id, int level, int userId, String src, String content) {
         JDBIConnector.get().withHandle(handle ->
-            handle.createUpdate("INSERT INTO logs (logID, level, user_id, src, content, create_at)  VALUES (?, ?, ?, ?, ?, NOW());")
+            handle.createUpdate("INSERT INTO logs (logID, level, user_id, src, content, create_at)  VALUES (?, ?, ?, ?, ?, NOW())")
                     .bind(0, id)
                     .bind(1, level)
                     .bind(2, userId)
