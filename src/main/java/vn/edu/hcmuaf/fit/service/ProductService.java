@@ -42,6 +42,17 @@ public class ProductService {
         });
         return  ImagesService.getInstance().getImgForProducts(pro);
     }
+    public String getNewID (){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT productID\n" +
+                            "FROM products\n" +
+                            "order by productID DESC\n" +
+                            "LIMIT 1;")
+                    .mapToBean(Product.class)
+                    .stream().collect(Collectors.toList());
+        });
+        return  (Integer.parseInt(pro.get(0).getProductID()) +1)+"" ;
+    }
     public List<Product> listDeleteProduct (){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as vendor, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
@@ -105,6 +116,17 @@ public class ProductService {
         });
         return reDiscription(ImagesService.getInstance().getImgForProducts(pro).get(0));
     }
+    public Product getProductBy_ID (String id){
+        List<Product> pro = JDBIConnector.get().withHandle(handle -> {
+            return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as vendor, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
+                            "FROM products INNER JOIN vendors on products.vendor_id = vendors.vendorID INNER JOIN prices on prices.product_id= products.productID\n" +
+                            "WHERE products.`status`=0 and productID= ?\n" +
+                            "GROUP BY  productID, cat_id,products.`name`, `description`,out_price,`vendor_id`, products.`status`, `deleteAt`")
+                    .bind(0, id)
+                    .mapToBean(Product.class).stream().collect(Collectors.toList());
+        });
+        return ImagesService.getInstance().getImgForProducts(pro).get(0);
+    }
     public List<Product> getProductByCAT_ID (String id){
         List<Product> pro = JDBIConnector.get().withHandle(handle -> {
             return handle.createQuery("SELECT productID, cat_id,products.`name`, `description`,out_price,vendors.`name` as`vendor`, products.`status`, `deleteAt`, sum(prices.quanity) as quantity\n" +
@@ -167,36 +189,45 @@ public class ProductService {
                         .execute()
         );
     }
-    public void setProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
+    public void setProduct (String productID, String cat_id, String name, String vendor_id, String image, String discription,  int quantity,int price, int in_price){
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("UPDATE products SET cat_id=?  ,`name` = ? , brand = ?, image= ?, discription=?, quantity=?,price=?,discount=?  WHERE productID = ?")
+                handle.createUpdate("UPDATE products SET `cat_id` = ? , `name` = ?,vendor_id=?, description = ?WHERE productID = ?")
                         .bind(8, productID)
                         .bind(0, cat_id)
                         .bind(1, name)
-                        .bind(2, brand)
-                        .bind(3, image)
-                        .bind(4, discription)
-                        .bind(5, quantity)
-                        .bind(6, price)
-                        .bind(7, discount)
+                        .bind(2, vendor_id)
+                        .bind(3, discription)
                         .execute()
         );
-    }
-    public void addProduct (String productID, String cat_id, String name, String brand, String image, String discription,  int quantity,int price, int discount){
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("INSERT INTO products values (?,?,?,?,?,?,?,?,?)")
+                handle.createUpdate("UPDATE prices set in_price = ?, out_price =?, quanity = ?, import_date = NOW() WHERE product_id = ?")
+                        .bind(3, productID)
+                        .bind(2, quantity)
+                        .bind(1, price)
+                        .bind(0, in_price)
+                        .execute()
+        );
+        ImagesService.getInstance().setImage(productID, image);
+    }
+    public void addProduct (String productID, String cat_id, String name, String vendor_id, String image, String discription,  int quantity,int price, int in_price){
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("INSERT INTO `products` VALUES (?, ?, ?, ?, ?, 0, NULL);")
                         .bind(0, productID)
                         .bind(1, cat_id)
                         .bind(2, name)
-                        .bind(3, brand)
-                        .bind(4, image)
-                        .bind(5, discription)
-                        .bind(6, quantity)
-                        .bind(7, price)
-                        .bind(8, discount)
+                        .bind(3, discription)
+                        .bind(4, vendor_id)
                         .execute()
-
         );
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("INSERT INTO `prices` VALUES (?, ?, ?, ?, NOW());")
+                        .bind(0, productID)
+                        .bind(1, in_price)
+                        .bind(2, price)
+                        .bind(3, quantity)
+                        .execute()
+        );
+        ImagesService.getInstance().insertImage(ImagesService.getInstance().getLastImageID(),productID,name,image);
     }
     public void updateProduct( String productID, int quanity){
         JDBIConnector.get().withHandle(handle ->
