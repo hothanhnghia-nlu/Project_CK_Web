@@ -28,7 +28,7 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <c:if test="${sessionScope.auth.role > 1}">
-                        <li><a href="#"><i class="fa fa-user"></i> Thống kê</a></li>
+                        <li><a href="statistic"><i class="fa fa-user"></i> Thống kê</a></li>
                     </c:if>
                     <c:if test="${sessionScope.auth.role == 3}">
                         <li><a href="accounts"><i class="fa fa-user-edit"></i> Quản lý tài khoản</a></li>

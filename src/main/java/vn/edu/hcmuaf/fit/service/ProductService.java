@@ -247,8 +247,17 @@ public class ProductService {
         p.setDescription(resut);
         return p;
     }
+    public String getAllQuantity(){
+        int sum = 0;
+        List<String> res = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT SUM(prices.quanity) as total_quantity FROM products INNER JOIN prices ON products.productID = prices.product_id")
+                        .mapTo(String.class)
+                        .list()
+        );
+       return res.get(0);
+    }
     public static void main(String[] args) {
-
+        System.out.println(ProductService.getInstance().getAllQuantity());
     }
 
 
