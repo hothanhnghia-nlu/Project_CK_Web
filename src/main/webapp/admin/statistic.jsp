@@ -4,6 +4,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.User" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.UserService" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.VendorStatistic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -225,7 +226,7 @@
                     <!-- ============================================================== -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="margin-bottom: 25px; text-align: center">
                         <div class="card">
-                            <h5 class="card-header">Thống kê doanh thu </h5>
+                            <h5 class="card-header">Thống kê số lượng sản phẩm đã bán theo hãng </h5>
                             <div class="card-body">
                                 <div id="c3chart_donut"></div>
                             </div>
@@ -288,6 +289,48 @@
   <script src="../vendors/charts/c3charts/d3-5.4.0.min.js"></script>
   <script src="../vendors/charts/c3charts/C3chartjs.js"></script>
   <script src="../vendors/charts/chartist-bundle/Chartistjs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"></script>
 
+  <script>
+      var chart = c3.generate({
+          bindto: '#c3chart_donut',
+          data: {
+              columns: [
+                  <% List<VendorStatistic> vendorStatisticListList = (List<VendorStatistic>) request.getAttribute("vendorList");
+                  for (VendorStatistic a: vendorStatisticListList) { %>
+                    ['<%=a.getName()%>', <%=a.getQuantity()%>],
+                  <% }%>
+              ],
+              type: 'donut'
+          },
+          donut: {
+              title: ''
+          }
+      });
+
+
+      new Chartist.Bar('.ct-chart-horizontal', {
+          labels: [<%for (VendorStatistic a: vendorStatisticListList) { %>
+              '<%=a.getName()%>',
+              <% }%>],
+          series: [
+              [<%for (VendorStatistic a: vendorStatisticListList) { %>
+                  <%=a.getQuantity()%>,
+                  <% }%>],
+              [<%for (VendorStatistic a: vendorStatisticListList) { %>
+                  <%=a.getPrice()%>,
+                  <% }%>]
+          ]
+      }, {
+          seriesBarDistance: 10,
+          reverseData: true,
+          horizontalBars: true,
+          axisY: {
+              offset: 70
+          }
+      });
+
+  </script>
   </body>
 </html>

@@ -60,7 +60,7 @@
 							<h3 class="footer-title">THÔNG TIN</h3>
 							<ul class="footer-links">
 								<li><a href="#">Về chúng tôi</a></li>
-								<li><a href="contact.jsp">Liên hệ</a></li>
+								<li><a href="contact-us">Liên hệ</a></li>
 								<li><a href="#">Chính sách</a></li>
 								<li><a href="#">Giao trả hàng</a></li>
 								<li><a href="#">Điều khoản</a></li>
@@ -73,7 +73,7 @@
 							<h3 class="footer-title">DỊCH VỤ</h3>
 							<ul class="footer-links">
 								<li><a href="my-profile">Tài khoản</a></li>
-								<li><a href="cart.jsp">Giỏ hàng</a></li>
+								<li><a href="shopping-cart">Giỏ hàng</a></li>
 								<li><a href="#">Yêu thích</a></li>
 								<li><a href="#">Hỗ trợ</a></li>
 							</ul>

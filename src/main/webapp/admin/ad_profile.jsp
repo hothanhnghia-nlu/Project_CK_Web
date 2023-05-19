@@ -91,10 +91,25 @@
                                                 </tr>
 
 
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <td></td>
-                                                </tr>
+                                                <c:if test="${sessionScope.auth.role == 1}">
+                                                    <tr>
+                                                        <th scope="row">Chức vụ</th>
+                                                        <td>Nhân viên</td>
+                                                    </tr>
+                                                </c:if>
+                                                <c:if test="${sessionScope.auth.role == 2}">
+                                                    <tr>
+                                                        <th scope="row">Chức vụ</th>
+                                                        <td>Quản lý</td>
+                                                    </tr>
+                                                </c:if>
+                                                <c:if test="${sessionScope.auth.role == 3}">
+                                                    <tr>
+                                                        <th scope="row">Chức vụ</th>
+                                                        <td>Admin</td>
+                                                    </tr>
+                                                </c:if>
+
                                                 </tbody>
                                             </table>
                                         </div>

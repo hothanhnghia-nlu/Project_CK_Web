@@ -35,43 +35,8 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<!--    <script src="assets/js/jquery-3.6.1.min.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <![endif]-->
-    <%--    <script>--%>
-
-    <%--    $(document).ready(function () {--%>
-
-    <%--            $('#example').dataTable({}); // dòng này để nhúng bảng biểu thành dạng bảng được phân trang--%>
-
-    <%--        });--%>
-    <%--    </script>--%>
-</head>
 <body>
-
-<%--<%--%>
-<%--    String message = (String) request.getAttribute("message");--%>
-<%--    if (message != null) { %>--%>
-<%--<script>--%>
-<%--    alert("<%= message %>");--%>
-<%--</script>--%>
-<%--<% } else { %>--%>
-<%--<script>--%>
-<%--    alert("Không có thông báo cảnh báo");--%>
-<%--</script>--%>
-<%--<% } %>--%>
-<%--<c:if test="${not empty message}">--%>
-<%--    <script>--%>
-<%--        alert("${message}");--%>
-<%--    </script>--%>
-<%--</c:if>--%>
-
 
 <!-- HEADER -->
 <jsp:include page="header.jsp"/>
@@ -136,11 +101,9 @@
                     <div class="row">
                         <div class="col-12">
                             <!-- Shopping Summery -->
-
-
                             <%if (error != null) {
                             %>
-                            <div class="alert alert-danger" role="alert" style="width: 230px">
+                            <div class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px">
                                 <%= error %>
                             </div>
                             <%
@@ -204,7 +167,7 @@
                             <a href="home" class="btn primary-btn" style="border-radius: 5px">Tiếp tục mua sắm</a>
                             <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">
 
-                            <a href="checkout.jsp" class="btn primary-btn" style="border-radius: 5px">Thanh toán</a>
+                            <a href="check-out" class="btn primary-btn" style="border-radius: 5px">Thanh toán</a>
                         </div>
                     </div>
 
