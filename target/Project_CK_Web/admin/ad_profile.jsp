@@ -1,7 +1,8 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -50,56 +51,71 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Thông tin Admin</h2>
+                                <h2>Thông tin cá nhân</h2>
                                 <div class="clearfix"></div>
                             </div>
-<c:if test="${sessionScope.auth != null}">
-                            <div class="row">
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="table-responsive">
-                                        <table class="table m-0">
-                                            <tbody>
-                                            <tr>
-                                                <th scope="row">Full Name</th>
-                                                <td>${sessionScope.auth.fullName}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Birth Date</th>
-                                                <td>${sessionScope.auth.birthday}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Address</th>
-                                                <td>${sessionScope.auth.address}</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                            <c:if test="${sessionScope.auth != null}">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-6">
+                                        <div class="table-responsive">
+                                            <table class="table m-0">
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">Họ tên</th>
+                                                    <td>${sessionScope.auth.fullName}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Ngày sinh</th>
+                                                    <td>${sessionScope.auth.birthday}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Địa chỉ</th>
+                                                    <td>${sessionScope.auth.address}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-xl-6">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">Email</th>
+                                                    <td>${sessionScope.auth.email}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Điện thoại</th>
+                                                    <td>${sessionScope.auth.phoneNumber}</td>
+                                                </tr>
+
+
+                                                <c:if test="${sessionScope.auth.role == 1}">
+                                                    <tr>
+                                                        <th scope="row">Chức vụ</th>
+                                                        <td>Nhân viên</td>
+                                                    </tr>
+                                                </c:if>
+                                                <c:if test="${sessionScope.auth.role == 2}">
+                                                    <tr>
+                                                        <th scope="row">Chức vụ</th>
+                                                        <td>Quản lý</td>
+                                                    </tr>
+                                                </c:if>
+                                                <c:if test="${sessionScope.auth.role == 3}">
+                                                    <tr>
+                                                        <th scope="row">Chức vụ</th>
+                                                        <td>Admin</td>
+                                                    </tr>
+                                                </c:if>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-12 col-xl-6">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <tbody>
-                                            <tr>
-                                                <th scope="row">Email</th>
-                                                <td><a href="#!">${sessionScope.auth.email}</a></td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Mobile Number</th>
-                                                <td>${sessionScope.auth.phoneNumber}</td>
-                                            </tr>
-
-
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <td><a href="#!"></a></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                    </div>
-</c:if>
+                            </c:if>
                 </div>
 
             </div>

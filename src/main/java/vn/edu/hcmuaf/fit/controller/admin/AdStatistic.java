@@ -4,6 +4,7 @@ import vn.edu.hcmuaf.fit.bean.Order;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.OrderService;
 import vn.edu.hcmuaf.fit.service.UserService;
+import vn.edu.hcmuaf.fit.service.VendorsService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -22,6 +23,8 @@ public class AdStatistic extends HttpServlet {
             response.sendRedirect("not-found");
         } else {
             List<Order> orderList = OrderService.getInstance().getTop5Order();
+
+            request.setAttribute("vendorList", VendorsService.getInstance().getVendorsStatistic());
             request.setAttribute("orderList", orderList);
             request.getRequestDispatcher("statistic.jsp").forward(request, response);
 //            List<User> userList = UserService.getInstances().listALlUser();
