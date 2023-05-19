@@ -114,6 +114,16 @@ public class OrderService {
         );
     }
 
+    public List<Order> getTop5Order(){
+        List<Order> oder = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM orders ORDER BY orders.order_date DESC LIMIT 5")
+                        .mapToBean(Order.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return oder;
+    }
+
     public void addTransport(Transport transport) {
         JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("INSERT INTO transports (transID, order_id, created_at, lead_time) VALUES (?, ?, ?, ?)")

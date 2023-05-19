@@ -21,7 +21,7 @@ public class Admin extends HttpServlet {
             response.sendRedirect("admin/product-list");
         }
         else if(auth.checkRole(2) || auth.checkRole(3)) {
-            response.sendRedirect("admin/statistic.jsp");
+            response.sendRedirect("admin/statistic");
         }
     }
 

@@ -82,7 +82,7 @@
                                                                 <span class="bg-info" style="padding: 5px">INFO</span>
                                                             </c:if>
                                                             <c:if test="${x.level == 1}">
-                                                                <span class="bg-primary" style="padding: 5px">ALERT</span>
+                                                                <span class="bg-secondary" style="padding: 5px">ALERT</span>
                                                             </c:if>
                                                             <c:if test="${x.level == 2}">
                                                                 <span class="bg-warning" style="padding: 5px">WARNING</span>

@@ -278,15 +278,29 @@ public class ProductService {
         p.setDescription(resut);
         return p;
     }
-    public String getAllQuantity(){
-        int sum = 0;
-        List<String> res = JDBIConnector.get().withHandle(handle ->
+    public int getAllQuantity(){
+        List<Integer> res = JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT SUM(prices.quanity) as total_quantity FROM products INNER JOIN prices ON products.productID = prices.product_id")
-                        .mapTo(String.class)
+                        .mapTo(Integer.class)
                         .list()
         );
        return res.get(0);
     }
+
+    public int getInventoryQuantity() {
+        List<Integer> res = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT SUM(prices.quanity) - SUM(order_details.quantity)  \n" +
+                                "FROM products p INNER JOIN prices on p.productID = prices.product_id\n" +
+                                "INNER JOIN order_details on p.productID = order_details.product_id\n" +
+                                "INNER JOIN orders on order_details.order_id = orders.orderID\n" +
+                                "INNER JOIN vendors on p.vendor_id = vendors.vendorID\n" +
+                                "WHERE vendors.`status` = 0 AND p.`status` = 0")
+                        .mapTo(Integer.class)
+                        .list()
+        );
+        return res.get(0);
+    }
+
     public static void main(String[] args) {
         System.out.println(ProductService.getInstance().getAllQuantity());
     }
