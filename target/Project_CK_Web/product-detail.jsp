@@ -2,7 +2,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Locale" %>
-<%@ page import="vn.edu.hcmuaf.fit.bean.Image" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -135,7 +134,12 @@
 										</ul>
 									</div>
 									<div class="add-to-cart">
-										<a href="cart/buy?pid=<%=p.getProductID()%>"  class="primary-btn">Mua ngay</a>
+										<% if(check==true){%>
+										<a class="btn primary-btn" disabled="disabled">Mua ngay</a>
+										<%}%>
+										<% if(check==false){%>
+										<a href="buy?pid=<%=p.getProductID()%>" class="primary-btn">Mua ngay</a>
+										<%}%>
 									</div>
 								</div>
 							</div>

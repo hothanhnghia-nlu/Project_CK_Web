@@ -63,7 +63,7 @@
                 <div class="col-md-7 col-lg-6 col-md-offset-3">
                     <div style="text-align: center; margin-top: 40px">
                         <h3 style="font-weight: 400; color: black">ĐĂNG NHẬP TÀI KHOẢN</h3>
-                        <p>Bạn chưa có tài khoản? <a href="signup.jsp" style="color: #2b80dd">Đăng ký ngay</a></p>
+                        <p>Bạn chưa có tài khoản? <a href="sign-up" style="color: #2b80dd">Đăng ký ngay</a></p>
                     </div>
                     <div class="signin-container">
                         <form action="login" name="frm-login" method="post">
@@ -85,7 +85,7 @@
                                 <input type="password" id="fid-pass" name="password" value="" placeholder="Mật khẩu" class="txt-input" required>
                             </p>
                             <p class="form-row">
-                                <a href="forgot-password.jsp" class="link-to-help">Quên mật khẩu?</a>
+                                <a href="forgot-pass" class="link-to-help">Quên mật khẩu?</a>
                             </p>
                             <p class="form-row wrap-btn">
                                 <input class="btn btn-submit btn-bold" type="submit" value="Đăng nhập">

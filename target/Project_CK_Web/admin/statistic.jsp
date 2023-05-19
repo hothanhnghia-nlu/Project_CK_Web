@@ -2,9 +2,25 @@
 <%@ page import="java.util.Locale" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.List" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.Order" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.OrderService" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.User" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.UserService" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.VendorStatistic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    List<User> listUser = UserService.getInstances().listALlUser();
+    int numUser = listUser.size();
+    request.setAttribute("numUser",numUser);
+    List<Order> listOrder = OrderService.getInstance().getAllOrder();
+    int numOrder = listOrder.size();
+    request.setAttribute("numOrder",numOrder);
+    String listAllQuan = ProductService.getInstance().getAllQuantity();
+    request.setAttribute("listAllQuan",listAllQuan);
 
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,27 +75,14 @@
 
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card">
+                        <div class="card" style="height: 135px">
                             <div class="card-body">
                                 <div class="d-inline-block">
                                     <h5 class="text-muted">Tổng user</h5>
-                                    <h2 class="mb-0"> 5</h2>
+                                    <h2 class="mb-0" style="font-size: 2.5rem; padding-top: 8px"> <%= numUser%></h2>
                                 </div>
                                 <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                                     <i class="fa fa-user fa-fw fa-sm text-primary"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-inline-block">
-                                    <h5 class="text-muted">Tổng số lượng<br>truy cập</h5>
-                                    <h2 class="mb-0"> 1826</h2>
-                                </div>
-                                <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
-                                    <i class="fa fa-eye fa-fw fa-sm text-info"></i>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +92,7 @@
                             <div class="card-body">
                                 <h5 class="text-muted">Tổng số lượng sản phẩm</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1">150</h1>
+                                    <h1 class="mb-1"><%=listAllQuan%></h1>
                                 </div>
                                 <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
                                     <i class="fa fa-book fa-fw fa-sm text-secondary"></i>
@@ -102,7 +105,7 @@
                             <div class="card-body">
                                 <h5 class="text-muted">Tổng số đơn đặt hàng</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1">13.200</h1>
+                                    <h1 class="mb-1"><%=numOrder%></h1>
                                 </div>
                                 <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
                                     <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
@@ -111,8 +114,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xl-12">
                         <div class="card">
                             <h5 class="card-header">Đơn hàng gần đây</h5>
                             <div class="card-body p-0">
@@ -120,34 +123,47 @@
                                     <table class="table">
                                         <thead class="bg-light">
                                         <tr class="border-0">
-                                            <th class="border-0">STT</th>
-                                            <th class="border-0">Hình ảnh</th>
-                                            <th class="border-0">Tên sản phẩm</th>
-                                            <th class="border-0">Mã sản phẩm</th>
-                                            <th class="border-0">Số lượng</th>
-                                            <th class="border-0">Giá</th>
+                                            <th class="border-0">#</th>
+                                            <th class="border-0">Tên khách hàng</th>
+                                            <th class="border-0">SĐT</th>
+                                            <th class="border-0">Địa chỉ</th>
+                                            <th class="border-0">Ghi chú</th>
                                             <th class="border-0">Thời gian mua hàng</th>
-                                            <th class="border-0">Khách hàng</th>
-                                            <th class="border-0">Trạng thái</th>
+                                            <th class="border-0">Hình thức thanh toán</th>
+                                            <th class="border-0">Trạng thái đơn hàng</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <%
+                                            List<Order> orderList = OrderService.getInstance().getTop5Order();
+                                            request.setAttribute("orderList",orderList);
+                                        %>
+                                        <c:forEach items="${orderList}" var="o">
                                         <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <div class="m-r-10"><img
-                                                        src="assets/images/Laptop Acer Nitro 5 Gaming AN515 45 R6EV.jpg"
-                                                        alt="user" class="rounded" width="45">
-                                                </div>
+                                            <td>${o.orderId}</td>
+                                            <td>${o.fullName}</td>
+                                            <td>${o.phoneNumber}</td>
+                                            <td>${o.address}</td>
+                                            <td>${o.note}</td>
+                                            <td>${o.orderDate}</td>
+                                            <td>${o.payment}</td>
+                                            <td style="font-size: 17px; color: #FFF">
+                                                <c:if test="${o.status == 0}">
+                                                    <span class="badge badge-info">Đang xử lý</span>
+                                                </c:if>
+                                                <c:if test="${o.status == 1}">
+                                                    <span class="badge badge-warning">Đang vận chuyển</span>
+                                                </c:if>
+                                                <c:if test="${o.status == 2}">
+                                                    <span class="badge badge-success">Đã giao</span>
+                                                </c:if>
+                                                <c:if test="${o.status == 3}">
+                                                    <span class="badge badge-danger">Đã hủy</span>
+                                                </c:if>
                                             </td>
-                                            <td>LAPTOP ACER NITRO 5 GAMING AN515 45 R6EV</td>
-                                            <td>AN515R6EV</td>
-                                            <td>1</td>
-                                            <td>22.490.000đ</td>
-                                            <td>08-11-2022 08:35:12</td>
-                                            <td>Trần Minh Long</td>
-                                            <td><span class="badge-dot badge-brand mr-1"></span>Đang giao</td>
+
                                         </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -157,7 +173,7 @@
                     <!-- ============================================================== -->
                     <!-- end recent orders  -->
                 </div>
-                <div class="col">
+                <div class="col" style="margin-top: 20px">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">Thống kê doanh thu chi tiết theo hãng</h5>
@@ -171,9 +187,9 @@
                     <!-- ============================================================== -->
                     <!-- dount chart  -->
                     <!-- ============================================================== -->
-                    <div class>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center">
                         <div class="card">
-                            <h5 class="card-header">Thống kê doanh thu </h5>
+                            <h5 class="card-header">Thống kê số lượng sản phẩm đã bán theo hãng </h5>
                             <div class="card-body">
                                 <div id="c3chart_donut"></div>
                             </div>
@@ -229,6 +245,48 @@
   <script src="../vendors/charts/c3charts/d3-5.4.0.min.js"></script>
   <script src="../vendors/charts/c3charts/C3chartjs.js"></script>
   <script src="../vendors/charts/chartist-bundle/Chartistjs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"></script>
 
+  <script>
+      var chart = c3.generate({
+          bindto: '#c3chart_donut',
+          data: {
+              columns: [
+                  <% List<VendorStatistic> vendorStatisticListList = (List<VendorStatistic>) request.getAttribute("vendorList");
+                  for (VendorStatistic a: vendorStatisticListList) { %>
+                    ['<%=a.getName()%>', <%=a.getQuantity()%>],
+                  <% }%>
+              ],
+              type: 'donut'
+          },
+          donut: {
+              title: ''
+          }
+      });
+
+
+      new Chartist.Bar('.ct-chart-horizontal', {
+          labels: [<%for (VendorStatistic a: vendorStatisticListList) { %>
+              '<%=a.getName()%>',
+              <% }%>],
+          series: [
+              [<%for (VendorStatistic a: vendorStatisticListList) { %>
+                  <%=a.getQuantity()%>,
+                  <% }%>],
+              [<%for (VendorStatistic a: vendorStatisticListList) { %>
+                  <%=""+(Integer.parseInt(a.getPrice())/1000)%>,
+                  <% }%>]
+          ]
+      }, {
+          seriesBarDistance: 10,
+          reverseData: true,
+          horizontalBars: true,
+          axisY: {
+              offset: 70
+          }
+      });
+
+  </script>
   </body>
 </html>

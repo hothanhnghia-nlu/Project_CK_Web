@@ -65,7 +65,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="breadcrumb-tree">
-					<li><a href="cart.jsp">Giỏ hàng</a></li>
+					<li><a href="shopping-cart">Giỏ hàng</a></li>
 					<li class="active">Thông tin giao hàng</li>
 				</ul>
 			</div>

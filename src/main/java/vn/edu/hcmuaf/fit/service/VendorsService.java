@@ -1,9 +1,6 @@
 package vn.edu.hcmuaf.fit.service;
 
-import vn.edu.hcmuaf.fit.bean.Image;
-import vn.edu.hcmuaf.fit.bean.Product;
-import vn.edu.hcmuaf.fit.bean.User;
-import vn.edu.hcmuaf.fit.bean.Vendor;
+import vn.edu.hcmuaf.fit.bean.*;
 import vn.edu.hcmuaf.fit.db.JDBIConnector;
 
 import java.util.ArrayList;
@@ -34,7 +31,21 @@ public class VendorsService {
         );
         return list.get(0).getVendorID();
     }
-
+    public List<VendorStatistic> getVendorsStatistic (){
+        List<VendorStatistic> list = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT v.vendorID, v.`name`, sum(order_details.quantity) as quantity, sum(order_details.price) as price  \n" +
+                                "FROM order_details\n" +
+                                "INNER JOIN products p on p.productID = order_details.product_id\n" +
+                                "INNER JOIN vendors v on p.vendor_id = v.vendorID\n" +
+                                "INNER JOIN orders on orders.orderID = order_details.order_id\n" +
+                                "Where YEAR(order_date) <= YEAR(now()) and YEAR(order_date) > (YEAR(NOW())-1)\n" +
+                                "GROUP BY v.vendorID, v.`name`")
+                        .mapToBean(VendorStatistic.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        return list;
+    }
     public static void main(String[] args) {
     }
 
