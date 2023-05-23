@@ -13,12 +13,14 @@
 <%
     List<User> listUser = UserService.getInstances().listALlUser();
     int numUser = listUser.size();
-    request.setAttribute("numUser",numUser);
+    request.setAttribute("numUser", numUser);
     List<Order> listOrder = OrderService.getInstance().getAllOrder();
     int numOrder = listOrder.size();
-    request.setAttribute("numOrder",numOrder);
-    String listAllQuan = ProductService.getInstance().getAllQuantity();
-    request.setAttribute("listAllQuan",listAllQuan);
+    request.setAttribute("numOrder", numOrder);
+    int listAllQuan = ProductService.getInstance().getAllQuantity();
+    request.setAttribute("listAllQuan", listAllQuan);
+    int listInventoryQuan = ProductService.getInstance().getInventoryQuantity();
+    request.setAttribute("listInventoryQuan", listInventoryQuan);
 
 %>
 <!DOCTYPE html>
@@ -79,7 +81,7 @@
                             <div class="card-body">
                                 <div class="d-inline-block">
                                     <h5 class="text-muted">Tổng user</h5>
-                                    <h2 class="mb-0" style="font-size: 2.5rem; padding-top: 8px"> <%= numUser%></h2>
+                                    <h2 class="mb-0" style="font-size: 2.5rem; padding-top: 8px"><%= numUser%></h2>
                                 </div>
                                 <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                                     <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -93,6 +95,19 @@
                                 <h5 class="text-muted">Tổng số lượng sản phẩm</h5>
                                 <div class="metric-value d-inline-block">
                                     <h1 class="mb-1"><%=listAllQuan%></h1>
+                                </div>
+                                <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+                                    <i class="fa fa-book fa-fw fa-sm text-secondary"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card border-3">
+                            <div class="card-body">
+                                <h5 class="text-muted">Tổng số lượng sản phẩm tồn kho</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1"><%=listInventoryQuan%></h1>
                                 </div>
                                 <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
                                     <i class="fa fa-book fa-fw fa-sm text-secondary"></i>
