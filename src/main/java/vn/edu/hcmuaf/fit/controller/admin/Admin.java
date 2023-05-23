@@ -16,8 +16,12 @@ public class Admin extends HttpServlet {
 
         if (auth == null || !auth.checkRole(1)) {
             response.sendRedirect("page-not-found");
-        } else {
-            response.sendRedirect("admin/accounts");
+        }
+        else if(auth.checkRole(1)) {
+            response.sendRedirect("admin/product-list");
+        }
+        else if(auth.checkRole(2) || auth.checkRole(3)) {
+            response.sendRedirect("admin/statistic");
         }
     }
 

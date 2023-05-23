@@ -34,10 +34,10 @@ public class Checkout extends HttpServlet {
         OrderService.getInstance().addOrder(id,name,phone,email,address,note, payment);
         for (Product p: list){
             double price = p.getOut_price();
-            int sumquantity = ProductService.getInstance().getQuantityProduct(p.getProductID());
+            int sumQuantity = ProductService.getInstance().getQuantityProduct(p.getProductID());
             OrderService.getInstance().addOrderDetails(id, p.getProductID(),p.getQuantity(),price);
-            int newquantity = sumquantity - p.getQuantity();
-            ProductService.getInstance().updateProduct(p.getProductID(), newquantity);
+            int newQuantity = sumQuantity - p.getQuantity();
+            ProductService.getInstance().updateProduct(p.getProductID(), newQuantity);
         }
         session.removeAttribute("cart");
         response.sendRedirect("order-success");

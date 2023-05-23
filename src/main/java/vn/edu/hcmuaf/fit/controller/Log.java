@@ -18,7 +18,7 @@ public class Log extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Log level = new Log();
         int log_id = LogService.getInstances().getNewID() + 1;
-        LogService.getInstances().addLog(log_id,"1", Integer.parseInt("001"),name,"add log");
+        LogService.getInstances().addLog(log_id, vn.edu.hcmuaf.fit.bean.Log.INFO, Integer.parseInt("001"),name,"add log");
 
 
         request.getRequestDispatcher("home.jsp").forward(request, response);

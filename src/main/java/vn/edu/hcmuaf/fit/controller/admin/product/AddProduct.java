@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller.admin.product;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.CategoryService;
@@ -40,21 +41,21 @@ public class AddProduct extends HttpServlet {
         String quantity = request.getParameter("quantity");
         String price = request.getParameter("price");
         String in_price = request.getParameter("in_price");
-        String discription = request.getParameter("discription");
+        String description = request.getParameter("description");
         String img = request.getParameter("img");
         ArrayList<String> a = new ArrayList<>();
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
         int log_id = LogService.getInstances().getNewID() + 1;
-        LogService.getInstances().addLog(log_id, "1", user.getId(), name, "add log");
+        LogService.getInstances().addLog(log_id, Log.INFO, user.getId(), name, "add log");
 
         Product product;
-        if (name != null && id_cate != null && quantity != null && price != null && discription != null) {
+        if (name != null && id_cate != null && quantity != null && price != null && description != null) {
 //            String namecate = CategoryService.getInstance().getNameByID(id_cate);
-            ProductService.getInstance().addProduct(id, id_cate, name, id_vendor, img, discription, Integer.parseInt(quantity), Integer.parseInt(price), (in_price==null?0: Integer.parseInt(in_price)));
+            ProductService.getInstance().addProduct(id, id_cate, name, id_vendor, img, description, Integer.parseInt(quantity), Integer.parseInt(price), (in_price==null?0: Integer.parseInt(in_price)));
         }
-        response.sendRedirect("/Project_CK_Web/admin/product?id=" + id);
-
+//        response.sendRedirect("/Project_CK_Web/admin/product?id=" + id);
+        response.sendRedirect("product-list");
     }
 }

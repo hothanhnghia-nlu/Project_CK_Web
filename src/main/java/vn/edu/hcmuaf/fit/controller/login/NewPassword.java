@@ -18,16 +18,13 @@ public class NewPassword extends HttpServlet {
         String newPassword = request.getParameter("newPass");
         String rePassword = request.getParameter("rePass");
         String email = (String) session.getAttribute("email");
-        User user = (User) session.getAttribute("auth");
         int log_id = LogService.getInstances().getNewID() + 1;
-      
+
         if (newPassword != null && rePassword != null && newPassword.equals(rePassword)) {
             newPassword = UserService.getInstances().hashPassword(newPassword);
             UserService.getInstances().updatePassword(email, newPassword);
-            LogService.getInstances().addLog(log_id,"1", (user ==null?0: user.getId()),nameLog,"User ID " + user.getId()+" new password");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("log-in");
         } else {
-            LogService.getInstances().addLog(log_id,"1", (user ==null?0: user.getId()),nameLog,"User ID " + user.getId()+" Wrong confirmation password");
             request.setAttribute("error", "Mật khẩu xác nhận không đúng!");
             request.getRequestDispatcher("new-password.jsp").forward(request,response);
         }

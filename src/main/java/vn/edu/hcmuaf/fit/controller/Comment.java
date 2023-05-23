@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.CommentService;
 import vn.edu.hcmuaf.fit.service.ContactService;
@@ -30,7 +31,7 @@ public class Comment extends HttpServlet {
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
         int log_id = LogService.getInstances().getNewID() + 1;
-        LogService.getInstances().addLog(log_id,"1", (user==null?0:user.getId()),nameLog,"id= "+id + " | name= "+name+ " | email = " +email+" | Product name ="+ pName+" | content = " +content+" | rating = "+rating);
+        LogService.getInstances().addLog(log_id, Log.INFO, (user==null?0:user.getId()),nameLog,"id= "+id + " | name= "+name+ " | email = " +email+" | Product name ="+ pName+" | content = " +content+" | rating = "+rating);
 
         response.sendRedirect("home");
     }

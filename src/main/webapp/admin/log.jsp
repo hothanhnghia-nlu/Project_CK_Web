@@ -65,7 +65,7 @@
                                                     <th>STT</th>
                                                     <th>Cấp độ</th>
                                                     <th>Mã tài khoản</th>
-                                                    <th>Nguồn</th>
+                                                    <th>Thông tin</th>
                                                     <th>Nội dung</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Trạng thái</th>
@@ -77,12 +77,29 @@
 
                                                     <tr>
                                                         <td>${x.logID}</td>
-                                                        <td>${x.level}</td>
+                                                        <td style="color: #FFF; text-align: center">
+                                                            <c:if test="${x.level == 0}">
+                                                                <span class="bg-info" style="padding: 5px">INFO</span>
+                                                            </c:if>
+                                                            <c:if test="${x.level == 1}">
+                                                                <span class="bg-secondary" style="padding: 5px">ALERT</span>
+                                                            </c:if>
+                                                            <c:if test="${x.level == 2}">
+                                                                <span class="bg-warning" style="padding: 5px">WARNING</span>
+                                                            </c:if>
+                                                            <c:if test="${x.level == 3}">
+                                                                <span class="bg-danger" style="padding: 5px">DANGER</span>
+                                                            </c:if>
+                                                        </td>
                                                         <td>${x.userID}</td>
                                                         <td>${x.src}</td>
                                                         <td>${x.content}</td>
                                                         <td>${x.createAt}</td>
-                                                        <td>${x.status}</td>
+                                                        <td>
+                                                            <c:if test="${x.status == 0}">
+                                                                <span>Normal</span>
+                                                            </c:if>
+                                                        </td>
                                                         <td>
                                                             <div class="btn-group ml-auto">
                                                                 <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="logs?id=${x.logID}"><i class="fas fa-trash-alt"></i></a>

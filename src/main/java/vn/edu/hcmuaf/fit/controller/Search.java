@@ -1,5 +1,6 @@
 package vn.edu.hcmuaf.fit.controller;
 
+import vn.edu.hcmuaf.fit.bean.Log;
 import vn.edu.hcmuaf.fit.bean.Product;
 import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.CategoryService;
@@ -31,7 +32,7 @@ public class Search extends HttpServlet {
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("auth");
         int log_id = LogService.getInstances().getNewID() + 1;
-        LogService.getInstances().addLog(log_id,"1", (user==null?0:user.getId()),nameLog, list.toString());
+        LogService.getInstances().addLog(log_id, Log.INFO, (user==null?0:user.getId()),nameLog, list.toString());
         request.getRequestDispatcher("list-product.jsp").forward(request,response);
     }
 
