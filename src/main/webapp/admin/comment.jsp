@@ -27,7 +27,7 @@
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -122,7 +122,30 @@
         <!-- /page content -->
     </div>
   </div>
+  <script>
+      $(document).ready(function() {
+          $('.trash').click(function(e) {
+              e.preventDefault();
 
+              var url = $(this).attr('href');
+              var row = $(this).closest('tr');
+
+              $.ajax({
+                  url: url,
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(response) {
+                      row.remove();
+
+                  },
+                  error: function(xhr, status, error) {
+                      // Xử lý lỗi (nếu có)
+                      console.log("Đã xảy ra lỗi khi xóa.");
+                  }
+              });
+          });
+      });
+  </script>
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Bootstrap -->

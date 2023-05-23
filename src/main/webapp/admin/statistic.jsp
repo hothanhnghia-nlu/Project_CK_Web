@@ -1,3 +1,6 @@
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.util.Locale" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Order" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.OrderService" %>
@@ -10,16 +13,14 @@
 <%
     List<User> listUser = UserService.getInstances().listALlUser();
     int numUser = listUser.size();
-    request.setAttribute("numUser", numUser);
+    request.setAttribute("numUser",numUser);
     List<Order> listOrder = OrderService.getInstance().getAllOrder();
     int numOrder = listOrder.size();
-    request.setAttribute("numOrder", numOrder);
-    int listAllQuan = ProductService.getInstance().getAllQuantity();
-    request.setAttribute("listAllQuan", listAllQuan);
-    int listInventoryQuan = ProductService.getInstance().getInventoryQuantity();
-    request.setAttribute("listInventoryQuan", listInventoryQuan);
-%>
+    request.setAttribute("numOrder",numOrder);
+    String listAllQuan = ProductService.getInstance().getAllQuantity();
+    request.setAttribute("listAllQuan",listAllQuan);
 
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <title>Thống kê | Quản trị Admin</title>
+      <title>Quản lý sản phẩm | Quản trị Admin</title>
 
     <!-- Bootstrap -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -48,30 +49,6 @@
     <link href="../assets/css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
 
-      <!-- CSS Back-top -->
-      <style>
-          #backtop {
-              height: 50px;
-              width: 50px;
-              background: #2b80dd;
-              color: yellow;
-              border-radius: 50%;
-              justify-content: center;
-              align-items: center;
-              display: none;
-              position: fixed;
-              bottom: 40px;
-              right: 20px;
-              cursor: pointer;
-              animation: ease 1.5s;
-          }
-          #backtop.backtop-open {
-              display: flex;
-          }
-          #backtop:hover {
-              background-color: rgb(199, 199, 199);
-          }
-      </style>
   </head>
 
   <body class="nav-md">
@@ -101,8 +78,8 @@
                         <div class="card" style="height: 135px">
                             <div class="card-body">
                                 <div class="d-inline-block">
-                                    <a href="accounts"><h5 class="text-muted">Tổng user</h5></a>
-                                    <h2 class="mb-0" style="font-size: 2.5rem; padding-top: 8px"> <%=numUser%></h2>
+                                    <h5 class="text-muted">Tổng user</h5>
+                                    <h2 class="mb-0" style="font-size: 2.5rem; padding-top: 8px"> <%= numUser%></h2>
                                 </div>
                                 <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                                     <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -111,9 +88,9 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card border-3" style="width: 270px">
+                        <div class="card border-3">
                             <div class="card-body">
-                                <a href="product-list"><h5 class="text-muted">Tổng số lượng sản phẩm</h5></a>
+                                <h5 class="text-muted">Tổng số lượng sản phẩm</h5>
                                 <div class="metric-value d-inline-block">
                                     <h1 class="mb-1"><%=listAllQuan%></h1>
                                 </div>
@@ -124,22 +101,9 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="card border-3 ml-3" style="height: 136px">
-                            <div class="card-body">
-                                <a href="#"><h5 class="text-muted">Tổng số lượng<br/>sản phẩm tồn kho</h5></a>
-                                <div class="metric-value d-inline-block">
-                                    <h1 class="mb-1"><%=listInventoryQuan%></h1>
-                                </div>
-                                <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
-                                    <i class="fa fa-warehouse fa-fw fa-sm text-brand"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card border-3">
                             <div class="card-body">
-                                <a href="order-list"><h5 class="text-muted">Tổng đơn đặt hàng</h5></a>
+                                <h5 class="text-muted">Tổng số đơn đặt hàng</h5>
                                 <div class="metric-value d-inline-block">
                                     <h1 class="mb-1"><%=numOrder%></h1>
                                 </div>
@@ -150,11 +114,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row" style="margin-top: 20px">
                     <div class="col-xl-12">
                         <div class="card">
-                            <a href="order-list"><h5 class="card-header">Đơn hàng gần đây</h5></a>
+                            <h5 class="card-header">Đơn hàng gần đây</h5>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table">
@@ -165,9 +128,9 @@
                                             <th class="border-0">SĐT</th>
                                             <th class="border-0">Địa chỉ</th>
                                             <th class="border-0">Ghi chú</th>
-                                            <th class="border-0">Ngày đặt hàng</th>
-                                            <th class="border-0">Thanh toán</th>
-                                            <th class="border-0">Tình trạng</th>
+                                            <th class="border-0">Thời gian mua hàng</th>
+                                            <th class="border-0">Hình thức thanh toán</th>
+                                            <th class="border-0">Trạng thái đơn hàng</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -224,8 +187,8 @@
                     <!-- ============================================================== -->
                     <!-- dount chart  -->
                     <!-- ============================================================== -->
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="margin-bottom: 25px; text-align: center">
-                        <div class="card">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center">
+                        <div class="card" style="width: 500px">
                             <h5 class="card-header">Thống kê số lượng sản phẩm đã bán theo hãng </h5>
                             <div class="card-body">
                                 <div id="c3chart_donut"></div>
@@ -237,12 +200,6 @@
                     <!-- ============================================================== -->
                 </div>
             </div>
-
-            <!--BACKTOP-->
-            <div id="backtop">
-                <i class="fa fa-arrow-up"></i>
-            </div>
-            <!--/BACKTOP-->
         </div>
         <!-- /page content -->
     </div>
@@ -271,7 +228,6 @@
     <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
     <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-    <script src="../assets/js/backtop.js"></script>
 
   <!-- Chart.js -->
   <script src="../assets/js/Chart.min.js"></script>

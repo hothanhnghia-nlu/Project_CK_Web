@@ -22,6 +22,11 @@ public class AdCustomer extends HttpServlet {
         } else {
             if (id != null) {
                 UserService.getInstances().deleteUser(id);
+                // Trả về phản hồi JSON để xác nhận xóa thành công
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true}");
+                return;
             }
             List<User> userList = UserService.getInstances().listALlUser();
             request.setAttribute("userList", userList);
