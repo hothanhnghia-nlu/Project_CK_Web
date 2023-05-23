@@ -188,7 +188,7 @@
                     <!-- dount chart  -->
                     <!-- ============================================================== -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" style="text-align: center">
-                        <div class="card">
+                        <div class="card" style="width: 500px">
                             <h5 class="card-header">Thống kê số lượng sản phẩm đã bán theo hãng </h5>
                             <div class="card-body">
                                 <div id="c3chart_donut"></div>

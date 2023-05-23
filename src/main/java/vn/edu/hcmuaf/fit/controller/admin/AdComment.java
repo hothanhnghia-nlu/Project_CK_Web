@@ -21,6 +21,11 @@ public class AdComment extends HttpServlet {
         } else {
             if (id != null) {
                 CommentService.getInstance().deleteComment(id);
+                // Trả về phản hồi JSON để xác nhận xóa thành công
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true}");
+                return;
             }
             request.setAttribute("commentList", CommentService.getInstance().listAllComment());
             request.getRequestDispatcher("comment.jsp").forward(request, response);

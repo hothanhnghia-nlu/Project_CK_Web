@@ -25,6 +25,11 @@ public class AdContact extends HttpServlet {
         } else {
             if (id != null) {
                 ContactService.getInstances().delete(id);
+                // Trả về phản hồi JSON để xác nhận xóa thành công
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true}");
+                return;
             }
             request.setAttribute("contactList", ContactService.getInstances().selectAll());
             request.getRequestDispatcher("contact-us.jsp").forward(request, response);
