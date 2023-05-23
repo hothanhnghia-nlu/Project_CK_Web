@@ -30,7 +30,7 @@
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="nav-md">
@@ -82,6 +82,7 @@
                                                 <c:forEach items="${userList}" var="u">
 
                                                 <tr>
+                                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
                                                     <td>${u.id}</td>
                                                     <td>${u.fullName}</td>
                                                     <td>${u.email}</td>
@@ -94,6 +95,7 @@
                                                                     class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
+                                                    </form>
                                                 </tr>
                                                 </c:forEach>
                                                 </tbody>
@@ -110,7 +112,30 @@
         <!-- /page content -->
     </div>
 </div>
+<script>
 
+    $(document).ready(function() {
+        $('.trash').click(function(e) {
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+            var row = $(this).closest('tr');
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    row.remove();
+                },
+                error: function(xhr, status, error) {
+                    console.log("Đã xảy ra lỗi khi xóa.");
+                }
+            });
+        });
+    });
+
+</script>
 <!-- jQuery -->
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <!-- Bootstrap -->

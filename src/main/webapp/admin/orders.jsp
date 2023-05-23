@@ -27,7 +27,7 @@
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -108,8 +108,10 @@
 
                               <td>
                                 <div class="btn-group ml-auto">
-                                  <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list?id=${x.orderId}" title="Xóa"><i
-                                          class="fas fa-trash-alt"></i></a>
+                                    <c:if test="${sessionScope.auth.role > 1}">
+                                        <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list?id=${x.orderId}" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i></a>
+                                    </c:if>
                                   <a class="btn btn-primary btn-sm edit" type="button" href="order-detail?id=${x.orderId}" title="Xem"><i
                                           class="fas fa-eye"></i></a>
                                   <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" style="margin-left: 8px"><i
@@ -134,7 +136,30 @@
       <!-- /page content -->
     </div>
   </div>
+  <script>
+      $(document).ready(function() {
+          $('.trash').click(function(e) {
+              e.preventDefault();
 
+              var url = $(this).attr('href');
+              var row = $(this).closest('tr');
+
+              $.ajax({
+                  url: url,
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(response) {
+                      row.remove();
+
+                  },
+                  error: function(xhr, status, error) {
+                      // Xử lý lỗi (nếu có)
+                      console.log("Đã xảy ra lỗi khi xóa.");
+                  }
+              });
+          });
+      });
+  </script>
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Bootstrap -->

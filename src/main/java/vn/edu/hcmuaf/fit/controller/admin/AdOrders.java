@@ -26,6 +26,11 @@ public class AdOrders extends HttpServlet {
             if (id != null) {
                 OrderService.getInstance().deleteOrder(Integer.parseInt(id));
                 OrderDetailService.getInstance().deleteOrderDetail(Integer.parseInt(id));
+                // Trả về phản hồi JSON để xác nhận xóa thành công
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true}");
+                return;
             }
             List<Order> orderList = OrderService.getInstance().getAllOrder();
             request.setAttribute("orderList", orderList);
