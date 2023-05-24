@@ -1,12 +1,14 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.Cart" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.Collection" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%
     String error = (String) request.getAttribute("error");
 %>
+<c:set var="sumQuantity" value="${sumQuantity}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,13 +106,13 @@
                             <!-- Shopping Summery -->
 <%--                            <%if (error != null) {--%>
 <%--                            %>--%>
-<%--                            <div class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px">--%>
-<%--                                <%= error %>--%>
-<%--                            </div>--%>
+                            <div class="alert" role="alert" style="display: none; color: #ff0000; margin-top: -30px; margin-bottom: 3px">
+                                Số lượng sản phẩm không đủ
+                            </div>
 <%--                            <%--%>
 <%--                                }--%>
 <%--                            %>--%>
-                            <div id="error-message" class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px"></div>
+
 
                             <table class="table shopping-summery">
                                 <thead>
@@ -125,6 +127,12 @@
                                 </thead>
                                 <tbody class="cart-item">
                                 <c:forEach items="${list}" var="p">
+                                    <c:set var="productId" value="${p.productID}" />
+                                    <%
+                                        String productId = (String) pageContext.getAttribute("productId");
+                                        int sumQuantity = ProductService.getInstance().getQuantityProduct(productId);
+                                        request.setAttribute("sumQuantity", sumQuantity);
+                                    %>
                                     <tr>
                                         <td><img src="${p.getImage().get(0)}" alt=""></td>
                                         <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p>
@@ -242,8 +250,45 @@
 
 
 </script>
+<script>
+
+    $(document).ready(function() {
+        $(document).on('change', '.amount', function(event) {
+            var maxQuantity = ${sumQuantity};
+            console.log("maxQuantity: " + maxQuantity);
+            var quantity = parseInt($(this).val());
+            console.log("quantity: " + quantity);
+            if (quantity > maxQuantity) {
+                $('.alert').show(); // Hiển thị thông báo nếu quantity > maxQuantity
+                console.log("Số lượng sản phẩm không đủ");
+            } else {
+                $('.alert').hide(); // Ẩn thông báo nếu quantity <= maxQuantity
+            }
+
+            // Lấy dữ liệu từ form
+            var formData = $(this).closest('form').serialize();
+
+            // Gửi yêu cầu Ajax POST đến servlet
+            $.ajax({
+                type: 'POST',
+                url: 'update-cart',
+                data: formData,
+                success: function(response) {
+                    // Xử lý phản hồi thành công từ servlet
+                    $('.cart-item').html($(response).find('.cart-item').html());
+                    $('.total').html($(response).find('.total').html());
+                },
+                error: function(xhr, status, error) {
+                    // Xử lý lỗi nếu có
+                    console.error(error);
+                }
+            });
+        });
+    });
 
 
+
+</script>
 
 <!-- jQuery Plugins -->
 <script src="assets/js/jquery.min.js"></script>

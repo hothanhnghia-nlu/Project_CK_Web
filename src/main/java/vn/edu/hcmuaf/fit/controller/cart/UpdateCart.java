@@ -25,8 +25,8 @@ public class UpdateCart extends HttpServlet {
             String name = names.nextElement();
             int quantity = Integer.parseInt(request.getParameter(name));
 
-            HttpSession seesion = request.getSession();
-            Cart cart = (Cart) seesion.getAttribute("cart");
+            HttpSession session = request.getSession();
+            Cart cart = (Cart) session.getAttribute("cart");
             if (cart!= null){
                 cart.update(name,quantity);
             }
@@ -46,8 +46,13 @@ public class UpdateCart extends HttpServlet {
                 int quantity = Integer.parseInt(entry.getValue()[0]);
 
                 int sumQuantity = ProductService.getInstance().getQuantityProduct(productId);
+                request.setAttribute("sumQuantity", sumQuantity);
                 if (quantity > sumQuantity) {
                     request.setAttribute("error", "Số lượng sản phẩm không đủ");
+//                    response.setContentType("application/json");
+//                    response.setCharacterEncoding("UTF-8");
+//                    response.getWriter().write("{\"error\": \"Số lượng sản phẩm không đủ\"}");
+
                     hasError = true; // đặt biến cờ khi có lỗi
                 } else {
                     cart.update(productId, quantity);
