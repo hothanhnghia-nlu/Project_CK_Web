@@ -45,7 +45,7 @@ public class AdOrders extends HttpServlet {
         String id = request.getParameter("id");
 
         if (status != null){
-            OrderService.getInstance().updateID(Integer.parseInt(id), Integer.parseInt(status));
+            OrderService.getInstance().updateStatus(Integer.parseInt(id), Integer.parseInt(status));
         }
         response.sendRedirect("order-list");
     }

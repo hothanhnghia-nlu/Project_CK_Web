@@ -36,6 +36,7 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <body>
 
 <!-- HEADER -->
@@ -94,21 +95,23 @@
 </c:if>
 
 <c:if test="${!check}">
-    <div class="section">
+    <div class="section" id="cart-table">
         <div class="shopping-cart section">
             <div class="container">
                 <form action="update-cart" method="post">
                     <div class="row">
                         <div class="col-12">
                             <!-- Shopping Summery -->
-                            <%if (error != null) {
-                            %>
-                            <div class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px">
-                                <%= error %>
-                            </div>
-                            <%
-                                }
-                            %>
+<%--                            <%if (error != null) {--%>
+<%--                            %>--%>
+<%--                            <div class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px">--%>
+<%--                                <%= error %>--%>
+<%--                            </div>--%>
+<%--                            <%--%>
+<%--                                }--%>
+<%--                            %>--%>
+                            <div id="error-message" class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px"></div>
+
                             <table class="table shopping-summery">
                                 <thead>
                                 <tr class="main-hading">
@@ -135,6 +138,7 @@
                                                                                       type="number"
                                                                                       name="${p.productID}"
                                                                                       value="${p.quantity}"
+                                                                                      autocomplete="off"
                                                                                       style="width: 85px;height: 40px;text-align: center">
                                         </td>
 
@@ -142,7 +146,7 @@
                                             <fmt:formatNumber value="${p.out_price * p.quantity}"
                                                               type="currency"/></td>
 
-                                        <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
+                                        <td class="action" data-title="Remove"><a class="delete-product" data-product-id="${p.productID}" href="remove?pid=${p.productID}"><i
                                                 class="fa fa-trash"></i></a></td>
                                     </tr>
                                 </c:forEach>
@@ -165,7 +169,7 @@
                     <div class="center-block justify-content-center" style="display: inline-flex;margin-left: 337px">
                         <div>
                             <a href="home" class="btn primary-btn" style="border-radius: 5px">Tiếp tục mua sắm</a>
-                            <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">
+<%--                            <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">--%>
 
                             <a href="check-out" class="btn primary-btn" style="border-radius: 5px">Thanh toán</a>
                         </div>
@@ -175,6 +179,25 @@
             </div>
         </div>
     </div>
+    <div class="section empty-cart" style="display: none">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="load_image text-center">
+                        <img src="assets/img/bag.png" alt="">
+                    </div>
+                    <div class="back_home text-center">
+                        <h4>Không có sản phẩm nào trong giỏ hàng</h4>
+                        <a href="home" class="primary-btn" style="font-weight: normal">TIẾP TỤC MUA SẮM</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
 </c:if>
 <!-- /SECTION -->
 
@@ -182,6 +205,45 @@
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"/>
 <!-- /FOOTER -->
+// xóa sp
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.delete-product', function(e) {
+            e.preventDefault();
+
+            var productId = $(this).data('product-id');
+            var $cartItem = $(this).closest('tr');
+            var $cartTable = $('#cart-table');
+            var $emptyCart = $('.empty-cart');
+            // Lấy đối tượng bảng giỏ hàng
+            // var cartTable = document.getElementById('cart-table');
+            $.ajax({
+                type: 'GET',
+                url: 'remove',
+                data: { pid: productId },
+                success: function(response) {
+                    $cartItem.remove();
+
+                    // Kiểm tra xem còn sản phẩm trong giỏ hàng hay không
+                    var $remainingItems = $cartTable.find('.cart-item tr');
+                    if ($remainingItems.length === 1) {
+                        $cartTable.hide();
+                        $emptyCart.show();
+                    }
+                    $('.cart-item').html($(response).find('.cart-item').html());
+                    $('.total').html($(response).find('.total').html());
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+
+</script>
+
+
 
 <!-- jQuery Plugins -->
 <script src="assets/js/jquery.min.js"></script>
@@ -190,7 +252,7 @@
 <script src="assets/js/nouislider.min.js"></script>
 <script src="assets/js/jquery.zoom.min.js"></script>
 <script src="assets/js/main.js"></script>
-<!-- Nice Select JS -->z`
+<!-- Nice Select JS -->
 <script src="assets/js/nicesellect.js"></script>
 </body>
 </html>
