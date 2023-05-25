@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cart" value="${sessionScope.cart}"/>
+<div id="header" style="position: fixed; top: 0; z-index: 9999; width: 100%; padding-bottom: 0px">
 <header>
     <!-- MAIN HEADER -->
-    <div id="header">
+    <div >
         <!-- container -->
         <div class="container">
             <!-- row -->
@@ -80,26 +81,26 @@
 
                         <!-- Cart -->
                         <div>
-                            <c:if test="${cart.quantity == null}">
-                                <a href="blank-cart">
-                                    <i  class="fa fa-shopping-cart"></i>
-                                    <span>Giỏ hàng</span>
-                                    <div class="qty">0</div>
-                                </a>
-                            </c:if>
+<%--                            <c:if test="${cart.quantity == null}">--%>
+<%--                                <a href="blank-cart">--%>
+<%--                                    <i  class="fa fa-shopping-cart"></i>--%>
+<%--                                    <span>Giỏ hàng</span>--%>
+<%--                                    <div class="qty cart-quantity">0</div>--%>
+<%--                                </a>--%>
+<%--                            </c:if>--%>
 
-                            <c:if test="${cart.quantity != null}">
+<%--                            <c:if test="${cart.quantity != null}">--%>
                                 <a href="shopping-cart">
                                     <i  class="fa fa-shopping-cart"></i>
                                     <span>Giỏ hàng</span>
                                     <c:if test="${cart.quantity != null}">
-                                        <div class="qty">${cart.quantity}</div>
+                                        <div class="qty cart-quantity">${cart.quantity}</div>
                                     </c:if>
                                     <c:if test="${cart.quantity == null}">
-                                        <div class="qty">0</div>
+                                        <div class="qty cart-quantity">0</div>
                                     </c:if>
                                 </a>
-                            </c:if>
+<%--                            </c:if>--%>
                         </div>
                         <!-- /Cart -->
                     </div>
@@ -162,4 +163,12 @@
     <!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
+</div>
+<div style="height: 160px"></div>
+<script>
+    window.onload = function() {
+        var header = document.getElementById('header');
+        document.body.scrollTop = 0;
+    }
 
+</script>

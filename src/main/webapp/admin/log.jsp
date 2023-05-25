@@ -69,7 +69,6 @@
                                                     <th>Nội dung</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Trạng thái</th>
-                                                    <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -99,11 +98,6 @@
                                                             <c:if test="${x.status == 0}">
                                                                 <span>Normal</span>
                                                             </c:if>
-                                                        </td>
-                                                        <td>
-                                                            <div class="btn-group ml-auto">
-                                                                <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="logs?id=${x.logID}"><i class="fas fa-trash-alt"></i></a>
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

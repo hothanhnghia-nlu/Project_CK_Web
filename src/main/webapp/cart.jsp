@@ -1,12 +1,14 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.Cart" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.Collection" %>
+<%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%
     String error = (String) request.getAttribute("error");
 %>
+<c:set var="sumQuantity" value="${sumQuantity}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +38,7 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <body>
 
 <!-- HEADER -->
@@ -94,21 +97,24 @@
 </c:if>
 
 <c:if test="${!check}">
-    <div class="section">
+    <div class="section" id="cart-table">
         <div class="shopping-cart section">
             <div class="container">
                 <form action="update-cart" method="post">
                     <div class="row">
                         <div class="col-12">
                             <!-- Shopping Summery -->
-                            <%if (error != null) {
-                            %>
-                            <div class="alert" role="alert" style="color: #ff0000; margin-top: -30px; margin-bottom: 3px">
-                                <%= error %>
+                                <%--                            <%if (error != null) {--%>
+                                <%--                            %>--%>
+                            <div class="alert" role="alert"
+                                 style="display: none; color: #ff0000; margin-top: -30px; margin-bottom: 3px">
+                                Số lượng sản phẩm không đủ
                             </div>
-                            <%
-                                }
-                            %>
+                                <%--                            <%--%>
+                                <%--                                }--%>
+                                <%--                            %>--%>
+
+
                             <table class="table shopping-summery">
                                 <thead>
                                 <tr class="main-hading">
@@ -122,6 +128,12 @@
                                 </thead>
                                 <tbody class="cart-item">
                                 <c:forEach items="${list}" var="p">
+                                    <c:set var="productId" value="${p.productID}"/>
+                                    <%
+                                        String productId = (String) pageContext.getAttribute("productId");
+                                        int sumQuantity = ProductService.getInstance().getQuantityProduct(productId);
+                                        request.setAttribute("sumQuantity", sumQuantity);
+                                    %>
                                     <tr>
                                         <td><img src="${p.getImage().get(0)}" alt=""></td>
                                         <td><p><a href="detail?pid=${p.productID}"><strong>${p.name}</strong></a></p>
@@ -135,6 +147,7 @@
                                                                                       type="number"
                                                                                       name="${p.productID}"
                                                                                       value="${p.quantity}"
+                                                                                      autocomplete="off"
                                                                                       style="width: 85px;height: 40px;text-align: center">
                                         </td>
 
@@ -142,17 +155,23 @@
                                             <fmt:formatNumber value="${p.out_price * p.quantity}"
                                                               type="currency"/></td>
 
-                                        <td class="action" data-title="Remove"><a href="remove?pid=${p.productID}"><i
+                                        <td class="action" data-title="Remove"><a class="delete-product"
+                                                                                  data-product-id="${p.productID}"
+                                                                                  href="remove?pid=${p.productID}"><i
                                                 class="fa fa-trash"></i></a></td>
                                     </tr>
                                 </c:forEach>
                                 <tr style="text-align: center">
                                     <td colspan="4" style="font-size: 20px; font-weight: 700"> Tổng tiền:</td>
                                     <c:if test="${check}">
-                                        <td colspan="2"><span class="total" style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber value="0" type="currency"/></span></td>
+                                        <td colspan="2"><span class="total"
+                                                              style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber
+                                                value="0" type="currency"/></span></td>
                                     </c:if>
                                     <c:if test="${!check}">
-                                        <td colspan="2"><span class="total" style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber value="${total}" type="currency"/></span></td>
+                                        <td colspan="2"><span class="total"
+                                                              style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber
+                                                value="${total}" type="currency"/></span></td>
                                     </c:if>
                                 </tr>
                                 </tbody>
@@ -162,10 +181,10 @@
                             <!--/ End Shopping Summery -->
                         </div>
                     </div>
-                    <div class="center-block justify-content-center" style="display: inline-flex;margin-left: 337px">
+                    <div class="center-block justify-content-center" style="display: inline-flex;margin-left: 405px">
                         <div>
                             <a href="home" class="btn primary-btn" style="border-radius: 5px">Tiếp tục mua sắm</a>
-                            <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">
+                                <%--                            <input type="submit" class=" btn primary-btn" style="border-radius: 5px;outline: none" value="Cập nhật">--%>
 
                             <a href="check-out" class="btn primary-btn" style="border-radius: 5px">Thanh toán</a>
                         </div>
@@ -175,6 +194,25 @@
             </div>
         </div>
     </div>
+    <div class="section empty-cart" style="display: none">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="load_image text-center">
+                        <img src="assets/img/bag.png" alt="">
+                    </div>
+                    <div class="back_home text-center">
+                        <h4>Không có sản phẩm nào trong giỏ hàng</h4>
+                        <a href="home" class="primary-btn" style="font-weight: normal">TIẾP TỤC MUA SẮM</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
 </c:if>
 <!-- /SECTION -->
 
@@ -182,6 +220,86 @@
 <!-- FOOTER -->
 <jsp:include page="footer.jsp"/>
 <!-- /FOOTER -->
+// xóa sp
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '.delete-product', function (e) {
+            e.preventDefault();
+
+            var productId = $(this).data('product-id');
+            var $cartItem = $(this).closest('tr');
+            var $cartTable = $('#cart-table');
+            var $emptyCart = $('.empty-cart');
+
+            $.ajax({
+                type: 'GET',
+                url: 'remove',
+                data: {pid: productId},
+                success: function (response) {
+                    $cartItem.remove();
+
+
+                    var $remainingItems = $cartTable.find('.cart-item tr');
+                    if ($remainingItems.length === 1) {
+                        $cartTable.hide();
+                        $emptyCart.show();
+                    }
+                    $('.cart-item').html($(response).find('.cart-item').html());
+                    $('.total').html($(response).find('.total').html());
+
+                    var cartQuantity = $(response).find('.cart-quantity').text();
+                    $('.qty').text(cartQuantity);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+
+</script>
+<script>
+
+    $(document).ready(function () {
+        $(document).on('change', '.amount', function (event) {
+            var maxQuantity = ${sumQuantity};
+            console.log("maxQuantity: " + maxQuantity);
+            var quantity = parseInt($(this).val());
+            console.log("quantity: " + quantity);
+            if (quantity > maxQuantity) {
+                $('.alert').show();
+                console.log("Số lượng sản phẩm không đủ");
+            } else {
+                $('.alert').hide();
+            }
+
+
+            var formData = $(this).closest('form').serialize();
+
+
+            $.ajax({
+                type: 'POST',
+                url: 'update-cart',
+                data: formData,
+                success: function (response) {
+
+                    $('.cart-item').html($(response).find('.cart-item').html());
+                    $('.total').html($(response).find('.total').html());
+
+
+                    var cartQuantity = $(response).find('.cart-quantity').text();
+                    $('.qty').text(cartQuantity);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+
+</script>
 
 <!-- jQuery Plugins -->
 <script src="assets/js/jquery.min.js"></script>
@@ -190,7 +308,7 @@
 <script src="assets/js/nouislider.min.js"></script>
 <script src="assets/js/jquery.zoom.min.js"></script>
 <script src="assets/js/main.js"></script>
-<!-- Nice Select JS -->z`
+<!-- Nice Select JS -->
 <script src="assets/js/nicesellect.js"></script>
 </body>
 </html>

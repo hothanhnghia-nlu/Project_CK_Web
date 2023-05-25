@@ -125,28 +125,57 @@
     </div>
 </div>
 <script>
+    // $(document).ready(function() {
+    //     $('.trash').click(function(e) {
+    //         e.preventDefault();
+    //
+    //         var url = $(this).attr('href');
+    //         var row = $(this).closest('tr');
+    //
+    //         $.ajax({
+    //             url: url,
+    //             type: 'GET',
+    //             dataType: 'json',
+    //             success: function(response) {
+    //                 row.remove();
+    //
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 // Xử lý lỗi (nếu có)
+    //                 console.log("Đã xảy ra lỗi khi xóa.");
+    //             }
+    //         });
+    //     });
+    // });
     $(document).ready(function() {
-        $('.trash').click(function(e) {
-            e.preventDefault();
+        // Sự kiện khi nhấn nút xóa
+        $('.trash').click(function(event) {
+            event.preventDefault();
 
+            // Lấy đường dẫn và id của dòng dữ liệu cần xóa
             var url = $(this).attr('href');
-            var row = $(this).closest('tr');
+            var logId = $(this).data('log-id');
 
+            // Gửi yêu cầu Ajax DELETE đến servlet
             $.ajax({
+                type: 'DELETE',
                 url: url,
-                type: 'GET',
-                dataType: 'json',
+                data: { id: logId },
                 success: function(response) {
-                    row.remove();
+                    // Xử lý phản hồi thành công từ servlet
+                    console.log('Dòng dữ liệu đã được xóa thành công.');
 
+                    // Cập nhật giao diện, ví dụ: xóa dòng dữ liệu trong bảng
+                    $(this).closest('tr').remove();
                 },
                 error: function(xhr, status, error) {
-                    // Xử lý lỗi (nếu có)
-                    console.log("Đã xảy ra lỗi khi xóa.");
+                    // Xử lý lỗi nếu có
+                    console.error('Lỗi xóa dòng dữ liệu: ' + error);
                 }
             });
         });
     });
+
 </script>
 <!-- jQuery -->
 <script src="../assets/js/jquery-3.6.1.min.js"></script>

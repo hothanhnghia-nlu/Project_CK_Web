@@ -20,9 +20,6 @@ public class AdLog extends HttpServlet {
         if (auth == null || !auth.checkRole(1)) {
             response.sendRedirect("not-found");
         } else {
-            if (id != null) {
-                ContactService.getInstances().delete(id);
-            }
             request.setAttribute("logList", LogService.getInstances().listAllCategory());
             request.getRequestDispatcher("log.jsp").forward(request, response);
         }
