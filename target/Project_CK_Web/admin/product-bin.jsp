@@ -110,8 +110,8 @@
                                                     <td>
                                                         <div class="btn-group ml-auto">
                                                             <a class="btn btn-primary btn-sm trash mr-2" type="button" title="Huỷ xóa" href="product-un-soft-delete?id=<%=p.getProductID()%>">
-                                                                <i class="fas fa-trash-alt"></i></a>
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa vĩnh viễn" href="product-delete?id=<%=p.getProductID()%>">
+                                                                <i class="fas fa-undo"></i></a>
+                                                            <a class="btn btn-danger btn-sm trash" type="button" title="Xóa vĩnh viễn" href="product-delete?id=<%=p.getProductID()%>">
                                                                 <i class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>

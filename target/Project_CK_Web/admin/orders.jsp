@@ -27,7 +27,7 @@
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -76,8 +76,6 @@
                           <tbody>
                           <c:forEach items="${orderList}" var="x" varStatus="STT">
                             <tr>
-                              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
-                                  <input type="hidden" name="id" value="${x.orderId}" />
                               <td>${x.orderId}</td>
                               <td>${x.fullName}</td>
                               <td>${x.phoneNumber}</td>
@@ -85,38 +83,41 @@
                               <td>${x.note}</td>
                               <td>${x.orderDate}</td>
                               <td>${x.payment}</td>
-                              <td style="color: #FFF">
-                                  <select tabindex="0" name="status">
-                                      <c:if test="${x.status == 0}">
-                                          <option value="${x.status}" class="badge bg-warning">Đang xử lý</option>
-                                      </c:if>
-                                      <c:if test="${x.status == 1}">
-                                        <option value="${x.status}" class="badge bg-primary" style="color: white">Đang vận chuyển</option>
-                                      </c:if>
-                                      <c:if test="${x.status == 2}">
-                                        <option value="${x.status}" class="badge bg-success" style="color: white">Đã giao</option>
-                                      </c:if>
-                                      <c:if test="${x.status == 3}">
-                                        <option value="${x.status}" class="badge bg-danger" style="color: white">Đã hủy</option>
-                                      </c:if>
-                                      <option value="0">Đang xử lý</option>
-                                      <option value="1">Đang vận chuyển</option>
-                                      <option value="2">Đã giao</option>
-                                      <option value="3" >Đã hủy</option>
-                                  </select>
+                              <td style="color: #FFF; font-size: 17px">
+<%--                                  <span class="badge bg-warning">${x.statusOrder(x.getStatus())}</span--%>
                               </td>
+<%--                              <td style="color: #FFF; font-size: 17px">--%>
+<%--                                <c:if test="${x.statusOrder(x.getStatus()) == 'Chờ xác nhận'}">--%>
+<%--                                  <span class="badge bg-warning">${x.statusOrder(x.getStatus())}</span>--%>
+<%--                                </c:if>--%>
+
+<%--                                <c:if test="${x.statusOrder(x.getStatus()) == 'Đang vận chuyển'}">--%>
+<%--                                  <span class="badge bg-primary">${x.statusOrder(x.getStatus())}</span>--%>
+<%--                                </c:if>--%>
+
+<%--                                <c:if test="${x.statusOrder(x.getStatus()) == 'Đã giao'}">--%>
+<%--                                  <span class="badge bg-success">${x.statusOrder(x.getStatus())}</span>--%>
+<%--                                </c:if>--%>
+
+<%--                                <c:if test="${x.statusOrder(x.getStatus()) == 'Đã huỷ đơn hàng'}">--%>
+<%--                                  <span class="badge bg-danger">${x.statusOrder(x.getStatus())}</span>--%>
+<%--                                </c:if>--%>
+
+<%--                                <c:if test="${x.statusOrder(x.getStatus()) == 'Giao hàng thất bại'}">--%>
+<%--                                  <span class="badge bg-dark">${x.statusOrder(x.getStatus())}</span>--%>
+<%--                                </c:if>--%>
+<%--                              </td>--%>
 
                               <td>
                                 <div class="btn-group ml-auto">
-                                  <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list?id=${x.orderId}" title="Xóa"><i
-                                          class="fas fa-trash-alt"></i></a>
+                                    <c:if test="${sessionScope.auth.role > 1}">
+                                        <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list?id=${x.orderId}" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i></a>
+                                    </c:if>
                                   <a class="btn btn-primary btn-sm edit" type="button" href="order-detail?id=${x.orderId}" title="Xem"><i
                                           class="fas fa-eye"></i></a>
-                                  <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" style="margin-left: 8px"><i
-                                            class="fas fa-rotate"></i></button>
                                 </div>
                               </td>
-                              </form>
                             </tr>
                           </c:forEach>
                           </tbody>
@@ -134,7 +135,30 @@
       <!-- /page content -->
     </div>
   </div>
+  <script>
+      $(document).ready(function() {
+          $('.trash').click(function(e) {
+              e.preventDefault();
 
+              var url = $(this).attr('href');
+              var row = $(this).closest('tr');
+
+              $.ajax({
+                  url: url,
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(response) {
+                      row.remove();
+
+                  },
+                  error: function(xhr, status, error) {
+                      // Xử lý lỗi (nếu có)
+                      console.log("Đã xảy ra lỗi khi xóa.");
+                  }
+              });
+          });
+      });
+  </script>
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Bootstrap -->

@@ -80,7 +80,7 @@
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>Stt</th>
+                                                    <th>STT</th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Ảnh</th>
                                                     <th>Số Lượng</th>
@@ -101,20 +101,18 @@
                                                     <td class="text-center"><%=p.getQuantity()%></td>
                                                     <% boolean check = p.getQuantity()==0?false:true;
                                                         if(check==true){%>
-                                                    <td><span class="badge bg-green">Còn hàng</span></td>
+                                                    <td style="font-size: 17px"><span class="badge bg-green">Còn hàng</span></td>
                                                     <%} else {%>
-                                                    <td><span class="badge bg-danger ">Hết hàng</span></td>
+                                                    <td style="font-size: 17px; color:#FFF;"><span class="badge bg-danger ">Hết hàng</span></td>
                                                     <%}%>
                                                     <td><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(p.getOut_price())%></td>
                                                     <td><%=p.getVendor()%></td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
+                                                            <a class="btn btn-primary btn-sm edit mr-2" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
                                                                     class="fas fa-edit"></i></a>
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="product-soft-delete?id=<%=p.getProductID()%>">
+                                                            <a class="btn btn-danger btn-sm trash" type="button" title="Xóa" href="product-soft-delete?id=<%=p.getProductID()%>">
                                                                 <i class="fas fa-trash-alt"></i></a>
-                                                            <a class="btn btn-primary btn-sm edit" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
-                                                                    class="fas fa-edit"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

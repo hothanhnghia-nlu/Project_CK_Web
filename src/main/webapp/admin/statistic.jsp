@@ -191,7 +191,7 @@
                 <div class="col" style="margin-top: 20px">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card">
-                            <h5 class="card-header">Thống kê doanh thu chi tiết theo hãng</h5>
+                            <h5 class="card-header">Thống kê doanh thu chi tiết theo hãng (Triệu VND)</h5>
                             <div class="card-body">
                                 <div class="ct-chart-horizontal ct-golden-section"></div>
                             </div>
@@ -264,6 +264,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"></script>
 
   <script>
+      //Thống kê số lượng sản phẩm đã bán theo hãng
       var chart = c3.generate({
           bindto: '#c3chart_donut',
           data: {
@@ -280,17 +281,19 @@
           }
       });
 
-
+//Thống kê doanh thu chi tiết theo hãng
       new Chartist.Bar('.ct-chart-horizontal', {
           labels: [<%for (VendorStatistic a: vendorStatisticListList) { %>
               '<%=a.getName()%>',
               <% }%>],
           series: [
-              [<%for (VendorStatistic a: vendorStatisticListList) { %>
-                  <%=a.getQuantity()%>,
+              [<%for (VendorStatistic a: vendorStatisticListList) {
+                String b = (Integer.parseInt(a.getQuantity()))+"";%>
+                  <%=""%>,
                   <% }%>],
-              [<%for (VendorStatistic a: vendorStatisticListList) { %>
-                  <%=a.getPrice()%>,
+              [<%for (VendorStatistic a: vendorStatisticListList) {
+                  String c = (Double.parseDouble(a.getPrice())/1000000)+"";%>
+                  <%=c%>,
                   <% }%>]
           ]
       }, {
