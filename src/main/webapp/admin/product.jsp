@@ -30,7 +30,7 @@
     <!-- Custom Theme Style -->
     <link href="../assets/css/custom.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/laptop-icon.png" />
-
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -90,7 +90,7 @@
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="list-item">
                                                 <%List<Product> list = (List<Product>) request.getAttribute("proList");
                                                     for (Product p : list) {
                                                 %>
@@ -109,9 +109,9 @@
                                                     <td><%=p.getVendor()%></td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <a class="btn btn-primary btn-sm edit mr-2" type="button" title="Xem" href="product?id=<%=p.getProductID()%>"><i
+                                                            <a class="btn btn-primary btn-sm edit mr-2" type="button" title="Xem" data-product-id="<%=p.getProductID()%>" href="product?id=<%=p.getProductID()%>"><i
                                                                     class="fas fa-edit"></i></a>
-                                                            <a class="btn btn-danger btn-sm trash" type="button" title="Xóa" href="product-soft-delete?id=<%=p.getProductID()%>">
+                                                            <a class="btn btn-danger btn-sm trash delete-product" type="button" title="Xóa" data-product-id="<%=p.getProductID()%>" href="product-soft-delete?id=<%=p.getProductID()%>">
                                                                 <i class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
@@ -131,7 +131,51 @@
         <!-- /page content -->
     </div>
   </div>
+  <div class="modal" id="deleteModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Thông báo</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
 
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <script>
+      $(document).ready(function () {
+          $(document).on('click', '.delete-product', function (e) {
+              e.preventDefault();
+
+              var productId = $(this).data('product-id');
+              var $productItem = $(this).closest('tr');
+
+              $.ajax({
+                  type: 'GET',
+                  url: 'product-soft-delete',
+                  data: {id: productId},
+                  success: function (response) {
+                      $productItem.remove();
+                      $('.modal-body').html('Sản phẩm đã được chuyển đến thùng rác!');
+                      $('#deleteModal').modal('show'); // Hiển thị modal thông báo
+                      $('.list-item').html($(response).find('.list-item').html());
+                  },
+                  error: function (xhr, status, error) {
+                      console.error(error);
+                  }
+              });
+          });
+      });
+
+
+  </script>
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Bootstrap -->

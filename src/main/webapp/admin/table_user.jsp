@@ -74,7 +74,7 @@
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="list-item">
                                                 <%
                                                     List<User> userList = UserService.getInstances().listALlUser();
                                                     request.setAttribute("userList",userList);
@@ -91,7 +91,7 @@
                                                     <td>${u.birthday}</td>
                                                     <td>
                                                         <div class="btn-group ml-auto">
-                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="customers?id=${u.id}"><i
+                                                            <a class="btn btn-danger btn-sm trash mr-2" type="button" data-id="${u.id}" title="Xóa" href="customers?id=${u.id}"><i
                                                                     class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
@@ -112,24 +112,64 @@
         <!-- /page content -->
     </div>
 </div>
+<div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 
     $(document).ready(function() {
-        $('.trash').click(function(e) {
+        // $('.trash').click(function(e) {
+        //     e.preventDefault();
+        //
+        //     var url = $(this).attr('href');
+        //     var row = $(this).closest('tr');
+        //
+        //     $.ajax({
+        //         url: url,
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         success: function(response) {
+        //             row.remove();
+        //             $('.modal-body').html(' Đã xóa khách hàng thành công!');
+        //             $('#deleteModal').modal('show'); // Hiển thị modal thông báo
+        //         },
+        //         error: function(xhr, status, error) {
+        //             console.log("Đã xảy ra lỗi khi xóa.");
+        //         }
+        //     });
+        // });
+
+        $(document).on('click', '.trash  ', function (e) {
             e.preventDefault();
 
-            var url = $(this).attr('href');
-            var row = $(this).closest('tr');
+            var userId = $(this).data('id');
+            var $listItem = $(this).closest('tr');
 
             $.ajax({
-                url: url,
                 type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    row.remove();
+                url: 'customers',
+                data: {id: userId},
+                success: function (response) {
+                    $listItem.remove();
+                    $('.modal-body').html('Đã xóa khách hàng thành công!');
+                    $('#deleteModal').modal('show'); // Hiển thị modal thông báo
+                    $('.list-item').html($(response).find('.list-item').html());
                 },
-                error: function(xhr, status, error) {
-                    console.log("Đã xảy ra lỗi khi xóa.");
+                error: function (xhr, status, error) {
+                    console.error(error);
                 }
             });
         });

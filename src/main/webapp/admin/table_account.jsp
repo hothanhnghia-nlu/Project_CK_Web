@@ -73,7 +73,7 @@
                                                     <th>Tính năng</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="list-item">
                                                 <%
                                                     List<User> userList = UserService.getInstances().listALlUser();
                                                     request.setAttribute("userList",userList);
@@ -100,7 +100,7 @@
                                                             <div class="btn-group ml-auto">
                                                                 <a class="btn btn-danger btn-sm trash mr-2" type="button" title="Xóa" href="accounts?id=${u.id}"><i
                                                                         class="fas fa-trash-alt"></i></a>
-                                                                <button class="btn btn-primary btn-sm edit" type="submit" title="Cập nhật" ><i
+                                                                <button class="btn btn-primary btn-sm edit change-role" type="submit" data-id="${u.id}" title="Cập nhật" ><i
                                                                         class="fas fa-rotate"></i></button>
                                                             </div>
                                                     </td>
@@ -124,56 +124,73 @@
         <!-- /page content -->
     </div>
 </div>
+<div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thông báo</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
-    // $(document).ready(function() {
-    //     $('.trash').click(function(e) {
-    //         e.preventDefault();
-    //
-    //         var url = $(this).attr('href');
-    //         var row = $(this).closest('tr');
-    //
-    //         $.ajax({
-    //             url: url,
-    //             type: 'GET',
-    //             dataType: 'json',
-    //             success: function(response) {
-    //                 row.remove();
-    //
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 // Xử lý lỗi (nếu có)
-    //                 console.log("Đã xảy ra lỗi khi xóa.");
-    //             }
-    //         });
-    //     });
-    // });
     $(document).ready(function() {
-        // Sự kiện khi nhấn nút xóa
-        $('.trash').click(function(event) {
-            event.preventDefault();
+        $('.trash').click(function(e) {
+            e.preventDefault();
 
-            // Lấy đường dẫn và id của dòng dữ liệu cần xóa
             var url = $(this).attr('href');
-            var logId = $(this).data('log-id');
+            var row = $(this).closest('tr');
 
-            // Gửi yêu cầu Ajax DELETE đến servlet
             $.ajax({
-                type: 'DELETE',
                 url: url,
-                data: { id: logId },
+                type: 'GET',
+                dataType: 'json',
                 success: function(response) {
-                    // Xử lý phản hồi thành công từ servlet
-                    console.log('Dòng dữ liệu đã được xóa thành công.');
+                    row.remove();
+                    $('.modal-body').html(' Đã xóa tài khoản thành công!');
+                    $('#deleteModal').modal('show'); // Hiển thị modal thông báo
 
-                    // Cập nhật giao diện, ví dụ: xóa dòng dữ liệu trong bảng
-                    $(this).closest('tr').remove();
                 },
                 error: function(xhr, status, error) {
-                    // Xử lý lỗi nếu có
-                    console.error('Lỗi xóa dòng dữ liệu: ' + error);
+                    // Xử lý lỗi (nếu có)
+                    console.log("Đã xảy ra lỗi khi xóa.");
                 }
             });
         });
+        $(document).ready(function() {
+            $(document).on('click', '.edit', function(e) {
+                e.preventDefault();
+
+                var role = $(this).closest('tr').find('select[name="role"]').val();
+                var userId = $(this).closest('tr').find('input[name="id"]').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'accounts',
+                    data: {
+                        id: userId,
+                        role: role
+                    },
+                    success: function(response) {
+                        console.log('Cập nhật thành công');
+                        $('.modal-body').html(' Cập nhật quyền người dùng thành công!');
+                        $('#deleteModal').modal('show'); // Hiển thị modal thông báo
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Đã xảy ra lỗi khi cập nhật.');
+                    }
+                });
+            });
+        });
+
+
     });
 
 </script>
