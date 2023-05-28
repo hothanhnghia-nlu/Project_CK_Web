@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Quản lý đơn hàng | Quản trị Admin</title>
+    <title>Duyệt đơn hàng | Quản trị Admin</title>
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -59,62 +59,39 @@
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="card-box table-responsive">
-                        <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+                        <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                           <thead>
                           <tr>
                             <th>#</th>
                             <th>Tên khách hàng</th>
-                            <th>SĐT</th>
-                            <th>Địa chỉ</th>
-                            <th>Ghi chú</th>
                             <th>Ngày đặt hàng</th>
-                            <th>Thanh toán</th>
                             <th>Tình trạng</th>
                             <th>Tính năng</th>
                           </tr>
                           </thead>
                           <tbody>
-                          <c:forEach items="${orderList}" var="x" varStatus="STT">
+                          <c:forEach items="${listOrders}" var="x" varStatus="STT">
                             <tr>
+                              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"  method="post">
+                                <input type="hidden" name="id" value="${x.orderId}" />
                               <td>${x.orderId}</td>
                               <td>${x.fullName}</td>
-                              <td>${x.phoneNumber}</td>
-                              <td>${x.address}</td>
-                              <td>${x.note}</td>
                               <td>${x.orderDate}</td>
-                              <td>${x.payment}</td>
-                              <td style="color: #FFF; font-size: 17px">
-                                <c:if test="${x.status == 0}">
-                                  <span class="badge bg-warning">Đang xử lý</span>
-                                </c:if>
-
-                                <c:if test="${x.status == 1}">
-                                  <span class="badge bg-primary">Đang vận chuyển</span>
-                                </c:if>
-
-                                <c:if test="${x.status == 2}">
-                                  <span class="badge bg-success">Đã giao</span>
-                                </c:if>
-
-                                <c:if test="${x.status == 3}">
-                                  <span class="badge bg-danger">Đã huỷ đơn hàng</span>
-                                </c:if>
-
-                                <c:if test="${x.status == 4}">
-                                  <span class="badge bg-dark">Giao hàng thất bại</span>
-                                </c:if>
-                              </td>
-
+                              <td style="color: #FFF">
+                                  <select tabindex="0" name="status">
+                                      <option value="0" <c:if test="${x.status == 0}">selected="selected"</c:if>>Đang xử lý</option>
+                                      <option value="1" <c:if test="${x.status == 1}">selected="selected"</c:if>>Đang vận chuyển</option>
+                                      <option value="2" <c:if test="${x.status == 2}">selected="selected"</c:if>>Đã giao</option>
+                                      <option value="3" <c:if test="${x.status == 3}">selected="selected"</c:if>>Đã hủy đơn hàng</option>
+                                      <option value="4" <c:if test="${x.status == 4}">selected="selected"</c:if>>Giao hàng thất bại</option>
+                                  </select>
                               <td>
                                 <div class="btn-group ml-auto">
-                                    <c:if test="${sessionScope.auth.role > 1}">
-                                        <a class="btn btn-danger btn-sm trash mr-2" type="button" href="order-list?id=${x.orderId}" title="Xóa"><i
-                                                class="fas fa-trash-alt"></i></a>
-                                    </c:if>
-                                  <a class="btn btn-primary btn-sm edit" type="button" href="order-detail?id=${x.orderId}" title="Xem"><i
-                                          class="fas fa-eye"></i></a>
+                                    <button class="btn btn-primary btn-sm edit" type="submit" title="Duyệt đơn hàng" ><i
+                                            class="fa fa-refresh"></i></button>
                                 </div>
                               </td>
+                              </form>
                             </tr>
                           </c:forEach>
                           </tbody>
@@ -132,30 +109,7 @@
       <!-- /page content -->
     </div>
   </div>
-  <script>
-      $(document).ready(function() {
-          $('.trash').click(function(e) {
-              e.preventDefault();
 
-              var url = $(this).attr('href');
-              var row = $(this).closest('tr');
-
-              $.ajax({
-                  url: url,
-                  type: 'GET',
-                  dataType: 'json',
-                  success: function(response) {
-                      row.remove();
-
-                  },
-                  error: function(xhr, status, error) {
-                      // Xử lý lỗi (nếu có)
-                      console.log("Đã xảy ra lỗi khi xóa.");
-                  }
-              });
-          });
-      });
-  </script>
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Bootstrap -->

@@ -105,56 +105,61 @@
 
                         <div class="tab-content">
                             <%
-                                List<Order> orderList = (List<Order>) request.getAttribute("orderList");
                                 List<OrderDetail> odList = (List<OrderDetail>) request.getAttribute("orderDetailList");
-                                for (Order o : orderList) {
                                     for (OrderDetail od : odList) {
                             %>
                             <div id="all-order" class="tab-pane fade in active">
-                                <div class="order-list">
-                                    <div class="orders">
-                                        <div class="delivery-success">
-                                            <label>
-                                                <c:if test="<%=o.getStatus() == 0 %>">
-                                                    <i class="fa fa-truck"></i>
-                                                    Đang xử lý
-                                                </c:if>
-                                                <c:if test="<%=o.getStatus() == 1 %>">
-                                                    <i class="fa fa-truck"></i>
-                                                    Đang vận chuyển
-                                                </c:if>
-                                                <c:if test="<%=o.getStatus() == 2 %>">
-                                                    <i class="fa fa-truck"></i>
-                                                    Giao hàng thành công
-                                                </c:if>
-                                                <c:if test="<%=o.getStatus() == 3 %>">
-                                                    <i class="fa fa-truck"></i>
-                                                    Đã hủy
-                                                </c:if>
-                                            </label>
-                                        </div>
-
-                                        <div class="detail">
-                                            <div class="product-info">
-                                                <img src="assets/img/dell.png"/>
-                                                <div class="product-name">
-                                                    <p><%=od.getName()%></p>
-                                                    <span>Số lượng: <%=od.getQuantity()%></span>
-                                                </div>
-                                                <div class="product-price">
-                                                    <span><span><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(od.getPrice())%></span>
-                                                </div>
+                                <c:forEach items="${orderList}" var="o" varStatus="STT">
+                                    <div class="order-list">
+                                        <div class="orders">
+                                            <div class="delivery-success">
+                                                <label>
+                                                    <c:if test="${o.status == 0}">
+                                                        <i class="fa fa-truck"></i>
+                                                        Đang xử lý
+                                                    </c:if>
+                                                    <c:if test="${o.status == 1}">
+                                                        <i class="fa fa-truck"></i>
+                                                        Đang vận chuyển
+                                                    </c:if>
+                                                    <c:if test="${o.status == 2}">
+                                                        <i class="fa fa-truck"></i>
+                                                        Giao hàng thành công
+                                                    </c:if>
+                                                    <c:if test="${o.status == 3}">
+                                                        <i class="fa fa-truck"></i>
+                                                        Đã hủy đơn hàng
+                                                    </c:if>
+                                                    <c:if test="${o.status == 4}">
+                                                        <i class="fa fa-truck"></i>
+                                                        Giao hàng thất bại
+                                                    </c:if>
+                                                </label>
                                             </div>
 
-                                            <div class="total">
-                                                <label>Tổng tiền: <span><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(od.getTotal())%></span></label>
+                                            <div class="detail">
+                                                <div class="product-info">
+                                                    <img src="assets/img/dell.png"/>
+                                                    <div class="product-name">
+                                                        <p><%=od.getName()%>
+                                                        </p>
+                                                        <span>Số lượng: <%=od.getQuantity()%></span>
+                                                    </div>
+                                                    <div class="product-price">
+                                                    <span><span><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(od.getPrice())%></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="total">
+                                                    <label>Tổng tiền:
+                                                        <span><%=NumberFormat.getCurrencyInstance(new Locale("vi", "VN")).format(od.getTotal())%></span></label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </c:forEach>
                             </div>
-                            <%}
-                            }%>
+                            <%}%>
 
                         </div>
 
