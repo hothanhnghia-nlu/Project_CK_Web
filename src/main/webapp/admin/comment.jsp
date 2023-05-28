@@ -122,6 +122,22 @@
         <!-- /page content -->
     </div>
   </div>
+  <div class="modal" id="deleteModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Thông báo</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+          </div>
+      </div>
+  </div>
   <script>
       $(document).ready(function() {
           $('.trash').click(function(e) {
@@ -136,7 +152,8 @@
                   dataType: 'json',
                   success: function(response) {
                       row.remove();
-
+                      $('.modal-body').html('Đánh giá đã bị xóa!');
+                      $('#deleteModal').modal('show'); // Hiển thị modal thông báo
                   },
                   error: function(xhr, status, error) {
                       // Xử lý lỗi (nếu có)

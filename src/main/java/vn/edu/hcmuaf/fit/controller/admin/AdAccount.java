@@ -88,6 +88,10 @@ public class AdAccount extends HttpServlet {
 
         if (role != null) {
             UserService.getInstances().updateID(Integer.parseInt(id), Integer.parseInt(role));
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("{\"success\": true}");
+            return;
         }
         response.sendRedirect("accounts");
     }
