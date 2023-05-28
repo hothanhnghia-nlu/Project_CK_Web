@@ -40,13 +40,6 @@ public class AdOrders extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String status = request.getParameter("status");
-        String id = request.getParameter("id");
-
-        if (status != null){
-            OrderService.getInstance().updateStatus(Integer.parseInt(id), Integer.parseInt(status));
-        }
-        response.sendRedirect("order-list");
+        doGet(request, response);
     }
 }

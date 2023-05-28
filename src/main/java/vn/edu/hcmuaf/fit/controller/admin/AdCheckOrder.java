@@ -1,6 +1,7 @@
 package vn.edu.hcmuaf.fit.controller.admin;
 
 import vn.edu.hcmuaf.fit.bean.Order;
+import vn.edu.hcmuaf.fit.bean.User;
 import vn.edu.hcmuaf.fit.service.API_LOGISTIC.RegisterTransport;
 import vn.edu.hcmuaf.fit.service.API_LOGISTIC.SignIn;
 import vn.edu.hcmuaf.fit.service.API_LOGISTIC.Transport;
@@ -11,33 +12,36 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "AdCheckOrder", value = "/admin/check-order")
 public class AdCheckOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String status = request.getParameter("status");
-        String orderId = request.getParameter("orderId");
-        int oid = Integer.parseInt(orderId);
-        int st = Integer.parseInt(status);
+        HttpSession session = request.getSession();
+        User auth = (User) session.getAttribute("auth");
 
-        OrderService.getInstance().updateStatus(oid, st);
-        int numTrans = OrderService.getInstance().getNumTrans(oid);
-        if (st == 1 && numTrans == 0) {
-            Order order = new Order();
-            order.setOrderId(oid);
-            SignIn signIn = new SignIn();
-            String API_KEY = signIn.signIn();
-            RegisterTransport register = new RegisterTransport();
-            Transport transport = register.registerTransport(API_KEY, order, null, null, null, null);
-            OrderService.getInstance().addTransport(transport);
+        if (auth == null || !auth.checkRole(1)) {
+            response.sendRedirect("not-found");
+        } else {
+            OrderService.getInstance().updateOrderStatusByTransportLeadTime();
+            List<Order> listOrders = OrderService.getInstance().getAllOrder();
+            request.setAttribute("listOrders", listOrders);
+            request.getRequestDispatcher("check-order.jsp").forward(request, response);
         }
-        response.sendRedirect("admin/order-list");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        request.setCharacterEncoding("UTF-8");
+        String status = request.getParameter("status");
+        String id = request.getParameter("id");
+
+        if (status != null) {
+            OrderService.getInstance().updateStatus(Integer.parseInt(id), Integer.parseInt(status));
+        }
+        response.sendRedirect("check-order");
     }
 }
