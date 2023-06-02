@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
             } else if (loginAttempts >= 3) { // case 2: login attempts >= 3
                 LogService.getInstances().addLog(log_id, Log.DANGER, 0, "account blocked", "Username= " + username);
                 request.setAttribute("error", "Tài khoản tạm thời bị khóa. Vui lòng đăng nhập lại sau!");
-                request.getRequestDispatcher("login.jsp").forward(request,response);
+                request.getRequestDispatcher("log-in").forward(request, response);
             } else {
                 session.setAttribute("loginAttempts", loginAttempts + 1);
             }

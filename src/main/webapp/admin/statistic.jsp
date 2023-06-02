@@ -106,7 +106,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="card border-3" style="height: 136px">
                             <div class="card-body">
-                                <a href="product">
+                                <a href="product-list">
                                     <h5 class="text-muted">Tổng số lượng sản phẩm</h5>
                                 </a>
                                 <div class="metric-value d-inline-block">
