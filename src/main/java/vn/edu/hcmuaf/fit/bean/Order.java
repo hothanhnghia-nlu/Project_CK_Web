@@ -91,25 +91,4 @@ public class Order implements Serializable {
         this.status = status;
     }
 
-    public String statusOrder(int id){
-        String nameStatus = "Lỗi";
-        switch (id){
-            case 0:
-                nameStatus = "Chờ xác nhận";
-                break;
-            case 1:
-                nameStatus = "Đang vận chuyển";
-                break;
-            case 2:
-                nameStatus = "Đã giao";
-                break;
-            case 3:
-                nameStatus = "Đã huỷ đơn hàng";
-                break;
-            case 4:
-                nameStatus = "Giao hàng thất bại";
-                break;
-        }
-        return nameStatus;
-    }
 }
