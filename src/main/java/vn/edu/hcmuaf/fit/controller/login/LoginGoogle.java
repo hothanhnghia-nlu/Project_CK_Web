@@ -25,8 +25,6 @@ public class LoginGoogle extends HttpServlet {
             String accessToken = GoogleUtils.getToken(code);
             UserGoogle userGoogle = GoogleUtils.getUserInfo(accessToken);
             HttpSession session = request.getSession(true);
-            int log_id = LogService.getInstances().getNewID() + 1;
-            LogService.getInstances().addLog(log_id, Log.INFO, (userGoogle ==null?0: Integer.parseInt(userGoogle.getId())),nameLog,"User ID " + userGoogle.getId()+" login with google");
 
             session.setAttribute("oAuth", userGoogle);
             response.sendRedirect("home");
