@@ -2,6 +2,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="vn.edu.hcmuaf.fit.service.ProductService" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
@@ -52,7 +53,7 @@
     boolean checkList = list.isEmpty();
     request.setAttribute("check", checkList);
     request.setAttribute("total", total);
-
+    DecimalFormat formatter = new DecimalFormat("###,###,###");
 %>
 <!-- BREADCRUMB -->
 <div id="breadcrumb" class="section">
@@ -104,16 +105,10 @@
                     <div class="row">
                         <div class="col-12">
                             <!-- Shopping Summery -->
-                                <%--                            <%if (error != null) {--%>
-                                <%--                            %>--%>
                             <div class="alert" role="alert"
                                  style="display: none; color: #ff0000; margin-top: -30px; margin-bottom: 3px">
                                 Số lượng sản phẩm không đủ
                             </div>
-                                <%--                            <%--%>
-                                <%--                                }--%>
-                                <%--                            %>--%>
-
 
                             <table class="table shopping-summery">
                                 <thead>
@@ -164,14 +159,10 @@
                                 <tr style="text-align: center">
                                     <td colspan="4" style="font-size: 20px; font-weight: 700"> Tổng tiền:</td>
                                     <c:if test="${check}">
-                                        <td colspan="2"><span class="total"
-                                                              style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber
-                                                value="0" type="currency"/></span></td>
+                                        <td colspan="2"><span class="total" style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><%= formatter.format(0)+" VNĐ" %></span></td>
                                     </c:if>
                                     <c:if test="${!check}">
-                                        <td colspan="2"><span class="total"
-                                                              style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><fmt:formatNumber
-                                                value="${total}" type="currency"/></span></td>
+                                        <td colspan="2"><span class="total" style="font-size: 20px; font-weight: 800; font-style: italic;color: #ff0000"><%= formatter.format(total)+" VNĐ" %></span></td>
                                     </c:if>
                                 </tr>
                                 </tbody>

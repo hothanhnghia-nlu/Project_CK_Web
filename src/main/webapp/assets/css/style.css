@@ -329,6 +329,7 @@ textarea.input {
     background: #FBFBFC;
     border-bottom: 1px solid #E4E7ED;
     margin-bottom: 30px;
+    margin-top: -8px;
 }
 
 #breadcrumb .breadcrumb-header {
@@ -1683,8 +1684,7 @@ img {
     position: absolute;
     width: 130px;
     left: 0;
-    top: 0;
-    height: 70px;
+    min-height: 70px;
 }
 
 .reviews .review-body {

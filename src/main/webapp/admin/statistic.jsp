@@ -186,16 +186,19 @@
                                             <td>${o.payment}</td>
                                             <td style="font-size: 17px; color: #FFF">
                                                 <c:if test="${o.status == 0}">
-                                                    <span class="badge badge-info">Đang xử lý</span>
+                                                    <span class="badge badge-warning">Đang xử lý</span>
                                                 </c:if>
                                                 <c:if test="${o.status == 1}">
-                                                    <span class="badge badge-warning">Đang vận chuyển</span>
+                                                    <span class="badge badge-primary">Đang vận chuyển</span>
                                                 </c:if>
                                                 <c:if test="${o.status == 2}">
                                                     <span class="badge badge-success">Đã giao</span>
                                                 </c:if>
                                                 <c:if test="${o.status == 3}">
                                                     <span class="badge badge-danger">Đã hủy</span>
+                                                </c:if>
+                                                <c:if test="${o.status == 4}">
+                                                    <span class="badge badge-dark">Giao hàng thất bại</span>
                                                 </c:if>
                                             </td>
 

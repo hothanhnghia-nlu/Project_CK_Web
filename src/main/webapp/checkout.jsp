@@ -1,6 +1,7 @@
 <%@ page import="vn.edu.hcmuaf.fit.bean.Cart" %>
 <%@ page import="vn.edu.hcmuaf.fit.bean.Product" %>
 <%@ page import="java.util.Collection" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -57,7 +58,7 @@
 		boolean checkList = list.isEmpty();
 		request.setAttribute("check", checkList);
 		request.setAttribute("total", total);
-
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
 	%>
 	<!-- container -->
 	<div class="container">
@@ -216,10 +217,10 @@
 						<div class="order-col" style="border-top: 1px solid #cccccc; margin-top: 10px">
 							<div>Tạm tính</div>
 							<c:if test="${check}">
-								<div><fmt:formatNumber value="0" type="currency"/></div>
+								<div><%= formatter.format(0)+" đ" %></div>
 							</c:if>
 							<c:if test="${!check}">
-								<div><span><fmt:formatNumber value="${total}" type="currency"/> </span></div>
+								<div><span><%= formatter.format(total)+" đ" %></span></div>
 							</c:if>
 
 						</div>
@@ -234,10 +235,10 @@
 						<div class="order-col" style="border-top: 1px solid #cccccc; margin-top: 10px">
 							<div><strong>TỔNG CỘNG</strong></div>
 							<c:if test="${check}">
-								<div><strong class="order-total"><fmt:formatNumber value="0" type="currency"/></strong></div>
+								<div><strong class="order-total"><%= formatter.format(0)+" VNĐ" %></strong></div>
 							</c:if>
 							<c:if test="${!check}">
-								<div><strong class="order-total"><fmt:formatNumber value="${total}" type="currency"/></strong></div>
+								<div><strong class="order-total"><%= formatter.format(total)+" VNĐ" %></strong></div>
 							</c:if>
 
 						</div>
