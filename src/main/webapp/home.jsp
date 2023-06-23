@@ -13,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Trang chủ</title>
+		<title>Laptop VN | Cửa hàng Laptop uy tín hàng đầu Việt Nam</title>
 
 		<!-- Google font -->
 		<link rel="stylesheet" href="assets/fonts/css/all.css">

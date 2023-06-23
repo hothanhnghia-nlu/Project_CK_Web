@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Locale" %>
+<%@ page import="vn.edu.hcmuaf.fit.bean.Comment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -11,8 +12,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-		<title>Chi tiết sản phẩm</title>
+		<%Product pd = (Product) request.getAttribute("detail");%>
+		<title>Laptop <%= pd.getName() %></title>
 
 		<!-- Google font -->
 		<link rel="stylesheet" href="assets/fonts/css/all.css">
@@ -135,7 +136,7 @@
 									</div>
 									<div class="add-to-cart">
 										<% if(check==true){%>
-										<a class="btn primary-btn" disabled="disabled">Mua ngay</a>
+										<a href="contact-us" class="btn primary-btn">Liên hệ</a>
 										<%}%>
 										<% if(check==false){%>
 										<a href="buy?pid=<%=p.getProductID()%>" class="primary-btn">Mua ngay</a>
@@ -263,20 +264,16 @@
 													<div id="reviews">
 														<ul class="reviews">
 															<li>
-																<div class="review-heading">
-																	<h5 class="name">Hải</h5>
-																	<p class="date">3 ngày trước</p>
-																	<div class="review-rating">
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star"></i>
-																		<i class="fa fa-star-o empty"></i>
-																	</div>
+																<% List<Comment> cmt = (List<Comment>) request.getAttribute("comment"); %>
+																<% for (Comment c : cmt) { %>
+																<div class="review-heading" style="top: unset">
+																	<h5 class="name"><%= c.getFull_name() %></h5>
+																	<p class="date"><%= c.getCreateDate() %></p>
 																</div>
 																<div class="review-body">
-																	<p>Dùng ok trong tầm giá</p>
+																	<p><%= c.getContent() %></p>
 																</div>
+																<%}%>
 															</li>
 														</ul>
 														<ul class="reviews-pagination">

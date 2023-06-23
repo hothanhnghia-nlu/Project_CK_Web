@@ -12,7 +12,7 @@ plugins {
 apply plugin: 'org.hidetake.ssh'
 remotes {
     host {
-        host = '192.168.115.100'
+        host = '192.168.120.100'
         user = 'root'
         password = '123456'
     }
@@ -51,7 +51,7 @@ dependencies {
 group = 'vn.edu.hcmuaf.fit'
 version = '1.0-SNAPSHOT'
 description = 'Project_CK_Web Maven Webapp'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_16
 
 publishing {
     publications {
@@ -99,3 +99,4 @@ task docker_deploy {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+targetCompatibility = JavaVersion.VERSION_16

@@ -45,7 +45,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Quản lý sản phẩm</h3>
+                        <h3>Thùng rác</h3>
                     </div>
 
                     <div class="title_right">
@@ -58,21 +58,6 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
-                            <div class="x_title">
-                                <div class="row element-button">
-                                    <div class="pl-3">
-                                        <a class="btn btn-print btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"
-                                           style="border: 2px solid #bdc3c7"><i
-                                                class="fas fa-print"></i> In dữ liệu</a>
-                                    </div>
-                                    <div class="pl-3">
-                                        <a class="btn btn-delete btn-sm delete-all" type="button" title="Xóa"
-                                            style="border: 2px solid #bdc3c7" href="new_product"><i
-                                                class="fas fa-plus"></i> Tạo mới sản phẩm</a>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
                             <div class="x_content">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -80,7 +65,7 @@
                                             <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>Stt</th>
+                                                    <th>STT</th>
                                                     <th>Tên sản phẩm</th>
                                                     <th>Ảnh</th>
                                                     <th>Số Lượng</th>

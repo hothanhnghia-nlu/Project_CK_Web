@@ -109,7 +109,49 @@
       <!-- /page content -->
     </div>
   </div>
+  <div class="modal" id="deleteModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Thông báo</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
 
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script>
+      $(document).ready(function () {
+          $(document).on('click', '.edit', function (e) {
+              e.preventDefault();
+
+              var status = $(this).closest('tr').find('select[name="status"]').val();
+              var orderId = $(this).closest('tr').find('input[name="id"]').val();
+
+              $.ajax({
+                  type: 'POST',
+                  url: 'check-order',
+                  data: {
+                      id: orderId,
+                      status: status
+                  },
+                  success: function (response) {
+                      console.log('Cập nhật thành công');
+                      $('.modal-body').html(' Cập nhật trạng thái đơn hàng thành công!');
+                      $('#deleteModal').modal('show'); // Hiển thị modal thông báo
+                  },
+                  error: function (xhr, status, error) {
+                      console.error('Đã xảy ra lỗi khi cập nhật.');
+                  }
+              });
+          });
+      });
+  </script>
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.1.min.js"></script>
     <!-- Bootstrap -->
